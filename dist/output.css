@@ -554,6 +554,18 @@ video {
   --tw-contain-style:  ;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .visible {
   visibility: visible;
 }
@@ -584,12 +596,24 @@ video {
   margin-inline-end: 1rem;
 }
 
+.ms-5 {
+  margin-inline-start: 1.25rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .block {
   display: block;
 }
 
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .h-8 {
@@ -604,12 +628,20 @@ video {
   max-width: 1280px;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
 
 .items-center {
   align-items: center;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
@@ -644,6 +676,11 @@ video {
   padding: 1rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -662,9 +699,18 @@ video {
   font-weight: 600;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -1691,6 +1737,32 @@ textarea {
   margin-bottom: 1.5em;
 }
 
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 24px;
+  /* Modifica la dimensione secondo le tue necessità */
+  height: 24px;
+  /* Modifica la dimensione secondo le tue necessità */
+  color: #f28b0c;
+  /* Colore specificato */
+  transition: color 0.3s;
+}
+
+.icon-link:hover .icon {
+  color: #d97706;
+  /* Colore quando l'icona è in hover */
+}
+
+.ms-5 {
+  margin-left: 1.25rem;
+  /* Margine sinistro */
+}
+
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
@@ -1705,16 +1777,32 @@ textarea {
     margin-bottom: 0px;
   }
 
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:items-center {
     align-items: center;
   }
 
+  .sm\:justify-center {
+    justify-content: center;
+  }
+
   .sm\:justify-between {
     justify-content: space-between;
+  }
+
+  .sm\:gap-6 {
+    gap: 1.5rem;
   }
 
   .sm\:text-center {
@@ -1723,8 +1811,20 @@ textarea {
 }
 
 @media (min-width: 768px) {
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .md\:me-6 {
     margin-inline-end: 1.5rem;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:justify-between {
+    justify-content: space-between;
   }
 
   .md\:py-8 {
@@ -1737,6 +1837,11 @@ textarea {
   .lg\:my-8 {
     margin-top: 2rem;
     margin-bottom: 2rem;
+  }
+
+  .lg\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 
