@@ -30,7 +30,7 @@
                     <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">Contatta</a>
+                    <a href="#" class="hover:underline">Contattaci</a>
                 </li>
             </ul>
         </div>
