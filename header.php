@@ -27,24 +27,35 @@
 		<a class="skip-link screen-reader-text"
 			href="#primary"><?php esc_html_e('Skip to content', 'universome'); ?></a>
 
-		    <header class="bg-gray-800 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <?php if (function_exists('the_custom_logo')): ?>
-                    <div class="custom-logo">
-                        <?php the_custom_logo(); ?>
-                    </div>
-                <?php endif; ?>
-                <div id="current-date-time" class="hidden md:block">
-                    <?php echo date('d/m/Y'); ?>
-                </div>
-            </div>
-            <nav class="mt-4 md:mt-0">
-                <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'flex space-x-4')); ?>
-            </nav>
-            <div class="mt-4 md:mt-0">
-                <?php get_search_form(); ?>
-            </div>
-        </div>
-    </header>
-    <div class="container mx-auto mt-4">
+
+		<header class="header w-full">
+			<!-- Sezione superiore della navbar -->
+			<div class="header-top bg-orange-500">
+				<div class="container mx-auto max-w-6xl px-4 flex justify-between items-center">
+					<?php if (function_exists('the_custom_logo')): ?>
+						<div class="custom-logo">
+							<?php the_custom_logo(); ?>
+						</div>
+					<?php endif; ?>
+					<div id="current-date-time">
+						<?php echo date('d/m/Y'); ?>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sezione inferiore della navbar -->
+			<div class="header-bottom bg-white">
+				<div class="container mx-auto max-w-6xl px-4 mt-4 flex justify-between items-center">
+					<nav class="flex-grow">
+						<?php wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'flex flex-wrap space-x-4')); ?>
+					</nav>
+					<div class="ml-4">
+						<?php get_search_form(); ?>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+	</div>
+</body>
