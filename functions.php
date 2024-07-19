@@ -45,9 +45,6 @@ wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
 
 
 
-
-
-
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -129,8 +126,8 @@ function universome_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 150,
+			'width'       => 150,
 			'flex-width'  => true,
 			'flex-height' => true,
 		)
