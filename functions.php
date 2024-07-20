@@ -43,6 +43,17 @@ function enqueue_parent_styles() {
 wp_enqueue_style( 'parent-style', get_template_directory_uri().'/src/style.css' );
 }
 
+/* Includo il file 'custom.js' */
+function enqueue_custom_scripts() {
+    wp_enqueue_script(
+        'custom-js', // Handle del file
+        get_template_directory_uri() . '/assets/js/custom.js', // URL del file JS
+        array(), // Dipendenze
+        null, // Versione
+        true // Carica il file JS nel footer
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
 /**

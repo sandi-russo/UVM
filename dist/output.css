@@ -713,52 +713,26 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Rimuove i punti di elenco */
-
-ul,
-ol {
-  list-style: none;
-  padding-left: 0;
-  /* Rimuove il padding sinistro */
-}
-
-/* Rimuove le sottolineature dei link */
-
-a {
-  text-decoration: none;
-}
-
-/* Facoltativo: cambia il colore dei link al passaggio del mouse per indicare che sono cliccabili */
-
-a:hover {
-  text-decoration: underline;
-  /* Sottolinea il link al passaggio del mouse */
-  color: #007bff;
-  /* Cambia colore al passaggio del mouse */
-}
-
 /* FOOTER */
 
 .icon-link {
   display: inline-flex;
+  /* Display inline flex per icone e link */
   align-items: center;
+  /* Centra verticalmente il contenuto */
   justify-content: center;
+  /* Centra orizzontalmente il contenuto */
 }
 
 .icon {
-  width: 28px;
+  width: 20px;
   /* Modifica la dimensione secondo le tue necessità */
-  height: 28px;
+  height: 20px;
   /* Modifica la dimensione secondo le tue necessità */
-  color: #f28b0c;
+  color: black;
   /* Colore specificato */
   transition: color 0.3s;
+  /* Aggiunge una transizione sul colore */
 }
 
 .icon-link:hover .icon {
@@ -771,14 +745,20 @@ a:hover {
 .header {
   width: 100%;
   border: 1px solid red;
+  /* Per debugging, puoi rimuovere questa linea */
   .custom-logo {
     top: 0px;
     left: 0px;
     max-width: 300px;
+    /* Larghezza massima del logo */
     height: auto;
+    /* Altezza automatica */
     background-color: white;
+    /* Sfondo bianco solo per il logo */
     border-radius: 0 20px 0 0;
+    /* Arrotondamento del bordo del logo */
     padding-right: 5%;
+    /* Padding destro del logo */
   }
 }
 
@@ -786,37 +766,53 @@ a:hover {
   max-width: 1200px;
   /* Limita la larghezza a 1200px */
   margin-left: auto;
+  /* Allinea il container al centro */
   margin-right: auto;
+  /* Allinea il container al centro */
   padding-left: 15px;
+  /* Padding sinistro del container */
   padding-right: 15px;
+  /* Padding destro del container */
   display: flex;
+  /* Usa flexbox per l'allineamento */
   justify-content: space-between;
+  /* Spazia gli elementi tra di loro */
   align-items: center;
+  /* Allinea gli elementi verticalmente al centro */
 }
 
 .header-top {
   background: linear-gradient(to left,
-            #ff8800 0%,
-            /* Colore arancione all'inizio */
-            #ff8800 75%,
-            /* Colore arancione fino al 75% della larghezza */
-            white 75%,
-            /* Colore bianco inizia dal 75% */
-            white 100%
-            /* Colore bianco fino alla fine */
-        );
+			#ff8800 0%,
+			/* Colore arancione all'inizio */
+			#ff8800 75%,
+			/* Colore arancione fino al 75% della larghezza */
+			white 75%,
+			/* Colore bianco inizia dal 75% */
+			white 100%
+			/* Colore bianco fino alla fine */
+		);
   position: relative;
   /* Necessario per posizionare gli pseudo-elementi */
   height: 70px;
+  /* Altezza della parte superiore dell'header */
+  font-size: 12px;
+  /* Dimensione del testo */
 }
 
 .header-bottom {
   background-color: #ffffff;
   /* Colore di sfondo della parte inferiore */
   height: 70px;
+  /* Altezza della parte inferiore dell'header */
   align-items: center;
+  /* Allinea gli elementi verticalmente al centro */
   display: flex;
+  /* Usa flexbox per l'allineamento */
   flex-direction: row;
+  /* Dispone gli elementi in una riga */
+  font-size: 12px;
+  /* Dimensione del testo */
 }
 
 nav {
@@ -826,8 +822,11 @@ nav {
 
 nav ul {
   display: flex;
+  /* Usa flexbox per il layout del menu */
   flex-wrap: wrap;
+  /* Permette di andare a capo se necessario */
   gap: 10px;
+  /* Spazio tra gli elementi del menu */
 }
 
 .ml-4 {
@@ -835,49 +834,125 @@ nav ul {
   /* Spazio a sinistra della barra di ricerca */
 }
 
+/* Stile per la pillola degli elementi della navbar (data, ora, ultima modifica) */
+
+.nav-element {
+  display: inline-block;
+  /* Per adattare la dimensione del div al suo contenuto */
+  padding: 10px 20px;
+  /* Spazio interno per creare l'effetto di pillola */
+  background-color: white;
+  /* Sfondo bianco */
+  border-radius: 20px;
+  /* Arrotonda gli angoli per creare l'effetto di pillola */
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  /* Aggiunge una leggera ombra per un effetto di profondità */
+  text-align: center;
+  /* Allinea il testo al centro */
+  color: black;
+  /* Colore del testo */
+  font-weight: bold;
+  /* Imposto il grassetto */
+  min-width: 120px;
+  /* Minimo di larghezza */
+}
+
+.nav_ico {
+  display: flex;
+  /* Mostra il contenuto in un layout flessibile */
+  align-items: center;
+  /* Allinea verticalmente al centro */
+  justify-content: center;
+  /* Allinea orizzontalmente al centro */
+  padding: 5px;
+  /* Spazio interno per creare l'effetto di pillola */
+  background-color: white;
+  /* Sfondo bianco */
+  border-radius: 50%;
+  /* Arrotonda gli angoli per creare l'effetto di pillola */
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  /* Aggiunge una leggera ombra per un effetto di profondità */
+  transition: background-color 0.3s;
+  /* Transizione per l'effetto hover */
+  margin: 0 5px;
+  /* Spazio tra le icone */
+}
+
+/* Colore delle icone al passaggio del mouse */
+
+.nav_ico:hover .icon {
+  color: #ff8800;
+  /* Colore dell'icona al passaggio del mouse */
+}
+
+/*Fino a 1200px di larghezza*/
+
+@media screen and (max-width: 1200px) {
+}
+
+/*Fino a 980px di larghezza*/
+
+@media screen and (max-width: 980px) {
+  .nav-element{
+    display: none;
+  }
+}
+
+/*Fino a 767px di larghezza*/
+
+@media screen and (max-width: 767px) {
+  .nav_ico{
+    display: none;
+  }
+}
+
+/*Fino a 480px di larghezza*/
+
+@media screen and (max-width: 480px) {
+}
+
 /*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
+>>> INDICE:
 ----------------------------------------------------------------
-# Generic
-	- Normalize
-	- Box sizing
+# Generale
+	- Normalizzazione
+	- Dimensionamento dei box
 # Base
-	- Typography
-	- Elements
-	- Links
-	- Forms
-## Layouts
-# Components
-	- Navigation
-	- Posts and pages
-	- Comments
-	- Widgets
+	- Tipografia
+	- Elementi
+	- Link
+	- Moduli
+## Layout
+# Componenti
+	- Navigazione
+	- Articoli e pagine
+	- Commenti
+	- Widget
 	- Media
-	- Captions
-	- Galleries
-# plugins
+	- Didascalie
+	- Gallerie
+# Plugin
 	- Jetpack infinite scroll
-# Utilities
-	- Accessibility
-	- Alignments
+# Utilità
+	- Accessibilità
+	- Allineamenti
+
 
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Generic
+# Generale
 --------------------------------------------------------------*/
 
-/* Normalize
+/* Normalizzazione
 --------------------------------------------- */
 
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
-/* Document
+/* Documento
 	 ========================================================================== */
 
 /**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 1. Specifico l'interlinea per tutti i browser.
+ * 2. Specifico la dimensione del font.
  */
 
 html {
@@ -885,11 +960,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Sections
+/* Sezioni
 	 ========================================================================== */
 
 /**
- * Remove the margin in all browsers.
+ * Rimuovo i margini da tutti i browser.
  */
 
 body {
@@ -897,7 +972,7 @@ body {
 }
 
 /**
- * Render the `main` element consistently in IE.
+ * Imposto il render del 'main' per i browser più vecchi.
  */
 
 main {
@@ -905,8 +980,7 @@ main {
 }
 
 /**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
+ * Correggo la grandezza del font e del margine negli elementi 'h1'
  */
 
 h1 {
@@ -914,12 +988,12 @@ h1 {
   margin: 0.67em 0;
 }
 
-/* Grouping content
+/* Dimensione dei box
 	 ========================================================================== */
 
 /**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
+ * 1. Aggiungo la corretta dimensione su Firefox.
+ * 2. Mostro l'overflow su Edge e IE.
  */
 
 hr {
@@ -929,8 +1003,7 @@ hr {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
+ * Correggo l'interlinea e la grandezza del font su tutti i browser.
  */
 
 pre {
@@ -938,11 +1011,11 @@ pre {
   font-size: 1em;
 }
 
-/* Text-level semantics
+/* Semantica testo
 	 ========================================================================== */
 
 /**
- * Remove the gray background on active links in IE 10.
+ * Rimuovo il colore dai link 'attivi' su IE 10.
  */
 
 a {
@@ -950,19 +1023,16 @@ a {
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ * Rimuovo il 'text-decoration'.
  */
 
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: none;
 }
 
 /**
- * Add the correct font weight in Chrome, Edge, and Safari.
+ * Correggo lo stile del font sui browser.
  */
 
 b,
@@ -970,64 +1040,23 @@ strong {
   font-weight: bolder;
 }
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Embedded content
+/* Contenuto Embedded
 	 ========================================================================== */
 
 /**
- * Remove the border on images inside links in IE 10.
+ * Rimuovo il bordo dalle immagini.
  */
 
 img {
   border-style: none;
 }
 
-/* Forms
+/* Form
 	 ========================================================================== */
 
 /**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
+ * 1. Cambio lo stile del font.
+ * 2. Rimuovo i margini su Firefox e Safari.
  */
 
 button,
@@ -1042,8 +1071,7 @@ textarea {
 }
 
 /**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
+ * Mostro l'overflow su Edge e IE.
  */
 
 button,
@@ -1052,17 +1080,7 @@ input {
 }
 
 /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-
-button,
-select {
-  text-transform: none;
-}
-
-/**
- * Correct the inability to style clickable types in iOS and Safari.
+ * Sistemo il bottone per l'uso sui sistemi iOS e Safari.
  */
 
 button,
@@ -1073,41 +1091,7 @@ button,
 }
 
 /**
- * Remove the inner border and padding in Firefox.
- */
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-/**
- * Restore the focus styles unset by the previous rule.
- */
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-/**
- * Correct the padding in Firefox.
- */
-
-fieldset {
-  padding: 0.35em 0.75em 0.625em;
-}
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *		`fieldset` elements in all browsers.
+ * Correggo il ritorno a capo del testo.
  */
 
 legend {
@@ -1120,7 +1104,7 @@ legend {
 }
 
 /**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ * Aggiungo l'allineamento verticale.
  */
 
 progress {
@@ -1128,26 +1112,7 @@ progress {
 }
 
 /**
- * Remove the default vertical scrollbar in IE 10+.
- */
-
-textarea {
-  overflow: auto;
-}
-
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
+ * Cursore corretto per l'incremento e il decremento su Chrome.
  */
 
 [type="number"]::-webkit-inner-spin-button,
@@ -1156,26 +1121,8 @@ textarea {
 }
 
 /**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-
-[type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
+ * 1. Correggo l'impossibilità di stilizzare i tipi cliccabili in iOS e Safari.
+ * 2. Modifico le proprietà dei caratteri in `ereditarietà` in Safari.
  */
 
 ::-webkit-file-upload-button {
@@ -1183,11 +1130,11 @@ textarea {
   font: inherit;
 }
 
-/* Interactive
+/* Interattivo
 	 ========================================================================== */
 
 /*
- * Add the correct display in Edge, IE 10+, and Firefox.
+ * Sistemo la visualizzazione su Edge, IE 10+, e Firefox.
  */
 
 details {
@@ -1195,37 +1142,15 @@ details {
 }
 
 /*
- * Add the correct display in all browsers.
+ * Sistemo la visualizzazione su tutti i browser.
  */
 
 summary {
   display: list-item;
 }
 
-/* Misc
-	 ========================================================================== */
-
-/**
- * Add the correct display in IE 10+.
- */
-
-template {
-  display: none;
-}
-
-/**
- * Add the correct display in IE 10.
- */
-
-[hidden] {
-  display: none;
-}
-
-/* Box sizing
+/* Dimensione dei box
 --------------------------------------------- */
-
-/* Inherit box-sizing to more easily change it's value on a component level.
-@link http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 
 *,
 *::before,
@@ -1241,7 +1166,7 @@ html {
 # Base
 --------------------------------------------------------------*/
 
-/* Typography
+/* Tipografia
 --------------------------------------------- */
 
 body,
@@ -1317,15 +1242,15 @@ big {
   font-size: 125%;
 }
 
-/* Elements
+/* Elementi
 --------------------------------------------- */
 
 body {
-  background: #fff;
+  background: white;
 }
 
 hr {
-  background-color: #ccc;
+  background-color: white;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em;
@@ -1334,18 +1259,11 @@ hr {
 ul,
 ol {
   margin: 0 0 1.5em 3em;
+  list-style: none;
 }
 
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
-}
-
-li > ul,
-li > ol {
+li>ul,
+li>ol {
   margin-bottom: 0;
   margin-left: 1.5em;
 }
@@ -1357,8 +1275,6 @@ dt {
 dd {
   margin: 0 1.5em 1.5em;
 }
-
-/* Make sure embeds and iframes fit their containers. */
 
 embed,
 iframe,
@@ -1385,16 +1301,17 @@ table {
 
 a {
   color: #4169e1;
+  text-decoration: none;
 }
 
 a:visited {
-  color: #800080;
+  color: #4169e1;
 }
 
 a:hover,
 a:focus,
 a:active {
-  color: #191970;
+  color: #ff8800;
 }
 
 a:focus {
@@ -1406,7 +1323,7 @@ a:active {
   outline: 0;
 }
 
-/* Forms
+/* Form
 --------------------------------------------- */
 
 button,
@@ -1494,10 +1411,10 @@ textarea {
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Components
+# Componenti
 --------------------------------------------------------------*/
 
-/* Navigation
+/* navigazione
 --------------------------------------------- */
 
 .main-navigation {
@@ -1526,8 +1443,8 @@ textarea {
   top: 0;
 }
 
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
+.main-navigation ul ul li:hover>ul,
+.main-navigation ul ul li.focus>ul {
   display: block;
   left: auto;
 }
@@ -1536,8 +1453,8 @@ textarea {
   width: 200px;
 }
 
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
+.main-navigation ul li:hover>ul,
+.main-navigation ul li.focus>ul {
   left: auto;
 }
 
@@ -1568,10 +1485,8 @@ textarea {
 }
 
 .site-main .comment-navigation,
-.site-main
-.posts-navigation,
-.site-main
-.post-navigation {
+.site-main .posts-navigation,
+.site-main .post-navigation {
   margin: 0 0 1.5em;
 }
 
@@ -1594,7 +1509,7 @@ textarea {
   flex: 1 0 50%;
 }
 
-/* Posts and pages
+/* Post e pagine
 --------------------------------------------- */
 
 .sticky {
@@ -1621,7 +1536,7 @@ textarea {
   margin: 0 0 1.5em;
 }
 
-/* Comments
+/* Coomenti
 --------------------------------------------- */
 
 .comment-content a {
@@ -1632,7 +1547,7 @@ textarea {
   display: block;
 }
 
-/* Widgets
+/* Widget
 --------------------------------------------- */
 
 .widget {
@@ -1655,13 +1570,11 @@ textarea {
   padding: 0;
 }
 
-/* Make sure logo link wraps around logo image. */
-
 .custom-logo-link {
   display: inline-block;
 }
 
-/* Captions
+/* Didascalie
 --------------------------------------------- */
 
 .wp-caption {
@@ -1683,7 +1596,7 @@ textarea {
   text-align: center;
 }
 
-/* Galleries
+/* Gallerie
 --------------------------------------------- */
 
 .gallery {
@@ -1752,81 +1665,6 @@ textarea {
 
 .infinity-end.neverending .site-footer {
   display: block;
-}
-
-/*--------------------------------------------------------------
-# Utilities
---------------------------------------------------------------*/
-
-/* Accessibility
---------------------------------------------- */
-
-/* Text meant only for screen readers. */
-
-.screen-reader-text {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute !important;
-  width: 1px;
-  word-wrap: normal !important;
-}
-
-.screen-reader-text:focus {
-  background-color: #f1f1f1;
-  border-radius: 3px;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-  clip: auto !important;
-  clip-path: none;
-  color: #21759b;
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 700;
-  height: auto;
-  left: 5px;
-  line-height: normal;
-  padding: 15px 23px 14px;
-  text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 100000;
-}
-
-/* Do not show the outline on the skip link target. */
-
-#primary[tabindex="-1"]:focus {
-  outline: 0;
-}
-
-/* Alignments
---------------------------------------------- */
-
-.alignleft {
-  /*rtl:ignore*/
-  float: left;
-  /*rtl:ignore*/
-  margin-right: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-.alignright {
-  /*rtl:ignore*/
-  float: right;
-  /*rtl:ignore*/
-  margin-left: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-.aligncenter {
-  clear: both;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5em;
 }
 
 .hover\:underline:hover {
