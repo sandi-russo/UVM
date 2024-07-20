@@ -1,3 +1,149 @@
+/* TAILWIND */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Rimuove i punti di elenco */
+ul,
+ol {
+    list-style: none;
+    padding-left: 0;
+    /* Rimuove il padding sinistro */
+}
+
+/* Rimuove le sottolineature dei link */
+a {
+    text-decoration: none;
+}
+
+/* Facoltativo: cambia il colore dei link al passaggio del mouse per indicare che sono cliccabili */
+a:hover {
+    text-decoration: underline;
+    /* Sottolinea il link al passaggio del mouse */
+    color: #007bff;
+    /* Cambia colore al passaggio del mouse */
+}
+
+
+/* FOOTER */
+.icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: 28px;
+    /* Modifica la dimensione secondo le tue necessità */
+    height: 28px;
+    /* Modifica la dimensione secondo le tue necessità */
+    color: #f28b0c;
+    /* Colore specificato */
+    transition: color 0.3s;
+}
+
+.icon-link:hover .icon {
+    color: #ff8800;
+    /* Colore quando l'icona è in hover */
+}
+
+
+/* HEADER */
+.header {
+    width: 100%;
+    border: 1px solid red;
+
+    .custom-logo {
+        top: 0px;
+        left: 0px;
+        max-width: 300px;
+        height: auto;
+        background-color: white;
+        border-radius: 0 20px 0 0;
+        padding-right: 5%;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    /* Limita la larghezza a 1200px */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.header-top {
+    background: linear-gradient(to left,
+            #ff8800 0%,
+            /* Colore arancione all'inizio */
+            #ff8800 75%,
+            /* Colore arancione fino al 75% della larghezza */
+            white 75%,
+            /* Colore bianco inizia dal 75% */
+            white 100%
+            /* Colore bianco fino alla fine */
+        );
+    position: relative;
+    /* Necessario per posizionare gli pseudo-elementi */
+    height: 70px;
+}
+
+.header-bottom {
+    background-color: #ffffff;
+    /* Colore di sfondo della parte inferiore */
+    height: 70px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+
+nav {
+    flex-grow: 1;
+    /* Consente al menu di occupare tutto lo spazio disponibile */
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ml-4 {
+    margin-left: 1rem;
+    /* Spazio a sinistra della barra di ricerca */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
