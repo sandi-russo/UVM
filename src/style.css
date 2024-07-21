@@ -4,13 +4,17 @@
 @tailwind utilities;
 
 /* FOOTER */
-.icon-link {
-	display: inline-flex;
-	/* Display inline flex per icone e link */
-	align-items: center;
-	/* Centra verticalmente il contenuto */
-	justify-content: center;
-	/* Centra orizzontalmente il contenuto */
+
+
+.footer-icon {
+    background-color: #e6e6e6cf; /* bg-[#e6e6e6cf] */
+    height: 2.5rem; /* h-10 */
+    width: 2.5rem; /* w-10 */
+    border-radius: 9999px; /* rounded-full */
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    justify-content: center; /* justify-center */
+    flex-shrink: 0; /* shrink-0 */
 }
 
 .icon {
@@ -24,7 +28,7 @@
 	/* Aggiunge una transizione sul colore */
 }
 
-.icon-link:hover .icon {
+.footer-icon:hover .icon {
 	color: #ff8800;
 	/* Colore quando l'icona è in hover */
 }
