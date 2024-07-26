@@ -28,9 +28,9 @@
 		<a class="skip-link screen-reader-text"
 			href="#primary"><?php esc_html_e('Skip to content', 'universome'); ?></a>
 
-		<header class="header w-full">
+		<header class="header w-full z-999">
 			<!-- Sezione superiore della navbar -->
-			<div class="header-top bg-orange-500">
+			<div class="header-top bg-orange-500 z-999">
 				<div class="container mx-auto max-w-6xl px-4 flex justify-between items-center">
 					<?php if (function_exists('the_custom_logo')): ?>
 						<div class="custom-logo">
@@ -93,7 +93,7 @@
 			</div>
 
 			<!-- Sezione inferiore della navbar -->
-			<div class="header-bottom bg-white">
+			<div class="header-bottom bg-white z-999">
 				<div class="container mx-auto max-w-lg flex">
 					<!-- Pagine Sito -->
 					<nav class="page_nav">

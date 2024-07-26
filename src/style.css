@@ -4,15 +4,56 @@
 @tailwind utilities;
 
 
+.articoli {
+	position: relative;
+	z-index: 1;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-box-shadow: 5px 0px 12px 0px rgba(0, 0, 0, 0.5);
+	box-shadow: 5px 0px 12px 0px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar {
+	position: relative;
+	z-index: -1;
+	/* Deve essere inferiore a quello di .articoli */
+	margin-left: -5px;
+	/* Sposta la sidebar verso l'alto */
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+/* Disabilita la selezione delle immagini */
+img {
+	user-select: none;
+	/* Disabilita la selezione del testo */
+	pointer-events: none;
+	/* Disabilita gli eventi del mouse, inclusi i clic */
+}
+
+/* Disabilita il clic destro sulle immagini */
+img {
+	-webkit-touch-callout: none;
+	/* Disabilita la visualizzazione del menu contestuale su iOS */
+	-webkit-user-drag: none;
+	/* Disabilita il trascinamento delle immagini su Chrome e Safari */
+	-moz-user-drag: none;
+	/* Disabilita il trascinamento delle immagini su Firefox */
+	-ms-user-drag: none;
+	/* Disabilita il trascinamento delle immagini su IE */
+	-user-drag: none;
+	/* Disabilita il trascinamento delle immagini su tutti i browser moderni */
+}
+
 
 /* SITE MAIN */
 /* Aggiungi questo CSS al tuo style.css */
 .site_container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 
@@ -73,6 +114,7 @@
 	/* Arrotondamento del bordo del logo */
 	padding-right: 5%;
 	/* Padding destro del logo */
+
 }
 
 .container {
@@ -92,6 +134,7 @@
 	/* Spazia gli elementi tra di loro */
 	align-items: center;
 	/* Allinea gli elementi verticalmente al centro */
+	z-index: 999;
 }
 
 .header-top {
@@ -111,6 +154,7 @@
 	/* Altezza della parte superiore dell'header */
 	font-size: 12px;
 	/* Dimensione del testo */
+	z-index: 999;
 }
 
 .header-bottom {
@@ -126,6 +170,7 @@
 	/* Dispone gli elementi in una riga */
 	font-size: 12px;
 	/* Dimensione del testo */
+	z-index: 999;
 }
 
 
@@ -219,37 +264,41 @@ nav ul {
 /* SIDEBAR */
 /* Stili per la barra laterale su dispositivi più grandi */
 .sidebar {
-    width: 100%;
-    max-width: 25%;
-    flex-shrink: 0;
-    position: sticky;
-    top: 0;
-    align-self: start;
-    padding: 1rem;
-    background-color: #f3f4f6; /* background-gray-100 */
-    min-height: 100vh;
-    overflow: hidden;
+	width: 100%;
+	max-width: 25%;
+	flex-shrink: 0;
+	position: sticky;
+	top: 0;
+	align-self: start;
+	padding: 1rem;
+	background-color: #e2e2e2;
+	/* background-gray-100 */
+	min-height: 100vh;
+	overflow: hidden;
 }
 
 /* Stili per il titolo della barra laterale */
 .sidebar-title {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: bold;
-    margin-bottom: 1rem; /* mb-4 */
+	font-size: 1.25rem;
+	/* text-xl */
+	font-weight: bold;
+	margin-bottom: 1rem;
+	/* mb-4 */
 }
 
 /* Stili per il contenuto della barra laterale */
 .sidebar-content {
-    margin-bottom: 1rem; /* mb-4 */
+	margin-bottom: 1rem;
+	/* mb-4 */
 }
 
 
 
 /* Media query per schermi più grandi */
 @media (min-width: 768px) {
-    .sidebar {
-        display: block;
-    }
+	.sidebar {
+		display: block;
+	}
 }
 
 /*Fino a 1200px di larghezza*/
@@ -273,9 +322,10 @@ nav ul {
 	.nav_ico {
 		display: none;
 	}
-    .sidebar {
-        display: none;
-    }
+
+	.sidebar {
+		display: none;
+	}
 }
 
 
