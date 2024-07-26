@@ -111,6 +111,9 @@
 							return $category->slug !== $excluded_slug;
 						});
 
+						// Salva le categorie in un'opzione di WordPress
+						update_option('navbar_categories', $filtered_categories);
+
 						// Controlla se ci sono categorie padri
 						if (!empty($filtered_categories) && !is_wp_error($filtered_categories)) {
 							echo '<ul class="category-list flex items-center space-x-4">';
@@ -125,6 +128,7 @@
 						}
 						?>
 					</nav>
+
 					<!-- Barra di ricerca centrata -->
 					<div class="flex w-full max-w-sm justify-center">
 						<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"

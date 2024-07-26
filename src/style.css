@@ -3,6 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* SITE MAIN */
+/* Aggiungi questo CSS al tuo style.css */
+.site_container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+
 /* FOOTER */
 
 .footer-icon {
@@ -203,6 +218,41 @@ nav ul {
 }
 
 
+/* SIDEBAR */
+/* Stili per la barra laterale su dispositivi più grandi */
+.sidebar {
+    width: 100%;
+    max-width: 25%;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    padding: 1rem;
+    background-color: #f3f4f6; /* background-gray-100 */
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Stili per il titolo della barra laterale */
+.sidebar-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: bold;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+/* Stili per il contenuto della barra laterale */
+.sidebar-content {
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+
+
+/* Media query per schermi più grandi */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+    }
+}
 
 /*Fino a 1200px di larghezza*/
 @media screen and (max-width: 1200px) {}
@@ -225,6 +275,9 @@ nav ul {
 	.nav_ico {
 		display: none;
 	}
+    .sidebar {
+        display: none;
+    }
 }
 
 
@@ -382,8 +435,8 @@ textarea {
 	line-height: 1.15;
 	margin: 0;
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 /**
@@ -393,8 +446,8 @@ button,
 input {
 	overflow: visible;
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 
@@ -407,8 +460,8 @@ button,
 [type="submit"] {
 	-webkit-appearance: button;
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 
 }
 
@@ -496,8 +549,8 @@ textarea {
 	font-size: 1rem;
 	line-height: 1.5;
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 h1,
@@ -665,8 +718,8 @@ input[type="submit"] {
 	line-height: 1;
 	padding: 0.6em 1em 0.4em;
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 button:hover,
@@ -674,8 +727,8 @@ input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 button:active,
@@ -687,8 +740,8 @@ input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 input[type="text"],
@@ -707,9 +760,9 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-    border: none;
-    outline: none;
-    box-shadow: none;
+	border: none;
+	outline: none;
+	box-shadow: none;
 }
 
 input[type="text"]:focus,
@@ -729,8 +782,8 @@ input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
 	border: none;
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 select {

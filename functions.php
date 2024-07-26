@@ -55,7 +55,6 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
 
-
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
