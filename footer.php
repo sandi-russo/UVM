@@ -11,14 +11,9 @@
 
 ?>
 
-
-
-
-
-<footer id="colophon" class="site-footer bg-[#fffff] py-10 px-10 font-sans tracking-wide">
+<footer id="colophon" class="site-footer bg-[#222222] py-10 px-10 font-sans tracking-wide">
     <!-- Sezione immagine -->
-    <div class="flex justify-center mb-10"
-        style="border-top: 1px solid #e6e6e6cf; margin-top: 10px; padding-top: 10px;">
+    <div class="flex justify-center mb-10">
         <a href="https://universome.unime.it/">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/UVM_LOGO.png" alt="Logo UVM"
                 class="w-52 h-auto">
@@ -29,10 +24,10 @@
     <div class="grid grid-cols-1 md:grid-cols-2 max-w-screen-xl mx-auto">
         <!-- Colonna 1 -->
         <div>
-            <h4 class="font-bold text-lg">Informazioni</h4>
-            <p class="text-sm text-gray-500 mt-2">Testata multimediale degli studenti UniMe. UniVersoMe è una testata
-                giornalistica registrata presso il Tribunale di Messina n. 11 del 2015.</p>
-            <ul class="mt-10 space-y-6 ml-auto mx-auto">
+            <h4 class="text-[#ff8800] font-bold text-lg">Informazioni</h4>
+            <p class="text-sm text-white mt-2">Testata multiforme degli studenti UniMe. <br> UniVersoMe è una testata
+                giornalistica registrata presso il Tribunale di Messina n.11 del 2015.</p>
+            <ul class="mt-6 space-y-6 ml-auto mx-auto">
                 <!-- Lista contatti -->
                 <li class="flex items-center">
                     <div class="footer-icon">
@@ -43,12 +38,12 @@
                                 d="M13.5 11c-.28 0-.5-.22-.5-.5s.22-.5.5-.5s.5-.22.5-.5A2.5 2.5 0 0 0 11.5 7h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5c.83 0 1.5-.67 1.5-1.5S11.33 3 10.5 3c-.28 0-.5-.22-.5-.5s.22-.5.5-.5A2.5 2.5 0 0 1 13 4.5c0 .62-.22 1.18-.6 1.62c1.49.4 2.6 1.76 2.6 3.38c0 .83-.67 1.5-1.5 1.5m-12 0C.67 11 0 10.33 0 9.5c0-1.62 1.1-2.98 2.6-3.38c-.37-.44-.6-1-.6-1.62A2.5 2.5 0 0 1 4.5 2c.28 0 .5.22.5.5s-.22.5-.5.5C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6c.28 0 .5.22.5.5s-.22.5-.5.5h-1A2.5 2.5 0 0 0 1 9.5c0 .28.22.5.5.5s.5.22.5.5s-.22.5-.5.5m9 3h-6c-.83 0-1.5-.67-1.5-1.5v-1C3 9.57 4.57 8 6.5 8h2c1.93 0 3.5 1.57 3.5 3.5v1c0 .83-.67 1.5-1.5 1.5m-4-5A2.5 2.5 0 0 0 4 11.5v1c0 .28.22.5.5.5h6c.28 0 .5-.22.5-.5v-1A2.5 2.5 0 0 0 8.5 9z" />
                         </svg>
                     </div>
-                    <a class="text-blue-500 text-sm ml-3">
+                    <p class="text-sm text-white text-sm ml-3">
                         <small class="block">Coordinatore Progetto</small>
-                        <strong>Giulia Cavallaro</strong>
+                        <strong class="text-[#ff8800] text-sm text-white">Giulia Cavallaro</strong>
                         <br>
                         <em>giulia.cavallaro@unime.it</em>
-                    </a>
+                    </p>
                 </li>
                 <li class="flex items-center">
                     <div class="footer-icon">
@@ -57,12 +52,12 @@
                                 d="M5 5h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3m0 1c-.5 0-.94.17-1.28.47l7.78 5.03l7.78-5.03C18.94 6.17 18.5 6 18 6zm6.5 6.71L3.13 7.28C3.05 7.5 3 7.75 3 8v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V8c0-.25-.05-.5-.13-.72z" />
                         </svg>
                     </div>
-                    <a class="text-blue-500 text-sm ml-3">
+                    <p class="text-sm text-white text-sm ml-3">
                         <small class="block">Direttore Responsabile</small>
-                        <strong>Antonino Tavilla</strong>
+                        <strong class="text-[#ff8800] text-sm text-white">Antonino Tavilla</strong>
                         <br>
                         <em>atavilla@unime.it</em>
-                    </a>
+                    </>
                 </li>
                 <li class="flex items-center">
                     <div class="footer-icon">
@@ -76,29 +71,28 @@
                             </g>
                         </svg>
                     </div>
-                    <a class="text-blue-500 text-sm ml-3">
+                    <p class="text-sm text-white text-sm ml-3">
                         <small class="block">Piazza Pugliatti, 1</small>
-                        <strong>Messina</strong>
-                    </a>
+                        <strong class="text-[#ff8800] text-sm text-white">Messina</strong>
+                    </>
                 </li>
             </ul>
         </div>
 
         <!-- Colonna 2 -->
         <div class="ml-auto mx-auto">
-            <h4 class="text-[#333] font-bold text-lg">Giornalista?</h4>
-            <p class="text-sm text-gray-500 mt-2">Premi qui sotto per accedere.</p>
-            <a href="#">
-                <button type='button'
-                    class="text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3">Accedi</button>
-            </a>
-        </div>
+            <h4 class="text-[#ff8800] font-bold text-lg">Giornalista?</h4>
+            <p class="text-sm text-white mt-2">Premi qui sotto per accedere.</p>
+            <a href="https:\\universome.unime.it\login">
+                <button class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3" style="border: none;">Accedi</button>
 
-        <!-- Icone Social -->
+            </a>
+            <!-- Icone Social -->
         <div>
-            <h4 class="font-bold text-lg">Social Network</h4>
-            <p class="text-sm text-gray-500 mt-2">Seguici per rimanere sempre aggiornato!</p>
+            <h4 class="text-[#ff8800] font-bold text-lg mt-6">Social Network</h4>
+            <p class="text-sm text-white mt-2">Seguici per rimanere sempre aggiornato!</p>
             <ul class="flex items-center mt-6 space-x-4 ml-auto mx-auto">
+                <!-- Facebook -->
                 <li class="footer-icon">
                     <a class="icon-link" href="https://www.facebook.com/UniVersoMessina">
                         <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -107,6 +101,7 @@
                         </svg>
                     </a>
                 </li>
+                <!-- Instagram -->
                 <li class="footer-icon">
                     <a class="icon-link" href="https://www.instagram.com/uvm_universome">
                         <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -115,6 +110,7 @@
                         </svg>
                     </a>
                 </li>
+                <!-- Twitter -->
                 <li class="footer-icon">
                     <a class="icon-link" href="https://twitter.com/universomessina">
                         <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -123,6 +119,7 @@
                         </svg>
                     </a>
                 </li>
+                <!-- Spotify -->
                 <li class="footer-icon">
                     <a class="icon-link" href="https://open.spotify.com/show/1J8nrLau2QtjbMjFodeotT">
                         <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -136,50 +133,35 @@
                 </li>
             </ul>
         </div>
+        </div>
+
+        
     </div>
 
     <!-- Link Footer -->
     <div class="w-full flex justify-center">
         <ul class="flex gap-4 ml-auto mx-auto">
             <li>
-                <a href='javascript:void(0)' class='text-blue-500 text-sm font-semibold hover:underline'>Termini e Servizi</a>
+                <a href='#' class='text-white text-sm font-semibold'>Copyright</a>
             </li>
             <li>
-                <a href='javascript:void(0)' class='text-blue-500 text-sm font-semibold hover:underline'>Politica Privacy</a>
-            </li>
-            <li>
-                <a href='javascript:void(0)' class='text-blue-500 text-sm font-semibold hover:underline'>Sicurezza</a>
+                <a href='#' class='text-white text-sm font-semibold'>Politica Privacy</a>
             </li>
         </ul>
     </div>
 
 
     <!-- Copyright Footer -->
-    <div class="ml-auto mx-auto " style="border-top: 1px solid #e6e6e6cf; margin-top: 10px; padding-top: 10px;">
-        <p class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© <?php echo date("Y"); ?>
-            <a href="https://universome.unime.it/" class="hover:underline">UniVersoMe™</a>. Tutti i diritti sono
+    <div class="ml-auto mx-auto w-full flex justify-center"  style="border-top: 1px solid #e6e6e6cf; margin-top: 4px; padding-top: 4px;">
+        <p class="text-white block">Codice Licenza SIAE n. 6195/I/8746</p>
+    </div>
+    <div class="ml-auto mx-auto w-full flex justify-center">
+        <p class="text-white block">© <?php echo date("Y"); ?>
+            <a href="https://universome.unime.it/" class="text-white">UniVersoMe™</a>. Tutti i diritti sono
             riservati.
         </p>
     </div>
-
 </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div><!-- #page -->
 <?php wp_footer(); ?>

@@ -14,10 +14,6 @@ if ( ! defined( '_S_VERSION' ) ) {
 
 
 
-
-
-
-
 /**
  * Enqueue scripts and styles.
  */
@@ -56,6 +52,10 @@ function enqueue_custom_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
+
+
+
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -63,88 +63,61 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function universome_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on UNIVERSOME, use a find and replace
-		* to change 'universome' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'universome', get_template_directory() . '/languages' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
-	add_theme_support( 'title-tag' );
-
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-	add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'universome' ),
-		)
-	);
-
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-		)
-	);
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'universome_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
-
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 150,
-			'width'       => 150,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+function universome_theme_setup() {
+    // Aggiungi supporto per i blocchi
+    add_theme_support('post-thumbnails');
+    add_theme_support( 'editor-styles' );
+    add_theme_support( 'wp-block-styles' );
+    add_theme_support( 'align-wide' );
+    add_theme_support( 'editor-color-palette', array(
+        array(
+            'name'  => __( 'Primary', 'universome' ),
+            'slug'  => 'primary',
+            'color' => '#0073aa',
+        ),
+        // Aggiungi altri colori qui
+    ));
+    add_theme_support( 'editor-font-sizes', array(
+        array(
+            'name' => __( 'Small', 'universome' ),
+            'size' => 12,
+            'slug' => 'small'
+        ),
+        array(
+            'name' => __( 'Normal', 'universome' ),
+            'size' => 16,
+            'slug' => 'normal'
+        ),
+        // Aggiungi altre dimensioni di font qui
+    ));
 }
-add_action( 'after_setup_theme', 'universome_setup' );
+add_action( 'after_setup_theme', 'universome_theme_setup' );
+
+
+function universome_editor_styles() {
+    add_editor_style( 'style.css' );
+}
+add_action( 'admin_init', 'universome_editor_styles' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.

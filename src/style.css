@@ -5,16 +5,23 @@
 
 /* FOOTER */
 
-
 .footer-icon {
-    background-color: #e6e6e6cf; /* bg-[#e6e6e6cf] */
-    height: 2.5rem; /* h-10 */
-    width: 2.5rem; /* w-10 */
-    border-radius: 9999px; /* rounded-full */
-    display: flex; /* flex */
-    align-items: center; /* items-center */
-    justify-content: center; /* justify-center */
-    flex-shrink: 0; /* shrink-0 */
+	background-color: #e6e6e6cf;
+	/* bg-[#e6e6e6cf] */
+	height: 2.5rem;
+	/* h-10 */
+	width: 2.5rem;
+	/* w-10 */
+	border-radius: 9999px;
+	/* rounded-full */
+	display: flex;
+	/* flex */
+	align-items: center;
+	/* items-center */
+	justify-content: center;
+	/* justify-center */
+	flex-shrink: 0;
+	/* shrink-0 */
 }
 
 .icon {
@@ -38,21 +45,21 @@
 	width: 100%;
 	border: 1px solid red;
 	/* Per debugging, puoi rimuovere questa linea */
+}
 
-	.custom-logo {
-		top: 0px;
-		left: 0px;
-		max-width: 300px;
-		/* Larghezza massima del logo */
-		height: auto;
-		/* Altezza automatica */
-		background-color: white;
-		/* Sfondo bianco solo per il logo */
-		border-radius: 0 20px 0 0;
-		/* Arrotondamento del bordo del logo */
-		padding-right: 5%;
-		/* Padding destro del logo */
-	}
+.custom-logo {
+	top: 0px;
+	left: 0px;
+	max-width: 300px;
+	/* Larghezza massima del logo */
+	height: auto;
+	/* Altezza automatica */
+	background-color: white;
+	/* Sfondo bianco solo per il logo */
+	border-radius: 0 20px 0 0;
+	/* Arrotondamento del bordo del logo */
+	padding-right: 5%;
+	/* Padding destro del logo */
 }
 
 .container {
@@ -87,7 +94,7 @@
 		);
 	position: relative;
 	/* Necessario per posizionare gli pseudo-elementi */
-	height: 70px;
+	height: auto;
 	/* Altezza della parte superiore dell'header */
 	font-size: 12px;
 	/* Dimensione del testo */
@@ -96,7 +103,7 @@
 .header-bottom {
 	background-color: #ffffff;
 	/* Colore di sfondo della parte inferiore */
-	height: 70px;
+	height: auto;
 	/* Altezza della parte inferiore dell'header */
 	align-items: center;
 	/* Allinea gli elementi verticalmente al centro */
@@ -107,6 +114,7 @@
 	font-size: 12px;
 	/* Dimensione del testo */
 }
+
 
 nav {
 	flex-grow: 1;
@@ -176,32 +184,52 @@ nav ul {
 	/* Colore dell'icona al passaggio del mouse */
 }
 
-/*Fino a 1200px di larghezza*/
-@media screen and (max-width: 1200px) {
+.category-list {
+	list-style: none;
+	/* Rimuove i puntini dalla lista */
+	padding: 0;
+	/* Rimuove il padding predefinito */
+	flex-wrap: wrap;
+}
 
-	}
+.category-item a {
+	margin: auto;
+	font-weight: 600;
+	/* Semi-bold */
+	color: #787878;
+	/* Grigio */
+	text-decoration: none;
+	/* Rimuove la sottolineatura dai link */
+}
+
+
+
+/*Fino a 1200px di larghezza*/
+@media screen and (max-width: 1200px) {}
 
 
 /*Fino a 980px di larghezza*/
 @media screen and (max-width: 980px) {
-	.nav-element{
+	.nav-element {
 		display: none;
 	}
-	
+
+	.nav_ico {
+		scale: 80%;
 	}
+
+}
 
 /*Fino a 767px di larghezza*/
 @media screen and (max-width: 767px) {
-	.nav_ico{
+	.nav_ico {
 		display: none;
 	}
-	}
+}
 
 
 /*Fino a 480px di larghezza*/
-@media screen and (max-width: 480px) {
-
-	}
+@media screen and (max-width: 480px) {}
 
 
 
@@ -353,6 +381,9 @@ textarea {
 	font-size: 100%;
 	line-height: 1.15;
 	margin: 0;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 /**
@@ -361,6 +392,9 @@ textarea {
 button,
 input {
 	overflow: visible;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 
@@ -372,6 +406,10 @@ button,
 [type="reset"],
 [type="submit"] {
 	-webkit-appearance: button;
+	border: none;
+    outline: none;
+    box-shadow: none;
+
 }
 
 
@@ -457,6 +495,9 @@ textarea {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 1rem;
 	line-height: 1.5;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 h1,
@@ -468,9 +509,22 @@ h6 {
 	clear: both;
 }
 
+/* Dimensione del font per tutti i <p> */
 p {
-	margin-bottom: 1.5em;
+	font-size: 0.875rem;
+	/* Equivalente a text-sm in Tailwind */
+	color: #6b7280;
+	/* Colore per text-gray-500 */
 }
+
+/* Colore del testo in modalità scura */
+@media (prefers-color-scheme: dark) {
+	p {
+		color: #9ca3af;
+		/* Colore per dark:text-gray-400 */
+	}
+}
+
 
 dfn,
 cite,
@@ -582,12 +636,14 @@ a {
 
 a:visited {
 	color: #4169e1;
+	text-decoration: none;
 }
 
 a:hover,
 a:focus,
 a:active {
 	color: #ff8800;
+	text-decoration: none;
 }
 
 a:focus {
@@ -605,20 +661,21 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
-	border-radius: 3px;
-	background: #e6e6e6;
 	color: rgba(0, 0, 0, 0.8);
 	line-height: 1;
 	padding: 0.6em 1em 0.4em;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 button:active,
@@ -629,7 +686,9 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
-	border-color: #aaa #bbb #bbb;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 input[type="text"],
@@ -648,10 +707,9 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	padding: 3px;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 input[type="text"]:focus,
@@ -670,7 +728,9 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
-	color: #111;
+	border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 select {

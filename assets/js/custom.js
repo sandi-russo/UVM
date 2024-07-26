@@ -27,4 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
      // Aggiorna la data ogni 30 secondi (30000 millisecondi)
      setInterval(updateDate, 30000);
+
+
+
+     
 });
