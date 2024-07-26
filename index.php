@@ -13,11 +13,19 @@ get_header();
 $navbar_categories = get_option('navbar_categories', array()); // Imposta un array vuoto come valore predefinito
 $category_ids = wp_list_pluck($navbar_categories, 'term_id');
 
+// ID della categoria "Evidenza"
+$evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
+
+// URL dell'immagine di fallback
+$default_image_url = 'https://via.placeholder.com/800x600'; // URL dell'immagine di fallback
+
 ?>
 
-<main id="primary" class="site-main flex justify-center mx-[20px]">
-    <!-- Wrapper per centralizzare il contenuto -->
-    <div class="w-full max-w-[1200px] flex mx-auto">
+
+
+<main id="primary" class="site-main">  
+  <!-- Wrapper per centralizzare il contenuto -->
+    <div class="w-full max-w-[1200px] mx-auto flex">
         <!-- Sezione degli Articoli -->
         <div class="flex-1 overflow-y-auto pr-4">
             <?php
@@ -26,7 +34,16 @@ $category_ids = wp_list_pluck($navbar_categories, 'term_id');
                 if (in_array($category->term_id, $category_ids)) :
             ?>
                 <section class="category-section mb-8">
-                    <h1 class="text-2xl font-bold mb-4"><?php echo esc_html($category->name); ?></h1>
+                    <!-- Intestazione Categoria con Stile Specifico -->
+                    <div class="bg-white font-[sans-serif] my-4">
+                        <div class="max-w-7xl mx-auto">
+                            <div class="text-center">
+                                <h2 class="text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">
+                                    <?php echo esc_html($category->name); ?>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <?php
                         // Query per ottenere i post della categoria
@@ -138,14 +155,14 @@ $category_ids = wp_list_pluck($navbar_categories, 'term_id');
             ?>
         </div><!-- .flex-1 -->
 
-<!-- Barra Laterale Fissa -->
-<div class="sidebar">
-    <h2 class="sidebar-title">Embedded Content</h2>
-    <div class="sidebar-content">
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <!-- Aggiungi altri contenuti embedded qui -->
-</div><!-- .sidebar -->
+        <!-- Barra Laterale Fissa -->
+        <div class="sidebar">
+            <h2 class="sidebar-title">Ascolta Radio UVM</h2>
+            <div class="sidebar-content">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Aggiungi altri contenuti embedded qui -->
+        </div><!-- .sidebar -->
 
     </div><!-- .w-full max-w-[1200px] -->
 </main><!-- #main -->

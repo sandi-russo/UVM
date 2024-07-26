@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     function updateTime() {
         const currentTimeElement = document.getElementById('current-time');
         const now = new Date();
@@ -22,13 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Aggiorna l'ora ogni 30 secondi (30000 millisecondi)
     setInterval(updateTime, 30000);
 
-     // Aggiorna la data immediatamente al caricamento della pagina
-     updateDate();
+    // Aggiorna la data immediatamente al caricamento della pagina
+    updateDate();
 
-     // Aggiorna la data ogni 30 secondi (30000 millisecondi)
-     setInterval(updateDate, 30000);
+    // Aggiorna la data ogni 30 secondi (30000 millisecondi)
+    setInterval(updateDate, 30000);
 
-
-
-     
 });
