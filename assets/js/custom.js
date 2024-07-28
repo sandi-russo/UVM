@@ -28,4 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // Aggiorna la data ogni 30 secondi (30000 millisecondi)
     setInterval(updateDate, 30000);
 
+
+
+    var swiper = new Swiper('.swiper-container', {
+        // Configurazione di Swiper
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
 });

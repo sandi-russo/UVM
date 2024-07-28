@@ -19,6 +19,16 @@ if ( ! defined( '_S_VERSION' ) ) {
  */
 function cg_your_theme_scripts() {
 	wp_enqueue_style( 'output', get_template_directory_uri() . '/dist/output.css', array());
+
+
+       // Enqueue Swiper CSS
+       wp_enqueue_style('swiper-css', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.css');
+
+       // Enqueue Swiper JS
+       wp_enqueue_script('swiper-js', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.js', array(), null, true);
+   
+       // Enqueue custom script to initialize Swiper
+       wp_enqueue_script('custom-swiper-init', get_template_directory_uri() . '/assets/js/custom.js', array('swiper-js'), null, true);
 }
 add_action( 'wp_enqueue_scripts', 'cg_your_theme_scripts' );
 
