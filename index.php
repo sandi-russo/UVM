@@ -21,57 +21,58 @@ $default_image_url = 'https://via.placeholder.com/800x600'; // URL dell'immagine
 
 ?>
 
-
-
-
-<div class="w-full relative">
-      <div class="swiper default-carousel swiper-container">
-      <div class="swiper-wrapper">
-       <div class="swiper-slide">
-         <div class="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
-           <span class="text-3xl font-semibold text-indigo-600">Slide 1 </span>
-         </div>
-       </div>
-       <div class="swiper-slide">
-         <div class="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
-           <span class="text-3xl font-semibold text-indigo-600">Slide 2 </span>
-         </div>
-       </div>
-       <div class="swiper-slide">
-         <div class="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
-           <span class="text-3xl font-semibold text-indigo-600">Slide 3 </span>
-         </div>
-       </div>
-      </div>
-      <div class="flex items-center gap-8 lg:justify-start justify-center">
-       <button id="slider-button-left" class="swiper-button-prev group !p-2 flex justify-center items-center border border-solid border-indigo-600 !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8 !left-5 hover:bg-indigo-600 " data-carousel-prev>
-         <svg class="h-5 w-5 text-indigo-600 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-           <path d="M10.0002 11.9999L6 7.99971L10.0025 3.99719" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-         </svg>
-       </button>
-       <button id="slider-button-right" class="swiper-button-next group !p-2 flex justify-center items-center border border-solid border-indigo-600 !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8  !right-5 hover:bg-indigo-600" data-carousel-next>
-         <svg class="h-5 w-5 text-indigo-600 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-           <path d="M5.99984 4.00012L10 8.00029L5.99748 12.0028" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-         </svg>
-       </button>
-      </div>
-      <div class="swiper-pagination"></div>
-      </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
 <main id="primary" class="site-main">
+<!-- Swiper Carousel -->
+<div class="w-full relative mb-8">
+    <div class="swiper default-carousel swiper-container">
+        <div class="swiper-wrapper">
+            <?php
+            // Query per ottenere i post della categoria 1800
+            $carousel_posts = new WP_Query(
+                array(
+                    'cat' => $evidenza_category_id,
+                    'posts_per_page' => 20, // Numero di immagini da mostrare nel carousel
+                )
+            );
+
+            if ($carousel_posts->have_posts()):
+                while ($carousel_posts->have_posts()):
+                    $carousel_posts->the_post();
+                    $image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : $default_image_url;
+                    $post_url = get_permalink(); // Ottieni l'URL del post
+                    ?>
+                    <div class="swiper-slide">
+                        <a href="<?php echo esc_url($post_url); ?>" class="h-96 flex flex-col justify-center items-center">
+                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"
+                                class="object-cover w-full h-full">
+                            <p class="title"><?php the_title(); ?></p> <!-- Titolo all'interno della diapositiva -->
+                        </a>
+                    </div>
+                    <?php
+                endwhile;
+                wp_reset_postdata();
+            else:
+                ?>
+                <div class="swiper-slide">
+                    <div class="h-96 flex justify-center items-center">
+                        <span class="text-3xl font-semibold text-black">Nessun articolo.</span>
+                    </div>
+                </div>
+                <?php
+            endif;
+            ?>
+        </div>
+        <!-- Swiper navigation and pagination -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      <!-- <div class="swiper-pagination"></div> -->
+    </div>
+</div>
+
+
+
     <!-- Wrapper per centralizzare il contenuto -->
-    <div class="max-w-[1200px] mx-auto flex">
+    <div class="site_main site_container mx-auto flex">
         <!-- Sezione degli Articoli con angoli stondati a sinistra e shadow -->
         <div class="articoli flex-1 overflow-y-auto pr-4 px-5 bg-white">
             <?php
@@ -112,7 +113,7 @@ $default_image_url = 'https://via.placeholder.com/800x600'; // URL dell'immagine
                                             class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative md:col-span-2 min-h-[400px] max-h-[600px] flex flex-col">
                                             <div class="flex-1">
                                                 <?php if (has_post_thumbnail()): ?>
-                                                    <?php the_post_thumbnail('full', array('class' => 'w-full h-[200px] object-cover')); ?>
+                                                    <?php the_post_thumbnail('full', array('class' => 'w-full h-[300px] object-cover')); ?>
                                                 <?php else: ?>
                                                     <div class="w-full h-[200px] bg-gray-200 flex items-center justify-center">
                                                         <p class="text-gray-500">Immagine non disponibile</p>
@@ -220,7 +221,7 @@ $default_image_url = 'https://via.placeholder.com/800x600'; // URL dell'immagine
 
         <!-- Barra Laterale Fissa con angoli stondati a destra -->
         <div class="sidebar px-5 rounded-r-lg bg-white">
-            <h2 class="sidebar-title">Ascolta Radio UVM</h2>
+            <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
             <div class="sidebar-content">
                 <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

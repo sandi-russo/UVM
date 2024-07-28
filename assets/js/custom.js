@@ -29,18 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(updateDate, 30000);
 
 
-
-    var swiper = new Swiper('.swiper-container', {
-        // Configurazione di Swiper
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+    var swiper = new Swiper('.default-carousel', {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        loop: true,
     });
 
 });

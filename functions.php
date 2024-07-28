@@ -12,6 +12,18 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+/* Ultima modifica */
+function get_last_modified_date() {
+    global $wpdb;
+    $last_modified = $wpdb->get_var("
+        SELECT post_modified
+        FROM $wpdb->posts
+        WHERE post_status = 'publish'
+        ORDER BY post_modified DESC
+        LIMIT 1
+    ");
+    return $last_modified ? date('d/m/Y, H:i', strtotime($last_modified)) : '';
+}
 
 
 /**
@@ -19,7 +31,6 @@ if ( ! defined( '_S_VERSION' ) ) {
  */
 function cg_your_theme_scripts() {
 	wp_enqueue_style( 'output', get_template_directory_uri() . '/dist/output.css', array());
-
 
        // Enqueue Swiper CSS
        wp_enqueue_style('swiper-css', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.css');
@@ -50,16 +61,17 @@ wp_enqueue_style( 'parent-style', get_template_directory_uri().'/src/style.css' 
 }
 
 /* Includo il file 'custom.js' */
-function enqueue_custom_scripts() {
-    wp_enqueue_script(
-        'custom-js', // Handle del file
-        get_template_directory_uri() . '/assets/js/custom.js', // URL del file JS
-        array(), // Dipendenze
-        null, // Versione
-        true // Carica il file JS nel footer
-    );
+function enqueue_custom_js() {
+    // Registra lo script custom.js
+    wp_register_script('custom-js', get_template_directory_uri() . '/assets/js/custom.js', array(), null, true);
+
+    // Fa l'enqueue dello script custom.js
+    wp_enqueue_script('custom-js');
 }
-add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
+
+// Usa l'hook wp_enqueue_scripts per fare l'enqueue dello script
+add_action('wp_enqueue_scripts', 'enqueue_custom_js');
+
 
 
 
