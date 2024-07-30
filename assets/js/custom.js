@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(updateDate, 30000);
 
 
+
     var swiper = new Swiper('.default-carousel', {
         navigation: {
             nextEl: '.swiper-button-next',

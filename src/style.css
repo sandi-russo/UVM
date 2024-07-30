@@ -27,7 +27,7 @@
 
 .swiper-container {
     height: 380px; /* Imposta l'altezza desiderata per il carousel */
-    z-index: 999;
+    z-index: 5;
     position: relative; /* Aggiunto per il contesto di posizionamento */
 	box-shadow: 0 5px 5px -5px #333;
 	border-bottom-left-radius: 10px;
