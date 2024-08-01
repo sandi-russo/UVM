@@ -16,58 +16,61 @@ $category_ids = wp_list_pluck($navbar_categories, 'term_id');
 // ID della categoria "Evidenza"
 $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
 
-// URL dell'immagine di fallback
-$default_image_url = 'https://via.placeholder.com/800x600'; // URL dell'immagine di fallback
 
 ?>
-
 <main id="primary" class="site-main">
-<!-- Swiper Carousel -->
-<div class="w-full relative mb-8">
-    <div class="swiper default-carousel swiper-container">
-        <div class="swiper-wrapper">
-            <?php
-            // Query per ottenere i post della categoria 1800
-            $carousel_posts = new WP_Query(
-                array(
-                    'cat' => $evidenza_category_id,
-                    'posts_per_page' => 20, // Numero di immagini da mostrare nel carousel
-                )
-            );
+    <!-- Swiper Carousel -->
+    <div class="w-full relative mb-8">
+        <div class="swiper-container news-carousel">
+            <div class="swiper-wrapper">
+                <?php
+                $args = array(
+                    'category_name' => 'Evidenza',
+                    'posts_per_page' => 20,
+                );
+                $query = new WP_Query($args);
+                if ($query->have_posts()):
+                    while ($query->have_posts()):
+                        $query->the_post();
+                        $post_url = get_permalink();
+                        ?>
+                        <div class="swiper-slide">
+                            <div class="relative overflow-hidden rounded-lg shadow-lg">
+                                <a href="<?php echo esc_url($post_url); ?>">
+                                    <?php if (has_post_thumbnail()): ?>
+                                        <?php the_post_thumbnail('large', array('class' => 'w-full h-64 object-cover')); ?>
+                                    <?php else: ?>
+                                        <div class="w-full h-64 bg-gray-300"></div>
+                                    <?php endif; ?>
+                                    <div class="absolute bottom-0 left-0 right-0">
+                                        <p class="title text-white">
+                                            <?php the_title(); ?>
+                                        </p>
+                                </a>
 
-            if ($carousel_posts->have_posts()):
-                while ($carousel_posts->have_posts()):
-                    $carousel_posts->the_post();
-                    $image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : $default_image_url;
-                    $post_url = get_permalink(); // Ottieni l'URL del post
-                    ?>
-                    <div class="swiper-slide">
-                        <a href="<?php echo esc_url($post_url); ?>" class="h-96 flex flex-col justify-center items-center">
-                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"
-                                class="object-cover w-full h-full">
-                            <p class="title"><?php the_title(); ?></p> <!-- Titolo all'interno della diapositiva -->
-                        </a>
+                            </div>
+                        </div>
                     </div>
                     <?php
-                endwhile;
-                wp_reset_postdata();
-            else:
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
                 ?>
-                <div class="swiper-slide">
-                    <div class="h-96 flex justify-center items-center">
-                        <span class="text-3xl font-semibold text-black">Nessun articolo.</span>
-                    </div>
-                </div>
-                <?php
-            endif;
-            ?>
         </div>
+        <!-- <div class="swiper-pagination"></div> -->
         <!-- Swiper navigation and pagination -->
-        <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-      <!-- <div class="swiper-pagination"></div> -->
+        <div class="swiper-button-prev"></div>
     </div>
-</div>
+    </div>
+
+
+
+
+
+
+
+
 
 
 

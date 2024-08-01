@@ -27,19 +27,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Aggiorna la data ogni 30 secondi (30000 millisecondi)
     setInterval(updateDate, 30000);
+});
 
 
-
-    var swiper = new Swiper('.default-carousel', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.news-carousel', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
         },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
         },
-        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
     });
+});
 
+
+
+
+ // Funzione per aggiornare data e ora
+ function updateDateTime() {
+    const now = new Date();
+    const dateTimeString = now.toLocaleString('it-IT', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+    document.getElementById('current-date-time').textContent = dateTimeString;
+}
+
+// Aggiorna data e ora ogni minuto
+updateDateTime();
+setInterval(updateDateTime, 60000);
+
+// Toggle del menu mobile
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Toggle della ricerca mobile
+const mobileSearchButton = document.getElementById('mobile-search-button');
+const mobileSearch = document.getElementById('mobile-search');
+
+mobileSearchButton.addEventListener('click', () => {
+    mobileSearch.classList.toggle('hidden');
 });

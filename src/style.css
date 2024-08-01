@@ -7,66 +7,85 @@
 	margin-top: -30px;
 }
 
-/* CAROUSEL */
-.swiper-button-prev, .swiper-button-next {
-    color: #ff8800;
+* {
+    box-sizing: border-box;
 }
 
-.swiper-wrapper {
-    width: 100%;
-    height: max-content !important;
-    -webkit-transition-timing-function: linear !important;
-    transition-timing-function: linear !important;
-    position: relative;
+body {
+    overflow-x: hidden;
+}
+
+/* CAROUSEL */
+.swiper-button-prev,
+.swiper-button-next {
+	color: #ff8800;
 }
 
 /* NON VISUALIZZATI */
 .swiper-pagination-bullet {
-    background: #ff8800;
+	background: #ff8800;
 }
 
 .swiper-container {
-    height: 380px; /* Imposta l'altezza desiderata per il carousel */
-    z-index: 5;
-    position: relative; /* Aggiunto per il contesto di posizionamento */
+	height: 400px;
+	/* Imposta l'altezza desiderata per il carousel */
+	z-index: 5;
+	position: relative;
+	/* Aggiunto per il contesto di posizionamento */
 	box-shadow: 0 5px 5px -5px #333;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	width: 100%;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    width: 100%;
+    flex-shrink: 0;
 }
 
 .swiper-slide img {
-    height: 100%; /* Assicura che le immagini riempiano l'altezza del carousel */
-    object-fit: cover; /* Mantiene le proporzioni delle immagini */
-	filter: blur(10px) brightness(0.6);;
-    border-radius: 0 !important; /* Rimuove gli angoli stondati */
+	width: 100%;
+	height: 400px;
+	/* Assicura che le immagini riempiano l'altezza del carousel */
+	object-fit: cover;
+	/* Mantiene le proporzioni delle immagini */
+	filter: blur(10px) brightness(0.6);
+	;
+	border-radius: 0 !important;
+	/* Rimuove gli angoli stondati */
 }
 
-/* Nuovo stile per il titolo */
+/* stile per il titolo */
 .swiper-slide .title {
+    width: 90%; /* Occupa il 90% della larghezza */
+    margin: 0 auto; /* Centra il titolo orizzontalmente */
     position: absolute;
-    bottom: 20px; /* Posiziona il titolo sopra i pallini */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem; /* Dimensione del testo, simile a H1/H2 */
+    bottom: 20px; /* Posiziona il titolo vicino al bordo inferiore */
+    left: 50%; /* Centra il contenitore rispetto al viewport */
+    transform: translateX(-50%); /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
+    font-size: 2rem; /* Dimensione del testo */
     font-weight: bold; /* Testo in grassetto */
     color: white; /* Colore del testo */
-    z-index: 10; /* Assicura che il titolo sia sopra i pallini */
+    z-index: 10; /* Assicura che il titolo sia sopra altri elementi */
+    text-align: center; /* Centra il testo all'interno del contenitore */
 }
 
 .articoli {
-    position: relative;
-    z-index: 1;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+	position: relative;
+	z-index: 1;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 	box-shadow: 5px 0 5px -5px #333;
 }
 
 .sidebar {
-    position: relative;
-    z-index: 0; /* Deve essere inferiore a quello di .articoli */
-    margin-left: -5px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+	position: relative;
+	z-index: 0;
+	/* Deve essere inferiore a quello di .articoli */
+	margin-left: -5px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 	box-shadow: 5px 0 5px -5px #333;
 }
 
@@ -103,6 +122,35 @@ img {
 	padding-left: 15px;
 	padding-right: 15px;
 }
+
+
+
+
+
+
+/* HEADER */
+
+.header-top {
+	background: linear-gradient(to left, #ff8800 0%, #ff8800 75%, white 75%, white 100%);
+}
+
+.custom-logo {
+	max-width: 300px;
+	border-radius: 0 20px 0 0;
+	padding-right: 5%;
+}
+
+.nav-element {
+	min-width: 120px;
+}
+
+
+
+
+
+
+
+
 
 
 /* FOOTER */
@@ -145,8 +193,6 @@ img {
 /* HEADER */
 .header {
 	width: 100%;
-	border: 1px solid red;
-	/* Per debugging, puoi rimuovere questa linea */
 }
 
 .custom-logo {
@@ -342,6 +388,20 @@ nav ul {
 }
 
 
+@media screen and (max-width: 768px) {
+	.header-top {
+		background: none;
+	}
+
+	.header-bottom {
+		display: none;
+	}
+
+	.custom-logo {
+		max-width: 150px;
+	}
+
+}
 
 /* Media query per schermi più grandi */
 @media (min-width: 768px) {
@@ -355,29 +415,24 @@ nav ul {
 
 
 /*Fino a 980px di larghezza*/
-@media screen and (max-width: 980px) {
-	.nav-element {
-		display: none;
-	}
-
-	.nav_ico {
-		scale: 80%;
-	}
-
-}
+@media screen and (max-width: 980px) {}
 
 /*Fino a 767px di larghezza*/
 @media screen and (max-width: 767px) {
-	.nav_ico {
-		display: none;
-	}
-
 	.sidebar {
 		display: none;
 	}
 
+	.swiper-container {
+		height: 250px;
+	}
+	
+	.swiper-slide img {
+		height: 250px;
+	}
+
 	.swiper-slide .title {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 	}
 
 	.articoli {

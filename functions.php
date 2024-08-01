@@ -31,17 +31,14 @@ function get_last_modified_date() {
  */
 function cg_your_theme_scripts() {
 	wp_enqueue_style( 'output', get_template_directory_uri() . '/dist/output.css', array());
-
-       // Enqueue Swiper CSS
-       wp_enqueue_style('swiper-css', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.css');
-
-       // Enqueue Swiper JS
-       wp_enqueue_script('swiper-js', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.js', array(), null, true);
-   
-       // Enqueue custom script to initialize Swiper
-       wp_enqueue_script('custom-swiper-init', get_template_directory_uri() . '/assets/js/custom.js', array('swiper-js'), null, true);
 }
 add_action( 'wp_enqueue_scripts', 'cg_your_theme_scripts' );
+
+function enqueue_swiper() {
+    wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_swiper');
 
 /*
 Ottengo la data attuale e mi estrapolo l'anno
@@ -64,7 +61,6 @@ wp_enqueue_style( 'parent-style', get_template_directory_uri().'/src/style.css' 
 function enqueue_custom_js() {
     // Registra lo script custom.js
     wp_register_script('custom-js', get_template_directory_uri() . '/assets/js/custom.js', array(), null, true);
-
     // Fa l'enqueue dello script custom.js
     wp_enqueue_script('custom-js');
 }
