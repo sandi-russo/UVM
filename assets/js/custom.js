@@ -71,13 +71,32 @@ document.addEventListener('DOMContentLoaded', function() {
 updateDateTime();
 setInterval(updateDateTime, 60000);
 
-// Toggle del menu mobile
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
 
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle del menu mobile
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.remove('hidden', 'md:hidden');
+        mobileMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closeMenuFunc() {
+        mobileMenu.classList.remove('active');
+        mobileMenu.classList.add('hidden', 'md:hidden');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    closeMenu.addEventListener('click', closeMenuFunc);
+    mobileMenuOverlay.addEventListener('click', closeMenuFunc);
 });
+
 
 // Toggle della ricerca mobile
 const mobileSearchButton = document.getElementById('mobile-search-button');

@@ -35,7 +35,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                         $post_url = get_permalink();
                         ?>
                         <div class="swiper-slide">
-                            <div class="relative overflow-hidden rounded-lg shadow-lg">
+                            <div class="relative overflow-hidden shadow-lg">
                                 <a href="<?php echo esc_url($post_url); ?>">
                                     <?php if (has_post_thumbnail()): ?>
                                         <?php the_post_thumbnail('large', array('class' => 'w-full h-64 object-cover')); ?>
@@ -63,16 +63,6 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
         <div class="swiper-button-prev"></div>
     </div>
     </div>
-
-
-
-
-
-
-
-
-
-
 
     <!-- Wrapper per centralizzare il contenuto -->
     <div class="site_main site_container mx-auto flex">
