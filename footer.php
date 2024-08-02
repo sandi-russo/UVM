@@ -142,10 +142,10 @@
     <div class="w-full flex justify-center">
         <ul class="flex gap-4 ml-auto mx-auto">
             <li>
-                <a href='#' class='text-white text-sm font-semibold'>Copyright</a>
+                <a href='/copyright' class='text-white text-sm font-semibold'>Copyright</a>
             </li>
             <li>
-                <a href='#' class='text-white text-sm font-semibold'>Politica Privacy</a>
+                <a href='/privacy-policy' class='text-white text-sm font-semibold'>Politica Privacy</a>
             </li>
         </ul>
     </div>
