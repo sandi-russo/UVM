@@ -4,8 +4,7 @@
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
+ * @link https://bing.com/search?q=
  * @package UNIVERSOME
  */
 
@@ -18,10 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
-    <?php wp_head(); ?>
+    <?php wp_head(); // Hook di WordPress per inserire script e stili nel <head> ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); // Aggiunge classi al tag <body> basate sul contesto della pagina ?>>
     <div class="mobile-last-modified">
         <span class="update-label">Ultimo aggiornamento: </span>
         <span class="update-time">
@@ -44,7 +43,7 @@
         </span>
     </div>
 
-    <?php wp_body_open(); ?>
+    <?php wp_body_open(); // Hook di WordPress per inserire contenuti subito dopo l'apertura del <body> ?>
     <div id="page" class="site">
         <a class="skip-link screen-reader-text"
             href="#primary"><?php esc_html_e('Skip to content', 'universome'); ?></a>
@@ -66,18 +65,18 @@
                         <a href="<?php echo home_url(); ?>">
                             <?php if (function_exists('the_custom_logo')): ?>
                                 <div class="custom-logo">
-                                    <?php the_custom_logo(); ?>
+                                    <?php the_custom_logo(); // Mostra il logo personalizzato ?>
                                 </div>
                             <?php endif; ?>
                         </a>
                     </div>
 
                     <!-- Data e ora (visibili solo su desktop) -->
-                    <div class=" nav-element" id="current-date-time">
-                        <?php echo date('d/m/Y'); ?>
+                    <div class="nav-element" id="current-date-time">
+                        <?php echo date('d/m/Y'); // Mostra la data corrente ?>
                     </div>
                     <div class="nav-element" id="current-time">
-                        <?php echo date('H:i'); ?>
+                        <?php echo date('H:i'); // Mostra l'ora corrente ?>
                     </div>
                     <div class="nav-element" id="last-modified">
                         <?php
@@ -247,7 +246,7 @@
     </div>
     </header>
     </div>
-    <?php wp_footer(); ?>
+    <?php wp_footer(); // Hook di WordPress per inserire script prima della chiusura del <body> ?>
 </body>
 
 </html>

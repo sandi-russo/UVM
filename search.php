@@ -30,7 +30,8 @@ get_header();
 				while (have_posts()):
 					the_post();
 					?>
-					<article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
+					<article
+						class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
 						<a href="<?php the_permalink(); ?>">
 							<?php if (has_post_thumbnail()): ?>
 								<div class="relative">
