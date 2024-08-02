@@ -64,6 +64,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
     </div>
     </div>
 
+
     <!-- Wrapper per centralizzare il contenuto -->
     <div class="site_main site_container mx-auto flex">
         <!-- Sezione degli Articoli con angoli stondati a sinistra e shadow -->
@@ -79,7 +80,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                             <div class="max-w-7xl mx-auto">
                                 <div class="text-center">
                                     <h2
-                                        class="text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">
+                                        class="category_name text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">
                                         <?php echo esc_html($category->name); ?>
                                     </h2>
                                 </div>
@@ -103,10 +104,56 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                                         $first_post = false;
                                         ?>
                                         <div
-                                            class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative md:col-span-2 min-h-[400px] max-h-[600px] flex flex-col">
+                                            class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative md:col-span-2 min-h-[300px] max-h-[600px] flex flex-col">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <div class="flex-1">
+
+                                                    <?php if (has_post_thumbnail()): ?>
+                                                        <?php the_post_thumbnail('full', array('class' => 'card_img w-full h-[300px] object-cover')); ?>
+                                                    <?php else: ?>
+                                                        <div class="w-full h-[200px] bg-gray-200 flex items-center justify-center">
+                                                            <p class="text-gray-500">Immagine non disponibile</p>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="p-6 bg-[#eeeeee] flex flex-col justify-between flex-1">
+                                                    <h3 class="card_title text-gray-900 text-xl font-bold">
+                                                        <?php the_title(); ?>
+                                                    </h3>
+                                            </a>
+                                            <p class="card_description mt-4 text-sm text-gray-500 leading-relaxed">
+                                                <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                                            </p>
+                                            <div class="flex items-center justify-between mt-6">
+                                                <div class="flex-1 flex flex-col text-sm text-gray-500 text-right">
+                                                    <?php
+                                                    // Recupera il nome e il cognome dell'autore
+                                                    $first_name = get_the_author_meta('first_name');
+                                                    $last_name = get_the_author_meta('last_name');
+                                                    $display_name = trim($first_name . ' ' . $last_name);
+
+                                                    // Usa il nome utente come fallback
+                                                    if (empty($display_name)) {
+                                                        $display_name = get_the_author_meta('user_login');
+                                                    }
+                                                    ?>
+                                                    <p class="card_author"><?php echo esc_html($display_name); ?></p>
+                                                    <p class="card_author"><?php echo get_the_date(); ?></p>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <?php echo get_avatar(get_the_author_meta('ID'), 24, '', '', array('class' => 'rounded-full')); ?>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                    <div
+                                        class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative min-h-[300px] max-h-[600px] flex flex-col">
+                                        <a href="<?php the_permalink(); ?>">
                                             <div class="flex-1">
                                                 <?php if (has_post_thumbnail()): ?>
-                                                    <?php the_post_thumbnail('full', array('class' => 'w-full h-[300px] object-cover')); ?>
+                                                    <?php the_post_thumbnail('full', array('class' => 'card_img w-full h-[300px] object-cover')); ?>
                                                 <?php else: ?>
                                                     <div class="w-full h-[200px] bg-gray-200 flex items-center justify-center">
                                                         <p class="text-gray-500">Immagine non disponibile</p>
@@ -114,116 +161,74 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                                                 <?php endif; ?>
                                             </div>
                                             <div class="p-6 bg-[#eeeeee] flex flex-col justify-between flex-1">
-                                                <h3>
-                                                    <a href="<?php the_permalink(); ?>" class="text-gray-900 text-xl font-bold">
-                                                        <?php the_title(); ?>
-                                                    </a>
+                                                <h3 class="card_title text-gray-900 text-xl font-bold">
+                                                    <?php the_title(); ?>
                                                 </h3>
-                                                <p class="mt-4 text-sm text-gray-500 leading-relaxed">
-                                                    <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
-                                                </p>
-                                                <div class="flex items-center justify-between mt-6">
-                                                    <div class="flex-1 flex flex-col text-sm text-gray-500 text-right">
-                                                        <?php
-                                                        // Recupera il nome e il cognome dell'autore
-                                                        $first_name = get_the_author_meta('first_name');
-                                                        $last_name = get_the_author_meta('last_name');
-                                                        $display_name = trim($first_name . ' ' . $last_name);
+                                        </a>
+                                        <p class="card_description mt-4 text-sm text-gray-500 leading-relaxed">
+                                            <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                                        </p>
+                                        <div class="flex items-center justify-between mt-6">
+                                            <div class="card_author flex-1 flex flex-col text-sm text-gray-500 text-right">
+                                                <?php
+                                                // Recupera il nome e il cognome dell'autore
+                                                $first_name = get_the_author_meta('first_name');
+                                                $last_name = get_the_author_meta('last_name');
+                                                $display_name = trim($first_name . ' ' . $last_name);
 
-                                                        // Usa il nome utente come fallback
-                                                        if (empty($display_name)) {
-                                                            $display_name = get_the_author_meta('user_login');
-                                                        }
-                                                        ?>
-                                                        <p><?php echo esc_html($display_name); ?></p>
-                                                        <p><?php echo get_the_date(); ?></p>
-                                                    </div>
-                                                    <div class="ml-4">
-                                                        <?php echo get_avatar(get_the_author_meta('ID'), 24, '', '', array('class' => 'rounded-full')); ?>
-                                                    </div>
-                                                </div>
-
+                                                // Usa il nome utente come fallback
+                                                if (empty($display_name)) {
+                                                    $display_name = get_the_author_meta('user_login');
+                                                }
+                                                ?>
+                                                <p class="card_author"><?php echo esc_html($display_name); ?></p>
+                                                <p class="card_author"><?php echo get_the_date(); ?></p>
+                                            </div>
+                                            <div class="ml-4">
+                                                <?php echo get_avatar(get_the_author_meta('ID'), 24, '', '', array('class' => 'rounded-full')); ?>
                                             </div>
                                         </div>
-                                    <?php else: ?>
-                                        <div
-                                            class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative min-h-[400px] max-h-[600px] flex flex-col">
-                                            <div class="flex-1">
-                                                <?php if (has_post_thumbnail()): ?>
-                                                    <?php the_post_thumbnail('full', array('class' => 'w-full h-[200px] object-cover')); ?>
-                                                <?php else: ?>
-                                                    <div class="w-full h-[200px] bg-gray-200 flex items-center justify-center">
-                                                        <p class="text-gray-500">Immagine non disponibile</p>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="p-6 bg-[#eeeeee] flex flex-col justify-between flex-1">
-                                                <h3>
-                                                    <a href="<?php the_permalink(); ?>" class="text-gray-900 text-xl font-bold">
-                                                        <?php the_title(); ?>
-                                                    </a>
-                                                </h3>
-                                                <div class="flex items-center justify-between mt-6">
-                                                    <div class="flex-1 flex flex-col text-sm text-gray-500 text-right">
-                                                        <?php
-                                                        // Recupera il nome e il cognome dell'autore
-                                                        $first_name = get_the_author_meta('first_name');
-                                                        $last_name = get_the_author_meta('last_name');
-                                                        $display_name = trim($first_name . ' ' . $last_name);
 
-                                                        // Usa il nome utente come fallback
-                                                        if (empty($display_name)) {
-                                                            $display_name = get_the_author_meta('user_login');
-                                                        }
-                                                        ?>
-                                                        <p><?php echo esc_html($display_name); ?></p>
-                                                        <p><?php echo get_the_date(); ?></p>
-                                                    </div>
-                                                    <div class="ml-4">
-                                                        <?php echo get_avatar(get_the_author_meta('ID'), 24, '', '', array('class' => 'rounded-full')); ?>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php
+                                    </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php
                                 endwhile;
                             else:
                                 echo '<p>' . esc_html__('No posts available in this category.', 'universome') . '</p>';
                             endif;
                             wp_reset_postdata();
                             ?>
-                        </div>
-                        <div class="flex justify-end mt-4">
-                            <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
-                                class="text-gray-900 bg-[#eeeeee] focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center flex items-center">
-                                <?php esc_html_e('Vedi tutto', 'universome'); ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
-                                    <path
-                                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
-                                </svg>
-                            </a>
-                        </div>
-                    </section>
-                    <?php
+            </div>
+            <div class="flex justify-end mt-4">
+                <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
+                    class="text-gray-900 bg-[#eeeeee] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center flex items-center">
+                    <?php esc_html_e('Vedi tutto', 'universome'); ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
+                        <path
+                            d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
+                    </svg>
+                </a>
+            </div>
+            </section>
+            <?php
                 endif;
             endforeach;
             ?>
-        </div><!-- .flex-1 -->
+    </div><!-- .flex-1 -->
 
-        <!-- Barra Laterale Fissa con angoli stondati a destra -->
-        <div class="sidebar px-5 rounded-r-lg bg-white">
-            <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
-            <div class="sidebar-content">
-                <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <!-- Aggiungi altri contenuti embedded qui -->
-        </div><!-- .sidebar -->
+    <!-- Barra Laterale Fissa con angoli stondati a destra -->
+    <div class="sidebar px-5 rounded-r-lg bg-white">
+        <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
+        <div class="sidebar-content">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <!-- Aggiungi altri contenuti embedded qui -->
+    </div><!-- .sidebar -->
 
-    </div><!-- .w-full max-w-[1200px] -->
+    </div><!-- .w-full max-w-[1400px] -->
 </main><!-- #main -->
 
 <?php

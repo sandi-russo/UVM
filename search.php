@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<div class="site_container bg-gray-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+<div class="site_container min-h-screen py-8 px-4 sm:px-6 lg:px-8">
 	<main id="primary" class="site-main mx-auto max-w-4xl">
 
 		<?php if (have_posts()): ?>

@@ -22,6 +22,28 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <div class="mobile-last-modified">
+        <span class="update-label">Ultimo aggiornamento: </span>
+        <span class="update-time">
+            <?php
+            // Query per ottenere l'ultimo post modificato
+            $recent = new WP_Query([
+                'post_type' => 'any', // Include tutti i tipi di post
+                'posts_per_page' => 1, // Limita a un risultato
+                'orderby' => 'modified', // Ordina per data di modifica
+                'order' => 'DESC', // Dal più recente al più vecchio
+            ]);
+
+            if ($recent->have_posts()) {
+                $recent->the_post();
+                // Mostra la data dell'ultimo post modificato
+                echo get_the_modified_time('d/m/Y, H:i');
+            }
+            wp_reset_postdata(); // Ripristina il contesto del post originale
+            ?>
+        </span>
+    </div>
+
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <a class="skip-link screen-reader-text"
@@ -58,7 +80,22 @@
                         <?php echo date('H:i'); ?>
                     </div>
                     <div class="nav-element" id="last-modified">
-                        <?php the_modified_time('d/m/Y, H:i'); ?>
+                        <?php
+                        // Query per ottenere l'ultimo post modificato
+                        $recent = new WP_Query([
+                            'post_type' => 'any', // Include tutti i tipi di post
+                            'posts_per_page' => 1, // Limita a un risultato
+                            'orderby' => 'modified', // Ordina per data di modifica
+                            'order' => 'DESC', // Dal più recente al più vecchio
+                        ]);
+
+                        if ($recent->have_posts()) {
+                            $recent->the_post();
+                            // Mostra la data dell'ultimo post modificato
+                            echo get_the_modified_time('d/m/Y, H:i');
+                        }
+                        wp_reset_postdata(); // Ripristina il contesto del post originale
+                        ?>
                     </div>
 
 
@@ -144,7 +181,7 @@
                             d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
                     </svg>
                     <input type="search" name="s" placeholder="Cerca..."
-                        class="w-full px-4 py-2 bg-[#e2e2e2] text-white placeholder-gray-400 search-input" />
+                        class="w-full px-4 py-2 bg-[#e2e2e2] placeholder-gray-400 search-input" />
                 </form>
             </div>
         </div>
@@ -153,16 +190,16 @@
     <!-- Menu mobile (nascosto di default) -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
     <div class="hidden md:hidden" id="mobile-menu">
-    <div class="mobile-menu-header">
-                <div class="mobile-logo">
-                    <?php
-                    if (function_exists('the_custom_logo')) {
-                        the_custom_logo();
-                    }
-                    ?>
-                </div>
-                <span class="close-menu" id="close-menu">&times;</span>
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">
+                <?php
+                if (function_exists('the_custom_logo')) {
+                    the_custom_logo();
+                }
+                ?>
             </div>
+            <span class="close-menu" id="close-menu">&times;</span>
+        </div>
         <div class="mobile-menu-content">
             <div class="mobile-menu-categories">
                 <?php
@@ -176,7 +213,9 @@
         <div class="mobile-menu-footer">
             <p>Sei un giornalista?</p>
             <a href="https:\\universome.unime.it\login">
-                <button class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3" style="border: none;">Accedi</button>
+                <button
+                    class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
+                    style="border: none;">Accedi</button>
             </a>
         </div>
     </div>

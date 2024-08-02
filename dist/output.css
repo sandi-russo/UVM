@@ -730,8 +730,8 @@ video {
   max-height: 600px;
 }
 
-.min-h-\[400px\] {
-  min-height: 400px;
+.min-h-\[300px\] {
+  min-height: 300px;
 }
 
 .min-h-\[80px\] {
@@ -766,8 +766,8 @@ video {
   max-width: 80rem;
 }
 
-.max-w-\[1200px\] {
-  max-width: 1200px;
+.max-w-\[1400px\] {
+  max-width: 1400px;
 }
 
 .max-w-screen-sm {
@@ -885,11 +885,6 @@ video {
 .bg-\[\#eeeeee\] {
   --tw-bg-opacity: 1;
   background-color: rgb(238 238 238 / var(--tw-bg-opacity));
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .bg-gray-200 {
@@ -1175,10 +1170,6 @@ video {
   box-sizing: border-box;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 /* CAROUSEL */
 
 .swiper-button-prev,
@@ -1305,6 +1296,19 @@ img {
 }
 
 /* HEADER */
+
+.mobile-last-modified {
+  display: none;
+  background-color: #ff8800;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.mobile-last-modified .update-label {
+  font-weight: bold;
+}
 
 .header-top {
   background: linear-gradient(to left, #ff8800 0%, #ff8800 75%, white 75%, white 100%);
@@ -1660,6 +1664,57 @@ nav ul {
 }
 
 @media screen and (max-width: 768px) {
+  .swiper-button-prev,
+	.swiper-button-next {
+    scale: 50%;
+  }
+
+  .card_title {
+    font-size: 1.2rem;
+  }
+
+  .card_img {
+    height: 150px;
+  }
+
+  .card_description {
+    font-size: 0.75rem;
+  }
+
+  .card_author {
+    font-size: 0.75rem;
+  }
+
+  .category_name {
+    font-size: 1.4rem;
+  }
+
+  .mobile-last-modified {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .swiper-container {
+    height: 220px;
+  }
+
+  .swiper-slide img {
+    height: 220px;
+  }
+
+  .swiper-slide .title {
+    font-size: 1.2rem;
+  }
+
+  .articoli {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: none;
+  }
+
   .header {
     padding: 5px;
   }
@@ -1713,32 +1768,6 @@ nav ul {
 @media screen and (max-width: 980px) {
   .nav-element {
     display: none;
-  }
-}
-
-/*Fino a 767px di larghezza*/
-
-@media screen and (max-width: 767px) {
-  .sidebar {
-    display: none;
-  }
-
-  .swiper-container {
-    height: 250px;
-  }
-
-  .swiper-slide img {
-    height: 250px;
-  }
-
-  .swiper-slide .title {
-    font-size: 1.2rem;
-  }
-
-  .articoli {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    box-shadow: none;
   }
 }
 
