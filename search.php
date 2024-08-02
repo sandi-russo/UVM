@@ -19,7 +19,7 @@ get_header();
 				<h1 class="page-title text-3xl font-bold text-gray-900">
 					<?php
 					/* translators: %s: search query. */
-					printf(esc_html__('Search Results for: %s', 'universome'), '<span class="text-[#ff8800]">' . get_search_query() . '</span>');
+					printf(esc_html__('Hai cercato: %s', 'universome'), '<span class="text-[#ff8800]">' . get_search_query() . '</span>');
 					?>
 				</h1>
 			</header><!-- .page-header -->
@@ -30,11 +30,11 @@ get_header();
 				while (have_posts()):
 					the_post();
 					?>
-					<article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
+					<article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
 						<a href="<?php the_permalink(); ?>">
 							<?php if (has_post_thumbnail()): ?>
 								<div class="relative">
-									<?php the_post_thumbnail('large', ['class' => 'w-full h-48 object-cover']); ?>
+									<?php the_post_thumbnail('large', ['class' => 'card_img w-full h-48 object-cover']); ?>
 									<div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
 								</div>
 							<?php else: ?>
@@ -44,12 +44,12 @@ get_header();
 							<?php endif; ?>
 						</a>
 						<div class="p-6 bg-[#e2e2e2] flex flex-col flex-1">
-							<h2 class="text-xl font-bold mb-2">
+							<h2 class="card_title text-xl font-bold mb-2">
 								<a href="<?php the_permalink(); ?>" class="text-gray-900">
 									<?php the_title(); ?>
 								</a>
 							</h2>
-							<p class="text-gray-600 mb-4 flex-1 min-h-[80px]">
+							<p class="card_description text-gray-600 mb-4 flex-1 min-h-[50px]">
 								<?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
 							</p>
 							<div class="flex items-center justify-between mt-6">
@@ -65,8 +65,8 @@ get_header();
 										$display_name = get_the_author_meta('user_login');
 									}
 									?>
-									<p><?php echo esc_html($display_name); ?></p>
-									<p><?php echo get_the_date(); ?></p>
+									<p class="card_author"><?php echo esc_html($display_name); ?></p>
+									<p class="card_author"><?php echo get_the_date(); ?></p>
 								</div>
 								<div class="ml-4">
 									<?php echo get_avatar(get_the_author_meta('ID'), 24, '', '', array('class' => 'rounded-full')); ?>

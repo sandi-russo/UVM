@@ -164,7 +164,12 @@
             <nav class="flex-grow">
                 <ul class="flex flex-wrap gap-4">
                     <?php
-                    $categories = get_categories();
+                    $args = array(
+                        'parent' => 0, // Prende solo le categorie principali
+                        'exclude' => get_cat_ID('senza categoria'), // Esclude la categoria "senza categoria"
+                        'hide_empty' => false // Mostra anche categorie senza post
+                    );
+                    $categories = get_categories($args);
                     foreach ($categories as $category) {
                         echo '<li class="category-item"><a href="' . get_category_link($category->term_id) . '" class="text-gray-700 hover:text-gray-900 font-semibold">' . $category->name . '</a></li>';
                     }
@@ -203,9 +208,14 @@
         <div class="mobile-menu-content">
             <div class="mobile-menu-categories">
                 <?php
-                $categories = get_categories();
+                $args = array(
+                    'parent' => 0, // Prende solo le categorie principali
+                    'exclude' => get_cat_ID('senza categoria'), // Esclude la categoria "senza categoria"
+                    'hide_empty' => false // Mostra anche categorie senza post
+                );
+                $categories = get_categories($args);
                 foreach ($categories as $category) {
-                    echo '<a href="' . get_category_link($category->term_id) . '" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">' . $category->name . '</a>';
+                    echo '<a href="' . get_category_link($category->term_id) . '"class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">' . $category->name . '</a>';
                 }
                 ?>
             </div>
