@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     new Swiper('.news-carousel', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
- // Funzione per aggiornare data e ora
- function updateDateTime() {
+// Funzione per aggiornare data e ora
+function updateDateTime() {
     const now = new Date();
     const dateTimeString = now.toLocaleString('it-IT', {
         weekday: 'long',
@@ -72,14 +72,14 @@ updateDateTime();
 setInterval(updateDateTime, 60000);
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Toggle del menu mobile
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeMenu = document.getElementById('close-menu');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
-    mobileMenuButton.addEventListener('click', function() {
+    mobileMenuButton.addEventListener('click', function () {
         mobileMenu.classList.remove('hidden', 'md:hidden');
         mobileMenu.classList.add('active');
         mobileMenuOverlay.classList.add('active');
@@ -105,3 +105,19 @@ const mobileSearch = document.getElementById('mobile-search');
 mobileSearchButton.addEventListener('click', () => {
     mobileSearch.classList.toggle('hidden');
 });
+
+/* CONDIVISIONE ARTICOLO */
+function shareArticle() {
+    if (navigator.share) {
+        navigator.share({
+            title: '<?php echo esc_js(get_the_title()); ?>',
+            url: '<?php echo esc_js(get_permalink()); ?>'
+        }).then(() => {
+            console.log("Grazie per aver condiviso l'articolo!");
+        })
+            .catch(console.error);
+    } else {
+        // Fallback per browser che non supportano l'API Web Share
+        alert('La condivisione non è supportata su questo browser. Copia il link dalla barra degli indirizzi.');
+    }
+}
