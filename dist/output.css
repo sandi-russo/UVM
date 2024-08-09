@@ -1671,7 +1671,7 @@ nav ul {
   box-sizing: border-box;
 }
 
-.paginazione {
+.paginazione{
   scale: 100%;
   gap: 6px;
 }
@@ -1944,30 +1944,6 @@ nav ul {
   color: #ff8800;
 }
 
-.fixed-share-button {
-  position: fixed;
-  bottom: -100px;
-  /* Nasconde il pulsante inizialmente fuori dallo schermo */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  background-color: #ff8800;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: bottom 0.5s ease;
-  /* Animazione di scorrimento dal basso verso l'alto */
-}
-
-.fixed-share-button.visible {
-  bottom: 20px;
-  /* Posizione finale del pulsante quando è visibile */
-}
-
 /* MEDIA QUERY */
 
 /* Media query per schermi più grandi di 768px */
@@ -2098,6 +2074,30 @@ nav ul {
   #mobile-search-button {
     position: absolute;
     right: 10px;
+  }
+
+  .fixed-share-button {
+    position: fixed;
+    bottom: -100px;
+    /* Nasconde il pulsante inizialmente fuori dallo schermo */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background-color: #ff8800;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: bottom 0.5s ease;
+    /* Animazione di scorrimento dal basso verso l'alto */
+  }
+
+  .fixed-share-button.visible {
+    bottom: 20px;
+    /* Posizione finale del pulsante quando è visibile */
   }
 }
 
