@@ -17,6 +17,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
+    <title>
+        <?php
+        // Prepend "UVM | " to every title
+        if (is_front_page()) {
+            echo 'UVM | Home';
+        } elseif (is_single()) {
+            echo 'UVM | ' . get_the_title();
+        } elseif (is_page()) {
+            echo 'UVM | ' . get_the_title();
+        } elseif (is_category()) {
+            echo 'UVM | Categoria: ' . single_cat_title('', false);
+        } elseif (is_search()) {
+            echo 'UVM | Ricerca: ' . get_search_query();
+        } else {
+            echo 'UVM | ' . get_bloginfo('name');
+        }
+        ?>
+    </title>
+
     <?php wp_head(); // Hook di WordPress per inserire script e stili nel <head> ?>
 </head>
 

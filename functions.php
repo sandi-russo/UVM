@@ -12,6 +12,22 @@ if (!defined('_S_VERSION')) {
     define('_S_VERSION', '1.0.0');
 }
 
+/* Header title */
+function custom_title($title) {
+    // Prepend "UVM | " to every title
+    return 'UVM | ' . $title;
+}
+
+if (version_compare($GLOBALS['wp_version'], '4.4', '<')) {
+    // For versions before 4.4
+    add_filter('wp_title', 'custom_title');
+} else {
+    // For WordPress 4.4 and newer
+    add_filter('pre_get_document_title', 'custom_title');
+}
+
+
+
 /*  Post per pagina */
 function set_author_posts_per_page($query) {
     if (!is_admin() && $query->is_main_query() && is_author()) {
