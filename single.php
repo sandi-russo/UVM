@@ -119,14 +119,6 @@ $tags = get_the_tags();
 								?>
 							</footer>
 						<?php endif; ?>
-
-						<!-- Pulsante di condivisione -->
-						<div class="share-button mt-8">
-							<button onclick="shareArticle()"
-								class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-								Condividi Articolo
-							</button>
-						</div>
 					</article>
 				</div>
 
@@ -170,9 +162,15 @@ $tags = get_the_tags();
 			</div>
 		<?php endwhile; ?>
 
+		<!-- Pulsante di condivisione fisso su mobile -->
+		<button onclick="shareArticle()" class="fixed-share-button">
+			Condividi Articolo
+		</button>
+
 	</main>
 </div>
 
 <?php
 get_sidebar();
 get_footer();
+?>

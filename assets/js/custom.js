@@ -110,14 +110,32 @@ mobileSearchButton.addEventListener('click', () => {
 function shareArticle() {
     if (navigator.share) {
         navigator.share({
-            title: '<?php echo esc_js(get_the_title()); ?>',
-            url: '<?php echo esc_js(get_permalink()); ?>'
+            title: document.title,
+            url: window.location.href
         }).then(() => {
-            console.log("Grazie per aver condiviso l'articolo!");
-        })
-            .catch(console.error);
+            console.log('Articolo condiviso con successo.');
+        }).catch((error) => {
+            console.error('Errore nella condivisione:', error);
+        });
     } else {
-        // Fallback per browser che non supportano l'API Web Share
-        alert('La condivisione non è supportata su questo browser. Copia il link dalla barra degli indirizzi.');
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Link copiato negli appunti.');
+        }).catch((error) => {
+            console.error('Errore nella copia del link:', error);
+        });
     }
 }
+
+document.addEventListener('scroll', function () {
+    const shareButton = document.querySelector('.fixed-share-button');
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = (scrollPosition / documentHeight) * 100;
+
+    // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
+    if (scrollPercentage > 5 && scrollPercentage < 95) {
+        shareButton.classList.add('visible');
+    } else {
+        shareButton.classList.remove('visible');
+    }
+});

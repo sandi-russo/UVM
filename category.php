@@ -39,8 +39,8 @@ get_header();
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 /* Start the Loop */
-                while (have_posts()):
-                    the_post();
+                while ($category_query->have_posts()):
+                    $category_query->the_post();
                     ?>
                     <article
                         class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
@@ -89,11 +89,13 @@ get_header();
                         </div>
                     </article>
                 <?php endwhile; ?>
+                
+                <?php wp_reset_postdata(); ?>
 
             </div>
 
             <!-- Paginazione -->
-            <div class="flex justify-between mt-8">
+            <div class="paginazione flex justify-between mt-8">
                 <div>
                     <?php
                     // Pulsante Indietro

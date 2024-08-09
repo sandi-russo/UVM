@@ -93,7 +93,7 @@ get_header();
             </div>
 
             <!-- Paginazione -->
-            <div class="flex justify-between mt-8">
+            <div class="paginazione flex justify-between mt-8">
                 <div>
                     <?php
                     // Pulsante Indietro

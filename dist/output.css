@@ -949,11 +949,6 @@ video {
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
 }
 
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
@@ -1676,6 +1671,11 @@ nav ul {
   box-sizing: border-box;
 }
 
+.paginazione {
+  scale: 100%;
+  gap: 6px;
+}
+
 .articoli {
   position: relative;
   z-index: 1;
@@ -1944,6 +1944,30 @@ nav ul {
   color: #ff8800;
 }
 
+.fixed-share-button {
+  position: fixed;
+  bottom: -100px;
+  /* Nasconde il pulsante inizialmente fuori dallo schermo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background-color: #ff8800;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: bottom 0.5s ease;
+  /* Animazione di scorrimento dal basso verso l'alto */
+}
+
+.fixed-share-button.visible {
+  bottom: 20px;
+  /* Posizione finale del pulsante quando è visibile */
+}
+
 /* MEDIA QUERY */
 
 /* Media query per schermi più grandi di 768px */
@@ -1957,6 +1981,10 @@ nav ul {
 /*Fino a 768px di larghezza*/
 
 @media screen and (max-width: 768px) {
+  .articolo {
+    padding: 5px;
+  }
+
   .swiper-button-prev,
 	.swiper-button-next {
     scale: 50%;
@@ -2979,19 +3007,9 @@ textarea {
   background-color: rgb(242 139 12 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-gray-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-900:hover {
