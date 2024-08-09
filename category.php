@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying search results pages
+ * The template for displaying category pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#category
  *
  * @package UNIVERSOME
  */
@@ -20,18 +20,18 @@ get_header();
             'post_type' => 'post',
             'posts_per_page' => 9, // Mostra 9 post per pagina
             'paged' => $paged,
-            's' => get_search_query() // Utilizza la query di ricerca
+            'cat' => get_queried_object_id()
         );
-        $search_query = new WP_Query($args);
+        $category_query = new WP_Query($args);
         ?>
 
-        <?php if ($search_query->have_posts()): ?>
+        <?php if ($category_query->have_posts()): ?>
 
             <header class="page-header mb-8">
                 <h1 class="page-title text-3xl font-bold text-gray-900 text-center">
                     <?php
-                    /* translators: %s: search query. */
-                    printf(esc_html__('Hai cercato: %s', 'universome'), '<span class="text-[#ff8800]">' . get_search_query() . '</span>');
+                    /* translators: %s: category name. */
+                    printf(esc_html__('Categoria: %s', 'universome'), '<span class="text-[#ff8800]">' . single_cat_title('', false) . '</span>');
                     ?>
                 </h1>
             </header><!-- .page-header -->
@@ -39,8 +39,8 @@ get_header();
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 /* Start the Loop */
-                while ($search_query->have_posts()):
-                    $search_query->the_post();
+                while (have_posts()):
+                    the_post();
                     ?>
                     <article
                         class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
@@ -127,11 +127,6 @@ get_header();
             </div>
 
         <?php endif; ?>
-
-        <?php
-        // Ripristina i dati globali del post
-        wp_reset_postdata();
-        ?>
 
     </main><!-- #main -->
 </div>

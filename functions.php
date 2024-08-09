@@ -12,6 +12,14 @@ if (!defined('_S_VERSION')) {
     define('_S_VERSION', '1.0.0');
 }
 
+/*  Post per pagina */
+function set_author_posts_per_page($query) {
+    if (!is_admin() && $query->is_main_query() && is_author()) {
+        $query->set('posts_per_page', 9); // Mostra 9 post per pagina
+    }
+}
+add_action('pre_get_posts', 'set_author_posts_per_page');
+
 
 /* Post prima lettera */
 function post_first_letter($content = '')

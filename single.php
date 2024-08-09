@@ -37,7 +37,7 @@ $tags = get_the_tags();
 <div class="site_container">
 	<main id="primary" class="site-main">
 		<!-- Informazioni Autore e Post -->
-		<div class="author-info rounded-lg p-6 mb-2.5 flex items-center justify-between">
+		<div class="author-info rounded-lg p-6 mb-6 flex items-center justify-between">
 			<img src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>"
 				class="author-avatar rounded-full w-20 h-20 mr-4">
 			<div class="author-details flex-grow">
@@ -68,7 +68,7 @@ $tags = get_the_tags();
 		</div>
 
 		<!-- Categoria e Tag -->
-		<div class="category-tags-wrapper flex flex-wrap gap-2 justify-center mb-2.5">
+		<div class="category-tags-wrapper flex flex-wrap gap-2 justify-center mb-2">
 			<?php if (!empty($category)): ?>
 				<div class="category-label bg-blue-100 text-blue-600 px-2 py-1 rounded">
 					<?php echo esc_html($category[0]->name); ?>
@@ -86,13 +86,12 @@ $tags = get_the_tags();
 			<?php endif; ?>
 		</div>
 
-
 		<?php while (have_posts()):
 			the_post(); ?>
 			<!-- Wrapper per centralizzare il contenuto -->
 			<div class="site_container mx-auto flex">
 				<!-- Sezione dell'Articolo -->
-				<div class="articolo bg-white">
+				<div class="articolo flex-1 overflow-y-auto pr-4 px-5 bg-white rounded-l-lg shadow-lg">
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<div class="entry-content">
 							<?php the_content(); ?>
@@ -138,7 +137,7 @@ $tags = get_the_tags();
 						<?php
 						$args = array(
 							'post_type' => 'post',
-							'posts_per_page' => 5,
+							'posts_per_page' => 4,
 							'post__not_in' => array(get_the_ID()),
 						);
 						$query = new WP_Query($args);
@@ -146,12 +145,18 @@ $tags = get_the_tags();
 							while ($query->have_posts()):
 								$query->the_post();
 								?>
-								<div class="mb-4">
-									<a href="<?php the_permalink(); ?>" class="flex items-center">
+								<div class="bg-white shadow-md rounded-lg overflow-hidden mb-4">
+									<a href="<?php the_permalink(); ?>" class="flex flex-col">
 										<?php if (has_post_thumbnail()): ?>
-											<?php the_post_thumbnail('thumbnail', array('class' => 'w-16 h-16 object-cover rounded mr-2')); ?>
+											<?php the_post_thumbnail('medium', array('class' => 'side_img w-full object-cover')); ?>
+										<?php else: ?>
+											<div class="w-full h-40 bg-gray-200 flex items-center justify-center">
+												<p class="text-gray-500">Immagine non disponibile</p>
+											</div>
 										<?php endif; ?>
-										<span class="text-sm font-medium"><?php the_title(); ?></span>
+										<div class="p-4">
+											<h3 class="side_text text-lg font-semibold text-gray-900"><?php the_title(); ?></h3>
+										</div>
 									</a>
 								</div>
 								<?php
@@ -161,6 +166,7 @@ $tags = get_the_tags();
 						?>
 					</div>
 				</div>
+
 			</div>
 		<?php endwhile; ?>
 

@@ -200,15 +200,14 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
     </div><!-- .flex-1 -->
 
     <!-- Barra Laterale Fissa con angoli stondati a destra -->
-    <div class="sidebar px-5 rounded-r-lg bg-white">
+    <div class="sidebar rounded-r-lg bg-white">
         <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
         <div class="sidebar-content">
             <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             <!-- SPOTIFY -->
-            <iframe class="spotify-frame" src="https://podcasters.spotify.com/pod/show/universome9/embed"
-                frameborder="0" scrolling="no"></iframe>
+            <iframe class="video-frame" style="border-radius:12px" src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div><!-- .sidebar -->
 
