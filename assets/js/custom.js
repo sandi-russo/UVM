@@ -196,7 +196,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function adjustContentPadding() {
         var headerHeight = header.offsetHeight;
-        content.style.paddingTop = headerHeight + 'px';
+
+        if (window.innerWidth < 768) {
+            content.style.paddingTop = headerHeight + 'px';
+        } else {
+            content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 768px
+        }
     }
 
     // Regola il padding al caricamento della pagina
@@ -205,6 +210,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
     window.addEventListener('resize', adjustContentPadding);
 });
+
 
 /* Ricerca AJAX */
 document.addEventListener("DOMContentLoaded", function() {
