@@ -167,6 +167,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Icona ricerca per mobile -->
                     <button class="md:hidden" id="mobile-search-button">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -177,9 +178,11 @@
                     </button>
                 </div>
             </div>
+
             <!-- Categorie e barra di ricerca -->
             <div class="header-bottom bg-white">
                 <div class="container mx-auto px-4 flex justify-between items-center py-4">
+
                     <!-- Categorie WordPress -->
                     <nav class="flex-grow">
                         <ul class="flex flex-wrap gap-4">
@@ -196,6 +199,7 @@
                             ?>
                         </ul>
                     </nav>
+
                     <!-- Barra di ricerca -->
                     <div class="flex w-full max-w-sm justify-center">
                         <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
@@ -251,8 +255,19 @@
             </div>
 
             <!-- Form di ricerca mobile (nascosto di default) -->
+            <div class="mobile-search-overlay" id="mobile-search-overlay"></div>
             <div class="hidden md:hidden" id="mobile-search">
-                <div class="p-4">
+                <div class="mobile-search-header">
+                    <div class="mobile-logo">
+                        <?php
+                        if (function_exists('the_custom_logo')) {
+                            the_custom_logo();
+                        }
+                        ?>
+                    </div>
+                    <span class="close-search" id="close-search">&times;</span>
+                </div>
+                <div class="mobile-search-content">
                     <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
                         class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
@@ -264,7 +279,16 @@
                             class="w-full px-4 py-3 bg-[#e2e2e2] text-black placeholder-gray-600 search-input" />
                     </form>
                 </div>
+                <div class="mobile-search-footer">
+                    <p>Sei un giornalista?</p>
+                    <a href="https:\\universome.unime.it\login">
+                        <button
+                            class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
+                            style="border: none;">Accedi</button>
+                    </a>
+                </div>
             </div>
+
     </div>
 
 

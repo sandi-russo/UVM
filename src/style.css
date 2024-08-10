@@ -275,6 +275,123 @@ nav ul {
 	/* Rimuove la sottolineatura dai link */
 }
 
+/* Ricerca mobile */
+.mobile-search-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	z-index: 9999;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.mobile-search-overlay.active {
+	opacity: 1;
+	visibility: visible;
+	z-index: 999;
+}
+
+
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	z-index: 9999;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.mobile-menu-overlay.active {
+	opacity: 1;
+	visibility: visible;
+	z-index: 999;
+}
+
+#mobile-search {
+	padding: 0;
+	margin: 0;
+	position: fixed;
+	top: 0;
+	right: -300px; /* Sposta il pannello fuori schermo a destra */
+	width: 300px;
+	height: 100%;
+	background-color: white;
+	z-index: 1000;
+	border-top-left-radius: 10px; /* Modifica il bordo per sinistra */
+	border-bottom-left-radius: 10px; /* Modifica il bordo per sinistra */
+	display: flex;
+	flex-direction: column;
+	transition: right 0.3s ease;
+	z-index: 9999;
+}
+
+#mobile-search.active {
+	right: 0;
+}
+
+.mobile-search-header {
+	background-color: white;
+	padding: 15px;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #e5e5e5;
+	z-index: 1002;
+	border-radius: 20px 0px 0px 0px;
+}
+
+.close-search {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	font-size: 24px;
+	cursor: pointer;
+	z-index: 1002;
+}
+
+.mobile-search-content {
+	flex-grow: 1;
+	overflow-y: auto;
+	padding: 20px;
+}
+
+.mobile-search-footer {
+	position: sticky;
+	bottom: 0;
+	background-color: white;
+	padding: 15px;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+	z-index: 1001;
+	border-radius: 0px 0px 20px 0px;
+}
+
+.mobile-search-footer p {
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #666;
+}
+
+.mobile-search-login {
+	display: inline-block;
+	padding: 8px 16px;
+	background-color: #007bff;
+	color: white;
+	text-decoration: none;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+/* Hamburger mobile */
 .mobile-menu-overlay {
 	position: fixed;
 	top: 0;
@@ -875,6 +992,7 @@ nav ul {
 		position: fixed;
 		background-color: white;
 		width: 100%;
+		box-shadow: 0 5px 5px -5px #333;
 	}
 
 	.header-top {
