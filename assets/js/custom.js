@@ -163,3 +163,20 @@ function scrollToTop() {
         behavior: 'smooth'
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var header = document.querySelector('.header');
+    var content = document.querySelector('main, .content, .primary-content .primary .site_container');
+
+    function adjustContentPadding() {
+        var headerHeight = header.offsetHeight;
+        content.style.paddingTop = headerHeight + 'px';
+    }
+
+    // Regola il padding al caricamento della pagina
+    adjustContentPadding();
+
+    // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
+    window.addEventListener('resize', adjustContentPadding);
+});

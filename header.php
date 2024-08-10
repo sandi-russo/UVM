@@ -40,27 +40,6 @@
 </head>
 
 <body <?php body_class(); // Aggiunge classi al tag <body> basate sul contesto della pagina ?>>
-    <div class="mobile-last-modified">
-        <span class="update-label">Ultimo aggiornamento: </span>
-        <span class="update-time">
-            <?php
-            // Query per ottenere l'ultimo post modificato
-            $recent = new WP_Query([
-                'post_type' => 'any', // Include tutti i tipi di post
-                'posts_per_page' => 1, // Limita a un risultato
-                'orderby' => 'modified', // Ordina per data di modifica
-                'order' => 'DESC', // Dal più recente al più vecchio
-            ]);
-
-            if ($recent->have_posts()) {
-                $recent->the_post();
-                // Mostra la data dell'ultimo post modificato
-                echo get_the_modified_time('d/m/Y, H:i');
-            }
-            wp_reset_postdata(); // Ripristina il contesto del post originale
-            ?>
-        </span>
-    </div>
 
     <?php wp_body_open(); // Hook di WordPress per inserire contenuti subito dopo l'apertura del <body> ?>
     <div id="page" class="site">
@@ -68,6 +47,31 @@
             href="#primary"><?php esc_html_e('Skip to content', 'universome'); ?></a>
 
         <header class="header w-full z-50">
+
+
+            <div class="mobile-last-modified">
+                <span class="update-label">Ultimo aggiornamento: </span>
+                <span class="update-time">
+                    <?php
+                    // Query per ottenere l'ultimo post modificato
+                    $recent = new WP_Query([
+                        'post_type' => 'any', // Include tutti i tipi di post
+                        'posts_per_page' => 1, // Limita a un risultato
+                        'orderby' => 'modified', // Ordina per data di modifica
+                        'order' => 'DESC', // Dal più recente al più vecchio
+                    ]);
+
+                    if ($recent->have_posts()) {
+                        $recent->the_post();
+                        // Mostra la data dell'ultimo post modificato
+                        echo get_the_modified_time('d/m/Y, H:i');
+                    }
+                    wp_reset_postdata(); // Ripristina il contesto del post originale
+                    ?>
+                </span>
+            </div>
+
+
             <div class="header-top">
                 <div class="container mx-auto justify-between items-center">
                     <!-- Logo e menu mobile -->

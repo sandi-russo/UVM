@@ -1548,7 +1548,7 @@ nav ul {
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  z-index: 998;
+  z-index: 9999;
   opacity: 0;
   visibility: hidden;
 }
@@ -1568,12 +1568,12 @@ nav ul {
   width: 300px;
   height: 100%;
   background-color: white;
-  z-index: 1000;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
   flex-direction: column;
   transition: left 0.3s ease;
+  z-index: 9999;
 }
 
 #mobile-menu.active {
@@ -1905,6 +1905,10 @@ nav ul {
   color: #ff8800;
 }
 
+.category-tags-wrapper {
+  margin-bottom: 24px;
+}
+
 .articolo {
   align-items: center;
   /* Centra gli elementi orizzontalmente */
@@ -2021,7 +2025,9 @@ nav ul {
 
 @media screen and (max-width: 768px) {
   .articolo {
-    padding: 5px;
+    padding: 0px 5px 5px 5px;
+    padding-top: 0px;
+    margin: 0px;
   }
 
   .swiper-button-prev,
@@ -2051,6 +2057,7 @@ nav ul {
 
   .mobile-last-modified {
     display: block;
+    max-height: 25px;
   }
 
   .swiper-container {
@@ -2095,6 +2102,10 @@ nav ul {
     /* 14px */
   }
 
+  .category-tags-wrapper {
+    margin-bottom: 0px;
+  }
+
   .category-tags-wrapper .tag-label:nth-child(n+4) {
     display: none;
   }
@@ -2106,11 +2117,15 @@ nav ul {
   }
 
   .header {
-    padding: 5px;
+    position: fixed;
+    background-color: white;
+    width: 100%;
   }
 
   .header-top {
     background: none;
+    padding: 5px;
+    max-height: 48px;
   }
 
   .header-bottom {
@@ -2127,11 +2142,13 @@ nav ul {
     justify-content: center;
     align-items: center;
     position: relative;
+    z-index: 1;
   }
 
   .custom-logo {
     max-width: 150px;
     margin: 0 auto;
+    z-index: 25;
   }
 
   #mobile-menu-button {
@@ -2187,6 +2204,10 @@ nav ul {
   .articolo {
     box-shadow: none;
   }
+
+  .category-tags-wrapper {
+    margin-bottom: 0px;
+  }
 }
 
 /*Fino a 480px di larghezza*/
@@ -2216,6 +2237,10 @@ nav ul {
   .social-icon {
     width: 20px;
     height: 20px;
+  }
+
+  .category-tags-wrapper {
+    margin-bottom: 0px;
   }
 }
 
