@@ -1384,58 +1384,7 @@ img {
 
 .header-top {
   background: linear-gradient(to left, #ff8800 0%, #ff8800 75%, white 75%, white 100%);
-}
-
-.custom-logo {
-  max-width: 300px;
-  border-radius: 0 20px 0 0;
-  padding-right: 5%;
-}
-
-.nav-element {
-  min-width: 120px;
-}
-
-.header {
   width: 100%;
-}
-
-.custom-logo {
-  top: 0px;
-  left: 0px;
-  max-width: 300px;
-  /* Larghezza massima del logo */
-  height: auto;
-  /* Altezza automatica */
-  background-color: white;
-  /* Sfondo bianco solo per il logo */
-  border-radius: 0 20px 0 0;
-  /* Arrotondamento del bordo del logo */
-  padding-right: 5%;
-  /* Padding destro del logo */
-}
-
-.container {
-  max-width: 1400px;
-  /* Limita la larghezza a 1400px */
-  margin-left: auto;
-  /* Allinea il container al centro */
-  margin-right: auto;
-  /* Allinea il container al centro */
-  padding-left: 15px;
-  /* Padding sinistro del container */
-  padding-right: 15px;
-  /* Padding destro del container */
-  display: flex;
-  /* Usa flexbox per l'allineamento */
-  justify-content: space-between;
-  /* Spazia gli elementi tra di loro */
-  align-items: center;
-  /* Allinea gli elementi verticalmente al centro */
-  z-index: 999;
-}
-
-.header-top {
   background: linear-gradient(to left,
 			#ff8800 0%,
 			/* Colore arancione all'inizio */
@@ -1446,8 +1395,6 @@ img {
 			white 100%
 			/* Colore bianco fino alla fine */
 		);
-  position: relative;
-  /* Necessario per posizionare gli pseudo-elementi */
   height: auto;
   /* Altezza della parte superiore dell'header */
   font-size: 12px;
@@ -1471,26 +1418,20 @@ img {
   z-index: 999;
 }
 
-nav {
-  flex-grow: 1;
-  /* Consente al menu di occupare tutto lo spazio disponibile */
+.custom-logo {
+  top: 0px;
+  left: 0px;
+  max-width: 300px;
+  /* Larghezza massima del logo */
+  height: auto;
+  /* Altezza automatica */
+  background-color: white;
+  /* Sfondo bianco solo per il logo */
+  border-radius: 0 20px 0 0;
+  /* Arrotondamento del bordo del logo */
+  padding-right: 5%;
+  /* Padding destro del logo */
 }
-
-nav ul {
-  display: flex;
-  /* Usa flexbox per il layout del menu */
-  flex-wrap: wrap;
-  /* Permette di andare a capo se necessario */
-  gap: 10px;
-  /* Spazio tra gli elementi del menu */
-}
-
-.ml-4 {
-  margin-left: 1rem;
-  /* Spazio a sinistra della barra di ricerca */
-}
-
-/* Stile per la pillola degli elementi della navbar (data, ora, ultima modifica) */
 
 .nav-element {
   display: inline-block;
@@ -1511,6 +1452,45 @@ nav ul {
   /* Imposto il grassetto */
   min-width: 120px;
   /* Minimo di larghezza */
+}
+
+.container {
+  max-width: 1400px;
+  /* Limita la larghezza a 1400px */
+  margin-left: auto;
+  /* Allinea il container al centro */
+  margin-right: auto;
+  /* Allinea il container al centro */
+  padding-left: 15px;
+  /* Padding sinistro del container */
+  padding-right: 15px;
+  /* Padding destro del container */
+  display: flex;
+  /* Usa flexbox per l'allineamento */
+  justify-content: space-between;
+  /* Spazia gli elementi tra di loro */
+  align-items: center;
+  /* Allinea gli elementi verticalmente al centro */
+  z-index: 999;
+}
+
+nav {
+  flex-grow: 1;
+  /* Consente al menu di occupare tutto lo spazio disponibile */
+}
+
+nav ul {
+  display: flex;
+  /* Usa flexbox per il layout del menu */
+  flex-wrap: wrap;
+  /* Permette di andare a capo se necessario */
+  gap: 10px;
+  /* Spazio tra gli elementi del menu */
+}
+
+.ml-4 {
+  margin-left: 1rem;
+  /* Spazio a sinistra della barra di ricerca */
 }
 
 .nav_ico {
@@ -1601,7 +1581,6 @@ nav ul {
 }
 
 .mobile-menu-header {
-  position: sticky;
   background-color: white;
   padding: 15px;
   margin: 0;
@@ -1675,7 +1654,7 @@ nav ul {
   box-sizing: border-box;
 }
 
-.paginazione{
+.paginazione {
   scale: 100%;
   gap: 6px;
 }
@@ -1707,6 +1686,57 @@ nav ul {
 }
 
 /* FOOTER */
+
+.fixed-back-to-top {
+  position: fixed;
+  bottom: -100px;
+  /* Nasconde il pulsante inizialmente fuori dallo schermo */
+  right: 2%;
+  z-index: 9999;
+  background-color: #ff8800;
+  color: white;
+  padding: 6px;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: bottom 0.5s ease;
+  /* Animazione di scorrimento dal basso verso l'alto */
+}
+
+.fixed-back-to-top svg {
+  width: 36px;
+  height: 36px;
+  fill: white;
+}
+
+.fixed-back-to-top.visible {
+  bottom: 2%;
+  /* Posizione finale del pulsante quando è visibile */
+}
+
+.fixed-share-button {
+  position: fixed;
+  bottom: -100px;
+  /* Nasconde il pulsante inizialmente fuori dallo schermo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background-color: #ff8800;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: bottom 0.5s ease;
+  /* Animazione di scorrimento dal basso verso l'alto */
+}
+
+.fixed-share-button.visible {
+  bottom: 20px;
+  /* Posizione finale del pulsante quando è visibile */
+}
 
 .footer-icon {
   background-color: #e6e6e6cf;
@@ -2085,6 +2115,11 @@ nav ul {
 
   .header-bottom {
     display: none;
+  }
+
+  .container {
+    top: 0;
+    z-index: 1000;
   }
 
   .header-top .container {

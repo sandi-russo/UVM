@@ -163,6 +163,14 @@
     </div>
 </footer>
 
+
+<div class="fixed-back-to-top" onclick="scrollToTop()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <path fill="currentColor" stroke="currentColor" stroke-linejoin="round" stroke-width="4" d="m12 29l12-12l12 12z"/>
+    </svg>
+</div>
+
+
 </div><!-- #page -->
 <?php wp_footer(); ?>
 

@@ -173,96 +173,97 @@
                     </button>
                 </div>
             </div>
+            <!-- Categorie e barra di ricerca -->
+            <div class="header-bottom bg-white">
+                <div class="container mx-auto px-4 flex justify-between items-center py-4">
+                    <!-- Categorie WordPress -->
+                    <nav class="flex-grow">
+                        <ul class="flex flex-wrap gap-4">
+                            <?php
+                            $args = array(
+                                'parent' => 0, // Prende solo le categorie principali
+                                'exclude' => get_cat_ID('senza categoria'), // Esclude la categoria "senza categoria"
+                                'hide_empty' => false // Mostra anche categorie senza post
+                            );
+                            $categories = get_categories($args);
+                            foreach ($categories as $category) {
+                                echo '<li class="category-item"><a href="' . get_category_link($category->term_id) . '" class="text-gray-700 hover:text-gray-900 font-semibold">' . $category->name . '</a></li>';
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                    <!-- Barra di ricerca -->
+                    <div class="flex w-full max-w-sm justify-center">
+                        <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
+                            class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
+                                class="fill-black ml-4">
+                                <path
+                                    d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
+                            </svg>
+                            <input type="search" name="s" placeholder="Cerca..."
+                                class="w-full px-4 py-2 bg-[#e2e2e2] placeholder-gray-400 search-input" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu mobile (nascosto di default) -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="mobile-menu-header">
+                    <div class="mobile-logo">
+                        <?php
+                        if (function_exists('the_custom_logo')) {
+                            the_custom_logo();
+                        }
+                        ?>
+                    </div>
+                    <span class="close-menu" id="close-menu">&times;</span>
+                </div>
+                <div class="mobile-menu-content">
+                    <div class="mobile-menu-categories">
+                        <?php
+                        $args = array(
+                            'parent' => 0, // Prende solo le categorie principali
+                            'exclude' => get_cat_ID('senza categoria'), // Esclude la categoria "senza categoria"
+                            'hide_empty' => false // Mostra anche categorie senza post
+                        );
+                        $categories = get_categories($args);
+                        foreach ($categories as $category) {
+                            echo '<a href="' . get_category_link($category->term_id) . '"class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">' . $category->name . '</a>';
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="mobile-menu-footer">
+                    <p>Sei un giornalista?</p>
+                    <a href="https:\\universome.unime.it\login">
+                        <button
+                            class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
+                            style="border: none;">Accedi</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Form di ricerca mobile (nascosto di default) -->
+            <div class="hidden md:hidden" id="mobile-search">
+                <div class="p-4">
+                    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
+                        class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
+                            class="fill-black ml-4">
+                            <path
+                                d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
+                        </svg>
+                        <input type="search" name="s" placeholder="Cerca..."
+                            class="w-full px-4 py-3 bg-[#e2e2e2] text-black placeholder-gray-600 search-input" />
+                    </form>
+                </div>
+            </div>
     </div>
 
-    <!-- Categorie e barra di ricerca -->
-    <div class="header-bottom bg-white">
-        <div class="container mx-auto px-4 flex justify-between items-center py-4">
-            <!-- Categorie WordPress -->
-            <nav class="flex-grow">
-                <ul class="flex flex-wrap gap-4">
-                    <?php
-                    $args = array(
-                        'parent' => 0, // Prende solo le categorie principali
-                        'exclude' => get_cat_ID('senza categoria'), // Esclude la categoria "senza categoria"
-                        'hide_empty' => false // Mostra anche categorie senza post
-                    );
-                    $categories = get_categories($args);
-                    foreach ($categories as $category) {
-                        echo '<li class="category-item"><a href="' . get_category_link($category->term_id) . '" class="text-gray-700 hover:text-gray-900 font-semibold">' . $category->name . '</a></li>';
-                    }
-                    ?>
-                </ul>
-            </nav>
-            <!-- Barra di ricerca -->
-            <div class="flex w-full max-w-sm justify-center">
-                <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
-                    class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
-                        class="fill-black ml-4">
-                        <path
-                            d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
-                    </svg>
-                    <input type="search" name="s" placeholder="Cerca..."
-                        class="w-full px-4 py-2 bg-[#e2e2e2] placeholder-gray-400 search-input" />
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <!-- Menu mobile (nascosto di default) -->
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-    <div class="hidden md:hidden" id="mobile-menu">
-        <div class="mobile-menu-header">
-            <div class="mobile-logo">
-                <?php
-                if (function_exists('the_custom_logo')) {
-                    the_custom_logo();
-                }
-                ?>
-            </div>
-            <span class="close-menu" id="close-menu">&times;</span>
-        </div>
-        <div class="mobile-menu-content">
-            <div class="mobile-menu-categories">
-                <?php
-                $args = array(
-                    'parent' => 0, // Prende solo le categorie principali
-                    'exclude' => get_cat_ID('senza categoria'), // Esclude la categoria "senza categoria"
-                    'hide_empty' => false // Mostra anche categorie senza post
-                );
-                $categories = get_categories($args);
-                foreach ($categories as $category) {
-                    echo '<a href="' . get_category_link($category->term_id) . '"class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">' . $category->name . '</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="mobile-menu-footer">
-            <p>Sei un giornalista?</p>
-            <a href="https:\\universome.unime.it\login">
-                <button
-                    class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
-                    style="border: none;">Accedi</button>
-            </a>
-        </div>
-    </div>
-
-    <!-- Form di ricerca mobile (nascosto di default) -->
-    <div class="hidden md:hidden" id="mobile-search">
-        <div class="p-4">
-            <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
-                class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
-                    class="fill-black ml-4">
-                    <path
-                        d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
-                </svg>
-                <input type="search" name="s" placeholder="Cerca..."
-                    class="w-full px-4 py-3 bg-[#e2e2e2] text-black placeholder-gray-600 search-input" />
-            </form>
-        </div>
-    </div>
     </header>
     </div>
     <?php wp_footer(); // Hook di WordPress per inserire script prima della chiusura del <body> ?>

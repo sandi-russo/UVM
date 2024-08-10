@@ -139,3 +139,27 @@ document.addEventListener('scroll', function () {
         shareButton.classList.remove('visible');
     }
 });
+
+
+
+
+document.addEventListener('scroll', function () {
+    const backToTopButton = document.querySelector('.fixed-back-to-top');
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = (scrollPosition / documentHeight) * 100;
+
+    // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
+    if (scrollPercentage > 5 && scrollPercentage < 95) {
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+    }
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
