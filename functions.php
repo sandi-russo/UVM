@@ -12,6 +12,93 @@ if (!defined('_S_VERSION')) {
     define('_S_VERSION', '1.0.0');
 }
 
+
+function custom_user_profile_fields($user){
+    if(is_object($user)) {
+        $instagram = esc_attr( get_the_author_meta( 'instagram', $user->ID ) );
+        $twitter = esc_attr( get_the_author_meta( 'twitter', $user->ID ) );
+        $linkedin = esc_attr( get_the_author_meta( 'linkedin', $user->ID ) );
+    }
+    else {
+        $instagram = null;
+        $twitter = null;
+        $linkedin = null;
+    }
+    ?>
+    <h3>Informazioni social</h3>
+    <table class="form-table">
+    <!-- Instagram -->
+    <tr>
+        <th><label for="instagram"><?php _e("Instagram", "my_domain"); ?></label></th>
+        <td>
+            <input type="text" class="regular-text" name="instagram" value="<?php echo esc_attr($instagram); ?>" id="instagram" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo Instagram."); ?></span>
+        </td>
+    </tr>
+
+    <!-- Twitter -->
+    <tr>
+        <th><label for="twitter"><?php _e("Twitter", "my_domain"); ?></label></th>
+        <td>
+            <input type="text" class="regular-text" name="twitter" value="<?php echo esc_attr($twitter); ?>" id="twitter" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo Twitter."); ?></span>
+        </td>
+    </tr>
+
+    <!-- LinkedIn -->
+    <tr>
+        <th><label for="linkedin"><?php _e("LinkedIn", "my_domain"); ?></label></th>
+        <td>
+            <input type="text" class="regular-text" name="linkedin" value="<?php echo esc_attr($linkedin); ?>" id="linkedin" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo LinkedIn."); ?></span>
+        </td>
+    </tr>
+</table>
+
+<?php
+}
+add_action( 'show_user_profile', 'custom_user_profile_fields' );
+add_action( 'edit_user_profile', 'custom_user_profile_fields' );
+add_action( "user_new_form", "custom_user_profile_fields" );
+
+
+function save_custom_user_profile_fields($user_id){
+    # again do this only if you can
+    if(!current_user_can('manage_options'))
+        return false;
+
+    # save my custom field
+    update_user_meta($user_id, 'instagram', $_POST['instagram']);
+    update_user_meta($user_id, 'twitter', $_POST['twitter']);
+    update_user_meta($user_id, 'linkedin', $_POST['linkedin']);
+}
+add_action('user_register', 'save_custom_user_profile_fields');
+add_action('profile_update', 'save_custom_user_profile_fields');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Header title */
 function custom_title($title) {
     // Prepend "UVM | " to every title

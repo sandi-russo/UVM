@@ -710,6 +710,10 @@ video {
   display: inline-flex;
 }
 
+.table {
+  display: table;
+}
+
 .grid {
   display: grid;
 }
@@ -1910,6 +1914,7 @@ nav ul {
   justify-content: center;
   align-items: center;
   text-align: justify;
+  font-size: 1.5rem;
 }
 
 .entry-content img {
@@ -1920,6 +1925,10 @@ nav ul {
 .side_img {
   height: 120px;
   width: auto;
+}
+
+.entry-content p {
+  font-size: 1.2rem;
 }
 
 .side_text {
@@ -1942,6 +1951,30 @@ nav ul {
   display: inline-block;
   /* Mantiene il capolettera all'interno del blocco */
   color: #ff8800;
+}
+
+.fixed-share-button {
+  position: fixed;
+  bottom: -100px;
+  /* Nasconde il pulsante inizialmente fuori dallo schermo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background-color: #ff8800;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: bottom 0.5s ease;
+  /* Animazione di scorrimento dal basso verso l'alto */
+}
+
+.fixed-share-button.visible {
+  bottom: 20px;
+  /* Posizione finale del pulsante quando è visibile */
 }
 
 /* MEDIA QUERY */
@@ -2076,28 +2109,12 @@ nav ul {
     right: 10px;
   }
 
-  .fixed-share-button {
-    position: fixed;
-    bottom: -100px;
-    /* Nasconde il pulsante inizialmente fuori dallo schermo */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    background-color: #ff8800;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: bottom 0.5s ease;
-    /* Animazione di scorrimento dal basso verso l'alto */
+  .entry-content {
+    font-size: 1.2rem;
   }
 
-  .fixed-share-button.visible {
-    bottom: 20px;
-    /* Posizione finale del pulsante quando è visibile */
+  .entry-content p {
+    font-size: 1rem;
   }
 }
 
