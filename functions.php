@@ -13,6 +13,42 @@ if (!defined('_S_VERSION')) {
 }
 
 
+/* Ricerca AJAX */
+function live_search() {
+    $search_query = isset($_GET['query']) ? esc_attr($_GET['query']) : '';
+
+    $query = new WP_Query(array(
+        's' => $search_query,
+        'posts_per_page' => 5,
+    ));
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post(); ?>
+            <div class="search-card">
+                <?php if (has_post_thumbnail()) : ?>
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('medium', ['class' => 'search-card-image']); ?>
+                    </a>
+                <?php endif; ?>
+                <h3 class="search-card-title">
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                </h3>
+            </div>
+        <?php endwhile;
+    else :
+        echo '<p>Nessun risultato trovato.</p>';
+    endif;
+
+    wp_die();
+}
+add_action('wp_ajax_nopriv_live_search', 'live_search');
+add_action('wp_ajax_live_search', 'live_search');
+
+
+
+
+
+
 function custom_user_profile_fields($user){
     if(is_object($user)) {
         $instagram = esc_attr( get_the_author_meta( 'instagram', $user->ID ) );

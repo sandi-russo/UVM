@@ -71,7 +71,7 @@ function updateDateTime() {
 updateDateTime();
 setInterval(updateDateTime, 60000);
 
-
+// Hambuger Menu
 document.addEventListener('DOMContentLoaded', function () {
     // Toggle del menu mobile
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuOverlay.addEventListener('click', closeMenuFunc);
 });
 
-
+// Ricerca mobile
 document.addEventListener('DOMContentLoaded', function () {
     // Toggle del menu mobile
     const mobileMenuButton = document.getElementById('mobile-search-button');
@@ -152,6 +152,7 @@ function shareArticle() {
     }
 }
 
+/* Pulsante per condividere un articolo */
 document.addEventListener('scroll', function () {
     const shareButton = document.querySelector('.fixed-share-button');
     const scrollPosition = window.scrollY;
@@ -166,9 +167,7 @@ document.addEventListener('scroll', function () {
     }
 });
 
-
-
-
+/* Pulsante per tornare in cima alla pagina */
 document.addEventListener('scroll', function () {
     const backToTopButton = document.querySelector('.fixed-back-to-top');
     const scrollPosition = window.scrollY;
@@ -190,7 +189,7 @@ function scrollToTop() {
     });
 }
 
-
+/* Calcolo automatico padding da lasciare sotto la sticky header */
 document.addEventListener("DOMContentLoaded", function() {
     var header = document.querySelector('.header');
     var content = document.querySelector('main, .content, .primary-content .primary .site_container');
@@ -205,4 +204,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
     window.addEventListener('resize', adjustContentPadding);
+});
+
+/* Ricerca AJAX */
+document.addEventListener("DOMContentLoaded", function() {
+    var searchInput = document.getElementById('live-search');
+    var resultsContainer = document.getElementById('search-results');
+    var searchForm = searchInput.closest('form');
+
+    searchInput.addEventListener('input', function() {
+        var query = searchInput.value;
+
+        if (query.length > 2) { // Avvia la ricerca solo se ci sono almeno 3 caratteri
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/wp-admin/admin-ajax.php?action=live_search&query=' + encodeURIComponent(query), true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    resultsContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        } else {
+            resultsContainer.innerHTML = '';
+        }
+    });
+
+    // Gestisce il submit del form per la ricerca normale
+    searchForm.addEventListener('submit', function(event) {
+        if (searchInput.value.length > 2) {
+            // Esegui la ricerca normale se il campo di ricerca non è vuoto
+            return true;
+        } else {
+            event.preventDefault(); // Blocca la ricerca se il campo è vuoto o non ha abbastanza caratteri
+        }
+    });
 });

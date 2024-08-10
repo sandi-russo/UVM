@@ -258,6 +258,7 @@
             <div class="mobile-search-overlay" id="mobile-search-overlay"></div>
             <div class="hidden md:hidden" id="mobile-search">
                 <div class="mobile-search-header">
+                    <span class="close-search" id="close-search">&times;</span>
                     <div class="mobile-logo">
                         <?php
                         if (function_exists('the_custom_logo')) {
@@ -265,7 +266,6 @@
                         }
                         ?>
                     </div>
-                    <span class="close-search" id="close-search">&times;</span>
                 </div>
                 <div class="mobile-search-content">
                     <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
@@ -275,9 +275,31 @@
                             <path
                                 d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
                         </svg>
-                        <input type="search" name="s" placeholder="Cerca..."
+                        <input type="text" id="live-search" name="s" placeholder="Cerca..." autocomplete="off"
                             class="w-full px-4 py-3 bg-[#e2e2e2] text-black placeholder-gray-600 search-input" />
                     </form>
+                    <div id="search-results">
+                        <?php
+                        if (have_posts()):
+                            while (have_posts()):
+                                the_post(); ?>
+                                <div class="search-card">
+                                    <?php if (has_post_thumbnail()): ?>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail('medium', ['class' => 'search-card-image']); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    <h3 class="search-card-title">
+                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                    </h3>
+                                </div>
+                            <?php endwhile;
+                        else: ?>
+                            <p><?php _e('Nessun risultato trovato.'); ?></p>
+                        <?php endif; ?>
+                    </div>
+
+
                 </div>
                 <div class="mobile-search-footer">
                     <p>Sei un giornalista?</p>
