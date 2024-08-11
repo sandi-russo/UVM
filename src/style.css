@@ -100,6 +100,159 @@ img {
 }
 
 /* HEADER */
+
+/* Header Sticky */
+.sticky-header {
+	position: fixed;
+	width: 100%;
+	top: -100%;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	background-color: #ffffff;
+	transition: top 0.3s ease-in-out;
+}
+
+.sticky-header.show {
+	top: 0;
+	box-shadow: 0 5px 5px -5px #333;
+}
+
+.sticky-header-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	padding: 10px 20px;
+}
+
+.sticky-logo,
+.sticky-search {
+	flex: 0 0 300px;
+	/* Imposta una larghezza fissa di 300px */
+	display: flex;
+	align-items: center;
+}
+
+.sticky-custom-logo {
+	width: 100%;
+	/* Fa sì che il logo occupi tutto lo spazio disponibile nel suo contenitore */
+	height: auto;
+	display: block;
+	max-width: 200px;
+	margin: 0 auto;
+	/* Centra il logo nel suo contenitore */
+}
+
+.sticky-custom-logo img {
+	width: 100%;
+	/* Assicura che l'immagine del logo si adatti al contenitore */
+	height: auto;
+	max-width: 200px;
+}
+
+.sticky-categories {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	/* Assicura che il div occupi tutta l'altezza disponibile */
+	padding: 0;
+	/* Rimuove qualsiasi padding */
+	margin: 0;
+	/* Rimuove qualsiasi margin */
+}
+
+.sticky-categories ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style-type: none;
+	/* Rimuove i punti elenco */
+	padding: 0;
+	/* Rimuove il padding predefinito della lista */
+	margin: 0;
+	/* Rimuove il margin predefinito della lista */
+	height: 100%;
+	/* Occupa tutta l'altezza disponibile */
+}
+
+.sticky-category-item {
+	display: flex;
+	align-items: center;
+	/* Centra verticalmente il contenuto */
+	height: 100%;
+	/* Occupa tutta l'altezza disponibile */
+	margin: 0 10px;
+	/* Aggiunge spazio orizzontale tra gli elementi */
+}
+
+.sticky-category-item a {
+	font-weight: 500;
+	color: gray;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	/* Centra verticalmente il testo */
+	height: 100%;
+	/* Occupa tutta l'altezza disponibile */
+	padding: 0 5px;
+	/* Aggiunge un po' di padding orizzontale */
+}
+
+.sticky-search form {
+	width: 100%;
+	max-width: 200px;
+	/* Limita la larghezza massima del form di ricerca */
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.sticky-search input[type="search"] {
+	width: 100%;
+	padding: 8px 12px;
+	background-color: #e2e2e2;
+	color: black;
+	border: none;
+	border-radius: 20px;
+}
+
+.sticky-search input[type="search"]::placeholder {
+	color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Stile aggiuntivo per garantire che l'header normale non interferisca con quello sticky */
+.header {
+	position: relative;
+	z-index: 50;
+}
+
+/* Nascondi lo sticky header */
+.hidden {
+	display: none;
+}
+
+/* Mostra lo sticky header */
+.flex {
+	display: flex;
+}
+
+
 .mobile-last-modified {
 	display: none;
 	background-color: #ff8800;
@@ -265,15 +418,85 @@ nav ul {
 	flex-wrap: wrap;
 }
 
-.category-item a {
-	margin: auto;
-	font-weight: 600;
-	/* Semi-bold */
-	color: #787878;
-	/* Grigio */
-	text-decoration: none;
-	/* Rimuove la sottolineatura dai link */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Stili per il sottomenu */
+.category-item {
+    position: relative;
 }
+
+.subcategory-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Ridotto il tempo di transizione per una risposta più rapida */
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.subcategory-menu.visible {
+    display: block;
+    opacity: 1;
+}
+
+.category-item:hover .subcategory-menu {
+    display: block; /* Mostra il sottomenu al passaggio del mouse */
+    opacity: 1; /* Rendi visibile il sottomenu */
+}
+
+/* Stili per ciascuna sottocategoria */
+.subcategory-menu li {
+    white-space: nowrap; /* Per evitare che il testo vada a capo */
+    padding: 5px; /* Spazio interno per ogni voce del sottomenu */
+    border-bottom: 1px solid #eeeeee; /* Separatore tra le sottocategorie */
+}
+
+/* Rimuovi il bordo inferiore dall'ultimo elemento */
+.subcategory-menu li:last-child {
+    border-bottom: none;
+}
+
+/* Aggiungi uno stato attivo per evitare che il sottomenu scompaia troppo presto */
+.category-item:hover .subcategory-menu {
+    display: block; /* Mostra il sottomenu al passaggio del mouse */
+    opacity: 1; /* Rendi visibile il sottomenu */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Ricerca mobile */
 .mobile-search-overlay {
@@ -300,13 +523,16 @@ nav ul {
 	margin: 0;
 	position: fixed;
 	top: 0;
-	right: -300px; /* Sposta il pannello fuori schermo a destra */
+	right: -300px;
+	/* Sposta il pannello fuori schermo a destra */
 	width: 300px;
 	height: 100%;
 	background-color: white;
 	z-index: 1000;
-	border-top-left-radius: 10px; /* Modifica il bordo per sinistra */
-	border-bottom-left-radius: 10px; /* Modifica il bordo per sinistra */
+	border-top-left-radius: 10px;
+	/* Modifica il bordo per sinistra */
+	border-bottom-left-radius: 10px;
+	/* Modifica il bordo per sinistra */
 	display: flex;
 	flex-direction: column;
 	transition: right 0.3s ease;
@@ -372,47 +598,47 @@ nav ul {
 }
 
 #search-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+	padding: 10px;
 }
 
 .search-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-    text-align: center;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transition: transform 0.2s ease-in-out;
+	text-align: center;
 }
 
 .search-card:hover {
-    transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 .search-card-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-bottom: 1px solid #e5e5e5;
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 .search-card-title {
-    padding: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
+	padding: 15px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
 }
 
 .search-card-title a {
-    color: inherit;
-    text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 .search-card-title a:hover {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 
@@ -637,21 +863,6 @@ nav ul {
 	bottom: 20px;
 	/* Posizione finale del pulsante quando è visibile */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .footer-icon {
@@ -930,6 +1141,16 @@ nav ul {
 }
 
 
+/* Bottone ricerca  */ 
+#mobile-search-button {
+	display: none;
+}
+
+/* Bottone menu */
+#mobile-menu-button {
+	display: none;
+}
+
 /* MEDIA QUERY */
 /* Media query per schermi più grandi di 768px */
 @media (min-width: 768px) {
@@ -940,6 +1161,12 @@ nav ul {
 
 /*Fino a 768px di larghezza*/
 @media screen and (max-width: 768px) {
+
+    .custom-logo {
+        max-width: 150px;
+        margin: 0 auto;
+        z-index: 25;
+    }
 
 	.articolo {
 		padding: 0px 5px 5px 5px;
@@ -971,12 +1198,6 @@ nav ul {
 	.category_name {
 		font-size: 1.4rem;
 	}
-
-	.mobile-last-modified {
-		display: block;
-		max-height: 25px;
-	}
-
 	.swiper-container {
 		height: 220px;
 	}
@@ -1033,53 +1254,6 @@ nav ul {
 		box-shadow: none;
 	}
 
-	.header {
-		position: fixed;
-		background-color: white;
-		width: 100%;
-		box-shadow: 0 5px 5px -5px #333;
-	}
-
-	.header-top {
-		background: none;
-		padding: 5px;
-		max-height: 48px;
-	}
-
-	.header-bottom {
-		display: none;
-	}
-
-	.container {
-		top: 0;
-		z-index: 1000;
-	}
-
-	.header-top .container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-		z-index: 1;
-	}
-
-	.custom-logo {
-		max-width: 150px;
-		margin: 0 auto;
-		z-index: 25;
-	}
-
-	#mobile-menu-button {
-		position: absolute;
-		left: 10px;
-	}
-
-	#mobile-search-button {
-		position: absolute;
-		right: 10px;
-	}
-
-
 	.entry-content {
 		font-size: 1.2rem;
 	}
@@ -1097,6 +1271,64 @@ nav ul {
 
 /*Fino a 980px di larghezza*/
 @media screen and (max-width: 980px) {
+
+	.mobile-last-modified {
+		display: block;
+		max-height: 25px;
+	}
+
+	.header {
+		position: fixed;
+		background-color: white;
+		width: 100%;
+		box-shadow: 0 5px 5px -5px #333;
+	}
+
+	.header-top {
+		background: none;
+		padding: 5px;
+		max-height: 80px;
+	}
+
+	.header-bottom {
+		display: none;
+	}
+
+	.container {
+		top: 0;
+		z-index: 1000;
+	}
+
+	.header-top .container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		z-index: 1;
+		max-height: 250px;
+	}
+
+	.custom-logo {
+		max-width: 200px;
+		margin: 0 auto;
+		z-index: 25;
+	}
+
+	#mobile-menu-button {
+		display: block;
+		position: absolute;
+		left: 10px;
+	}
+
+	#mobile-search-button {
+		display: block;
+		position: absolute;
+		right: 10px;
+	}
+
+	.sticky-header {
+		display: none;
+	}
 
 	.nav-element {
 		display: none;

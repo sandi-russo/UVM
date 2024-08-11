@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function adjustContentPadding() {
         var headerHeight = header.offsetHeight;
 
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 980) {
             content.style.paddingTop = headerHeight + 'px';
         } else {
             content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 768px
@@ -245,3 +245,71 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+/* Sticky Header*/
+
+window.onscroll = function () {
+    var stickyHeader = document.getElementById("sticky-header");
+    if (window.pageYOffset > 100) {
+        stickyHeader.classList.add("show");
+    } else {
+        stickyHeader.classList.remove("show");
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryItems = document.querySelectorAll('.category-item');
+
+    categoryItems.forEach(item => {
+        const link = item.querySelector('a');
+        const submenu = item.querySelector('.subcategory-menu');
+
+        if (submenu) {
+            // Mostra il sottomenu al passaggio del mouse
+            item.addEventListener('mouseenter', () => {
+                submenu.classList.add('visible');
+            });
+
+            // Nasconde il sottomenu quando il mouse esce dall'elemento
+            item.addEventListener('mouseleave', () => {
+                // Usa un timeout per gestire il ritardo del nascondimento
+                setTimeout(() => {
+                    if (!submenu.matches(':hover') && !item.matches(':hover')) {
+                        submenu.classList.remove('visible');
+                    }
+                }, 200); // Aggiungi un breve ritardo per evitare che scompaia subito
+            });
+
+            // Rimuovi il gestore dell'evento click, per permettere la navigazione
+            // link.addEventListener('click', (e) => {
+            //     if (window.innerWidth > 768) { // Solo per desktop
+            //         e.preventDefault(); // Impedisce la navigazione solo su desktop
+            //         submenu.classList.toggle('visible');
+            //     }
+            // });
+        }
+    });
+});
+
+

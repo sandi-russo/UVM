@@ -36,96 +36,86 @@
         ?>
     </title>
 
-    <?php wp_head(); // Hook di WordPress per inserire script e stili nel <head> ?>
+    <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); // Aggiunge classi al tag <body> basate sul contesto della pagina ?>>
+<body <?php body_class(); ?>>
 
-    <?php wp_body_open(); // Hook di WordPress per inserire contenuti subito dopo l'apertura del <body> ?>
+    <?php wp_body_open(); ?>
     <div id="page" class="site">
         <a class="skip-link screen-reader-text"
             href="#primary"><?php esc_html_e('Skip to content', 'universome'); ?></a>
 
+        <!-- Header principale -->
         <header class="header w-full z-50">
-
-
             <div class="mobile-last-modified">
                 <span class="update-label">Ultimo aggiornamento: </span>
                 <span class="update-time">
                     <?php
-                    // Query per ottenere l'ultimo post modificato
                     $recent = new WP_Query([
-                        'post_type' => 'any', // Include tutti i tipi di post
-                        'posts_per_page' => 1, // Limita a un risultato
-                        'orderby' => 'modified', // Ordina per data di modifica
-                        'order' => 'DESC', // Dal più recente al più vecchio
+                        'post_type' => 'any',
+                        'posts_per_page' => 1,
+                        'orderby' => 'modified',
+                        'order' => 'DESC',
                     ]);
 
                     if ($recent->have_posts()) {
                         $recent->the_post();
-                        // Mostra la data dell'ultimo post modificato
                         echo get_the_modified_time('d/m/Y, H:i');
                     }
-                    wp_reset_postdata(); // Ripristina il contesto del post originale
+                    wp_reset_postdata();
                     ?>
                 </span>
             </div>
-
 
             <div class="header-top">
                 <div class="container mx-auto justify-between items-center">
                     <!-- Logo e menu mobile -->
                     <div class="flex items-center">
-                        <!-- Hamburger menu per mobile -->
-                        <button class="md:hidden" id="mobile-menu-button">
+                        <button id="mobile-menu-button">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <!-- Logo -->
                         <a href="<?php echo home_url(); ?>">
                             <?php if (function_exists('the_custom_logo')): ?>
                                 <div class="custom-logo">
-                                    <?php the_custom_logo(); // Mostra il logo personalizzato ?>
+                                    <?php the_custom_logo(); ?>
                                 </div>
                             <?php endif; ?>
                         </a>
                     </div>
 
-                    <!-- Data e ora (visibili solo su desktop) -->
                     <div class="nav-element" id="current-date-time">
-                        <?php echo date('d/m/Y'); // Mostra la data corrente ?>
+                        <?php echo date('d/m/Y'); ?>
                     </div>
                     <div class="nav-element" id="current-time">
-                        <?php echo date('H:i'); // Mostra l'ora corrente ?>
+                        <?php echo date('H:i'); ?>
                     </div>
                     <div class="nav-element" id="last-modified">
                         <?php
-                        // Query per ottenere l'ultimo post modificato
                         $recent = new WP_Query([
-                            'post_type' => 'any', // Include tutti i tipi di post
-                            'posts_per_page' => 1, // Limita a un risultato
-                            'orderby' => 'modified', // Ordina per data di modifica
-                            'order' => 'DESC', // Dal più recente al più vecchio
+                            'post_type' => 'any',
+                            'posts_per_page' => 1,
+                            'orderby' => 'modified',
+                            'order' => 'DESC',
                         ]);
 
                         if ($recent->have_posts()) {
                             $recent->the_post();
-                            // Mostra la data dell'ultimo post modificato
                             echo get_the_modified_time('d/m/Y, H:i');
                         }
-                        wp_reset_postdata(); // Ripristina il contesto del post originale
+                        wp_reset_postdata();
                         ?>
                     </div>
 
-
                     <!-- Icone social e ricerca mobile -->
                     <div class="flex items-center">
-                        <!-- Icone social (visibili solo su desktop) -->
                         <div class="hidden md:flex">
                             <div class="nav_ico">
+
                                 <a href="https://www.facebook.com/UniVersoMessina">
                                     <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24">
@@ -159,25 +149,26 @@
                                         <g fill="none" stroke="currentColor" stroke-linecap="round"
                                             stroke-linejoin="round" stroke-width="1.5">
                                             <path d="M7 15s4.5-1 9 1m-9.5-4s6-1.5 11 1.5M6 9c3-.5 8-1 13 2" />
-                                            <path
-                                                d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10" />
+                                            <path d="M12 22.5a10.5 10.5 0 1 0 0-21a10.5 10.5 0 0 0 0 21Z" />
                                         </g>
                                     </svg>
                                 </a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Icona ricerca per mobile -->
-                    <button class="md:hidden" id="mobile-search-button">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </button>
+                        <!-- Icona ricerca per mobile -->
+                        <button id="mobile-search-button">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35m2.65-5.65a7 7 0 1 1-14 0a7 7 0 0 1 14 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
+
+
 
             <!-- Categorie e barra di ricerca -->
             <div class="header-bottom bg-white">
@@ -194,7 +185,27 @@
                             );
                             $categories = get_categories($args);
                             foreach ($categories as $category) {
-                                echo '<li class="category-item"><a href="' . get_category_link($category->term_id) . '" class="text-gray-700 hover:text-gray-900 font-semibold">' . $category->name . '</a></li>';
+                                $subcategories = get_categories(array('parent' => $category->term_id, 'hide_empty' => false));
+                                $has_subcategories = !empty($subcategories);
+
+                                echo '<li class="category-item relative">';
+                                echo '<a href="' . get_category_link($category->term_id) . '" class="text-gray-700 hover:text-gray-900 font-semibold flex items-center">' . $category->name;
+
+                                if ($has_subcategories) {
+                                    echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ml-1 w-4 h-4"><path fill="currentColor" d="M10.103 12.778L16.81 6.08a.69.69 0 0 1 .99.012a.726.726 0 0 1-.012 1.012l-7.203 7.193a.69.69 0 0 1-.985-.006L2.205 6.72a.727.727 0 0 1 0-1.01a.69.69 0 0 1 .99 0z"/></svg>';
+                                }
+
+                                echo '</a>';
+
+                                if ($has_subcategories) {
+                                    echo '<ul class="subcategory-menu absolute left-0 mt-2 py-2 bg-white shadow-lg rounded-md hidden">';
+                                    foreach ($subcategories as $subcategory) {
+                                        echo '<li><a href="' . get_category_link($subcategory->term_id) . '" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">' . $subcategory->name . '</a></li>';
+                                    }
+                                    echo '</ul>';
+                                }
+
+                                echo '</li>';
                             }
                             ?>
                         </ul>
@@ -219,6 +230,8 @@
             <!-- Menu mobile (nascosto di default) -->
             <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
             <div class="hidden md:hidden" id="mobile-menu">
+
+                <!-- Header hamburger menu -->
                 <div class="mobile-menu-header">
                     <div class="mobile-logo">
                         <?php
@@ -229,6 +242,8 @@
                     </div>
                     <span class="close-menu" id="close-menu">&times;</span>
                 </div>
+
+                <!-- Contenuto hamburger menu -->
                 <div class="mobile-menu-content">
                     <div class="mobile-menu-categories">
                         <?php
@@ -244,6 +259,8 @@
                         ?>
                     </div>
                 </div>
+
+                <!-- Footer hamburger menu -->
                 <div class="mobile-menu-footer">
                     <p>Sei un giornalista?</p>
                     <a href="https:\\universome.unime.it\login">
@@ -257,6 +274,8 @@
             <!-- Form di ricerca mobile (nascosto di default) -->
             <div class="mobile-search-overlay" id="mobile-search-overlay"></div>
             <div class="hidden md:hidden" id="mobile-search">
+
+                <!-- Header ricerca -->
                 <div class="mobile-search-header">
                     <span class="close-search" id="close-search">&times;</span>
                     <div class="mobile-logo">
@@ -267,6 +286,8 @@
                         ?>
                     </div>
                 </div>
+
+                <!-- Risultati di ricerca -->
                 <div class="mobile-search-content">
                     <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
                         class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
@@ -278,6 +299,7 @@
                         <input type="text" id="live-search" name="s" placeholder="Cerca..." autocomplete="off"
                             class="w-full px-4 py-3 bg-[#e2e2e2] text-black placeholder-gray-600 search-input" />
                     </form>
+                    <span>Inserisci almeno 3 caratteri.</span>
                     <div id="search-results">
                         <?php
                         if (have_posts()):
@@ -298,9 +320,9 @@
                             <p><?php _e('Nessun risultato trovato.'); ?></p>
                         <?php endif; ?>
                     </div>
-
-
                 </div>
+
+                <!-- Footer ricerca -->
                 <div class="mobile-search-footer">
                     <p>Sei un giornalista?</p>
                     <a href="https:\\universome.unime.it\login">
@@ -311,11 +333,67 @@
                 </div>
             </div>
 
+
+
+            <!-- Sticky Header -->
+            <div id="sticky-header" class="sticky-header">
+                <div class="sticky-header-content site_container">
+                    <div class="sticky-logo">
+                        <a href="<?php echo home_url(); ?>">
+                            <?php if (function_exists('the_custom_logo')): ?>
+                                <div class="sticky-custom-logo">
+                                    <?php the_custom_logo(); ?>
+                                </div>
+                            <?php endif; ?>
+                        </a>
+                    </div>
+
+                    <!-- Categorie Wordpress -->
+                    <nav class="sticky-categories">
+                        <ul class="flex items-center">
+                            <?php
+                            $args = array(
+                                'parent' => 0,
+                                'exclude' => get_cat_ID('senza categoria'),
+                                'hide_empty' => false
+                            );
+                            $categories = get_categories($args);
+                            foreach ($categories as $category) {
+                                echo '<li class="sticky-category-item"><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+
+
+
+                    <!-- Barra di ricerca -->
+                    <div class="sticky-search">
+                        <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
+                            class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
+                                class="fill-black ml-4">
+                                <path
+                                    d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z" />
+                            </svg>
+                            <input type="search" name="s" placeholder="Cerca..."
+                                class="w-full px-4 py-2 bg-[#e2e2e2] placeholder-gray-400 search-input" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </header>
+
+
+
     </div>
 
 
-    </header>
-    </div>
     <?php wp_footer(); // Hook di WordPress per inserire script prima della chiusura del <body> ?>
 </body>
 
