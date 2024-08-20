@@ -311,119 +311,97 @@ add_action('wp_enqueue_scripts', 'enqueue_swiper');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
- * CUSTOM FIELD PAGINA ADMIN WP PER SOCIAL NETWORKS ED EMAIL
+* CAMPI PERSONALIZZATI
  */
-function custom_user_profile_fields($user)
-{
-    if (is_object($user)) {
-        $instagram = esc_attr(get_the_author_meta('instagram', $user->ID));
-        $twitter = esc_attr(get_the_author_meta('twitter', $user->ID));
-        $linkedin = esc_attr(get_the_author_meta('linkedin', $user->ID));
-        $unit = esc_attr(get_the_author_meta('unit', $user->ID));
-        $role = esc_attr(get_the_author_meta('role', $user->ID));
-    } else {
+function custom_user_profile_fields($user){
+    if(is_object($user)) {
+        $instagram = esc_attr( get_the_author_meta( 'instagram', $user->ID ) );
+        $twitter = esc_attr( get_the_author_meta( 'twitter', $user->ID ) );
+        $linkedin = esc_attr( get_the_author_meta( 'linkedin', $user->ID ) );
+        $unit = esc_attr( get_the_author_meta( 'unit', $user->ID ) );
+        $ruolo_uvm = esc_attr( get_the_author_meta( 'ruolo_uvm', $user->ID ) );
+    }
+    else {
         $instagram = null;
         $twitter = null;
         $linkedin = null;
         $unit = null;
-        $role = null;
+        $ruolo_uvm = null;
     }
     ?>
     <h3>Informazioni social</h3>
     <table class="form-table">
-        <!-- Instagram -->
-        <tr>
-            <th><label for="instagram"><?php _e("Instagram", "my_domain"); ?></label></th>
-            <td>
-                <input type="text" class="regular-text" name="instagram" value="<?php echo esc_attr($instagram); ?>"
-                    id="instagram" /><br />
-                <span class="description"><?php _e("Inserisci il tuo profilo Instagram."); ?></span>
-            </td>
-        </tr>
+    <!-- Instagram -->
+    <tr>
+        <th><label for="instagram"><?php _e("Instagram", "my_domain"); ?></label></th>
+        <td>
+            <input type="text" class="regular-text" name="instagram" value="<?php echo esc_attr($instagram); ?>" id="instagram" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo Instagram."); ?></span>
+        </td>
+    </tr>
 
-        <!-- Twitter -->
-        <tr>
-            <th><label for="twitter"><?php _e("Twitter", "my_domain"); ?></label></th>
-            <td>
-                <input type="text" class="regular-text" name="twitter" value="<?php echo esc_attr($twitter); ?>"
-                    id="twitter" /><br />
-                <span class="description"><?php _e("Inserisci il tuo profilo Twitter."); ?></span>
-            </td>
-        </tr>
+    <!-- Twitter -->
+    <tr>
+        <th><label for="twitter"><?php _e("Twitter", "my_domain"); ?></label></th>
+        <td>
+            <input type="text" class="regular-text" name="twitter" value="<?php echo esc_attr($twitter); ?>" id="twitter" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo Twitter."); ?></span>
+        </td>
+    </tr>
 
-        <!-- LinkedIn -->
-        <tr>
-            <th><label for="linkedin"><?php _e("LinkedIn", "my_domain"); ?></label></th>
-            <td>
-                <input type="text" class="regular-text" name="linkedin" value="<?php echo esc_attr($linkedin); ?>"
-                    id="linkedin" /><br />
-                <span class="description"><?php _e("Inserisci il tuo profilo LinkedIn."); ?></span>
-            </td>
-        </tr>
+    <!-- LinkedIn -->
+    <tr>
+        <th><label for="linkedin"><?php _e("LinkedIn", "my_domain"); ?></label></th>
+        <td>
+            <input type="text" class="regular-text" name="linkedin" value="<?php echo esc_attr($linkedin); ?>" id="linkedin" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo LinkedIn."); ?></span>
+        </td>
+    </tr>
 
-        <!-- Unit di appartenenza -->
-        <tr>
-            <th><label for="unit"><?php _e("Unit di appartenenza", "my_domain"); ?></label></th>
-            <td>
-                <select name="unit" id="unit" required>
-                    <option value="" disabled selected>-- Seleziona un'unit --</option>
-                    <option value="Giornale" <?php selected($unit, 'Giornale'); ?>>Giornale</option>
-                    <option value="Radio" <?php selected($unit, 'Radio'); ?>>Radio</option>
-                    <option value="Creativa / Grafica" <?php selected($unit, 'Creativa / Grafica'); ?>>Creativa / Grafica
-                    </option>
-                    <option value="Social" <?php selected($unit, 'Social'); ?>>Social</option>
-                    <option value="Informatica" <?php selected($unit, 'Informatica'); ?>>Informatica</option>
-                </select>
-            </td>
-        </tr>
+    <!-- Unit -->
+    <tr>
+        <th><label for="unit"><?php _e("Unità di appartenenza", "my_domain"); ?></label></th>
+        <td>
+            <select name="unit" id="unit">
+                <option value="">Seleziona un'unità</option>
+                <option value="giornale" <?php selected($unit, 'giornale'); ?>>Giornale</option>
+                <option value="radio" <?php selected($unit, 'radio'); ?>>Radio</option>
+                <option value="creativa_grafica" <?php selected($unit, 'creativa_grafica'); ?>>Creativa / Grafica</option>
+                <option value="social" <?php selected($unit, 'social'); ?>>Social</option>
+                <option value="informatica" <?php selected($unit, 'informatica'); ?>>Informatica</option>
+            </select>
+            <br />
+            <span class="description"><?php _e("Seleziona l'unità di appartenenza."); ?></span>
+        </td>
+    </tr>
 
-        <!-- Ruolo -->
-        <tr>
-            <th><label for="role"><?php _e("Ruolo", "my_domain"); ?></label></th>
-            <td>
-                <select name="role" id="role" required>
-                    <option value="" disabled selected>-- Seleziona un ruolo --</option>
-                    <option value="Caposervizio" <?php selected($role, 'Caposervizio'); ?>>Caposervizio</option>
-                    <option value="Redattore" <?php selected($role, 'Redattore'); ?>>Redattore</option>
-                    <option value="Responsabile Unit" <?php selected($role, 'Responsabile Unit'); ?>>Responsabile Unit
-                    </option>
-                    <option value="Coordinatrice UVM" <?php selected($role, 'Coordinatrice UVM'); ?>>Coordinatrice UVM
-                    </option>
-                </select>
-            </td>
-        </tr>
+    <!-- Ruolo UVM -->
+    <tr>
+        <th><label for="ruolo_uvm"><?php _e("Ruolo UVM", "my_domain"); ?></label></th>
+        <td>
+            <select name="ruolo_uvm" id="ruolo_uvm">
+                <option value="">Seleziona un ruolo</option>
+                <option value="caposervizio" <?php selected($ruolo_uvm, 'caposervizio'); ?>>Caposervizio</option>
+                <option value="redattore" <?php selected($ruolo_uvm, 'redattore'); ?>>Redattore</option>
+                <option value="responsabile_unit" <?php selected($ruolo_uvm, 'responsabile_unit'); ?>>Responsabile UNIT</option>
+                <option value="coordinatrice_uvm" <?php selected($ruolo_uvm, 'coordinatrice_uvm'); ?>>Coordinatrice UVM</option>
+            </select>
+            <br />
+            <span class="description"><?php _e("Seleziona il tuo ruolo UVM."); ?></span>
+        </td>
+    </tr>
+</table>
 
-
-    </table>
-
-    <?php
+<?php
 }
-add_action('show_user_profile', 'custom_user_profile_fields');
-add_action('edit_user_profile', 'custom_user_profile_fields');
-add_action("user_new_form", "custom_user_profile_fields");
+add_action( 'show_user_profile', 'custom_user_profile_fields' );
+add_action( 'edit_user_profile', 'custom_user_profile_fields' );
+add_action( "user_new_form", "custom_user_profile_fields" );
 
-
-function save_custom_user_profile_fields($user_id)
-{
+function save_custom_user_profile_fields($user_id){
     # again do this only if you can
-    if (!current_user_can('manage_options'))
+    if(!current_user_can('manage_options'))
         return false;
 
     # save my custom field
@@ -431,35 +409,40 @@ function save_custom_user_profile_fields($user_id)
     update_user_meta($user_id, 'twitter', $_POST['twitter']);
     update_user_meta($user_id, 'linkedin', $_POST['linkedin']);
     update_user_meta($user_id, 'unit', $_POST['unit']);
-    update_user_meta($user_id, 'role', $_POST['role']);
+    update_user_meta($user_id, 'ruolo_uvm', $_POST['ruolo_uvm']);
 }
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('profile_update', 'save_custom_user_profile_fields');
 
 
-/**
- * VERIFICO SE L'UTENTE HA INSERITO DESCRIZIONE E AVATAR
- * @return bool
- */
+/*
+VERIFICO SE L'UTENTE HA INSERITO DESCRIZIONE, AVATAR E UNITÀ/RUOLO
+*/
+
 function check_user_profile_completion() {
     $current_user = wp_get_current_user();
+    $user_description = get_user_meta($current_user->ID, 'description', true);
     $custom_avatar = get_user_meta($current_user->ID, 'custom_avatar', true);
     $unit = get_user_meta($current_user->ID, 'unit', true);
-    $role = get_user_meta($current_user->ID, 'role', true);
+    $ruolo_uvm = get_user_meta($current_user->ID, 'ruolo_uvm', true);
 
-    if (empty($custom_avatar) || empty($unit) || empty($role)) {
+    // Aggiungiamo un log per debug
+    error_log("Debug: User ID: " . $current_user->ID);
+    error_log("Debug: User Description: " . $user_description);
+    error_log("Debug: Custom Avatar: " . $custom_avatar);
+    error_log("Debug: Unit: " . $unit);
+    error_log("Debug: Ruolo UVM: " . $ruolo_uvm);
+
+    if (empty($user_description) || empty($custom_avatar) || empty($unit) || empty($ruolo_uvm)) {
         return false;
     }
     return true;
 }
 
-
-
 /**
  * ESEGUO IL REDIRECT SULLA PAGINA DEL PROFILO
  */
-function redirect_to_profile_page()
-{
+function redirect_to_profile_page() {
     if (is_admin() && !check_user_profile_completion() && !isset($_GET['page']) && $_SERVER['PHP_SELF'] != '/wp-admin/profile.php') {
         wp_redirect(admin_url('profile.php'));
         exit;
@@ -468,61 +451,38 @@ function redirect_to_profile_page()
 add_action('admin_init', 'redirect_to_profile_page');
 
 /**
- * MESSAGGIO DI AVVISO
+* MESSAGGIO DI AVVISO
  */
-function show_profile_completion_notice()
-{
+function show_profile_completion_notice() {
     if (!check_user_profile_completion()) {
         $class = 'notice notice-warning';
         $current_user = wp_get_current_user();
+        $user_description = get_user_meta($current_user->ID, 'description', true);
         $custom_avatar = get_user_meta($current_user->ID, 'custom_avatar', true);
         $unit = get_user_meta($current_user->ID, 'unit', true);
-        $role = get_user_meta($current_user->ID, 'role', true);
-
-        if (empty($custom_avatar) && empty($unit) && empty($role)) {
-            $message = __('Per favore, completa il tuo profilo aggiungendo un avatar personalizzato, l\'unit di appartenenza e il ruolo.', 'textdomain');
+        $ruolo_uvm = get_user_meta($current_user->ID, 'ruolo_uvm', true);
+        
+        if (empty($user_description) && empty($custom_avatar) && empty($unit) && empty($ruolo_uvm)) {
+            $message = __('Per favore, completa il tuo profilo aggiungendo le informazioni biografiche, un avatar personalizzato, la tua unità di appartenenza e il tuo ruolo UVM.', 'textdomain');
+        } elseif (empty($user_description)) {
+            $message = __('Per favore, completa il tuo profilo aggiungendo le informazioni biografiche.', 'textdomain');
         } elseif (empty($custom_avatar)) {
             $message = __('Per favore, completa il tuo profilo aggiungendo un avatar personalizzato.', 'textdomain');
         } elseif (empty($unit)) {
-            $message = __('Per favore, completa il tuo profilo selezionando l\'unit di appartenenza.', 'textdomain');
-        } elseif (empty($role)) {
-            $message = __('Per favore, completa il tuo profilo selezionando il tuo ruolo.', 'textdomain');
+            $message = __('Per favore, completa il tuo profilo selezionando la tua unità di appartenenza.', 'textdomain');
+        } elseif (empty($ruolo_uvm)) {
+            $message = __('Per favore, completa il tuo profilo selezionando il tuo ruolo UVM.', 'textdomain');
         }
-
+        
         printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
     }
 }
-
-
 add_action('admin_notices', 'show_profile_completion_notice');
 
-
-function add_profile_validation_script() {
-    ?>
-    <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $('form#your-profile').submit(function(e) {
-            var unit = $('#unit').val();
-            var role = $('#role').val();
-            
-            if (unit === "" || role === "") {
-                e.preventDefault();
-                alert("Per favore, seleziona sia l'unit di appartenenza che il ruolo.");
-            }
-        });
-    });
-    </script>
-    <?php
-}
-add_action('admin_footer', 'add_profile_validation_script');
-
-
-
 /**
- * NASCONDO SEZIONE AVATAR PREDEFINITA DI WP
+* NASCONDO SEZIONE AVATAR PREDEFINITA DI WP
  */
-function hide_default_avatar_section()
-{
+function hide_default_avatar_section() {
     echo '<style>
         .user-profile-picture,
         .user-profile-picture + .form-table {
@@ -536,8 +496,7 @@ add_action('admin_head-user-edit.php', 'hide_default_avatar_section');
 /**
  * AGGIUNGO CAMPO AVATAR PERSONALIZZATO
  */
-function add_custom_avatar_field($user)
-{
+function add_custom_avatar_field($user) {
     ?>
     <h2><?php _e('Avatar personalizzato', 'textdomain'); ?></h2>
     <table class="form-table">
@@ -551,9 +510,7 @@ function add_custom_avatar_field($user)
                 }
                 ?>
                 <input type="file" name="custom_avatar" id="custom_avatar" />
-                <p class="description">
-                    <?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata e di almeno 150x150 pixel. Dopo, premi su "Aggiorna profilo"', 'textdomain'); ?>
-                </p>
+                <p class="description"><?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata e di almeno 150x150 pixel. Dopo, premi su "Aggiorna profilo"', 'textdomain'); ?></p>
             </td>
         </tr>
     </table>
@@ -565,8 +522,7 @@ add_action('edit_user_profile', 'add_custom_avatar_field');
 /**
  * SALVA L'AVATAR PERSONALIZZATO
  */
-function save_custom_avatar($user_id)
-{
+function save_custom_avatar($user_id) {
     if (!current_user_can('edit_user', $user_id)) {
         return false;
     }
@@ -591,8 +547,7 @@ add_action('edit_user_profile_update', 'save_custom_avatar');
 
 
 
-function add_enctype_to_profile_form()
-{
+function add_enctype_to_profile_form() {
     echo ' enctype="multipart/form-data"';
 }
 add_action('user_edit_form_tag', 'add_enctype_to_profile_form');
@@ -600,8 +555,7 @@ add_action('user_edit_form_tag', 'add_enctype_to_profile_form');
 /**
  * DEBUG AVATAR UPLOAD
  */
-function debug_avatar_upload($user_id)
-{
+function debug_avatar_upload($user_id) {
     error_log('Debug: Tentativo di caricamento avatar per l\'utente ' . $user_id);
     if (isset($_FILES['custom_avatar'])) {
         error_log('Debug: File avatar presente');
@@ -618,22 +572,24 @@ add_action('edit_user_profile_update', 'debug_avatar_upload');
 /**
  * DEBUG SUL SALVATAGGIO DEL PROFILO
  */
-function debug_profile_save($user_id)
-{
+function debug_profile_save($user_id) {
     $user_description = get_user_meta($user_id, 'description', true);
     $custom_avatar = get_user_meta($user_id, 'custom_avatar', true);
-
+    $unit = get_user_meta($user_id, 'unit', true);
+    $role = get_user_meta($user_id, 'role', true);
+    
     error_log("Debug: Profilo salvato per l'utente " . $user_id);
     error_log("Debug: Descrizione dopo il salvataggio: " . $user_description);
     error_log("Debug: Avatar personalizzato dopo il salvataggio: " . $custom_avatar);
+    error_log("Debug: Unità di appartenenza dopo il salvataggio: " . $unit);
+    error_log("Debug: Ruolo dopo il salvataggio: " . $role);
 }
 add_action('profile_update', 'debug_profile_save');
 
 /**
  * USA L'AVATAR PERSONALIZZATO
  */
-function use_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
-{
+function use_custom_avatar($avatar, $id_or_email, $size, $default, $alt) {
     $user = false;
 
     if (is_numeric($id_or_email)) {
@@ -662,25 +618,6 @@ add_filter('get_avatar', 'use_custom_avatar', 10, 5);
 // Applica le modifiche solo nella pagina del profilo
 add_action('load-profile.php', 'custom_profile_text_changes');
 add_action('load-user-edit.php', 'custom_profile_text_changes');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
