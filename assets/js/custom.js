@@ -518,11 +518,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const stickyLogo = navbar.querySelector('.sticky-logo');
     const sidebar = document.querySelector('.sidebar');
-    if (!stickyLogo || !sidebar) {
-        console.error('Elementi stickyLogo o sidebar non trovati');
-        return; // Esci se stickyLogo o sidebar non sono trovati
-    }
-
     const sticky = navbar.offsetTop;
     const placeholder = document.createElement('div');
     placeholder.style.height = `${navbar.offsetHeight}px`;

@@ -2448,18 +2448,21 @@ img {
 
 /* Sezione del ruolo con testo centrato e margine inferiore */
 
-.chi-siamo-role-section {
+.chi-siamo-role {
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  /* Centra verticalmente */
   text-align: center;
-  margin-bottom: 2rem;
 }
 
-/* Titolo del ruolo con colore, dimensioni del font e peso del font */
-
-.chi-siamo-role-title {
-  color: #6b7280;
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+.chi-siamo-unit-title {
+  color: black;
+  /* text-black */
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 15px;
 }
 
 /* Contenitore delle cards, con layout a griglia che mostra 3 cards per riga */
