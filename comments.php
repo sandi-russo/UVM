@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package UNIVERSOME
+ * @package UVM
  */
 
 /*
@@ -28,18 +28,18 @@ if ( post_password_required() ) {
 		?>
 		<h2 class="comments-title">
 			<?php
-			$universome_comment_count = get_comments_number();
-			if ( '1' === $universome_comment_count ) {
+			$uvm_comment_count = get_comments_number();
+			if ( '1' === $uvm_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'universome' ),
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'uvm' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf( 
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $universome_comment_count, 'comments title', 'universome' ) ),
-					number_format_i18n( $universome_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $uvm_comment_count, 'comments title', 'uvm' ) ),
+					number_format_i18n( $uvm_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			}
@@ -65,7 +65,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'universome' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'uvm' ); ?></p>
 			<?php
 		endif;
 

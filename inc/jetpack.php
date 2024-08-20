@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package UNIVERSOME
+ * @package UVM
  */
 
 /**
@@ -14,13 +14,13 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function universome_jetpack_setup() {
+function uvm_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'universome_infinite_scroll_render',
+			'render'    => 'uvm_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -33,7 +33,7 @@ function universome_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'universome-style',
+				'stylesheet' => 'uvm-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
@@ -48,13 +48,13 @@ function universome_jetpack_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'universome_jetpack_setup' );
+add_action( 'after_setup_theme', 'uvm_jetpack_setup' );
 
-if ( ! function_exists( 'universome_infinite_scroll_render' ) ) :
+if ( ! function_exists( 'uvm_infinite_scroll_render' ) ) :
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function universome_infinite_scroll_render() {
+	function uvm_infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_search() ) :

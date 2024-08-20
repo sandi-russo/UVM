@@ -1,77 +1,159 @@
-document.addEventListener("DOMContentLoaded", function () {
-    function updateTime() {
-        const currentTimeElement = document.getElementById('current-time');
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        currentTimeElement.textContent = `${hours}:${minutes}`;
-    }
 
-    function updateDate() {
-        const currentDateElement = document.getElementById('current-date-time');
-        const now = new Date();
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const year = now.getFullYear();
-        currentDateElement.textContent = `${day}/${month}/${year}`;
-    }
+/* LOGO NAVBAR */
+window.addEventListener('DOMContentLoaded', () => {
+    // Funzione per aggiornare la larghezza dello sfondo della navbar
+    const updateNavbarBgWidth = () => {
+        const logo = document.getElementById('logo');
+        const navbarBg = document.querySelector('.navbar-bg');
+        const windowWidth = window.innerWidth;
 
-    // Aggiorna l'ora immediatamente al caricamento della pagina
-    updateTime();
+        if (windowWidth >= 1024) {
+            if (logo && navbarBg) {
+                // Calcola la larghezza del logo e la sua posizione
+                const logoRect = logo.getBoundingClientRect();
+                navbarBg.style.width = `${logoRect.right}px`;
+            }
+        } else {
+            if (navbarBg) {
+                // Ripristina la larghezza automatica quando lo schermo è <= 1024px
+                navbarBg.style.width = 'auto';
+            }
+        }
+        // console.log(`windowWidth: ${windowWidth}, navbarBg width: ${navbarBg.style.width}`);
+    };
 
-    // Aggiorna l'ora ogni 30 secondi (30000 millisecondi)
-    setInterval(updateTime, 30000);
-
-    // Aggiorna la data immediatamente al caricamento della pagina
-    updateDate();
-
-    // Aggiorna la data ogni 30 secondi (30000 millisecondi)
-    setInterval(updateDate, 30000);
+    // Esegui l'aggiornamento all'avvio
+    updateNavbarBgWidth();
+    
+    // Aggiungi l'evento di resize per adattarsi ai cambiamenti di dimensione
+    window.addEventListener('resize', updateNavbarBgWidth);
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    new Swiper('.news-carousel', {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-});
+/* LOGO NAVBAR MOBILE */
+function checkScreenSize() {
+    // Ottieni la larghezza della finestra del browser
+    const screenWidth = window.innerWidth;
+
+    // Seleziona l'elemento con la classe "navbar-logo"
+    const logoElement = document.querySelector(".navbar-logo");
+
+    if (screenWidth <= 1024) {
+        // Rimuovi l'attributo "id" se la larghezza è minore o uguale a 1024px
+        if (logoElement && logoElement.id === "logo") {
+            logoElement.removeAttribute("id");
+        }
+    } else if (screenWidth > 1024) {
+        // Aggiungi l'attributo "id" se la larghezza è maggiore di 1024px
+        if (logoElement && !logoElement.id) {
+            logoElement.id = "logo";
+        }
+    }
+}
+
+// Esegui la funzione al caricamento della pagina
+window.addEventListener('load', checkScreenSize);
+
+// Esegui la funzione al ridimensionamento della finestra
+window.addEventListener('resize', checkScreenSize);
 
 
 
 
-// Funzione per aggiornare data e ora
+
+/* DATA E ORA NAVBAR */
 function updateDateTime() {
     const now = new Date();
-    const dateTimeString = now.toLocaleString('it-IT', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+    
+    // Ottieni il giorno della settimana in italiano
+    const options = { weekday: 'long' };
+    const weekday = now.toLocaleDateString('it-IT', options);
+
+    // Ottieni la data nel formato "dd/mm/yyyy"
+    const date = now.toLocaleDateString('it-IT');
+
+    // Ottieni l'ora nel formato "hh:mm"
+    const time = now.toLocaleTimeString('it-IT', {
         hour: '2-digit',
         minute: '2-digit'
     });
+
+    // Utilizzo Unicode \u2022 (•)
+    const dateTimeString = `${date} \u2022 ${time}`;
+    
+    // Aggiorna il contenuto dell'elemento con id "current-date-time"
     document.getElementById('current-date-time').textContent = dateTimeString;
 }
 
-// Aggiorna data e ora ogni minuto
+// Aggiorna data e ora all'avvio e poi ogni minuto
 updateDateTime();
 setInterval(updateDateTime, 60000);
 
-// Hambuger Menu
+
+/* CATEGORIE NAVBAR */
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryItems = document.querySelectorAll('.category-item');
+
+    categoryItems.forEach(item => {
+        const link = item.querySelector('a');
+        const subMenu = item.querySelector('.subcategory-menu');
+        let hideTimeout;
+
+        // Funzione per mostrare il subMenu
+        function showSubMenu() {
+            clearTimeout(hideTimeout);
+            if (subMenu) {
+                subMenu.style.display = 'block';
+                subMenu.classList.add('visible');
+            }
+        }
+
+        // Funzione per nascondere il subMenu
+        function hideSubMenu() {
+            hideTimeout = setTimeout(function() {
+                if (subMenu) {
+                    subMenu.classList.remove('visible');
+                    setTimeout(() => {
+                        subMenu.style.display = 'none';
+                    }, 300); // Attende la fine della transizione prima di nascondere il menu
+                }
+            }, 500); // Ritardo di 500ms
+        }
+
+        // Gestisce il click sul link principale
+        link.addEventListener('click', function(e) {
+            if (subMenu) {
+                e.preventDefault(); // Previene il comportamento predefinito
+                window.location.href = this.href; // Naviga alla pagina della categoria padre
+            }
+        });
+
+        // Gestisce l'hover sull'elemento principale
+        item.addEventListener('mouseenter', function() {
+            clearTimeout(hideTimeout); // Cancella eventuali timeout precedenti
+            showSubMenu(); // Mostra il subMenu
+        });
+
+        item.addEventListener('mouseleave', function() {
+            hideSubMenu(); // Nasconde il subMenu dopo un ritardo
+        });
+
+        // Gestisce l'hover sul subMenu
+        if (subMenu) {
+            subMenu.addEventListener('mouseenter', function() {
+                clearTimeout(hideTimeout); // Cancella il timeout per evitare che il menu si chiuda
+                showSubMenu(); // Mantiene il subMenu visibile
+            });
+
+            subMenu.addEventListener('mouseleave', function() {
+                hideSubMenu(); // Nasconde il subMenu dopo un ritardo
+            });
+        }
+    });
+});
+
+
+/* MOBILE MENU*/
 document.addEventListener('DOMContentLoaded', function () {
     // Toggle del menu mobile
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -80,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
     mobileMenuButton.addEventListener('click', function () {
-        mobileMenu.classList.remove('hidden', 'md:hidden');
+        mobileMenu.classList.remove('hidden');
         mobileMenu.classList.add('active');
         mobileMenuOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -88,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function closeMenuFunc() {
         mobileMenu.classList.remove('active');
-        mobileMenu.classList.add('hidden', 'md:hidden');
+        mobileMenu.classList.add('hidden');
         mobileMenuOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
@@ -97,7 +179,8 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuOverlay.addEventListener('click', closeMenuFunc);
 });
 
-// Ricerca mobile
+
+/* RICERCA MOBILE */
 document.addEventListener('DOMContentLoaded', function () {
     // Toggle del menu mobile
     const mobileMenuButton = document.getElementById('mobile-search-button');
@@ -132,87 +215,7 @@ mobileSearchButton.addEventListener('click', () => {
     mobileSearch.classList.toggle('hidden');
 });
 
-/* CONDIVISIONE ARTICOLO */
-function shareArticle() {
-    if (navigator.share) {
-        navigator.share({
-            title: document.title,
-            url: window.location.href
-        }).then(() => {
-            console.log('Articolo condiviso con successo.');
-        }).catch((error) => {
-            console.error('Errore nella condivisione:', error);
-        });
-    } else {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert('Link copiato negli appunti.');
-        }).catch((error) => {
-            console.error('Errore nella copia del link:', error);
-        });
-    }
-}
-
-/* Pulsante per condividere un articolo */
-document.addEventListener('scroll', function () {
-    const shareButton = document.querySelector('.fixed-share-button');
-    const scrollPosition = window.scrollY;
-    const documentHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollPercentage = (scrollPosition / documentHeight) * 100;
-
-    // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
-    if (scrollPercentage > 5 && scrollPercentage < 95) {
-        shareButton.classList.add('visible');
-    } else {
-        shareButton.classList.remove('visible');
-    }
-});
-
-/* Pulsante per tornare in cima alla pagina */
-document.addEventListener('scroll', function () {
-    const backToTopButton = document.querySelector('.fixed-back-to-top');
-    const scrollPosition = window.scrollY;
-    const documentHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollPercentage = (scrollPosition / documentHeight) * 100;
-
-    // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
-    if (scrollPercentage > 5 && scrollPercentage < 95) {
-        backToTopButton.classList.add('visible');
-    } else {
-        backToTopButton.classList.remove('visible');
-    }
-});
-
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-/* Calcolo automatico padding da lasciare sotto la sticky header */
-document.addEventListener("DOMContentLoaded", function() {
-    var header = document.querySelector('.header');
-    var content = document.querySelector('main, .content, .primary-content .primary .site_container');
-
-    function adjustContentPadding() {
-        var headerHeight = header.offsetHeight;
-
-        if (window.innerWidth < 980) {
-            content.style.paddingTop = headerHeight + 'px';
-        } else {
-            content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 768px
-        }
-    }
-
-    // Regola il padding al caricamento della pagina
-    adjustContentPadding();
-
-    // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
-    window.addEventListener('resize', adjustContentPadding);
-});
-
-
-/* Ricerca AJAX */
+/* RICERCA AJAX */
 document.addEventListener("DOMContentLoaded", function() {
     var searchInput = document.getElementById('live-search');
     var resultsContainer = document.getElementById('search-results');
@@ -246,70 +249,323 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-/* Sticky Header*/
+/* RICERCA DESKTOP */
+document.addEventListener('DOMContentLoaded', function () {
+    const searchButton = document.getElementById('search-button');
+    const mobileSearch = document.getElementById('mobile-search');
+    const closeSearch = document.getElementById('close-search');
+    const mobileSearchOverlay = document.getElementById('mobile-search-overlay');
 
-window.onscroll = function () {
-    var stickyHeader = document.getElementById("sticky-header");
-    if (window.pageYOffset > 100) {
-        stickyHeader.classList.add("show");
-    } else {
-        stickyHeader.classList.remove("show");
+    // Mostra la ricerca mobile quando l'icona di ricerca viene cliccata
+    searchButton.addEventListener('click', function () {
+        mobileSearch.classList.remove('hidden', 'md:hidden');
+        mobileSearch.classList.add('active');
+        mobileSearchOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Funzione per chiudere la ricerca mobile
+    function closeSearchFunc() {
+        mobileSearch.classList.remove('active');
+        mobileSearch.classList.add('hidden', 'md:hidden');
+        mobileSearchOverlay.classList.remove('active');
+        document.body.style.overflow = '';
     }
-};
+
+    closeSearch.addEventListener('click', closeSearchFunc);
+    mobileSearchOverlay.addEventListener('click', closeSearchFunc);
+});
 
 
+/* CALCOLO AUTOMATICO PADDING DA LASCIARE PER LA STICKY HEADER */
+document.addEventListener("DOMContentLoaded", function() {
+    var header = document.querySelector('.sticky-header');
+    var content = document.querySelector('main') || document.querySelector('.content') || document.querySelector('.primary-content .primary .site_container');
+
+    function adjustContentPadding() {
+        if (header && content) {
+            var headerHeight = header.offsetHeight;
+
+            if (window.innerWidth < 1024) {
+                content.style.paddingTop = headerHeight + 'px';
+            } else {
+                content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 1024px
+            }
+        }
+    }
+
+    // Regola il padding al caricamento della pagina
+    adjustContentPadding();
+
+    // Ricalcola il padding se la finestra viene ridimensionata
+    window.addEventListener('resize', adjustContentPadding);
+});
 
 
+/* METEO MESSINA - OPENWEATHER*/
+function fetchWeather() {
+    const apiKey = 'b5f3e22f769ca30fcc07da47f31ea391';
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=38.1938&lon=15.554&units=metric&lang=it&appid=${apiKey}`;
 
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Estrai la temperatura dalla proprietà main.temp
+            const temp = Math.round(data.main.temp);
+            
+            // Estrai la descrizione dalla prima voce dell'array weather
+            const description = data.weather[0].description;
+            
+            const weatherInfo = document.getElementById('weather-info');
+            weatherInfo.textContent = `${temp}°C \u2022 ${description}`;
+        })
+        .catch(error => {
+            console.error('Errore nel recupero dei dati meteo:', error);
+            const weatherInfo = document.getElementById('weather-info');
+            weatherInfo.textContent = 'Dati meteo non disponibili';
+        });
+}
 
+// Esegui immediatamente e poi ogni 30 minuti
+fetchWeather();
+setInterval(fetchWeather, 30 * 60 * 1000);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* CATEGORIE MOBILE */
 document.addEventListener('DOMContentLoaded', function() {
-    const categoryItems = document.querySelectorAll('.category-item');
-
-    categoryItems.forEach(item => {
-        const link = item.querySelector('a');
-        const submenu = item.querySelector('.subcategory-menu');
-
-        if (submenu) {
-            // Mostra il sottomenu al passaggio del mouse
-            item.addEventListener('mouseenter', () => {
-                submenu.classList.add('visible');
-            });
-
-            // Nasconde il sottomenu quando il mouse esce dall'elemento
-            item.addEventListener('mouseleave', () => {
-                // Usa un timeout per gestire il ritardo del nascondimento
-                setTimeout(() => {
-                    if (!submenu.matches(':hover') && !item.matches(':hover')) {
-                        submenu.classList.remove('visible');
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    menuItems.forEach(item => {
+        const arrowIcon = item.querySelector('.arrow-icon');
+        const submenu = item.querySelector('.submenu');
+        const menuLink = item.querySelector('.menu-link');
+        
+        // Gestisci clic sulla freccia per aprire/chiudere il sottomenu
+        if (arrowIcon && submenu) {
+            arrowIcon.addEventListener('click', function(event) {
+                // Impedisci la propagazione dell'evento al link principale
+                event.stopPropagation();
+                
+                // Mostra o nascondi il sottomenu
+                const isVisible = submenu.classList.contains('visible');
+                
+                // Nascondi tutti i sottomenu
+                document.querySelectorAll('.submenu').forEach(menu => {
+                    menu.classList.remove('visible');
+                    menu.classList.add('hidden');
+                    const otherArrowIcon = menu.previousElementSibling.querySelector('.arrow-icon');
+                    if (otherArrowIcon) {
+                        otherArrowIcon.style.transform = 'rotate(0deg)';
                     }
-                }, 200); // Aggiungi un breve ritardo per evitare che scompaia subito
-            });
+                });
 
-            // Rimuovi il gestore dell'evento click, per permettere la navigazione
-            // link.addEventListener('click', (e) => {
-            //     if (window.innerWidth > 768) { // Solo per desktop
-            //         e.preventDefault(); // Impedisce la navigazione solo su desktop
-            //         submenu.classList.toggle('visible');
-            //     }
-            // });
+                // Solo se il sottomenu era nascosto, mostra il corrente
+                if (!isVisible) {
+                    submenu.classList.remove('hidden');
+                    submenu.classList.add('visible');
+                    this.style.transform = 'rotate(180deg)';
+                } else {
+                    submenu.classList.add('hidden');
+                    submenu.classList.remove('visible');
+                    this.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Gestisci clic sul link della categoria
+        if (menuLink) {
+            menuLink.addEventListener('click', function(event) {
+                // Trova il sottomenu associato
+                const submenu = this.nextElementSibling;
+
+                // Solo se non ci sono sottocategorie (sottomenu) gestisce la navigazione
+                if (!submenu || !submenu.classList.contains('submenu')) {
+                    // Naviga al link della categoria principale
+                    return;
+                }
+
+                // Se ci sono sottocategorie, previeni la navigazione
+                event.preventDefault();
+            });
         }
     });
 });
+
+
+/* SWIPER */
+document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.news-carousel', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+});
+
+
+/* PULSANTE CONDIVISIONE ARTICOLO */
+function shareArticle() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        }).then(() => {
+            console.log('Articolo condiviso con successo.');
+        }).catch((error) => {
+            console.error('Errore nella condivisione:', error);
+        });
+    } else {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Link copiato negli appunti.');
+        }).catch((error) => {
+            console.error('Errore nella copia del link:', error);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('scroll', function () {
+        const shareButton = document.querySelector('.fixed-share-button');
+        if (!shareButton) {
+            return; // Esci dalla funzione se l'elemento non è trovato
+        }
+
+        const scrollPosition = window.scrollY;
+        const documentHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollPosition / documentHeight) * 100;
+
+        // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
+        if (scrollPercentage > 5 && scrollPercentage < 95) {
+            shareButton.classList.add('visible');
+        } else {
+            shareButton.classList.remove('visible');
+        }
+    });
+});
+
+/* PULSANTE PER TORNARE IN CIMA ALLA PAGINA */
+document.addEventListener('scroll', function () {
+    const backToTopButton = document.querySelector('.fixed-back-to-top');
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = (scrollPosition / documentHeight) * 100;
+
+    // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
+    if (scrollPercentage > 5 && scrollPercentage < 95) {
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+    }
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+
+/* PADDING MOBILE NAVBAR */
+document.addEventListener("DOMContentLoaded", function() {
+    var header = document.querySelector('.navbar-top');
+    var mobileLastModified = document.querySelector('.mobile-last-modified');
+    var content = document.querySelector('main, .content, .primary-content .primary .site_container');
+
+    function adjustContentPadding() {
+        var headerHeight = header.offsetHeight;
+        var mobileLastModifiedHeight = mobileLastModified ? mobileLastModified.offsetHeight : 0;
+        var totalHeight = headerHeight + mobileLastModifiedHeight;
+
+        if (window.innerWidth <= 1024) {
+            content.style.paddingTop = totalHeight + 'px';
+        } else {
+            content.style.paddingTop = ''; // Rimuove il padding se la larghezza è > 1024px
+        }
+    }
+
+    // Regola il padding al caricamento della pagina
+    adjustContentPadding();
+
+    // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
+    window.addEventListener('resize', adjustContentPadding);
+});
+
+
+/* STICKY NAVBAR */
+document.addEventListener("DOMContentLoaded", function() {
+    const navbar = document.getElementById("navbar-bottom");
+    if (!navbar) {
+        console.error('Elemento navbar non trovato');
+        return; // Esci se l'elemento navbar non è trovato
+    }
+
+    const stickyLogo = navbar.querySelector('.sticky-logo');
+    const sidebar = document.querySelector('.sidebar');
+    if (!stickyLogo || !sidebar) {
+        console.error('Elementi stickyLogo o sidebar non trovati');
+        return; // Esci se stickyLogo o sidebar non sono trovati
+    }
+
+    const sticky = navbar.offsetTop;
+    const placeholder = document.createElement('div');
+    placeholder.style.height = `${navbar.offsetHeight}px`;
+
+    function adjustSidebarTop() {
+        if (navbar.classList.contains('fixed-navbar')) {
+            const navbarHeight = navbar.offsetHeight;
+            sidebar.style.top = navbarHeight + 'px';
+        } else {
+            sidebar.style.top = '0';
+        }
+    }
+
+    function checkSticky() {
+        if (window.pageYOffset >= sticky) {
+            if (!navbar.classList.contains("fixed-navbar")) {
+                navbar.classList.add("fixed-navbar");
+                stickyLogo.style.display = 'block';
+                navbar.parentNode.insertBefore(placeholder, navbar.nextSibling);
+                adjustSidebarTop();
+            }
+        } else {
+            if (navbar.classList.contains("fixed-navbar")) {
+                navbar.classList.remove("fixed-navbar");
+                stickyLogo.style.display = 'none';
+                if (placeholder.parentNode) {
+                    placeholder.parentNode.removeChild(placeholder);
+                }
+                adjustSidebarTop();
+            }
+        }
+    }
+
+    window.addEventListener('scroll', checkSticky);
+    window.addEventListener('resize', function() {
+        adjustSidebarTop();
+        placeholder.style.height = `${navbar.offsetHeight}px`;
+    });
+
+    // Inizializza la posizione della sidebar e il controllo sticky
+    checkSticky();
+    adjustSidebarTop();
+});
+
 
 

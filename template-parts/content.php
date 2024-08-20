@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package UNIVERSOME
+ * @package UVM
  */
 
 ?>
@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				universome_posted_on();
-				universome_posted_by();
+				uvm_posted_on();
+				uvm_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php universome_post_thumbnail(); ?>
+	<?php uvm_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -37,7 +37,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'universome' ),
+					__( 'Continua a leggere<span class="screen-reader-text"> "%s"</span>', 'uvm' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -50,7 +50,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'universome' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'uvm' ),
 				'after'  => '</div>',
 			)
 		);
@@ -58,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php universome_entry_footer(); ?>
+		<?php uvm_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

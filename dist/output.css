@@ -1,6 +1,6 @@
-/* TAILWIND */
+/* INCLUDO TAILWIND */
 
-/* ! tailwindcss v3.4.7 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -616,10 +616,6 @@ video {
   right: 0px;
 }
 
-.z-50 {
-  z-index: 50;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -806,6 +802,10 @@ video {
   width: 100%;
 }
 
+.max-w-2xl {
+  max-width: 42rem;
+}
+
 .max-w-4xl {
   max-width: 56rem;
 }
@@ -824,10 +824,6 @@ video {
 
 .max-w-screen-xl {
   max-width: 1280px;
-}
-
-.max-w-sm {
-  max-width: 24rem;
 }
 
 .flex-1 {
@@ -991,10 +987,6 @@ video {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
 
-.fill-black {
-  fill: #000;
-}
-
 .fill-current {
   fill: currentColor;
 }
@@ -1026,11 +1018,6 @@ video {
   padding-right: 0.5rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1056,11 +1043,6 @@ video {
   padding-bottom: 2.5rem;
 }
 
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
@@ -1069,11 +1051,6 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .py-8 {
@@ -1119,11 +1096,6 @@ video {
 .text-7xl {
   font-size: 4.5rem;
   line-height: 1;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .text-lg {
@@ -1203,11 +1175,6 @@ video {
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
-.text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -1221,26 +1188,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.placeholder-gray-400::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
-}
-
-.placeholder-gray-400::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
-}
-
-.placeholder-gray-600::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-placeholder-opacity));
-}
-
-.placeholder-gray-600::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-placeholder-opacity));
 }
 
 .opacity-50 {
@@ -1271,12 +1218,13 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-:root {
-  --main-color: #ff8800;
-  /* Sostituisci con il tuo colore */
+/* SCORRIMENTO FLUIDO */
+
+html {
+  scroll-behavior: smooth;
 }
 
-/* Disabilita la selezione delle immagini */
+/* DISABILITA SELEZIONE IMG */
 
 img {
   -webkit-user-select: none;
@@ -1302,222 +1250,375 @@ img {
   /* Disabilita il trascinamento delle immagini su tutti i browser moderni */
 }
 
-/* CAROUSEL */
+/* CONTENITORE GENERALE */
 
-.swiper-button-prev,
-.swiper-button-next {
-  color: #ff8800;
+.site_container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-/* non visualizzati */
+/* NAVBAR */
 
-.swiper-pagination-bullet {
-  background: #ff8800;
-}
+/* Navbar Top*/
 
-.swiper-container {
-  height: 400px;
-  /* Imposta l'altezza desiderata per il carousel */
-  z-index: 5;
+.navbar-top {
   position: relative;
-  /* Aggiunto per il contesto di posizionamento */
-  box-shadow: 0 5px 5px -5px #333;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  height: 60px;
   overflow: hidden;
+  background-color: #f18812;
+  /* Imposta il colore di sfondo per la navbar */
 }
 
-.swiper-slide {
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: 400px;
-  /* Assicura che le immagini riempiano l'altezza del carousel */
-  -o-object-fit: cover;
-     object-fit: cover;
-  /* Mantiene le proporzioni delle immagini */
-  filter: blur(10px) brightness(0.6);
-  border-radius: 0 !important;
-  /* Rimuove gli angoli stondati */
-}
-
-/* stile per il titolo */
-
-.swiper-slide .title {
-  width: 90%;
-  /* Occupa il 90% della larghezza */
+.container {
+  max-width: 1400px;
   margin: 0 auto;
-  /* Centra il titolo orizzontalmente */
-  position: absolute;
-  bottom: 20px;
-  /* Posiziona il titolo vicino al bordo inferiore */
-  left: 50%;
-  /* Centra il contenitore rispetto al viewport */
-  transform: translateX(-50%);
-  /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
-  font-size: 2rem;
-  /* Dimensione del testo */
-  font-weight: bold;
-  /* Testo in grassetto */
-  color: white;
-  /* Colore del testo */
-  z-index: 10;
-  /* Assicura che il titolo sia sopra altri elementi */
-  text-align: center;
-  /* Centra il testo all'interno del contenitore */
-}
-
-/* HEADER */
-
-/* Header Sticky */
-
-.sticky-header {
-  position: fixed;
-  width: 100%;
-  top: -100%;
-  left: 0;
-  right: 0;
-  z-index: 99999;
-  background-color: #ffffff;
-  transition: top 0.3s ease-in-out;
-}
-
-.sticky-header.show {
-  top: 0;
-  box-shadow: 0 5px 5px -5px #333;
-}
-
-.sticky-header-content {
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  padding: 10px 20px;
+  z-index: 1;
 }
 
-.sticky-logo,
-.sticky-search {
-  flex: 0 0 300px;
-  /* Imposta una larghezza fissa di 300px */
-  display: flex;
-  align-items: center;
-}
+/* Navbar Logo */
 
-.sticky-custom-logo {
-  width: 100%;
-  /* Fa sì che il logo occupi tutto lo spazio disponibile nel suo contenitore */
-  height: auto;
-  display: block;
-  max-width: 200px;
-  margin: 0 auto;
-  /* Centra il logo nel suo contenitore */
-}
-
-.sticky-custom-logo img {
-  width: 100%;
-  /* Assicura che l'immagine del logo si adatti al contenitore */
-  height: auto;
-  max-width: 200px;
-}
-
-.sticky-categories {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  /* Assicura che il div occupi tutta l'altezza disponibile */
-  padding: 0;
-  /* Rimuove qualsiasi padding */
-  margin: 0;
-  /* Rimuove qualsiasi margin */
-}
-
-.sticky-categories ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style-type: none;
-  /* Rimuove i punti elenco */
-  padding: 0;
-  /* Rimuove il padding predefinito della lista */
-  margin: 0;
-  /* Rimuove il margin predefinito della lista */
-  height: 100%;
-  /* Occupa tutta l'altezza disponibile */
-}
-
-.sticky-category-item {
-  display: flex;
-  align-items: center;
-  /* Centra verticalmente il contenuto */
-  height: 100%;
-  /* Occupa tutta l'altezza disponibile */
-  margin: 0 10px;
-  /* Aggiunge spazio orizzontale tra gli elementi */
-}
-
-.sticky-category-item a {
-  font-weight: 500;
-  color: gray;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  /* Centra verticalmente il testo */
-  height: 100%;
-  /* Occupa tutta l'altezza disponibile */
-  padding: 0 5px;
-  /* Aggiunge un po' di padding orizzontale */
-}
-
-.sticky-search form {
-  width: 100%;
-  max-width: 200px;
-  /* Limita la larghezza massima del form di ricerca */
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.sticky-search input[type="search"] {
-  width: 100%;
-  padding: 8px 12px;
-  background-color: #e2e2e2;
-  color: black;
-  border: none;
-  border-radius: 20px;
-}
-
-.sticky-search input[type="search"]::-moz-placeholder {
-  color: #666;
-}
-
-.sticky-search input[type="search"]::placeholder {
-  color: #666;
-}
-
-/* Stile aggiuntivo per garantire che l'header normale non interferisca con quello sticky */
-
-.header {
+.navbar-logo {
   position: relative;
-  z-index: 50;
+  z-index: 2;
+  padding: 8px;
 }
 
-/* Nascondi lo sticky header */
+.navbar-logo img {
+  height: clamp(30px, 5vw, 50px);
+  border-top-right-radius: 15px;
+}
 
-.hidden {
+.navbar-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 1;
+  border-top-right-radius: 30px;
+  box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.8);
+}
+
+/* Pillole Navbar */
+
+.nav-pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 50px);
+}
+
+.nav-element {
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Forma a pillola */
+  padding-left: clamp(2px, 4vw, 35px);
+  padding-right: clamp(2px, 4vw, 35px);
+  padding-top: clamp(0.5px, 0.5vw, 3px);
+  padding-bottom: clamp(0.5px, 0.5vw, 3px);
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-element-text {
+  color: #787878;
+  font-size: clamp(10px, 1vw, 12px);
+  margin-bottom: 2px;
+}
+
+.nav-element-subtext {
+  color: black;
+  font-size: clamp(12px, 1vw, 14px);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+  color: black;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover svg {
+  color: #ff8800;
+}
+
+/* NAVBAR BOTTOM */
+
+.navbar-bottom {
+  z-index: 100;
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-bottom .container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sticky-logo {
   display: none;
 }
 
-/* Mostra lo sticky header */
+.navbar-bottom.fixed-navbar .sticky-logo img {
+  height: clamp(40px, 3vw, 50px);
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  /* Centra il logo orizzontalmente */
+}
 
-.flex {
+/* Centra il logo nella navbar sticky */
+
+.navbar-bottom.fixed-navbar .sticky-logo {
   display: flex;
 }
+
+.categories-nav {
+  flex-grow: 1;
+}
+
+/* Stili per il contenitore del form di ricerca */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  flex-grow: 1;
+  max-width: 200px;
+  /* Imposta una larghezza massima */
+  min-width: 100px;
+  /* Imposta una larghezza minima */
+  margin: 0 auto;
+  /* Centra il form all'interno del contenitore genitore */
+}
+
+/* Stili per il campo di ricerca */
+
+.search-field {
+  width: 100%;
+  /* Occupa tutta la larghezza disponibile del form */
+  padding: 8px;
+  font-size: clamp(12px, 2vw, 16px);
+  /* Adatta la dimensione del font */
+  background-color: #e2e2e2;
+  /* Colore di sfondo */
+  border-radius: 30px;
+  /* Raggio del bordo per angoli arrotondati */
+  outline: none;
+  /* Rimuove il contorno predefinito */
+}
+
+/* Stile quando sono in focus sul campo*/
+
+.search-field:focus {
+  box-shadow: none;
+}
+
+/* CATEGORIE NAVBAR */
+
+.categories-nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  margin: 0 auto;
+  /* Centra il form all'interno del contenitore genitore */
+}
+
+/* Link categorie */
+
+.categories-nav a {
+  font-size: clamp(12px, 1vw, 16px);
+  padding: clamp(1px, 0.5vw, 4px);
+  margin: clamp(1px, 1vw, 4px);
+  white-space: nowrap;
+}
+
+.main-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.category-item {
+  position: relative;
+}
+
+.category-item>a {
+  text-decoration: none;
+  color: #787878;
+  font-weight: 600;
+  padding: clamp(4px, 1vw, 14px);
+  display: flex;
+  align-items: center;
+}
+
+.category-item>a:hover {
+  background-color: #f0f0f0;
+  color: #f18812;
+  border-radius: 30px;
+  /* Angoli arrotondati durante l'hover */
+}
+
+.category-item>a svg {
+  margin-left: 5px;
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s;
+}
+
+.category-item:hover>a svg {
+  transform: rotate(180deg);
+}
+
+/* Sottocategorie */
+
+.subcategory-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 8px 0;
+  min-width: 100px;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border: 1px solid #eee;
+  /* Bordo di contorno */
+}
+
+.subcategory-menu.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subcategory-menu li {
+  border-bottom: 1px solid #eee;
+}
+
+.subcategory-menu li:last-child {
+  border-bottom: none;
+}
+
+.subcategory-menu li a {
+  display: block;
+  padding: 8px 16px;
+  color: #787878;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-size: clamp(12px, 1vw, 16px);
+}
+
+.subcategory-menu li a:hover {
+  color: #f18812;
+}
+
+.category-item:hover .subcategory-menu {
+  display: block;
+}
+
+/* Ricerca Desktop*/
+
+#search-button {
+  display: flex;
+  /* Allinea la scritta e l'icona in orizzontale */
+  align-items: center;
+  /* Centra verticalmente */
+  padding: 10px 15px;
+  /* Aggiunge padding */
+  border: none;
+  /* Rimuove il bordo */
+  background-color: white;
+  /* Colore di sfondo iniziale */
+  color: #000;
+  /* Colore del testo e dell'icona iniziale */
+  cursor: pointer;
+  /* Cambia il cursore in pointer */
+  font-size: 16px;
+  /* Dimensione del testo */
+}
+
+#search-button svg {
+  margin-left: 8px;
+  /* Spazio tra la scritta e l'icona */
+  width: clamp(18px, 1vw, 24px);
+  height: clamp(18px, 1vw, 24px);
+}
+
+#search-button:hover {
+  background-color: #f0f0f0;
+  /* Colore di sfondo al passaggio del mouse */
+  color: #f18812;
+  /* Colore del testo e dell'icona al passaggio del mouse */
+  border-radius: 30px;
+  /* Angoli arrotondati durante l'hover */
+}
+
+.search-text {
+  color: #787878;
+  font-weight: 600;
+  font-size: clamp(12px, 1vw, 16px);
+}
+
+/* MENU MOBILE */
+
+/* Ultima modifica mobile */
 
 .mobile-last-modified {
   display: none;
@@ -1529,209 +1630,217 @@ img {
 }
 
 .mobile-last-modified .update-label {
-  font-weight: bold;
-}
-
-.header-top {
-  background: linear-gradient(to left, #ff8800 0%, #ff8800 75%, white 75%, white 100%);
-  width: 100%;
-  background: linear-gradient(to left,
-			#ff8800 0%,
-			/* Colore arancione all'inizio */
-			#ff8800 75%,
-			/* Colore arancione fino al 75% della larghezza */
-			white 75%,
-			/* Colore bianco inizia dal 75% */
-			white 100%
-			/* Colore bianco fino alla fine */
-		);
-  height: auto;
-  /* Altezza della parte superiore dell'header */
-  font-size: 12px;
-  /* Dimensione del testo */
-  z-index: 999;
-}
-
-.header-bottom {
-  background-color: #ffffff;
-  /* Colore di sfondo della parte inferiore */
-  height: auto;
-  /* Altezza della parte inferiore dell'header */
-  align-items: center;
-  /* Allinea gli elementi verticalmente al centro */
-  display: flex;
-  /* Usa flexbox per l'allineamento */
-  flex-direction: row;
-  /* Dispone gli elementi in una riga */
-  font-size: 12px;
-  /* Dimensione del testo */
-  z-index: 999;
-}
-
-.custom-logo {
-  top: 0px;
-  left: 0px;
-  max-width: 300px;
-  /* Larghezza massima del logo */
-  height: auto;
-  /* Altezza automatica */
-  background-color: white;
-  /* Sfondo bianco solo per il logo */
-  border-radius: 0 20px 0 0;
-  /* Arrotondamento del bordo del logo */
-  padding-right: 5%;
-  /* Padding destro del logo */
-}
-
-.nav-element {
   display: inline-block;
-  /* Per adattare la dimensione del div al suo contenuto */
-  padding: 10px 20px;
-  /* Spazio interno per creare l'effetto di pillola */
-  background-color: white;
-  /* Sfondo bianco */
-  border-radius: 20px;
-  /* Arrotonda gli angoli per creare l'effetto di pillola */
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
-  /* Aggiunge una leggera ombra per un effetto di profondità */
-  text-align: center;
-  /* Allinea il testo al centro */
-  color: black;
-  /* Colore del testo */
   font-weight: bold;
-  /* Imposto il grassetto */
-  min-width: 120px;
-  /* Minimo di larghezza */
 }
 
-.container {
-  max-width: 1400px;
-  /* Limita la larghezza a 1400px */
-  margin-left: auto;
-  /* Allinea il container al centro */
-  margin-right: auto;
-  /* Allinea il container al centro */
-  padding-left: 15px;
-  /* Padding sinistro del container */
-  padding-right: 15px;
-  /* Padding destro del container */
-  display: flex;
-  /* Usa flexbox per l'allineamento */
-  justify-content: space-between;
-  /* Spazia gli elementi tra di loro */
-  align-items: center;
-  /* Allinea gli elementi verticalmente al centro */
-  z-index: 999;
-}
+/* Stili generali per il menu mobile */
 
-nav {
-  flex-grow: 1;
-  /* Consente al menu di occupare tutto lo spazio disponibile */
-}
-
-nav ul {
-  display: flex;
-  /* Usa flexbox per il layout del menu */
-  flex-wrap: wrap;
-  /* Permette di andare a capo se necessario */
-  gap: 10px;
-  /* Spazio tra gli elementi del menu */
-}
-
-.ml-4 {
-  margin-left: 1rem;
-  /* Spazio a sinistra della barra di ricerca */
-}
-
-.nav_ico {
-  display: flex;
-  /* Mostra il contenuto in un layout flessibile */
-  align-items: center;
-  /* Allinea verticalmente al centro */
-  justify-content: center;
-  /* Allinea orizzontalmente al centro */
-  padding: 5px;
-  /* Spazio interno per creare l'effetto di pillola */
-  background-color: white;
-  /* Sfondo bianco */
-  border-radius: 50%;
-  /* Arrotonda gli angoli per creare l'effetto di pillola */
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
-  /* Aggiunge una leggera ombra per un effetto di profondità */
-  transition: background-color 0.3s;
-  /* Transizione per l'effetto hover */
-  margin: 0 5px;
-  /* Spazio tra le icone */
-}
-
-/* Colore delle icone al passaggio del mouse */
-
-.nav_ico:hover .icon {
-  color: #ff8800;
-  /* Colore dell'icona al passaggio del mouse */
-}
-
-.category-list {
+.mobile-menu {
   list-style: none;
-  /* Rimuove i puntini dalla lista */
   padding: 0;
-  /* Rimuove il padding predefinito */
-  flex-wrap: wrap;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-/* Stili per il sottomenu */
-
-.category-item {
+.menu-item {
   position: relative;
 }
 
-.subcategory-menu {
-  display: none;
+/* Contenitore per l'elemento padre e la freccia */
+
+.menu-item-content {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+/* Link della categoria principale */
+
+.menu-link {
+  flex: 1;
+  /* Occupa tutto lo spazio disponibile */
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Icona della freccia */
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  /* Allinea la freccia a destra */
+  transition: transform 0.3s ease;
+}
+
+.menu-link:hover {
+  color: #f18812;
+  /* Colore del testo e dell'icona al passaggio del mouse */
+}
+
+.submenu {
+  list-style: none;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 2px 0;
+  min-width: 50px;
+  z-index: 100;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  /* Ridotto il tempo di transizione per una risposta più rapida */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
-.subcategory-menu.visible {
-  display: block;
+.submenu.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
-.category-item:hover .subcategory-menu {
-  display: block;
-  /* Mostra il sottomenu al passaggio del mouse */
-  opacity: 1;
-  /* Rendi visibile il sottomenu */
+.submenu.hidden {
+  display: none;
 }
 
-/* Stili per ciascuna sottocategoria */
-
-.subcategory-menu li {
-  white-space: nowrap;
-  /* Per evitare che il testo vada a capo */
-  padding: 5px;
-  /* Spazio interno per ogni voce del sottomenu */
-  border-bottom: 1px solid #eeeeee;
-  /* Separatore tra le sottocategorie */
+.submenu li {
+  border-bottom: 1px solid #eee;
 }
 
-/* Rimuovi il bordo inferiore dall'ultimo elemento */
-
-.subcategory-menu li:last-child {
+.submenu li:last-child {
   border-bottom: none;
 }
 
-/* Aggiungi uno stato attivo per evitare che il sottomenu scompaia troppo presto */
-
-.category-item:hover .subcategory-menu {
+.submenu-link {
   display: block;
-  /* Mostra il sottomenu al passaggio del mouse */
-  opacity: 1;
-  /* Rendi visibile il sottomenu */
+  padding: 8px 16px;
+  color: #787878;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-size: clamp(12px, 1vw, 16px);
 }
 
-/* Ricerca mobile */
+.submenu li a:hover {
+  color: #f18812;
+}
+
+/* Overlay per il menu mobile */
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mobile-menu {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  z-index: 999;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease;
+}
+
+#mobile-menu.active {
+  left: 0;
+}
+
+.mobile-menu-header {
+  background-color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 0px 20px 0px 0px;
+}
+
+.mobile-logo {
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+.mobile-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.close-menu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.mobile-menu-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.mobile-menu-categories {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  border-radius: 0px 0px 20px 0px;
+}
+
+.mobile-menu-footer p {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.mobile-menu-login {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* RICERCA MOBILE */
 
 .mobile-search-overlay {
   position: fixed;
@@ -1751,6 +1860,7 @@ nav ul {
   opacity: 1;
   visibility: visible;
   z-index: 999;
+  outline: none;
 }
 
 #mobile-search {
@@ -1804,21 +1914,17 @@ nav ul {
   padding: 20px;
 }
 
-.mobile-search-footer {
-  position: sticky;
-  bottom: 0;
-  background-color: white;
-  padding: 15px;
+.search-hint {
+  display: block;
+  /* Assicura che il messaggio occupi l'intera larghezza disponibile */
   text-align: center;
-  border-top: 1px solid #e5e5e5;
-  z-index: 1001;
-  border-radius: 0px 0px 20px 0px;
-}
-
-.mobile-search-footer p {
-  margin-bottom: 5px;
+  /* Centra il testo orizzontalmente */
+  color: #787878;
+  /* Imposta il colore del testo */
+  margin-top: 8px;
+  /* Aggiungi uno spazio tra il form e il messaggio */
   font-size: 14px;
-  color: #666;
+  /* Imposta una dimensione del font adeguata */
 }
 
 .mobile-search-login {
@@ -1831,12 +1937,19 @@ nav ul {
   font-weight: bold;
 }
 
+#mobile-menu-button,
+#mobile-search-button {
+  display: none;
+}
+
 #search-results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   padding: 10px;
 }
+
+/* CARDS RICERCA */
 
 .search-card {
   background-color: white;
@@ -1876,147 +1989,73 @@ nav ul {
   text-decoration: none;
 }
 
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* SWIPER - CAROUSEL */
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #ff8800 !important;
+}
+
+/* non visualizzati */
+
+.swiper-pagination-bullet {
+  background: #ff8800;
+}
+
+.swiper-container {
+  height: 400px;
+  /* Imposta l'altezza desiderata per il carousel */
+  z-index: 5;
+  position: relative;
+  /* Aggiunto per il contesto di posizionamento */
+  box-shadow: 0 5px 5px -5px #333;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
+  overflow: hidden;
 }
 
-.mobile-menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 999;
-}
-
-/* Hamburger mobile */
-
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+.swiper-slide {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
+  flex-shrink: 0;
 }
 
-.mobile-menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 999;
+.swiper-slide img {
+  width: 100%;
+  height: 400px;
+  /* Assicura che le immagini riempiano l'altezza del carousel */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* Mantiene le proporzioni delle immagini */
+  border-radius: 0 !important;
+  /* Rimuove gli angoli stondati */
 }
 
-#mobile-menu {
-  padding: 0;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: -300px;
-  width: 300px;
-  height: 100%;
-  background-color: white;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  transition: left 0.3s ease;
-  z-index: 9999;
-}
+/* stile per il titolo */
 
-#mobile-menu.active {
-  left: 0;
-}
-
-.mobile-menu-header {
-  background-color: white;
-  padding: 15px;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid #e5e5e5;
-  z-index: 1002;
-  border-radius: 0px 20px 0px 0px;
-}
-
-.mobile-logo {
-  max-width: 150px;
+.swiper-slide .title {
+  width: 90%;
+  /* Occupa il 90% della larghezza */
   margin: 0 auto;
-}
-
-.mobile-logo img {
-  max-width: 100%;
-  height: auto;
-}
-
-.close-menu {
+  /* Centra il titolo orizzontalmente */
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 1002;
-}
-
-.mobile-menu-content {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.mobile-menu-footer {
-  position: sticky;
-  bottom: 0;
-  background-color: white;
-  padding: 15px;
-  text-align: center;
-  border-top: 1px solid #e5e5e5;
-  z-index: 1001;
-  border-radius: 0px 0px 20px 0px;
-}
-
-.mobile-menu-footer p {
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #666;
-}
-
-.mobile-menu-login {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
+  bottom: 20px;
+  /* Posiziona il titolo vicino al bordo inferiore */
+  left: 50%;
+  /* Centra il contenitore rispetto al viewport */
+  transform: translateX(-50%);
+  /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
+  font-size: 2rem;
+  /* Dimensione del testo */
   font-weight: bold;
+  /* Testo in grassetto */
+  color: white;
+  /* Colore del testo */
+  z-index: 10;
+  /* Assicura che il titolo sia sopra altri elementi */
+  text-align: center;
+  /* Centra il testo all'interno del contenitore */
 }
 
-/* PAGINA PRINCIPALE */
-
-.site_main {
-  margin-top: -30px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.paginazione {
-  scale: 100%;
-  gap: 6px;
-}
+/* ARTICOLI */
 
 .articoli {
   position: relative;
@@ -2026,22 +2065,11 @@ nav ul {
   box-shadow: 5px 0 5px -5px #333;
 }
 
-.sidebar {
-  position: relative;
-  z-index: 0;
-  /* Deve essere inferiore a quello di .articoli */
-  margin-left: -5px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow: 5px 0 5px -5px #333;
-}
+/* PAGINAZIONE */
 
-.site_container {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+.paginazione {
+  scale: 100%;
+  gap: 6px;
 }
 
 /* FOOTER */
@@ -2070,30 +2098,6 @@ nav ul {
 
 .fixed-back-to-top.visible {
   bottom: 2%;
-  /* Posizione finale del pulsante quando è visibile */
-}
-
-.fixed-share-button {
-  position: fixed;
-  bottom: -100px;
-  /* Nasconde il pulsante inizialmente fuori dallo schermo */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  background-color: #ff8800;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: bottom 0.5s ease;
-  /* Animazione di scorrimento dal basso verso l'alto */
-}
-
-.fixed-share-button.visible {
-  bottom: 20px;
   /* Posizione finale del pulsante quando è visibile */
 }
 
@@ -2137,16 +2141,42 @@ nav ul {
 /* Stili per la barra laterale su dispositivi più grandi */
 
 .sidebar {
+  position: relative;
+  z-index: 0;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 5px 0 5px -5px #333;
   width: 100%;
-  max-width: 30%;
+  max-width: 25%;
   flex-shrink: 0;
   position: sticky;
-  top: 0;
   align-self: start;
   padding: 1rem;
   background-color: #e2e2e2;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: visible;
+  /* Mantiene l'overflow visibile */
+  transition: top 0.3s ease;
+  /* Transizione per un effetto più fluido */
+}
+
+/* Pseudo-elemento per estendere lo sfondo */
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -25px;
+  /* Estensione dello sfondo a sinistra */
+  width: calc(100% + 25px);
+  /* Aggiungi 25px alla larghezza */
+  height: 100%;
+  background-color: #e2e2e2;
+  /* Stesso colore dello sfondo della sidebar */
+  z-index: -1;
+  /* Metti lo sfondo dietro il contenuto */
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 /* Stili per il titolo della barra laterale */
@@ -2172,17 +2202,17 @@ nav ul {
 
 .video-frame {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 30px;
   position: relative;
-  height: 250px;
+  height: 200px;
 }
+
+/* POST - SINGLE */
 
 /* POST */
 
 .post_top {
   box-shadow: 0 5px 5px -5px #333;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   width: 100%;
   overflow: hidden;
   height: 400px;
@@ -2223,19 +2253,25 @@ nav ul {
   /* Rimuove gli angoli stondati */
 }
 
+/* INFORMAZIONI AUTORE */
+
 .author-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #eeeeee;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 20px;
 }
+
+/* AVATAR AUTORE */
 
 .author-avatar {
   width: 60px;
   height: 60px;
 }
+
+/* NOME AUTORE */
 
 .author-name {
   font-size: 1.25rem;
@@ -2248,6 +2284,8 @@ nav ul {
   font-size: 1rem;
   /* 16px */
 }
+
+/* ICONE SOCIAL AUTORE */
 
 .post-social-icons {
   display: flex;
@@ -2272,11 +2310,13 @@ nav ul {
   align-items: center;
   /* Centra gli elementi orizzontalmente */
   z-index: 1;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
   box-shadow: 5px 0 5px -5px #333;
   padding: 20px;
 }
+
+/* GESTIONE TITOLI ARTICOLO */
 
 .articolo h1,
 .articolo h2,
@@ -2315,36 +2355,27 @@ nav ul {
   height: auto;
 }
 
+.page-content,
+.entry-content,
+.entry-summary {
+  margin: 1.5em 0 0;
+}
+
 .side_img {
-  height: 120px;
+  height: 100px;
   width: auto;
 }
 
 .entry-content p {
-  font-size: 1.2rem;
+  font-size: clamp(0.750rem, 3vw, 1rem);
 }
 
 .side_text {
-  font-size: 1rem;
+  font-size: 0.875rem;
+  line-height: normal;
 }
 
-.post-first-letter {
-  font-size: 2.5em;
-  /* Dimensione grande per il capolettera */
-  float: left;
-  /* Posiziona la lettera a sinistra */
-  margin-right: 5px;
-  /* Spazio tra la lettera e il testo */
-  line-height: 1.2;
-  /* Altezza della linea per occupare più righe */
-  max-height: 2.4em;
-  /* Limita l'altezza del capolettera */
-  overflow: hidden;
-  /* Nasconde l'eccesso che va oltre */
-  display: inline-block;
-  /* Mantiene il capolettera all'interno del blocco */
-  color: #ff8800;
-}
+/* PULSANTE CONDIVISIONE */
 
 .fixed-share-button {
   position: fixed;
@@ -2370,19 +2401,224 @@ nav ul {
   /* Posizione finale del pulsante quando è visibile */
 }
 
-/* Bottone ricerca  */
+/* PAGINA CHI SIAMO */
 
-#mobile-search-button {
-  display: none;
+.chi-siamo-grid {
+  display: grid;
+  gap: 2rem;
+  /* Spazio tra gli elementi della griglia */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Bottone menu */
+/* Stile per ogni elemento dell'utente */
 
-#mobile-menu-button {
-  display: none;
+/* Contenitore principale che si estende per tutta l'altezza della finestra del browser e aggiunge padding */
+
+.chi-siamo-container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
-/* MEDIA QUERY */
+/* Contenitore principale per il contenuto, centrato con una larghezza massima */
+
+.chi-siamo-main {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Margine inferiore per l'intestazione della pagina */
+
+.chi-siamo-header {
+  margin-bottom: 2rem;
+}
+
+/* Contenitore per l'intestazione della pagina, centrato */
+
+.chi-siamo-header-container {
+  text-align: center;
+}
+
+/* Contenitore per l'introduzione, centrato e con una larghezza massima */
+
+.chi-siamo-intro {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Sezione del ruolo con testo centrato e margine inferiore */
+
+.chi-siamo-role-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Titolo del ruolo con colore, dimensioni del font e peso del font */
+
+.chi-siamo-role-title {
+  color: #6b7280;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* Contenitore delle cards, con layout a griglia che mostra 3 cards per riga */
+
+.chi-siamo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Card individuale, con testo centrato e stile della card */
+
+.chi-siamo-card {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar dell'utente con dimensioni e forma rotonda */
+
+.chi-siamo-avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* Nome dell'utente con dimensioni del font e peso del font */
+
+.chi-siamo-name {
+  color: #4a4a4a;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+/* Biografia dell'utente con dimensioni del font più piccole e margine inferiore */
+
+.chi-siamo-biography {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Email dell'utente con colore blu e margine inferiore */
+
+.chi-siamo-email {
+  color: #3b82f6;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Stile per i link delle email all'interno della card */
+
+.chi-siamo-email a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Contenitore per le icone dei social media, centrato e con spazio tra le icone */
+
+.chi-siamo-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Contenitore per ogni icona dei social media */
+
+.chi-siamo-social-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Stile delle icone dei social media con dimensioni e colore specifici */
+
+.chi-siamo-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #787878;
+}
+
+.chi-siamo-icon:hover {
+  color: #f18812;
+}
+
+.titolo-pagina {
+  color: black;
+  /* text-black */
+  font-size: 2.25rem;
+  /* text-4xl (36px) */
+  font-weight: 800;
+}
+
+.descrizione-pagina {
+  color: #787878;
+  /* text-[#787878] */
+  font-size: 0.875rem;
+  /* text-sm (14px) */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.625;
+  /* leading-relaxed (line-height of 1.625) */
+}
+
+/* POLICY E COPYRIGHT PAGINA */
+
+.text-h {
+  color: #000;
+  text-align: center;
+  /* Dimensioni variabili in base all'intestazione */
+  margin: 10px;
+  font-weight: 700;
+}
+
+.text-h1 {
+  font-size: clamp(1rem, 2vw, 3rem);
+  /* Gestisce la dimensione di h1 */
+}
+
+.text-h2 {
+  font-size: clamp(0.875rem, 2vw, 2.5rem);
+  /* Gestisce la dimensione di h2 */
+}
+
+.text-h3 {
+  font-size: clamp(0.5rem, 2vw, 2rem);
+  /* Gestisce la dimensione di h3 */
+}
+
+.text-h4 {
+  font-size: clamp(0.55rem, 2vw, 1.75rem);
+  /* Gestisce la dimensione di h4 */
+}
+
+.text-h5 {
+  font-size: clamp(0.4rem, 2vw, 1.5rem);
+  /* Gestisce la dimensione di h5 */
+}
+
+.text-h6 {
+  font-size: clamp(0.25rem, 2vw, 1.25rem);
+  /* Gestisce la dimensione di h6 */
+}
+
+.text-p {
+  font-size: clamp(12px, 2vw, 16px);
+  /* Gestisce la dimensione dei paragrafi */
+  color: #000;
+  text-align: left;
+}
 
 /* Media query per schermi più grandi di 768px */
 
@@ -2392,15 +2628,9 @@ nav ul {
   }
 }
 
-/*Fino a 768px di larghezza*/
+/* Media query per schermi più piccoli di 768px */
 
-@media screen and (max-width: 768px) {
-  .custom-logo {
-    max-width: 150px;
-    margin: 0 auto;
-    z-index: 25;
-  }
-
+@media (max-width: 768px) {
   .articolo {
     padding: 0px 5px 5px 5px;
     padding-top: 0px;
@@ -2408,7 +2638,7 @@ nav ul {
   }
 
   .swiper-button-prev,
-	.swiper-button-next {
+    .swiper-button-next {
     scale: 50%;
   }
 
@@ -2444,160 +2674,6 @@ nav ul {
     font-size: 1.2rem;
   }
 
-  .post_top {
-    height: 220px;
-  }
-
-  .post_img {
-    height: 220px;
-  }
-
-  .post_title {
-    font-size: 1.2rem;
-    line-height: normal;
-  }
-
-  .author-avatar {
-    width: 60px;
-    height: 60px;
-  }
-
-  .author-name {
-    font-size: 1.125rem;
-    /* 18px */
-  }
-
-  .post-date,
-	.category-label,
-	.tag-label {
-    font-size: 0.875rem;
-    /* 14px */
-  }
-
-  .category-tags-wrapper {
-    margin-bottom: 0px;
-  }
-
-  .category-tags-wrapper .tag-label:nth-child(n+4) {
-    display: none;
-  }
-
-  .articoli {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    box-shadow: none;
-  }
-
-  .entry-content {
-    font-size: 1.2rem;
-  }
-
-  .entry-content p {
-    font-size: 1rem;
-  }
-}
-
-/*Fino a 1200px di larghezza*/
-
-@media screen and (max-width: 1200px) {
-}
-
-/*Fino a 980px di larghezza*/
-
-@media screen and (max-width: 980px) {
-  .mobile-last-modified {
-    display: block;
-    max-height: 25px;
-  }
-
-  .header {
-    position: fixed;
-    background-color: white;
-    width: 100%;
-    box-shadow: 0 5px 5px -5px #333;
-  }
-
-  .header-top {
-    background: none;
-    padding: 5px;
-    max-height: 80px;
-  }
-
-  .header-bottom {
-    display: none;
-  }
-
-  .container {
-    top: 0;
-    z-index: 1000;
-  }
-
-  .header-top .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    max-height: 250px;
-  }
-
-  .custom-logo {
-    max-width: 200px;
-    margin: 0 auto;
-    z-index: 25;
-  }
-
-  #mobile-menu-button {
-    display: block;
-    position: absolute;
-    left: 10px;
-  }
-
-  #mobile-search-button {
-    display: block;
-    position: absolute;
-    right: 10px;
-  }
-
-  .sticky-header {
-    display: none;
-  }
-
-  .nav-element {
-    display: none;
-  }
-
-  .sidebar {
-    display: none;
-  }
-
-  .author-avatar {
-    width: 40px;
-    height: 40px;
-  }
-
-  .social-icon {
-    width: 25px;
-    height: 25px;
-  }
-
-  .category-label,
-	.tag-label {
-    margin: 2px;
-  }
-
-  .articolo {
-    box-shadow: none;
-  }
-
-  .category-tags-wrapper {
-    margin-bottom: 0px;
-  }
-}
-
-/*Fino a 480px di larghezza*/
-
-@media screen and (max-width: 480px) {
   .author-avatar {
     width: 25px;
     height: 25px;
@@ -2609,8 +2685,8 @@ nav ul {
   }
 
   .post-date,
-	.category-label,
-	.tag-label {
+    .category-label,
+    .tag-label {
     font-size: 0.75rem;
     /* 12px */
   }
@@ -2626,6 +2702,197 @@ nav ul {
 
   .category-tags-wrapper {
     margin-bottom: 0px;
+  }
+}
+
+/* 1024PX E INFERIORI */
+
+@media (max-width: 1024px) {
+  .articolo,
+    .articoli {
+    box-shadow: none;
+  }
+
+  /* STICKY HEADER */
+
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    /* Assicura che l'intestazione rimanga sopra altri contenuti */
+  }
+
+  .sticky-header .navbar-top {
+    background-color: #fff;
+    /* Cambia il colore di sfondo se necessario */
+    border-bottom: 1px solid #ddd;
+    /* Aggiungi una linea di separazione se necessario */
+  }
+
+  /* NAVBAR */
+
+  .navbar-top {
+    height: 60px;
+    /* Altezza fissa della navbar su schermi piccoli */
+    background-color: white;
+    /* Sfondo bianco per dispositivi mobili */
+    padding: 15px;
+    /* Rimuove il padding */
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    flex-direction: row;
+    /* Disposizione orizzontale */
+    align-items: center;
+    padding: 10px;
+    /* Padding interno */
+    justify-content: space-between;
+  }
+
+  .navbar-logo {
+    margin: 0 auto;
+    /* Logo centrato */
+    box-shadow: none;
+    border-radius: none;
+  }
+
+  .mobile-last-modified {
+    display: block;
+    max-height: 25px;
+  }
+
+  #mobile-menu-button,
+    #mobile-search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #f18812;
+    display: block;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  #mobile-menu-button svg,
+    #mobile-search-button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-pill,
+    .social-icons {
+    display: none;
+    /* Nasconde i pulsanti e icone di social per i dispositivi mobili */
+  }
+
+  .navbar-bottom {
+    display: none;
+    /* Nasconde la navbar-bottom per i dispositivi mobili */
+  }
+
+  .search-form {
+    display: none;
+    /* Nasconde il form di ricerca per i dispositivi mobili */
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .category-tags-wrapper {
+    margin-bottom: 0px;
+  }
+
+  .category-tags-wrapper .tag-label:nth-child(n+4) {
+    display: none;
+  }
+
+  /* SWIPER */
+
+  .swiper-button-prev,
+    .swiper-button-next {
+    scale: 50%;
+  }
+
+  .swiper-container {
+    height: 220px;
+  }
+
+  .swiper-slide img {
+    height: 220px;
+  }
+
+  .swiper-slide .title {
+    font-size: 1.2rem;
+  }
+
+  /* POST - SINGLE */
+
+  .post_top {
+    height: 220px;
+  }
+
+  .post_img {
+    height: 220px;
+  }
+
+  .post_title {
+    font-size: 1.2rem;
+    line-height: normal;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .category-label,
+    .tag-label {
+    margin: 2px;
+  }
+
+  .articolo {
+    box-shadow: none;
+  }
+
+  .author-name {
+    font-size: 1.125rem;
+    /* 18px */
+  }
+
+  .post-date,
+    .category-label,
+    .tag-label {
+    font-size: 0.875rem;
+    /* 14px */
+  }
+
+  .entry-content {
+    font-size: 1.2rem;
+  }
+
+  .entry-content p {
+    font-size: 1rem;
+  }
+}
+
+/* 1024PX E SUPERIORI */
+
+@media (min-width: 1024px) {
+  #mobile-menu-button {
+    display: none;
+    /* Nasconde i pulsanti per schermi più grandi */
   }
 }
 
@@ -2756,6 +3023,7 @@ abbr[title] {
 b,
 strong {
   font-weight: bolder;
+  color: black;
 }
 
 /* Contenuto Embedded
@@ -2918,6 +3186,7 @@ h4,
 h5,
 h6 {
   clear: both;
+  color: black;
 }
 
 /* Dimensione del font per tutti i <p> */
@@ -2925,7 +3194,7 @@ h6 {
 p {
   font-size: 0.875rem;
   /* Equivalente a text-sm in Tailwind */
-  color: #6b7280;
+  color: #787878;
   /* Colore per text-gray-500 */
 }
 
@@ -3336,14 +3605,17 @@ textarea {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 5px;
 }
 
 .wp-caption .wp-caption-text {
-  margin: 0.8075em 0;
+  margin: 0;
 }
 
 .wp-caption-text {
-  text-align: center;
+  text-align: left;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #787878;
 }
 
 /* Gallerie
@@ -3469,21 +3741,6 @@ textarea {
   background-color: rgb(242 139 12 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-gray-50:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.hover\:text-gray-900:hover {
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -3496,6 +3753,10 @@ textarea {
 }
 
 @media (min-width: 640px) {
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -3505,10 +3766,6 @@ textarea {
 @media (min-width: 768px) {
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
-  }
-
-  .md\:flex {
-    display: flex;
   }
 
   .md\:hidden {

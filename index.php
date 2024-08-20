@@ -36,11 +36,11 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                             <div class="relative overflow-hidden shadow-lg">
                                 <a href="<?php echo esc_url($post_url); ?>">
                                     <?php if (has_post_thumbnail()): ?>
-                                        <?php the_post_thumbnail('large', array('class' => 'w-full h-64 object-cover')); ?>
+                                        <?php the_post_thumbnail('large', array('class' => 'post_img')); ?>
                                     <?php else: ?>
                                         <div class="w-full h-64 bg-gray-300"></div>
                                     <?php endif; ?>
-                                    <div class="absolute bottom-0 left-0 right-0">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-10">
                                         <p class="title text-white">
                                             <?php the_title(); ?>
                                         </p>
@@ -66,7 +66,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
             <?php
             foreach ($navbar_categories as $category):
                 // Verifica se la categoria esiste e ha l'ID
-                if (isset($category->term_id) && $category->slug !== 'senza-categoria'):
+                if (isset($category->term_id) && $category->slug !== 'senza-categoria' && $category->slug !== 'evidenza'):
                     // Query per ottenere i post della categoria
                     $category_posts = new WP_Query(
                         array(
@@ -203,9 +203,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
     <div class="sidebar rounded-r-lg bg-white">
         <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
         <div class="sidebar-content">
-            <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+        <?php echo youtube_embedded(); ?>
             <!-- SPOTIFY -->
             <iframe class="video-frame" style="border-radius:12px" src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
