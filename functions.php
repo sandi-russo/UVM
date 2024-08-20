@@ -7,16 +7,17 @@
  * @package UVM
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+if (!defined('_S_VERSION')) {
+    // Replace the version number of the theme on each release.
+    define('_S_VERSION', '1.0.0');
 }
 
 /* TAILWIND CSS*/
-function cg_your_theme_scripts() {
-	wp_enqueue_style( 'output', get_template_directory_uri() . '/dist/output.css', array() );
+function cg_your_theme_scripts()
+{
+    wp_enqueue_style('output', get_template_directory_uri() . '/dist/output.css', array());
 }
-add_action( 'wp_enqueue_scripts', 'cg_your_theme_scripts' );
+add_action('wp_enqueue_scripts', 'cg_your_theme_scripts');
 
 /**
  * INCLUDO IL FILE PER IL JS
@@ -36,7 +37,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 /**
  * DATA E ORA ULTIMA MODIFICA
  */
-function get_last_modified_post_date_time() {
+function get_last_modified_post_date_time()
+{
     // Esegue una query per ottenere l'ultimo post modificato
     $recent = new WP_Query([
         'post_type' => 'any',
@@ -61,7 +63,8 @@ function get_last_modified_post_date_time() {
 /**
  * VISUALIZZO LE CATEGORIE E LE LORO SOTTOCATEGORIE DESKTOP
  */
-function display_categories_with_subcategories() {
+function display_categories_with_subcategories()
+{
     $args = array(
         'parent' => 0, // Prende solo le categorie principali
         'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza')), // Esclude la categoria "senza categoria"
@@ -72,7 +75,7 @@ function display_categories_with_subcategories() {
     echo '<ul class="main-menu">';
     foreach ($categories as $category) {
         $subcategories = get_categories(array(
-            'parent' => $category->term_id, 
+            'parent' => $category->term_id,
             'hide_empty' => false
         ));
         $has_subcategories = !empty($subcategories);
@@ -102,7 +105,8 @@ function display_categories_with_subcategories() {
 /**
  * VISUALIZZO LE CATEGORIE E LE LORO SOTTOCATEGORIE DESKTOP
  */
-function display_mobile_categories() {
+function display_mobile_categories()
+{
     $args = array(
         'parent' => 0, // Prende solo le categorie principali
         'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza')), // Esclude le categorie
@@ -120,7 +124,7 @@ function display_mobile_categories() {
         $has_subcategories = !empty($subcategories);
 
         echo '<li class="menu-item">';
-        
+
         // Contenitore per l'elemento padre e la freccia
         echo '<div class="menu-item-content">';
 
@@ -151,7 +155,8 @@ function display_mobile_categories() {
 /**
  * RICERCA AJAX
  */
-function live_search() {
+function live_search()
+{
     $search_query = isset($_GET['query']) ? esc_attr($_GET['query']) : '';
 
     $query = new WP_Query(array(
@@ -159,10 +164,11 @@ function live_search() {
         'posts_per_page' => 5,
     ));
 
-    if ($query->have_posts()) :
-        while ($query->have_posts()) : $query->the_post(); ?>
+    if ($query->have_posts()):
+        while ($query->have_posts()):
+            $query->the_post(); ?>
             <div class="search-card">
-                <?php if (has_post_thumbnail()) : ?>
+                <?php if (has_post_thumbnail()): ?>
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('medium', ['class' => 'search-card-image']); ?>
                     </a>
@@ -172,7 +178,7 @@ function live_search() {
                 </h3>
             </div>
         <?php endwhile;
-    else :
+    else:
         echo '<p>Nessun risultato trovato.</p>';
     endif;
 
@@ -185,7 +191,8 @@ add_action('wp_ajax_live_search', 'live_search');
  * FOOTER MENU MOBILE
  * @return void
  */
-function footer_menu_mobile() {
+function footer_menu_mobile()
+{
     // Contenuto HTML del footer mobile
     $html = '
     <div class="mobile-menu-footer">
@@ -205,7 +212,8 @@ function footer_menu_mobile() {
 /**
  * ULTIMA MODIFICA POST
  */
-function get_last_modified_date() {
+function get_last_modified_date()
+{
     // Esegue una query per ottenere l'ultimo post modificato
     $recent = new WP_Query([
         'post_type' => 'any',
@@ -219,7 +227,7 @@ function get_last_modified_date() {
         // Imposta i dati del post corrente
         $recent->the_post();
         // Ottiene la data dell'ultima modifica nel formato desiderato
-        $modified_date = get_the_modified_time("d/m/Y ". json_decode('"\u2022"') . " H:i");
+        $modified_date = get_the_modified_time("d/m/Y " . json_decode('"\u2022"') . " H:i");
     } else {
         // Se non ci sono post, restituisce un messaggio di errore o una stringa vuota
         $modified_date = 'No posts found';
@@ -235,7 +243,8 @@ function get_last_modified_date() {
 /**
  * RICERCA GENERALE
  */
-function general_search() {
+function general_search()
+{
     ?>
     <!-- Form di ricerca mobile (nascosto di default) -->
     <div class="mobile-search-overlay" id="mobile-search-overlay"></div>
@@ -303,67 +312,126 @@ add_action('wp_enqueue_scripts', 'enqueue_swiper');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * CUSTOM FIELD PAGINA ADMIN WP PER SOCIAL NETWORKS ED EMAIL
  */
-function custom_user_profile_fields($user){
-    if(is_object($user)) {
-        $instagram = esc_attr( get_the_author_meta( 'instagram', $user->ID ) );
-        $twitter = esc_attr( get_the_author_meta( 'twitter', $user->ID ) );
-        $linkedin = esc_attr( get_the_author_meta( 'linkedin', $user->ID ) );
-    }
-    else {
+function custom_user_profile_fields($user)
+{
+    if (is_object($user)) {
+        $instagram = esc_attr(get_the_author_meta('instagram', $user->ID));
+        $twitter = esc_attr(get_the_author_meta('twitter', $user->ID));
+        $linkedin = esc_attr(get_the_author_meta('linkedin', $user->ID));
+        $unit = esc_attr(get_the_author_meta('unit', $user->ID));
+        $role = esc_attr(get_the_author_meta('role', $user->ID));
+    } else {
         $instagram = null;
         $twitter = null;
         $linkedin = null;
+        $unit = null;
+        $role = null;
     }
     ?>
     <h3>Informazioni social</h3>
     <table class="form-table">
-    <!-- Instagram -->
-    <tr>
-        <th><label for="instagram"><?php _e("Instagram", "my_domain"); ?></label></th>
-        <td>
-            <input type="text" class="regular-text" name="instagram" value="<?php echo esc_attr($instagram); ?>" id="instagram" /><br />
-            <span class="description"><?php _e("Inserisci il tuo profilo Instagram."); ?></span>
-        </td>
-    </tr>
+        <!-- Instagram -->
+        <tr>
+            <th><label for="instagram"><?php _e("Instagram", "my_domain"); ?></label></th>
+            <td>
+                <input type="text" class="regular-text" name="instagram" value="<?php echo esc_attr($instagram); ?>"
+                    id="instagram" /><br />
+                <span class="description"><?php _e("Inserisci il tuo profilo Instagram."); ?></span>
+            </td>
+        </tr>
 
-    <!-- Twitter -->
-    <tr>
-        <th><label for="twitter"><?php _e("Twitter", "my_domain"); ?></label></th>
-        <td>
-            <input type="text" class="regular-text" name="twitter" value="<?php echo esc_attr($twitter); ?>" id="twitter" /><br />
-            <span class="description"><?php _e("Inserisci il tuo profilo Twitter."); ?></span>
-        </td>
-    </tr>
+        <!-- Twitter -->
+        <tr>
+            <th><label for="twitter"><?php _e("Twitter", "my_domain"); ?></label></th>
+            <td>
+                <input type="text" class="regular-text" name="twitter" value="<?php echo esc_attr($twitter); ?>"
+                    id="twitter" /><br />
+                <span class="description"><?php _e("Inserisci il tuo profilo Twitter."); ?></span>
+            </td>
+        </tr>
 
-    <!-- LinkedIn -->
-    <tr>
-        <th><label for="linkedin"><?php _e("LinkedIn", "my_domain"); ?></label></th>
-        <td>
-            <input type="text" class="regular-text" name="linkedin" value="<?php echo esc_attr($linkedin); ?>" id="linkedin" /><br />
-            <span class="description"><?php _e("Inserisci il tuo profilo LinkedIn."); ?></span>
-        </td>
-    </tr>
-</table>
+        <!-- LinkedIn -->
+        <tr>
+            <th><label for="linkedin"><?php _e("LinkedIn", "my_domain"); ?></label></th>
+            <td>
+                <input type="text" class="regular-text" name="linkedin" value="<?php echo esc_attr($linkedin); ?>"
+                    id="linkedin" /><br />
+                <span class="description"><?php _e("Inserisci il tuo profilo LinkedIn."); ?></span>
+            </td>
+        </tr>
 
-<?php
+        <!-- Unit di appartenenza -->
+        <tr>
+            <th><label for="unit"><?php _e("Unit di appartenenza", "my_domain"); ?></label></th>
+            <td>
+                <select name="unit" id="unit" required>
+                    <option value="" disabled selected>-- Seleziona un'unit --</option>
+                    <option value="Giornale" <?php selected($unit, 'Giornale'); ?>>Giornale</option>
+                    <option value="Radio" <?php selected($unit, 'Radio'); ?>>Radio</option>
+                    <option value="Creativa / Grafica" <?php selected($unit, 'Creativa / Grafica'); ?>>Creativa / Grafica
+                    </option>
+                    <option value="Social" <?php selected($unit, 'Social'); ?>>Social</option>
+                    <option value="Informatica" <?php selected($unit, 'Informatica'); ?>>Informatica</option>
+                </select>
+            </td>
+        </tr>
+
+        <!-- Ruolo -->
+        <tr>
+            <th><label for="role"><?php _e("Ruolo", "my_domain"); ?></label></th>
+            <td>
+                <select name="role" id="role" required>
+                    <option value="" disabled selected>-- Seleziona un ruolo --</option>
+                    <option value="Caposervizio" <?php selected($role, 'Caposervizio'); ?>>Caposervizio</option>
+                    <option value="Redattore" <?php selected($role, 'Redattore'); ?>>Redattore</option>
+                    <option value="Responsabile Unit" <?php selected($role, 'Responsabile Unit'); ?>>Responsabile Unit
+                    </option>
+                    <option value="Coordinatrice UVM" <?php selected($role, 'Coordinatrice UVM'); ?>>Coordinatrice UVM
+                    </option>
+                </select>
+            </td>
+        </tr>
+
+
+    </table>
+
+    <?php
 }
-add_action( 'show_user_profile', 'custom_user_profile_fields' );
-add_action( 'edit_user_profile', 'custom_user_profile_fields' );
-add_action( "user_new_form", "custom_user_profile_fields" );
+add_action('show_user_profile', 'custom_user_profile_fields');
+add_action('edit_user_profile', 'custom_user_profile_fields');
+add_action("user_new_form", "custom_user_profile_fields");
 
 
-function save_custom_user_profile_fields($user_id){
+function save_custom_user_profile_fields($user_id)
+{
     # again do this only if you can
-    if(!current_user_can('manage_options'))
+    if (!current_user_can('manage_options'))
         return false;
 
     # save my custom field
     update_user_meta($user_id, 'instagram', $_POST['instagram']);
     update_user_meta($user_id, 'twitter', $_POST['twitter']);
     update_user_meta($user_id, 'linkedin', $_POST['linkedin']);
+    update_user_meta($user_id, 'unit', $_POST['unit']);
+    update_user_meta($user_id, 'role', $_POST['role']);
 }
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('profile_update', 'save_custom_user_profile_fields');
@@ -375,24 +443,23 @@ add_action('profile_update', 'save_custom_user_profile_fields');
  */
 function check_user_profile_completion() {
     $current_user = wp_get_current_user();
-    $user_description = get_user_meta($current_user->ID, 'description', true);
     $custom_avatar = get_user_meta($current_user->ID, 'custom_avatar', true);
+    $unit = get_user_meta($current_user->ID, 'unit', true);
+    $role = get_user_meta($current_user->ID, 'role', true);
 
-    // Aggiungiamo un log per debug
-    error_log("Debug: User ID: " . $current_user->ID);
-    error_log("Debug: User Description: " . $user_description);
-    error_log("Debug: Custom Avatar: " . $custom_avatar);
-
-    if (empty($user_description) || empty($custom_avatar)) {
+    if (empty($custom_avatar) || empty($unit) || empty($role)) {
         return false;
     }
     return true;
 }
 
+
+
 /**
  * ESEGUO IL REDIRECT SULLA PAGINA DEL PROFILO
  */
-function redirect_to_profile_page() {
+function redirect_to_profile_page()
+{
     if (is_admin() && !check_user_profile_completion() && !isset($_GET['page']) && $_SERVER['PHP_SELF'] != '/wp-admin/profile.php') {
         wp_redirect(admin_url('profile.php'));
         exit;
@@ -401,32 +468,61 @@ function redirect_to_profile_page() {
 add_action('admin_init', 'redirect_to_profile_page');
 
 /**
-* MESSAGGIO DI AVVISO
+ * MESSAGGIO DI AVVISO
  */
-function show_profile_completion_notice() {
+function show_profile_completion_notice()
+{
     if (!check_user_profile_completion()) {
         $class = 'notice notice-warning';
         $current_user = wp_get_current_user();
-        $user_description = get_user_meta($current_user->ID, 'description', true);
         $custom_avatar = get_user_meta($current_user->ID, 'custom_avatar', true);
-        
-        if (empty($user_description) && empty($custom_avatar)) {
-            $message = __('Per favore, completa il tuo profilo aggiungendo le informazioni biografiche e un avatar personalizzato.', 'textdomain');
-        } elseif (empty($user_description)) {
-            $message = __('Per favore, completa il tuo profilo aggiungendo le informazioni biografiche.', 'textdomain');
+        $unit = get_user_meta($current_user->ID, 'unit', true);
+        $role = get_user_meta($current_user->ID, 'role', true);
+
+        if (empty($custom_avatar) && empty($unit) && empty($role)) {
+            $message = __('Per favore, completa il tuo profilo aggiungendo un avatar personalizzato, l\'unit di appartenenza e il ruolo.', 'textdomain');
         } elseif (empty($custom_avatar)) {
             $message = __('Per favore, completa il tuo profilo aggiungendo un avatar personalizzato.', 'textdomain');
+        } elseif (empty($unit)) {
+            $message = __('Per favore, completa il tuo profilo selezionando l\'unit di appartenenza.', 'textdomain');
+        } elseif (empty($role)) {
+            $message = __('Per favore, completa il tuo profilo selezionando il tuo ruolo.', 'textdomain');
         }
-        
+
         printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
     }
 }
+
+
 add_action('admin_notices', 'show_profile_completion_notice');
 
+
+function add_profile_validation_script() {
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('form#your-profile').submit(function(e) {
+            var unit = $('#unit').val();
+            var role = $('#role').val();
+            
+            if (unit === "" || role === "") {
+                e.preventDefault();
+                alert("Per favore, seleziona sia l'unit di appartenenza che il ruolo.");
+            }
+        });
+    });
+    </script>
+    <?php
+}
+add_action('admin_footer', 'add_profile_validation_script');
+
+
+
 /**
-* NASCONDO SEZIONE AVATAR PREDEFINITA DI WP
+ * NASCONDO SEZIONE AVATAR PREDEFINITA DI WP
  */
-function hide_default_avatar_section() {
+function hide_default_avatar_section()
+{
     echo '<style>
         .user-profile-picture,
         .user-profile-picture + .form-table {
@@ -440,7 +536,8 @@ add_action('admin_head-user-edit.php', 'hide_default_avatar_section');
 /**
  * AGGIUNGO CAMPO AVATAR PERSONALIZZATO
  */
-function add_custom_avatar_field($user) {
+function add_custom_avatar_field($user)
+{
     ?>
     <h2><?php _e('Avatar personalizzato', 'textdomain'); ?></h2>
     <table class="form-table">
@@ -454,7 +551,9 @@ function add_custom_avatar_field($user) {
                 }
                 ?>
                 <input type="file" name="custom_avatar" id="custom_avatar" />
-                <p class="description"><?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata e di almeno 150x150 pixel. Dopo, premi su "Aggiorna profilo"', 'textdomain'); ?></p>
+                <p class="description">
+                    <?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata e di almeno 150x150 pixel. Dopo, premi su "Aggiorna profilo"', 'textdomain'); ?>
+                </p>
             </td>
         </tr>
     </table>
@@ -466,7 +565,8 @@ add_action('edit_user_profile', 'add_custom_avatar_field');
 /**
  * SALVA L'AVATAR PERSONALIZZATO
  */
-function save_custom_avatar($user_id) {
+function save_custom_avatar($user_id)
+{
     if (!current_user_can('edit_user', $user_id)) {
         return false;
     }
@@ -491,7 +591,8 @@ add_action('edit_user_profile_update', 'save_custom_avatar');
 
 
 
-function add_enctype_to_profile_form() {
+function add_enctype_to_profile_form()
+{
     echo ' enctype="multipart/form-data"';
 }
 add_action('user_edit_form_tag', 'add_enctype_to_profile_form');
@@ -499,7 +600,8 @@ add_action('user_edit_form_tag', 'add_enctype_to_profile_form');
 /**
  * DEBUG AVATAR UPLOAD
  */
-function debug_avatar_upload($user_id) {
+function debug_avatar_upload($user_id)
+{
     error_log('Debug: Tentativo di caricamento avatar per l\'utente ' . $user_id);
     if (isset($_FILES['custom_avatar'])) {
         error_log('Debug: File avatar presente');
@@ -516,10 +618,11 @@ add_action('edit_user_profile_update', 'debug_avatar_upload');
 /**
  * DEBUG SUL SALVATAGGIO DEL PROFILO
  */
-function debug_profile_save($user_id) {
+function debug_profile_save($user_id)
+{
     $user_description = get_user_meta($user_id, 'description', true);
     $custom_avatar = get_user_meta($user_id, 'custom_avatar', true);
-    
+
     error_log("Debug: Profilo salvato per l'utente " . $user_id);
     error_log("Debug: Descrizione dopo il salvataggio: " . $user_description);
     error_log("Debug: Avatar personalizzato dopo il salvataggio: " . $custom_avatar);
@@ -529,7 +632,8 @@ add_action('profile_update', 'debug_profile_save');
 /**
  * USA L'AVATAR PERSONALIZZATO
  */
-function use_custom_avatar($avatar, $id_or_email, $size, $default, $alt) {
+function use_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
+{
     $user = false;
 
     if (is_numeric($id_or_email)) {
@@ -559,28 +663,49 @@ add_filter('get_avatar', 'use_custom_avatar', 10, 5);
 add_action('load-profile.php', 'custom_profile_text_changes');
 add_action('load-user-edit.php', 'custom_profile_text_changes');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * YOUTUBE EMBEDDED
  */
-function youtube_embedded() {
+function youtube_embedded()
+{
     // Dichiara la chiave API di YouTube e l'ID del canale all'interno della funzione
     $apiKey = 'AIzaSyBlnoieZlBGVKeDYrWRksinsG9t6TqLYYA'; // Sostituisci con la tua chiave API
     $channelId = 'UCvrsxLP6lC5TXYiTv1bne7w'; // Sostituisci con l'ID del tuo canale
 
     // URL per ottenere gli ultimi video del canale
     $apiUrl = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=$channelId&maxResults=1&key=$apiKey";
-    
+
     // Esegui la richiesta
     $response = file_get_contents($apiUrl);
-    
+
     // Decodifica la risposta JSON
     $data = json_decode($response);
-    
+
     // Controlla se ci sono risultati
     if (!empty($data->items)) {
         // Ottieni l'ID dell'ultimo video
         $videoId = $data->items[0]->id->videoId;
-        
+
         // Genera e restituisci l'iframe di embedding
         return "<iframe class='video-frame' src='https://www.youtube.com/embed/" . $videoId . "' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen'></iframe>";
     } else {
@@ -596,88 +721,89 @@ function youtube_embedded() {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function uvm_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on UVM, use a find and replace
-		* to change 'uvm' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'uvm', get_template_directory() . '/languages' );
+function uvm_setup()
+{
+    /*
+     * Make theme available for translation.
+     * Translations can be filed in the /languages/ directory.
+     * If you're building a theme based on UVM, use a find and replace
+     * to change 'uvm' to the name of your theme in all the template files.
+     */
+    load_theme_textdomain('uvm', get_template_directory() . '/languages');
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support('automatic-feed-links');
 
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
-	add_theme_support( 'title-tag' );
+    /*
+     * Let WordPress manage the document title.
+     * By adding theme support, we declare that this theme does not use a
+     * hard-coded <title> tag in the document head, and expect WordPress to
+     * provide it for us.
+     */
+    add_theme_support('title-tag');
 
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-	add_theme_support( 'post-thumbnails' );
+    /*
+     * Enable support for Post Thumbnails on posts and pages.
+     *
+     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+     */
+    add_theme_support('post-thumbnails');
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'uvm' ),
-		)
-	);
+    // This theme uses wp_nav_menu() in one location.
+    register_nav_menus(
+        array(
+            'menu-1' => esc_html__('Primary', 'uvm'),
+        )
+    );
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-		)
-	);
+    /*
+     * Switch default core markup for search form, comment form, and comments
+     * to output valid HTML5.
+     */
+    add_theme_support(
+        'html5',
+        array(
+            'search-form',
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
+            'style',
+            'script',
+        )
+    );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'uvm_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
+    // Set up the WordPress core custom background feature.
+    add_theme_support(
+        'custom-background',
+        apply_filters(
+            'uvm_custom_background_args',
+            array(
+                'default-color' => 'ffffff',
+                'default-image' => '',
+            )
+        )
+    );
 
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+    // Add theme support for selective refresh for widgets.
+    add_theme_support('customize-selective-refresh-widgets');
 
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+    /**
+     * Add support for core custom logo.
+     *
+     * @link https://codex.wordpress.org/Theme_Logo
+     */
+    add_theme_support(
+        'custom-logo',
+        array(
+            'height' => 250,
+            'width' => 250,
+            'flex-width' => true,
+            'flex-height' => true,
+        )
+    );
 }
-add_action( 'after_setup_theme', 'uvm_setup' );
+add_action('after_setup_theme', 'uvm_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -686,42 +812,45 @@ add_action( 'after_setup_theme', 'uvm_setup' );
  *
  * @global int $content_width
  */
-function uvm_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'uvm_content_width', 640 );
+function uvm_content_width()
+{
+    $GLOBALS['content_width'] = apply_filters('uvm_content_width', 640);
 }
-add_action( 'after_setup_theme', 'uvm_content_width', 0 );
+add_action('after_setup_theme', 'uvm_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function uvm_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'uvm' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'uvm' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+function uvm_widgets_init()
+{
+    register_sidebar(
+        array(
+            'name' => esc_html__('Sidebar', 'uvm'),
+            'id' => 'sidebar-1',
+            'description' => esc_html__('Add widgets here.', 'uvm'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget' => '</section>',
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>',
+        )
+    );
 }
-add_action( 'widgets_init', 'uvm_widgets_init' );
+add_action('widgets_init', 'uvm_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function uvm_scripts() {
-	wp_enqueue_style( 'uvm-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'uvm-style', 'rtl', 'replace' );
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+function uvm_scripts()
+{
+    wp_enqueue_style('uvm-style', get_stylesheet_uri(), array(), _S_VERSION);
+    wp_style_add_data('uvm-style', 'rtl', 'replace');
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'uvm_scripts' );
+add_action('wp_enqueue_scripts', 'uvm_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -746,6 +875,6 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+if (defined('JETPACK__VERSION')) {
+    require get_template_directory() . '/inc/jetpack.php';
 }
