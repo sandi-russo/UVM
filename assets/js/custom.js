@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 // Toggle della ricerca mobile
 const mobileSearchButton = document.getElementById('mobile-search-button');
 const mobileSearch = document.getElementById('mobile-search');
@@ -214,6 +215,8 @@ const mobileSearch = document.getElementById('mobile-search');
 mobileSearchButton.addEventListener('click', () => {
     mobileSearch.classList.toggle('hidden');
 });
+
+
 
 /* RICERCA AJAX */
 document.addEventListener("DOMContentLoaded", function() {
@@ -226,11 +229,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (query.length > 2) { // Avvia la ricerca solo se ci sono almeno 3 caratteri
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/wp-admin/admin-ajax.php?action=live_search&query=' + encodeURIComponent(query), true);
+            xhr.open('GET', '/wp-json/custom/v1/search/?query=' + encodeURIComponent(query), true); // Usa l'endpoint REST API personalizzato
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    resultsContainer.innerHTML = xhr.responseText;
+                    var results = JSON.parse(xhr.responseText);
+                    resultsContainer.innerHTML = '';
+
+                    if (results.length > 0) {
+                        results.forEach(function(result) {
+                            if (result.message) {
+                                resultsContainer.innerHTML += '<p>' + result.message + '</p>';
+                            } else {
+                                var resultHTML = '<div class="search-card">';
+                                if (result.image) {
+                                    resultHTML += '<a href="' + result.link + '"><img src="' + result.image + '" class="search-card-image" /></a>';
+                                }
+                                resultHTML += '<h3 class="search-card-title"><a href="' + result.link + '">' + result.title + '</a></h3>';
+                                resultHTML += '</div>';
+                                resultsContainer.innerHTML += resultHTML;
+                            }
+                        });
+                    } else {
+                        resultsContainer.innerHTML = '<p>Nessun risultato trovato.</p>';
+                    }
+                } else {
+                    resultsContainer.innerHTML = '<p>Errore nella ricerca. Riprova più tardi.</p>';
                 }
+            };
+            xhr.onerror = function() {
+                resultsContainer.innerHTML = '<p>Errore di connessione. Controlla la tua connessione internet.</p>';
             };
             xhr.send();
         } else {
@@ -248,6 +275,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+
 
 /* RICERCA DESKTOP */
 document.addEventListener('DOMContentLoaded', function () {
@@ -275,6 +305,10 @@ document.addEventListener('DOMContentLoaded', function () {
     closeSearch.addEventListener('click', closeSearchFunc);
     mobileSearchOverlay.addEventListener('click', closeSearchFunc);
 });
+
+
+
+
 
 
 /* CALCOLO AUTOMATICO PADDING DA LASCIARE PER LA STICKY HEADER */

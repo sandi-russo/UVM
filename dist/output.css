@@ -1493,6 +1493,7 @@ img {
 
 .category-item {
   position: relative;
+  color: none;
 }
 
 .category-item>a {
@@ -2367,7 +2368,7 @@ img {
 }
 
 .entry-content p {
-  font-size: clamp(0.750rem, 3vw, 1rem);
+  font-size: clamp(0.750rem, 3vw, 1.5rem);
 }
 
 .side_text {
@@ -2555,6 +2556,154 @@ img {
 
 .chi-siamo-icon:hover {
   color: #f18812;
+}
+
+/* CONTACT FORM */
+
+/* Contenitore principale del form */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #F8FAFC;
+  color: #374151;
+  font-family: Arial, sans-serif;
+}
+
+/* Header del form */
+
+.form-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.form-header p {
+  font-size: 1rem;
+  color: #6B7280;
+}
+
+/* Corpo del form */
+
+.form-body {
+  max-width: 40rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Griglia del form */
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  /* Una colonna */
+}
+
+.full-width {
+  grid-column: span 1;
+  /* Estende a tutta la larghezza nella singola colonna */
+}
+
+/* Input e textarea */
+
+.input-container {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  padding-left: 2.5rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  color: #111827;
+  background-color: #ecebeb;
+}
+
+.input-field::-moz-placeholder {
+  color: #9CA3AF;
+}
+
+.input-field::placeholder {
+  color: #9CA3AF;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #787878;
+}
+
+/* Selezione del Ruolo con checkbox */
+
+.role-selection {
+  display: flex;
+  flex-direction: column;
+}
+
+.role-selection label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-group label {
+  font-size: 1rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input {
+  margin-right: 0.5rem;
+}
+
+/* Bottone invia */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  padding: 0.75rem 3rem;
+  background-color: #787878;
+  color: #FFFFFF;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #f18812;
 }
 
 .titolo-pagina {
@@ -3316,12 +3465,12 @@ table {
 --------------------------------------------- */
 
 a {
-  color: #4169e1;
+  color: none !important;
   text-decoration: none;
 }
 
 a:visited {
-  color: #4169e1;
+  color: none !important;
   text-decoration: none;
 }
 
@@ -3333,11 +3482,13 @@ a:active {
 }
 
 a:focus {
+  color: none !important;
   outline: thin dotted;
 }
 
 a:hover,
 a:active {
+  color: none !important;
   outline: 0;
 }
 

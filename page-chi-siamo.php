@@ -46,7 +46,7 @@ get_header(); ?>
                 // Definisci i domini dei social media
                 $social_domains = [
                     'instagram' => 'https://instagram.com/',
-                    'twitter' => 'https://twitter.com/',
+                    'threads' => 'https://www.threads.net/',
                     'linkedin' => 'https://linkedin.com/in/'
                 ];
 
@@ -77,12 +77,12 @@ get_header(); ?>
 
                             // Ottieni i nomi utenti dei social media
                             $instagram_username = esc_html(get_the_author_meta('instagram', $user->ID));
-                            $twitter_username = esc_html(get_the_author_meta('twitter', $user->ID));
+                            $threads_username = esc_html(get_the_author_meta('threads', $user->ID));
                             $linkedin_username = esc_html(get_the_author_meta('linkedin', $user->ID));
 
                             // Costruisci gli URL dei social media
                             $instagram_url = $instagram_username ? $social_domains['instagram'] . $instagram_username : '';
-                            $twitter_url = $twitter_username ? $social_domains['twitter'] . $twitter_username : '';
+                            $threads_url = $threads_username ? $social_domains['threads'] . $threads_username : '';
                             $linkedin_url = $linkedin_username ? $social_domains['linkedin'] . $linkedin_username : '';
 
                             // Costruisci l'URL della pagina degli articoli dell'autore
@@ -104,25 +104,18 @@ get_header(); ?>
                                 </svg>';
                                 echo '</a>';
                             }
-                            if ($twitter_url) {
-                                echo '<a href="' . esc_url($twitter_url) . '" target="_blank" class="chi-siamo-social-icon">';
-                                echo '<svg class="chi-siamo-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                    <path fill="currentColor" d="M9.294 6.928L14.357 1h-1.2L8.762 6.147L5.25 1H1.2l5.31 7.784L1.2 15h1.2l4.642-5.436L10.751 15h4.05zM7.651 8.852l-.538-.775L2.832 1.91h1.843l3.454 4.977l.538.775l4.491 6.47h-1.843z" />
-                                </svg>';
+                            if ($threads_url) {
+                                echo '<a href="' . esc_url($threads_url) . '" target="_blank" class="chi-siamo-social-icon">';
+                                echo '<svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4" color="currentColor"/></svg>';
                                 echo '</a>';
                             }
                             if ($linkedin_url) {
                                 echo '<a href="' . esc_url($linkedin_url) . '" target="_blank" class="chi-siamo-social-icon">';
-                                echo '<svg class="chi-siamo-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-                                        <path d="M7 15s4.5-1 9 1m-9.5-4s6-1.5 11 1.5M6 9c3-.5 8-1 13 2" />
-                                        <path d="M12 22.5a10.5 10.5 0 1 0 0-21a10.5 10.5 0 0 0 0 21Z" />
-                                    </g>
-                                </svg>';
+                                echo '<svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5 1.25a2.75 2.75 0 1 0 0 5.5a2.75 2.75 0 0 0 0-5.5M3.75 4a1.25 1.25 0 1 1 2.5 0a1.25 1.25 0 0 1-2.5 0m-1.5 4A.75.75 0 0 1 3 7.25h4a.75.75 0 0 1 .75.75v13a.75.75 0 0 1-.75.75H3a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V8.75zM9.25 8a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75v.434l.435-.187a7.8 7.8 0 0 1 2.358-.595C20.318 7.4 22.75 9.58 22.75 12.38V21a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75v-7a1.25 1.25 0 0 0-2.5 0v7a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V14a2.75 2.75 0 1 1 5.5 0v6.25h2.5v-7.87c0-1.904-1.661-3.408-3.57-3.234a6.3 6.3 0 0 0-1.904.48l-1.48.635a.75.75 0 0 1-1.046-.69V8.75z" clip-rule="evenodd"/></svg>';
                                 echo '</a>';
                             }
                             echo '</div>'; // chi-siamo-social-icons
-
+                
                             echo '</div>'; // chi-siamo-card
                         }
 
@@ -133,6 +126,99 @@ get_header(); ?>
                 ?>
 
             </div>
+
+
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="form-container">
+                <!-- Header del form, con il titolo e la descrizione -->
+                <div class="form-header">
+                    <h2>CONTATTACI</h2>
+                    <p>Hai qualche idea o vuoi contribuire alla crescita del progetto?</p>
+                </div>
+                <!-- Corpo del form -->
+                <div class="form-body">
+                    <div class="form-content">
+                        <form>
+                            <div class="form-grid">
+                                <!-- NOME -->
+                                <div class="input-container full-width">
+                                    <input type="text" placeholder="Nome" class="input-field" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="input-icon">
+                                        <g fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="4">
+                                            <circle cx="24" cy="11" r="7" />
+                                            <path d="M4 41c0-8.837 8.059-16 18-16m9 17l10-10l-4-4l-10 10v4z" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <!-- COGNOME -->
+                                <div class="input-container full-width">
+                                    <input type="text" placeholder="Cognome" class="input-field" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="input-icon">
+                                        <g fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="4">
+                                            <circle cx="24" cy="11" r="7" />
+                                            <path d="M4 41c0-8.837 8.059-16 18-16m9 17l10-10l-4-4l-10 10v4z" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <!-- NUMERO DI TELEFONO -->
+                                <div class="input-container full-width">
+                                    <input type="number" placeholder="Numero di telefono" class="input-field" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="input-icon">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5"
+                                            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.04 12.04 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5z" />
+                                    </svg>
+                                </div>
+                                <!-- EMAIL -->
+                                <div class="input-container full-width">
+                                    <input type="email" placeholder="Email" class="input-field" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="input-icon">
+                                        <path fill="currentColor"
+                                            d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5" />
+                                    </svg>
+                                </div>
+                                <!-- MESSAGGIO -->
+                                <div class="input-container full-width">
+                                    <textarea placeholder="Scrivi la tua idea" class="input-field"></textarea>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="input-icon">
+                                        <path fill="currentColor"
+                                            d="M11 24h10v2H11zm2 4h6v2h-6zm3-26A10 10 0 0 0 6 12a9.19 9.19 0 0 0 3.46 7.62c1 .93 1.54 1.46 1.54 2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2 7.2 0 0 1 8 12a8 8 0 0 1 16 0a7.2 7.2 0 0 1-2.82 6.14c-1.07 1-2.18 2-2.18 3.86h2c0-.92.53-1.45 1.54-2.39A9.18 9.18 0 0 0 26 12A10 10 0 0 0 16 2" />
+                                    </svg>
+                                </div>
+                                <!-- SELEZIONE RUOLO CON CHECKBOX -->
+                                <div class="role-selection full-width">
+                                    <label>Che ruolo ti interessa?</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" name="role" value="Giornale">Giornale</label>
+                                        <label><input type="checkbox" name="role" value="Radio">Radio</label>
+                                        <label><input type="checkbox" name="role" value="Creativa / Grafica">Creativa /
+                                            Grafica</label>
+                                        <label><input type="checkbox" name="role" value="Social">Social</label>
+                                        <label><input type="checkbox" name="role"
+                                                value="Informatica">Informatica</label>
+                                    </div>
+                                </div>
+                                <!-- BOTTONE INVIA -->
+                                <div class="button-container full-width">
+                                    <button type="submit" class="submit-button">Invia</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
         </header>
     </main>
 </div>

@@ -16,6 +16,7 @@ if (!defined('_S_VERSION')) {
 function cg_your_theme_scripts()
 {
     wp_enqueue_style('output', get_template_directory_uri() . '/dist/output.css', array());
+    wp_enqueue_style('output', get_template_directory_uri() . '/src/style.css', array());
 }
 add_action('wp_enqueue_scripts', 'cg_your_theme_scripts');
 
@@ -243,8 +244,7 @@ function get_last_modified_date()
 /**
  * RICERCA GENERALE
  */
-function general_search()
-{
+function general_search() {
     ?>
     <!-- Form di ricerca mobile (nascosto di default) -->
     <div class="mobile-search-overlay" id="mobile-search-overlay"></div>
@@ -270,26 +270,7 @@ function general_search()
                     class="search-field" />
             </form>
             <span class="search-hint">Inserisci almeno 3 caratteri.</span>
-            <div id="search-results">
-                <?php
-                if (have_posts()):
-                    while (have_posts()):
-                        the_post(); ?>
-                        <div class="search-card">
-                            <?php if (has_post_thumbnail()): ?>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail('medium', ['class' => 'search-card-image']); ?>
-                                </a>
-                            <?php endif; ?>
-                            <h3 class="search-card-title">
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                            </h3>
-                        </div>
-                    <?php endwhile;
-                else: ?>
-                    <p><?php _e('Nessun risultato trovato.'); ?></p>
-                <?php endif; ?>
-            </div>
+            <div id="search-results"></div> <!-- Rimosso il loop PHP qui per far spazio alla ricerca AJAX -->
         </div>
 
         <!-- Footer ricerca -->
@@ -297,7 +278,51 @@ function general_search()
     </div>
     <?php
 }
+add_action('wp_footer', 'general_search'); // Assicurati che questa funzione sia aggiunta al footer
+// Registra le azioni AJAX per utenti loggati e non loggati
+add_action('wp_ajax_live_search', 'handle_live_search');
+add_action('wp_ajax_nopriv_live_search', 'handle_live_search');
 
+
+// Funzione per registrare l'endpoint REST API
+function register_custom_search_endpoint() {
+    register_rest_route('custom/v1', '/search/', array(
+        'methods' => 'GET',
+        'callback' => 'handle_custom_search',
+        'permission_callback' => '__return_true', // Rende l'endpoint pubblico
+    ));
+}
+add_action('rest_api_init', 'register_custom_search_endpoint');
+
+// Funzione che gestisce la ricerca
+function handle_custom_search(WP_REST_Request $request) {
+    $query = sanitize_text_field($request->get_param('query'));
+
+    $args = array(
+        's' => $query,
+        'post_status' => 'publish',
+        'posts_per_page' => 5,
+    );
+
+    $search_query = new WP_Query($args);
+
+    $results = array();
+
+    if ($search_query->have_posts()) {
+        while ($search_query->have_posts()) {
+            $search_query->the_post();
+            $results[] = array(
+                'title' => get_the_title(),
+                'link' => get_permalink(),
+                'image' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : '',
+            );
+        }
+    } else {
+        $results[] = array('message' => 'Nessun risultato trovato.');
+    }
+
+    return rest_ensure_response($results);
+}
 
 /**
  * CAROUSEL SWIPER
@@ -317,14 +342,14 @@ add_action('wp_enqueue_scripts', 'enqueue_swiper');
 function custom_user_profile_fields($user){
     if(is_object($user)) {
         $instagram = esc_attr( get_the_author_meta( 'instagram', $user->ID ) );
-        $twitter = esc_attr( get_the_author_meta( 'twitter', $user->ID ) );
+        $threads = esc_attr( get_the_author_meta( 'threads', $user->ID ) );
         $linkedin = esc_attr( get_the_author_meta( 'linkedin', $user->ID ) );
         $unit = esc_attr( get_the_author_meta( 'unit', $user->ID ) );
         $ruolo_uvm = esc_attr( get_the_author_meta( 'ruolo_uvm', $user->ID ) );
     }
     else {
         $instagram = null;
-        $twitter = null;
+        $threads = null;
         $linkedin = null;
         $unit = null;
         $ruolo_uvm = null;
@@ -341,12 +366,12 @@ function custom_user_profile_fields($user){
         </td>
     </tr>
 
-    <!-- Twitter -->
+    <!-- threads -->
     <tr>
-        <th><label for="twitter"><?php _e("Twitter", "my_domain"); ?></label></th>
+        <th><label for="threads"><?php _e("Threads", "my_domain"); ?></label></th>
         <td>
-            <input type="text" class="regular-text" name="twitter" value="<?php echo esc_attr($twitter); ?>" id="twitter" /><br />
-            <span class="description"><?php _e("Inserisci il tuo profilo Twitter."); ?></span>
+            <input type="text" class="regular-text" name="threads" value="<?php echo esc_attr($threads); ?>" id="threads" /><br />
+            <span class="description"><?php _e("Inserisci il tuo profilo threads."); ?></span>
         </td>
     </tr>
 
@@ -406,7 +431,7 @@ function save_custom_user_profile_fields($user_id){
 
     # save my custom field
     update_user_meta($user_id, 'instagram', $_POST['instagram']);
-    update_user_meta($user_id, 'twitter', $_POST['twitter']);
+    update_user_meta($user_id, 'threads', $_POST['threads']);
     update_user_meta($user_id, 'linkedin', $_POST['linkedin']);
     update_user_meta($user_id, 'unit', $_POST['unit']);
     update_user_meta($user_id, 'ruolo_uvm', $_POST['ruolo_uvm']);
