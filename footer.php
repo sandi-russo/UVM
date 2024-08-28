@@ -82,12 +82,22 @@
         <div class="ml-auto mx-auto">
             <h4 class="text-[#ff8800] font-bold text-lg">Giornalista?</h4>
             <p class="text-sm text-white mt-2">Premi qui sotto per accedere.</p>
-            <a href="https:\\universome.unime.it\login">
+            <a href="/login">
                 <button
                     class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
                     style="border: none;">Accedi</button>
-
             </a>
+
+            <div>
+                <h4 class="text-[#ff8800] font-bold text-lg mt-6">Vuoi unirti al progetto?</h4>
+                <p class="text-sm text-white mt-2">Premi qui sotto per contattarci.</p>
+                <a href="/contattaci/">
+                    <button
+                        class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
+                        style="border: none;">Contattaci</button>
+                </a>
+            </div>
+
             <!-- Icone Social -->
             <div>
                 <h4 class="text-[#ff8800] font-bold text-lg mt-6">Social Network</h4>

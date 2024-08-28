@@ -203,7 +203,6 @@
 			<!-- Form di ricerca mobile (nascosto di default) -->
 			<?php general_search(); ?>
 		</header>
-
 	</div>
 	<?php wp_footer(); // Hook di WordPress per inserire script prima della chiusura del <body> ?>
 </body>

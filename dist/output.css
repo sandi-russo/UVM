@@ -1406,7 +1406,7 @@ img {
 }
 
 .navbar-bottom.fixed-navbar .sticky-logo img {
-  height: clamp(40px, 3vw, 50px);
+  height: clamp(25px, 3vw, 40px);
   width: auto;
   display: block;
   margin: 0 auto;
@@ -1478,9 +1478,9 @@ img {
 /* Link categorie */
 
 .categories-nav a {
-  font-size: clamp(12px, 1vw, 16px);
-  padding: clamp(1px, 0.5vw, 4px);
-  margin: clamp(1px, 1vw, 4px);
+  font-size: clamp(11px, 1vw, 14px);
+  padding: clamp(0.25px, 0.5vw, 2px);
+  margin: clamp(0.25px, 1vw, 2px);
   white-space: nowrap;
 }
 
@@ -2368,7 +2368,7 @@ img {
 }
 
 .entry-content p {
-  font-size: clamp(0.750rem, 3vw, 1.5rem);
+  font-size: clamp(0.750rem, 3vw, 1.15rem);
 }
 
 .side_text {
@@ -2567,9 +2567,6 @@ img {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #F8FAFC;
-  color: #374151;
-  font-family: Arial, sans-serif;
 }
 
 /* Header del form */
@@ -2595,7 +2592,6 @@ img {
   max-width: 40rem;
   width: 100%;
   padding: 2rem;
-  background-color: #FFFFFF;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

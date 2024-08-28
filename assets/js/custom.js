@@ -597,4 +597,33 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
+/* MESSAGGIO CONTACT FORM */
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var formData = new FormData(this);
+    var messageDiv = document.getElementById('form-message');
+    
+    fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        messageDiv.style.display = 'block';
+        if (data.success) {
+            messageDiv.style.color = 'green';
+            messageDiv.innerHTML = data.message;
+            document.getElementById('contact-form').reset();
+        } else {
+            messageDiv.style.color = 'red';
+            messageDiv.innerHTML = data.message || 'Si è verificato un errore durante l\'invio dell\'email.';
+        }
+    })
+    .catch(error => {
+        messageDiv.style.display = 'block';
+        messageDiv.style.color = 'red';
+        messageDiv.innerHTML = 'Si è verificato un errore durante l\'invio del messaggio.';
+        console.error('Error:', error);
+    });
+});
