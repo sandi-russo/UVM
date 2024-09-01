@@ -1,4 +1,3 @@
-
 /* LOGO NAVBAR */
 window.addEventListener('DOMContentLoaded', () => {
     // Funzione per aggiornare la larghezza dello sfondo della navbar
@@ -24,10 +23,73 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Esegui l'aggiornamento all'avvio
     updateNavbarBgWidth();
-    
+
     // Aggiungi l'evento di resize per adattarsi ai cambiamenti di dimensione
     window.addEventListener('resize', updateNavbarBgWidth);
 });
+
+
+
+/* SWIPER RADIO */
+document.addEventListener('DOMContentLoaded', function () {
+    // Controlla se esiste l'elemento Swiper
+    if (document.querySelector('.mySwiper')) {
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: window.innerWidth <= 768 ? 1.5 : 3,
+            loop: true,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+
+        // Riassegna il numero di slides visibili quando la finestra viene ridimensionata
+        window.addEventListener('resize', function () {
+            swiper.params.slidesPerView = window.innerWidth <= 768 ? 1.5 : 3;
+            swiper.update();
+        });
+
+        // Funzione per impostare l'altezza delle card
+        function adjustCardHeights() {
+            const cards = document.querySelectorAll('.radio-text-content');
+            let maxHeight = 0;
+
+            // Calcola l'altezza massima tra tutte le card
+            cards.forEach(card => {
+                // Include il padding e i margini
+                const computedStyle = window.getComputedStyle(card);
+                const height = card.offsetHeight
+                    + parseFloat(computedStyle.marginTop)
+                    + parseFloat(computedStyle.marginBottom)
+                    - parseFloat(computedStyle.paddingBottom);
+                maxHeight = Math.max(maxHeight, height);
+            });
+
+            // Imposta l'altezza massima a tutte le card
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
+        }
+
+        // Applica l'altezza dopo che il DOM è stato completamente caricato
+        adjustCardHeights();
+
+        // Ricalcola l'altezza quando la finestra viene ridimensionata
+        window.addEventListener('resize', adjustCardHeights);
+    }
+});
+
+
+
 
 
 /* LOGO NAVBAR MOBILE */
@@ -64,7 +126,7 @@ window.addEventListener('resize', checkScreenSize);
 /* DATA E ORA NAVBAR */
 function updateDateTime() {
     const now = new Date();
-    
+
     // Ottieni il giorno della settimana in italiano
     const options = { weekday: 'long' };
     const weekday = now.toLocaleDateString('it-IT', options);
@@ -80,7 +142,7 @@ function updateDateTime() {
 
     // Utilizzo Unicode \u2022 (•)
     const dateTimeString = `${date} \u2022 ${time}`;
-    
+
     // Aggiorna il contenuto dell'elemento con id "current-date-time"
     document.getElementById('current-date-time').textContent = dateTimeString;
 }
@@ -91,7 +153,7 @@ setInterval(updateDateTime, 60000);
 
 
 /* CATEGORIE NAVBAR */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const categoryItems = document.querySelectorAll('.category-item');
 
     categoryItems.forEach(item => {
@@ -110,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Funzione per nascondere il subMenu
         function hideSubMenu() {
-            hideTimeout = setTimeout(function() {
+            hideTimeout = setTimeout(function () {
                 if (subMenu) {
                     subMenu.classList.remove('visible');
                     setTimeout(() => {
@@ -121,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Gestisce il click sul link principale
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             if (subMenu) {
                 e.preventDefault(); // Previene il comportamento predefinito
                 window.location.href = this.href; // Naviga alla pagina della categoria padre
@@ -129,23 +191,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Gestisce l'hover sull'elemento principale
-        item.addEventListener('mouseenter', function() {
+        item.addEventListener('mouseenter', function () {
             clearTimeout(hideTimeout); // Cancella eventuali timeout precedenti
             showSubMenu(); // Mostra il subMenu
         });
 
-        item.addEventListener('mouseleave', function() {
+        item.addEventListener('mouseleave', function () {
             hideSubMenu(); // Nasconde il subMenu dopo un ritardo
         });
 
         // Gestisce l'hover sul subMenu
         if (subMenu) {
-            subMenu.addEventListener('mouseenter', function() {
+            subMenu.addEventListener('mouseenter', function () {
                 clearTimeout(hideTimeout); // Cancella il timeout per evitare che il menu si chiuda
                 showSubMenu(); // Mantiene il subMenu visibile
             });
 
-            subMenu.addEventListener('mouseleave', function() {
+            subMenu.addEventListener('mouseleave', function () {
                 hideSubMenu(); // Nasconde il subMenu dopo un ritardo
             });
         }
@@ -219,24 +281,24 @@ mobileSearchButton.addEventListener('click', () => {
 
 
 /* RICERCA AJAX */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var searchInput = document.getElementById('live-search');
     var resultsContainer = document.getElementById('search-results');
     var searchForm = searchInput.closest('form');
 
-    searchInput.addEventListener('input', function() {
+    searchInput.addEventListener('input', function () {
         var query = searchInput.value;
 
         if (query.length > 2) { // Avvia la ricerca solo se ci sono almeno 3 caratteri
             var xhr = new XMLHttpRequest();
             xhr.open('GET', '/wp-json/custom/v1/search/?query=' + encodeURIComponent(query), true); // Usa l'endpoint REST API personalizzato
-            xhr.onload = function() {
+            xhr.onload = function () {
                 if (xhr.status === 200) {
                     var results = JSON.parse(xhr.responseText);
                     resultsContainer.innerHTML = '';
 
                     if (results.length > 0) {
-                        results.forEach(function(result) {
+                        results.forEach(function (result) {
                             if (result.message) {
                                 resultsContainer.innerHTML += '<p>' + result.message + '</p>';
                             } else {
@@ -256,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     resultsContainer.innerHTML = '<p>Errore nella ricerca. Riprova più tardi.</p>';
                 }
             };
-            xhr.onerror = function() {
+            xhr.onerror = function () {
                 resultsContainer.innerHTML = '<p>Errore di connessione. Controlla la tua connessione internet.</p>';
             };
             xhr.send();
@@ -266,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Gestisce il submit del form per la ricerca normale
-    searchForm.addEventListener('submit', function(event) {
+    searchForm.addEventListener('submit', function (event) {
         if (searchInput.value.length > 2) {
             // Esegui la ricerca normale se il campo di ricerca non è vuoto
             return true;
@@ -312,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* CALCOLO AUTOMATICO PADDING DA LASCIARE PER LA STICKY HEADER */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var header = document.querySelector('.sticky-header');
     var content = document.querySelector('main') || document.querySelector('.content') || document.querySelector('.primary-content .primary .site_container');
 
@@ -351,10 +413,10 @@ function fetchWeather() {
         .then(data => {
             // Estrai la temperatura dalla proprietà main.temp
             const temp = Math.round(data.main.temp);
-            
+
             // Estrai la descrizione dalla prima voce dell'array weather
             const description = data.weather[0].description;
-            
+
             const weatherInfo = document.getElementById('weather-info');
             weatherInfo.textContent = `${temp}°C \u2022 ${description}`;
         })
@@ -370,23 +432,23 @@ fetchWeather();
 setInterval(fetchWeather, 30 * 60 * 1000);
 
 /* CATEGORIE MOBILE */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('.menu-item');
-    
+
     menuItems.forEach(item => {
         const arrowIcon = item.querySelector('.arrow-icon');
         const submenu = item.querySelector('.submenu');
         const menuLink = item.querySelector('.menu-link');
-        
+
         // Gestisci clic sulla freccia per aprire/chiudere il sottomenu
         if (arrowIcon && submenu) {
-            arrowIcon.addEventListener('click', function(event) {
+            arrowIcon.addEventListener('click', function (event) {
                 // Impedisci la propagazione dell'evento al link principale
                 event.stopPropagation();
-                
+
                 // Mostra o nascondi il sottomenu
                 const isVisible = submenu.classList.contains('visible');
-                
+
                 // Nascondi tutti i sottomenu
                 document.querySelectorAll('.submenu').forEach(menu => {
                     menu.classList.remove('visible');
@@ -409,10 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
-        
+
         // Gestisci clic sul link della categoria
         if (menuLink) {
-            menuLink.addEventListener('click', function(event) {
+            menuLink.addEventListener('click', function (event) {
                 // Trova il sottomenu associato
                 const submenu = this.nextElementSibling;
 
@@ -517,7 +579,7 @@ function scrollToTop() {
 
 
 /* PADDING MOBILE NAVBAR */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var header = document.querySelector('.navbar-top');
     var mobileLastModified = document.querySelector('.mobile-last-modified');
     var content = document.querySelector('main, .content, .primary-content .primary .site_container');
@@ -543,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /* STICKY NAVBAR */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.getElementById("navbar-bottom");
     if (!navbar) {
         console.error('Elemento navbar non trovato');
@@ -586,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     window.addEventListener('scroll', checkSticky);
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
         adjustSidebarTop();
         placeholder.style.height = `${navbar.offsetHeight}px`;
     });
@@ -598,32 +660,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /* MESSAGGIO CONTACT FORM */
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     var formData = new FormData(this);
     var messageDiv = document.getElementById('form-message');
-    
+
     fetch('send_email.php', {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-        messageDiv.style.display = 'block';
-        if (data.success) {
-            messageDiv.style.color = 'green';
-            messageDiv.innerHTML = data.message;
-            document.getElementById('contact-form').reset();
-        } else {
+        .then(response => response.json())
+        .then(data => {
+            messageDiv.style.display = 'block';
+            if (data.success) {
+                messageDiv.style.color = 'green';
+                messageDiv.innerHTML = data.message;
+                document.getElementById('contact-form').reset();
+            } else {
+                messageDiv.style.color = 'red';
+                messageDiv.innerHTML = data.message || 'Si è verificato un errore durante l\'invio dell\'email.';
+            }
+        })
+        .catch(error => {
+            messageDiv.style.display = 'block';
             messageDiv.style.color = 'red';
-            messageDiv.innerHTML = data.message || 'Si è verificato un errore durante l\'invio dell\'email.';
-        }
-    })
-    .catch(error => {
-        messageDiv.style.display = 'block';
-        messageDiv.style.color = 'red';
-        messageDiv.innerHTML = 'Si è verificato un errore durante l\'invio del messaggio.';
-        console.error('Error:', error);
-    });
+            messageDiv.innerHTML = 'Si è verificato un errore durante l\'invio del messaggio.';
+            console.error('Error:', error);
+        });
 });
+
+
+

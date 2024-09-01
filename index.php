@@ -40,7 +40,8 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                                     <?php else: ?>
                                         <div class="w-full h-64 bg-gray-300"></div>
                                     <?php endif; ?>
-                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-10">
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-10">
                                         <p class="title text-white">
                                             <?php the_title(); ?>
                                         </p>
@@ -203,11 +204,27 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
     <div class="sidebar rounded-r-lg bg-white">
         <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
         <div class="sidebar-content">
-        <?php echo youtube_embedded(); ?>
+            <?php echo youtube_embedded(); ?>
             <!-- SPOTIFY -->
-            <iframe class="video-frame" style="border-radius:12px" src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+            <iframe class="video-frame" style="border-radius:12px"
+                src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%"
+                height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+
+            <!-- Pulsante allineato a destra -->
+            <a href="/radio"
+                class="text-gray-900 bg-[#eeeeee] focus:outline-none font-medium rounded-full text-sm text-center flex items-center">
+                <?php esc_html_e('Ascoltaci!', 'universome'); ?>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
+                    <path
+                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
+                </svg>
+            </a>
+        </div><!-- .sidebar-content -->
     </div><!-- .sidebar -->
+
+
 
     </div><!-- .w-full max-w-[1400px] -->
 </main><!-- #main -->

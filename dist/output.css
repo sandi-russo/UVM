@@ -2019,7 +2019,7 @@ img {
   flex-shrink: 0;
 }
 
-.swiper-slide img {
+.post_img {
   width: 100%;
   height: 400px;
   /* Assicura che le immagini riempiano l'altezza del carousel */
@@ -2201,11 +2201,40 @@ img {
   /* Spazio tra i frame */
 }
 
+/* Stili per l'iframe */
+
 .video-frame {
   width: 100%;
   border-radius: 30px;
   position: relative;
   height: 200px;
+}
+
+/* Stili per il pulsante */
+
+.sidebar a {
+  text-align: center;
+  /* Allinea il testo al centro del pulsante */
+  background-color: #eeeeee;
+  /* Colore di sfondo del pulsante */
+  color: #333;
+  /* Colore del testo del pulsante */
+  padding: 0.5rem 1rem;
+  /* Padding interno del pulsante */
+  border-radius: 25px;
+  /* Bordo arrotondato del pulsante */
+  text-decoration: none;
+  /* Rimuove la sottolineatura del link */
+  font-weight: 500;
+  /* Peso del font del pulsante */
+  display: inline-flex;
+  /* Usa inline-flex per evitare che il pulsante occupi tutta la larghezza */
+  align-items: center;
+  /* Allinea verticalmente l'icona e il testo */
+  margin-left: auto;
+  /* Spazio a sinistra per allineare il pulsante a destra */
+  margin-top: 1rem;
+  /* Spazio sopra il pulsante */
 }
 
 /* POST - SINGLE */
@@ -2713,12 +2742,12 @@ img {
 .descrizione-pagina {
   color: #787878;
   /* text-[#787878] */
-  font-size: 0.875rem;
   /* text-sm (14px) */
   margin-top: 1rem;
   margin-bottom: 1rem;
   line-height: 1.625;
   /* leading-relaxed (line-height of 1.625) */
+  font-size: clamp(0.750rem, 3vw, 1.15rem);
 }
 
 /* POLICY E COPYRIGHT PAGINA */
@@ -2768,6 +2797,106 @@ img {
   text-align: left;
 }
 
+/* RADIO */
+
+/* CAROSELLO RADIO */
+
+.radio-collection {
+  padding: 20px;
+  /* Aggiungi padding per evitare che tocchi gli altri elementi */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* Nasconde l'overflow e mantiene le cards dentro i limiti */
+  max-width: 100%;
+  /* Assicura che la sezione non superi mai la larghezza della pagina */
+  box-sizing: border-box;
+  /* Include il padding nel calcolo della larghezza */
+}
+
+.radio-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: clamp(0.650rem, 2vw, 0.750rem);
+}
+
+.radio-info span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.radio-info .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.swiper {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 70vw;
+  height: calc(40vw * 0.40);
+  filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.swiper-slide-active {
+  filter: blur(0);
+  transform: scale(1.1);
+  box-shadow: 0 5px 5px -5px #333;
+}
+
+.radio-content {
+  width: 100%;
+  background-color: #eeeeee;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.radio-content img {
+  width: 100%;
+  height: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.radio-text-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem;
+  text-align: left;
+  background: #eeeeee;
+}
+
+.radio-text-content h3 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.3rem);
+}
+
+.radio-text-content p {
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: clamp(0.750rem, 2vw, 1rem);
+}
+
 /* Media query per schermi più grandi di 768px */
 
 @media (min-width: 768px) {
@@ -2814,7 +2943,7 @@ img {
     height: 220px;
   }
 
-  .swiper-slide img {
+  .post_img {
     height: 220px;
   }
 
@@ -2972,7 +3101,7 @@ img {
     height: 220px;
   }
 
-  .swiper-slide img {
+  .post_img {
     height: 220px;
   }
 
@@ -3032,6 +3161,32 @@ img {
 
   .entry-content p {
     font-size: 1rem;
+  }
+
+  .swiper-slide {
+    width: 80vw;
+  }
+
+  .radio-content {
+    flex-direction: column;
+    /* Mantiene la disposizione della card in colonne */
+    width: 80%;
+    /* Assicura che la card occupi l'intera larghezza disponibile */
+    /* Permette alla card di adattarsi al contenuto */
+    margin-bottom: 20px;
+    /* Spazio tra le cards per dispositivi più piccoli */
+  }
+
+  .radio-text-content {
+    padding: 1rem;
+    /* Riduce il padding per adattarsi meglio alle dimensioni più piccole */
+  }
+
+  .radio-btn {
+    font-size: 0.8rem;
+    /* Riduce la dimensione del font del bottone */
+    padding: 0.4rem 0.8rem;
+    /* Adatta il padding del bottone */
   }
 }
 
