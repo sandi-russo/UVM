@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+    color: #007bff;
+}
 
 /* SCORRIMENTO FLUIDO */
 html {
@@ -952,7 +955,7 @@ img {
 }
 
 /* Stili per il pulsante */
-.sidebar a {
+.sidebar-button {
     text-align: center; /* Allinea il testo al centro del pulsante */
     background-color: #eeeeee; /* Colore di sfondo del pulsante */
     color: #333; /* Colore del testo del pulsante */
@@ -1015,6 +1018,27 @@ img {
 }
 
 /* INFORMAZIONI AUTORE */
+.author-main {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.author-content {
+    max-width: 768px; /* Larghezza massima per il contenuto principale */
+    margin: 0 auto;
+}
+
+.author-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.author-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .author-info {
     display: flex;
     align-items: center;
@@ -1027,7 +1051,8 @@ img {
 /* AVATAR AUTORE */
 .author-avatar {
     width: 60px;
-    height: 60px;
+    height: 60px; 
+    border-radius: 50%; /* Avatar circolare */
 }
 
 /* NOME AUTORE */
@@ -1592,6 +1617,111 @@ img {
     font-size: clamp(0.750rem, 2vw, 1rem);
 }
 
+/* 404 */
+.sezione-error {
+    background-color: white;
+}
+
+.contenitore-404 {
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.contenuto-404 {
+    margin: 0 auto;
+    max-width: 640px;
+    text-align: center;
+}
+
+.titolo-404 {
+    margin-bottom: 1rem;
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: #ff8800;
+}
+
+.sottotitolo-404 {
+    margin-bottom: 1rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1f2937;
+}
+
+.messaggio-404 {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: #6b7280;
+}
+
+.contenitore-bottone-404 {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.bottone-404 {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1f2937;
+    background-color: #e2e2e2;
+    border-radius: 9999px;
+    text-decoration: none;
+}
+
+.icona-casa {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    fill: currentColor;
+}
+
+/* ARTICOLI SUGGERITI */
+.sidebar-card {
+    background: #fff; /* Colore di sfondo della card */
+    border-radius: 8px; /* Angoli arrotondati */
+    overflow: hidden; /* Nasconde il contenuto che esce dai bordi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra della card */
+    margin-bottom: 0.5em; /* Spazio tra le card */
+    margin-top: 1em;
+}
+
+.sidebar-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.sidebar-card-thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+.sidebar-card-thumbnail img {
+    width: 100%;
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+    display: block;
+    max-height: 150px;
+}
+
+.sidebar-card-title {
+    padding: 0.5em 1em; /* Spazio interno nella parte inferiore della card */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333; /* Colore del testo */
+    background: #f9f9f9; /* Colore di sfondo sotto il titolo */
+}
+
+.sidebar-card-title:hover {
+   color: #f18812;
+}
 
 /* Media query per schermi più grandi di 768px */
 @media (min-width: 768px) {

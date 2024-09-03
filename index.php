@@ -214,7 +214,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
 
             <!-- Pulsante allineato a destra -->
             <a href="/radio"
-                class="text-gray-900 bg-[#eeeeee] focus:outline-none font-medium rounded-full text-sm text-center flex items-center">
+                class="sidebar-button text-gray-900 bg-[#eeeeee] focus:outline-none font-medium rounded-full text-sm text-center flex items-center">
                 <?php esc_html_e('Ascoltaci!', 'universome'); ?>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
                     <path

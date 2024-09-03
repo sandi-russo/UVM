@@ -157,42 +157,54 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                     </article>
                 </div>
 
-                <!-- Barra Laterale -->
-                <div class="sidebar w-1/4 px-5 rounded-r-lg bg-white shadow-lg">
-                    <h2 class="sidebar-title text-black text-2xl font-bold mb-4">Articoli Suggeriti</h2>
-                    <div class="sidebar-content">
-                        <?php
-                        $args = array(
-                            'post_type' => 'post',
-                            'posts_per_page' => 4,
-                            'post__not_in' => array(get_the_ID()),
-                        );
-                        $query = new WP_Query($args);
-                        if ($query->have_posts()):
-                            while ($query->have_posts()):
-                                $query->the_post();
-                                ?>
-                                <div class="bg-white shadow-md rounded-lg overflow-hidden mb-4">
-                                    <a href="<?php the_permalink(); ?>" class="flex flex-col">
-                                        <?php if (has_post_thumbnail()): ?>
-                                            <?php the_post_thumbnail('medium', array('class' => 'side_img w-full object-cover')); ?>
-                                        <?php else: ?>
-                                            <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
-                                                <p class="text-gray-500">Immagine non disponibile</p>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="p-4">
-                                            <h3 class="side_text text-lg font-semibold text-gray-900"><?php the_title(); ?></h3>
-                                        </div>
-                                    </a>
-                                </div>
-                                <?php
-                            endwhile;
-                            wp_reset_postdata();
-                        endif;
-                        ?>
-                    </div>
+<!-- Barra Laterale -->
+<div class="sidebar">
+    <h2 class="sidebar-title">Articoli Suggeriti</h2>
+    <div class="sidebar-content">
+        <?php
+        // Query per ottenere 4 articoli casuali
+        $args = array(
+            'post_type' => 'post', // Tipo di contenuto, ad esempio 'post'
+            'posts_per_page' => 4, // Numero di articoli da mostrare
+            'orderby' => 'rand', // Ordinamento casuale
+        );
+        $query = new WP_Query($args);
+        
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                ?>
+                <div class="sidebar-card">
+                    <a href="<?php the_permalink(); ?>" class="sidebar-card-link">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="sidebar-card-thumbnail">
+                                <?php the_post_thumbnail('large'); // Dimensione dell'immagine per la card ?>
+                            </div>
+                        <?php endif; ?>
+                        <h3 class="sidebar-card-title"><?php the_title(); ?></h3>
+                    </a>
                 </div>
+                <?php
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo '<p>Nessun articolo trovato.</p>';
+        endif;
+        ?>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         <?php endwhile; ?>
 
@@ -201,7 +213,7 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
             Condividi Articolo
         </button>
 
-    </main>
+</main>
 </div>
 
 <?php
