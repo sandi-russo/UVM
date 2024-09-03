@@ -28,7 +28,54 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateNavbarBgWidth);
 });
 
+/* PADDING MOBILE NAVBAR */
+document.addEventListener("DOMContentLoaded", function () {
+    var header = document.querySelector('.navbar-top');
+    var mobileLastModified = document.querySelector('.mobile-last-modified');
+    var content = document.querySelector('main, .content, .primary-content .primary .site_container');
 
+    function adjustContentPadding() {
+        var headerHeight = header.offsetHeight;
+        var mobileLastModifiedHeight = mobileLastModified ? mobileLastModified.offsetHeight : 0;
+        var totalHeight = headerHeight + mobileLastModifiedHeight;
+
+        if (window.innerWidth <= 1024) {
+            content.style.paddingTop = totalHeight + 'px';
+        } else {
+            content.style.paddingTop = ''; // Rimuove il padding se la larghezza è > 1024px
+        }
+    }
+
+    // Regola il padding al caricamento della pagina
+    adjustContentPadding();
+
+    // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
+    window.addEventListener('resize', adjustContentPadding);
+});
+
+/* CALCOLO AUTOMATICO PADDING DA LASCIARE PER LA STICKY HEADER */
+document.addEventListener("DOMContentLoaded", function () {
+    var header = document.querySelector('.sticky-header');
+    var content = document.querySelector('main') || document.querySelector('.content') || document.querySelector('.primary-content .primary .site_container');
+
+    function adjustContentPadding() {
+        if (header && content) {
+            var headerHeight = header.offsetHeight;
+
+            if (window.innerWidth <= 1024) {
+                content.style.paddingTop = headerHeight + 'px';
+            } else {
+                content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 1024px
+            }
+        }
+    }
+
+    // Regola il padding al caricamento della pagina
+    adjustContentPadding();
+
+    // Ricalcola il padding se la finestra viene ridimensionata
+    window.addEventListener('resize', adjustContentPadding);
+});
 
 /* SWIPER RADIO */
 document.addEventListener('DOMContentLoaded', function () {
@@ -70,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const height = card.offsetHeight
                     + parseFloat(computedStyle.marginTop)
                     + parseFloat(computedStyle.marginBottom)
-                    - parseFloat(computedStyle.paddingBottom);
                 maxHeight = Math.max(maxHeight, height);
             });
 
@@ -373,29 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-/* CALCOLO AUTOMATICO PADDING DA LASCIARE PER LA STICKY HEADER */
-document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector('.sticky-header');
-    var content = document.querySelector('main') || document.querySelector('.content') || document.querySelector('.primary-content .primary .site_container');
 
-    function adjustContentPadding() {
-        if (header && content) {
-            var headerHeight = header.offsetHeight;
-
-            if (window.innerWidth < 1024) {
-                content.style.paddingTop = headerHeight + 'px';
-            } else {
-                content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 1024px
-            }
-        }
-    }
-
-    // Regola il padding al caricamento della pagina
-    adjustContentPadding();
-
-    // Ricalcola il padding se la finestra viene ridimensionata
-    window.addEventListener('resize', adjustContentPadding);
-});
 
 
 /* METEO MESSINA - OPENWEATHER*/
@@ -578,30 +602,7 @@ function scrollToTop() {
 
 
 
-/* PADDING MOBILE NAVBAR */
-document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector('.navbar-top');
-    var mobileLastModified = document.querySelector('.mobile-last-modified');
-    var content = document.querySelector('main, .content, .primary-content .primary .site_container');
 
-    function adjustContentPadding() {
-        var headerHeight = header.offsetHeight;
-        var mobileLastModifiedHeight = mobileLastModified ? mobileLastModified.offsetHeight : 0;
-        var totalHeight = headerHeight + mobileLastModifiedHeight;
-
-        if (window.innerWidth <= 1024) {
-            content.style.paddingTop = totalHeight + 'px';
-        } else {
-            content.style.paddingTop = ''; // Rimuove il padding se la larghezza è > 1024px
-        }
-    }
-
-    // Regola il padding al caricamento della pagina
-    adjustContentPadding();
-
-    // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
-    window.addEventListener('resize', adjustContentPadding);
-});
 
 
 /* STICKY NAVBAR */
