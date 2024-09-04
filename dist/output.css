@@ -3008,6 +3008,10 @@ img {
   color: #f18812;
 }
 
+.cards-border {
+  border: 2px solid #eeeeee;
+}
+
 /* Media query per schermi più grandi di 768px */
 
 @media (min-width: 768px) {

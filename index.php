@@ -84,10 +84,12 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                             <div class="bg-white font-[sans-serif] my-4">
                                 <div class="max-w-7xl mx-auto">
                                     <div class="text-center">
-                                        <h2
-                                            class="category_name text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">
-                                            <?php echo esc_html($category->name); ?>
-                                        </h2>
+                                        <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>">
+                                            <h2
+                                                class="category_name text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">
+                                                <?php echo esc_html($category->name); ?>
+                                            </h2>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -99,8 +101,9 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                                     if ($first_post):
                                         $first_post = false;
                                         ?>
+                                        <!-- PRIMA CARDS -->
                                         <div
-                                            class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative md:col-span-2 min-h-[300px] max-h-[600px] flex flex-col">
+                                            class="cards-border bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative md:col-span-2 min-h-[300px] max-h-[600px] flex flex-col">
                                             <a href="<?php the_permalink(); ?>">
                                                 <div class="flex-1">
                                                     <?php if (has_post_thumbnail()): ?>
@@ -139,8 +142,9 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                                         </div>
                                     </div>
                                 <?php else: ?>
+                                    <!-- ALTRE CARDS -->
                                     <div
-                                        class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative min-h-[300px] max-h-[600px] flex flex-col">
+                                        class="cards-border bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 relative min-h-[300px] max-h-[600px] flex flex-col">
                                         <a href="<?php the_permalink(); ?>">
                                             <div class="flex-1">
                                                 <?php if (has_post_thumbnail()): ?>

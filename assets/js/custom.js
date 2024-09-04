@@ -415,13 +415,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-
-
-
-
-
 /* METEO MESSINA - OPENWEATHER*/
 function fetchWeather() {
     const apiKey = 'b5f3e22f769ca30fcc07da47f31ea391';

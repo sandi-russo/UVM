@@ -50,7 +50,7 @@ get_header();
                 /* Start the Loop */
                 while ($author_query->have_posts()): $author_query->the_post();
                     ?>
-                    <article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
+                    <article class="cards-border bg-white shadow-md rounded-lg overflow-hidden flex flex-col min-h-[300px] max-h-[600px] mx-auto flex">
                         <a href="<?php the_permalink(); ?>">
                             <?php if (has_post_thumbnail()): ?>
                                 <div class="relative">
@@ -63,7 +63,7 @@ get_header();
                                 </div>
                             <?php endif; ?>
                         </a>
-                        <div class="p-6 bg-[#e2e2e2] flex flex-col flex-1">
+                        <div class="p-6 bg-[#eeeeee] flex flex-col flex-1">
                             <h2 class="card_title text-xl font-bold mb-2">
                                 <a href="<?php the_permalink(); ?>" class="text-gray-900">
                                     <?php the_title(); ?>
