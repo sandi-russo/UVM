@@ -956,7 +956,7 @@ img {
 /* Stili per il pulsante */
 .sidebar-button {
     text-align: center; /* Allinea il testo al centro del pulsante */
-    background-color: #eeeeee; /* Colore di sfondo del pulsante */
+    background-color: #e2e2e2; /* Colore di sfondo del pulsante */
     color: #333; /* Colore del testo del pulsante */
     padding: 0.5rem 1rem; /* Padding interno del pulsante */
     border-radius: 25px; /* Bordo arrotondato del pulsante */
