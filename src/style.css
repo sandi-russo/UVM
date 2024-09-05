@@ -815,7 +815,6 @@ img {
     /* Centra il testo all'interno del contenitore */
 }
 
-
 /* ARTICOLI */
 .articoli {
     position: relative;
@@ -909,7 +908,7 @@ img {
     position: sticky;
     align-self: start;
     padding: 1rem;
-    background-color: #e2e2e2;
+    background-color: #eeeeee;
     min-height: 100vh;
     overflow: visible; /* Mantiene l'overflow visibile */
     transition: top 0.3s ease; /* Transizione per un effetto più fluido */
@@ -923,7 +922,7 @@ img {
     left: -25px; /* Estensione dello sfondo a sinistra */
     width: calc(100% + 25px); /* Aggiungi 25px alla larghezza */
     height: 100%;
-    background-color: #e2e2e2; /* Stesso colore dello sfondo della sidebar */
+    background-color: #eeeeee; /* Stesso colore dello sfondo della sidebar */
     z-index: -1; /* Metti lo sfondo dietro il contenuto */
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -949,7 +948,7 @@ img {
 /* Stili per l'iframe */
 .video-frame {
     width: 100%;
-    border-radius: 30px;
+    border-radius: 12px;
     position: relative;
     height: 200px;
 }
@@ -1616,6 +1615,47 @@ img {
     color: #666;
     font-size: clamp(0.750rem, 2vw, 1rem);
 }
+
+.radio-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr; /* Due colonne di uguale dimensione con una linea divisoria centrale */
+    gap: 20px;
+    align-items: center;
+}
+
+.radio-youtube-container, .radio-spotify-container {
+    padding: 10px;
+}
+
+.radio-divider {
+    background-color: #d3d3d3; /* Linea grigia chiara */
+    width: 1px;
+    height: 100%;
+}
+
+/* Responsività per dispositivi mobili */
+@media (max-width: 768px) {
+    .radio-grid-container {
+        grid-template-columns: 1fr; /* Colonne singole */
+        grid-template-rows: auto auto; /* Metti gli elementi uno sotto l'altro */
+    }
+
+    .radio-divider {
+        display: none; /* Nascondi la linea divisoria sui dispositivi mobili */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 404 */
 .sezione-error {

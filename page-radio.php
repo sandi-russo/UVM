@@ -117,11 +117,27 @@ $programs = [
                 </div>
             </div>
         </section>
-        <?php echo youtube_embedded(); ?>
-            <!-- SPOTIFY -->
-            <iframe class="video-frame" style="border-radius:12px" src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+        <div class="radio-grid-container">
+            <div class="radio-youtube-container">
+                <?php echo youtube_embedded(); ?>
+            </div>
+
+            <div class="radio-divider"></div> <!-- Linea divisoria grigia chiara -->
+
+            <div class="radio-spotify-container">
+                <iframe class="radio-video-frame" style="border-radius:12px"
+                    src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%"
+                    height="352" frameborder="0" allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+            </div>
         </div>
-    </main><!-- #main -->
+
+
+</div>
+
+</main><!-- #main -->
 </div>
 
 <?php

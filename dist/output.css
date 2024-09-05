@@ -1,6 +1,6 @@
 /* INCLUDO TAILWIND */
 
-/* ! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -2123,7 +2123,7 @@ img {
   position: sticky;
   align-self: start;
   padding: 1rem;
-  background-color: #e2e2e2;
+  background-color: #eeeeee;
   min-height: 100vh;
   overflow: visible;
   /* Mantiene l'overflow visibile */
@@ -2142,7 +2142,7 @@ img {
   width: calc(100% + 25px);
   /* Aggiungi 25px alla larghezza */
   height: 100%;
-  background-color: #e2e2e2;
+  background-color: #eeeeee;
   /* Stesso colore dello sfondo della sidebar */
   z-index: -1;
   /* Metti lo sfondo dietro il contenuto */
@@ -2175,7 +2175,7 @@ img {
 
 .video-frame {
   width: 100%;
-  border-radius: 30px;
+  border-radius: 12px;
   position: relative;
   height: 200px;
 }
@@ -2889,6 +2889,41 @@ img {
   margin-bottom: 1rem;
   color: #666;
   font-size: clamp(0.750rem, 2vw, 1rem);
+}
+
+.radio-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  /* Due colonne di uguale dimensione con una linea divisoria centrale */
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-youtube-container, .radio-spotify-container {
+  padding: 10px;
+}
+
+.radio-divider {
+  background-color: #d3d3d3;
+  /* Linea grigia chiara */
+  width: 1px;
+  height: 100%;
+}
+
+/* Responsività per dispositivi mobili */
+
+@media (max-width: 768px) {
+  .radio-grid-container {
+    grid-template-columns: 1fr;
+    /* Colonne singole */
+    grid-template-rows: auto auto;
+    /* Metti gli elementi uno sotto l'altro */
+  }
+
+  .radio-divider {
+    display: none;
+    /* Nascondi la linea divisoria sui dispositivi mobili */
+  }
 }
 
 /* 404 */
