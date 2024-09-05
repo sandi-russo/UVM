@@ -74,7 +74,7 @@ function display_categories_with_subcategories()
 
     $categories = get_categories($args);
     echo '<ul class="main-menu">';
-    
+
     foreach ($categories as $category) {
         $subcategories = get_categories(array(
             'parent' => $category->term_id,
@@ -125,7 +125,7 @@ function display_mobile_categories()
 
     $categories = get_categories($args);
     echo '<ul class="mobile-menu">';
-    
+
     foreach ($categories as $category) {
         // Estrai le sottocategorie
         $subcategories = get_categories(array(
@@ -715,6 +715,39 @@ function youtube_embedded()
         return "Nessun video trovato.";
     }
 }
+
+
+
+
+// Funzione per incorporare l'ultimo video di YouTube
+function radio_youtube_embedded()
+{
+    $apiKey = 'AIzaSyBlnoieZlBGVKeDYrWRksinsG9t6TqLYYA'; // Sostituisci con la tua chiave API
+    $channelId = 'UCvrsxLP6lC5TXYiTv1bne7w'; // Sostituisci con l'ID del tuo canale
+
+    // URL per ottenere gli ultimi video del canale
+    $apiUrl = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=$channelId&maxResults=1&key=$apiKey";
+
+    // Esegui la richiesta
+    $response = file_get_contents($apiUrl);
+
+    // Decodifica la risposta JSON
+    $data = json_decode($response);
+
+    // Controlla se ci sono risultati
+    if (!empty($data->items)) {
+        $videoId = $data->items[0]->id->videoId;
+
+        // Genera e restituisci l'iframe con la classe radio-video-frame per l'embed
+        return "<iframe class='radio-video-frame' 
+                src='https://www.youtube.com/embed/" . $videoId . "' 
+                frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' 
+                allowfullscreen></iframe>";
+    } else {
+        return "<p>Nessun video trovato.</p>";
+    }
+}
+
 
 
 /**

@@ -119,16 +119,18 @@ $programs = [
         </section>
 
         <div class="radio-grid-container">
+            <!-- YouTube iframe -->
             <div class="radio-youtube-container">
-                <?php echo youtube_embedded(); ?>
+                <?php echo radio_youtube_embedded(); ?>
             </div>
 
             <div class="radio-divider"></div> <!-- Linea divisoria grigia chiara -->
 
+            <!-- Spotify iframe -->
             <div class="radio-spotify-container">
-                <iframe class="radio-video-frame" style="border-radius:12px"
-                    src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%"
-                    height="352" frameborder="0" allowfullscreen=""
+                <iframe class="radio-video-frame"
+                    src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator"
+                    frameborder="0" allowfullscreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"></iframe>
             </div>
