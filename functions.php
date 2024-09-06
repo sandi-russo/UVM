@@ -682,8 +682,6 @@ function use_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
 add_filter('get_avatar', 'use_custom_avatar', 10, 5);
 
 // Applica le modifiche solo nella pagina del profilo
-add_action('load-profile.php', 'custom_profile_text_changes');
-add_action('load-user-edit.php', 'custom_profile_text_changes');
 
 
 /**
