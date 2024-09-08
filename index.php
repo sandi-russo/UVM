@@ -18,7 +18,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
 ?>
 <main id="primary" class="site-main">
     <!-- Swiper Carousel -->
-    <div class="w-full relative mb-8">
+    <div class="w-full relative">
         <div class="swiper-container news-carousel">
             <div class="swiper-wrapper">
                 <?php
@@ -62,7 +62,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
 
     <!-- Wrapper per centralizzare il contenuto -->
     <div class="site_main site_container mx-auto flex">
-        <!-- Sezione degli Articoli con angoli stondati a sinistra e shadow -->
+        <!-- Sezione degli Articoli con angoli stondati a destra e shadow -->
         <div class="articoli flex-1 overflow-y-auto pr-4 px-5 bg-white">
             <?php
             foreach ($navbar_categories as $category):
@@ -205,27 +205,68 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
     </div><!-- .flex-1 -->
 
     <!-- Barra Laterale Fissa con angoli stondati a destra -->
-    <div class="sidebar rounded-r-lg bg-white">
-        <h2 class="sidebar-title text-black">Ascolta Radio UVM</h2>
+    <div class="sidebar rounded-r-lg">
+        <h2 class="sidebar-title">Ascolta Radio UVM</h2>
         <div class="sidebar-content">
-            <?php echo youtube_embedded(); ?>
-            <!-- SPOTIFY -->
-            <iframe class="video-frame" style="border-radius:12px"
-                src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator" width="100%"
-                height="352" frameBorder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"></iframe>
+            <?php /*echo youtube_embedded(); */ ?>
 
-            <!-- Pulsante allineato a destra -->
-            <a href="/radio"
-                class="sidebar-button text-gray-900 bg-[#e2e2e2] focus:outline-none font-medium rounded-full text-sm text-center flex items-center">
-                <?php esc_html_e('Ascoltaci!', 'universome'); ?>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
-                    <path
-                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
+
+            <!-- SPOTIFY -->
+
+
+            <div class="latest-episode">
+                <img id="episode-cover" src="" alt="Copertina Episodio" />
+                <div class="info">
+                    <div class="scroll-container">
+                        <span id="episode-title"></span>
+                    </div>
+                    <p id="podcast-name"></p>
+                    <p>Pubblicato il: <span id="episode-date"></span></p>
+                    <div class="audio-controls">
+                        <button id="play-pause-btn" onclick="togglePlayPause()">
+                            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z" />
+                            </svg>
+                        </button>
+                        <input type="range" id="progress-slider" min="0" max="100" value="0">
+                        <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <svg class="spotify-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="M7 15s4.5-1 9 1m-9.5-4s6-1.5 11 1.5M6 9c3-.5 8-1 13 2" />
+                        <path d="M12 22.5a10.5 10.5 0 1 0 0-21a10.5 10.5 0 0 0 0 21Z" />
+                    </g>
                 </svg>
-            </a>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div><!-- .sidebar-content -->
+        <!-- Pulsante allineato a destra -->
+        <a href="/radio"
+            class="sidebar-button text-gray-900 bg-[#e2e2e2] focus:outline-none font-medium rounded-full text-sm text-center flex items-center">
+            <?php esc_html_e('Ascoltaci!', 'universome'); ?>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
+                <path
+                    d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
+            </svg>
+        </a>
     </div><!-- .sidebar -->
 
 

@@ -1,3 +1,157 @@
+const clientId = 'badf08cb27534405ae65a9c5feffb686';
+const clientSecret = 'dd0dfa1d8be64b6983b5e8edbde5581b';
+
+let isPlaying = false;
+let audio = new Audio();
+
+async function getAccessToken() {
+    const result = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+        },
+        body: 'grant_type=client_credentials'
+    });
+    const data = await result.json();
+    return data.access_token;
+}
+
+async function getLatestEpisode(showId) {
+    const token = await getAccessToken();
+    const result = await fetch(`https://api.spotify.com/v1/shows/${showId}/episodes?limit=1&market=IT`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    });
+    const episodeData = await result.json();
+    return episodeData.items[0];
+}
+
+async function getPodcastInfo(showId) {
+    const token = await getAccessToken();
+    const result = await fetch(`https://api.spotify.com/v1/shows/${showId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    });
+    const podcastData = await result.json();
+    return podcastData;
+}
+
+async function displayLatestEpisode() {
+    const episode = await getLatestEpisode('5J3Ai6sP7r89LG6d8HaAOe');
+    const podcast = await getPodcastInfo('5J3Ai6sP7r89LG6d8HaAOe');
+
+    document.getElementById('episode-cover').src = episode.images[0].url;
+    document.getElementById('episode-title').textContent = episode.name;
+    document.getElementById('podcast-name').textContent = podcast.name;
+    document.getElementById('episode-date').textContent = new Date(episode.release_date).toLocaleDateString('it-IT');
+
+    // Aggiungiamo un pulsante per aprire l'episodio completo su Spotify
+    const openInSpotifyBtn = document.createElement('a');
+    openInSpotifyBtn.href = episode.external_urls.spotify;
+    openInSpotifyBtn.target = '_blank';
+    openInSpotifyBtn.textContent = 'Ascolta su Spotify';
+    openInSpotifyBtn.className = 'spotify-button';
+    document.querySelector('.info').appendChild(openInSpotifyBtn);
+
+    // Continuiamo a usare l'anteprima per la riproduzione in-page
+    audio.src = episode.audio_preview_url;
+    
+    setupAudioControls();
+    checkOverflow();
+}
+
+function setupAudioControls() {
+    const progressSlider = document.getElementById('progress-slider');
+    const currentTimeDisplay = document.getElementById('current-time');
+    const durationDisplay = document.getElementById('duration');
+
+    audio.addEventListener('loadedmetadata', () => {
+        progressSlider.max = audio.duration;
+        durationDisplay.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+        progressSlider.value = audio.currentTime;
+        currentTimeDisplay.textContent = formatTime(audio.currentTime);
+    });
+
+    progressSlider.addEventListener('input', () => {
+        audio.currentTime = progressSlider.value;
+    });
+}
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
+function togglePlayPause() {
+    const playPauseBtn = document.getElementById('play-pause-btn');
+
+    if (isPlaying) {
+        playPauseBtn.innerHTML = `
+            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z"/>
+            </svg>
+        `;
+        audio.pause();
+    } else {
+        playPauseBtn.innerHTML = `
+            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+                    <rect width="4" height="14" x="6" y="5" rx="1"/>
+                    <rect width="4" height="14" x="14" y="5" rx="1"/>
+                </g>
+            </svg>
+        `;
+        audio.play();
+    }
+
+    isPlaying = !isPlaying;
+}
+
+function checkOverflow() {
+    const title = document.getElementById('episode-title');
+    const container = document.querySelector('.scroll-container');
+
+    if (title.offsetWidth > container.offsetWidth) {
+        // Calcola la quantità di scrolling necessaria
+        const scrollAmount = title.offsetWidth - container.offsetWidth;
+
+        // Assicura che scrollAmount sia un valore positivo
+        if (scrollAmount > 0) {
+            // Imposta la variabile CSS con il valore calcolato
+            container.style.setProperty('--scroll-width', `${scrollAmount}px`);
+
+            // Aggiungi la classe per abilitare lo scorrimento
+            title.classList.add('scroll');
+        }
+    } else {
+        // Rimuovi la classe di scorrimento se non necessario
+        title.classList.remove('scroll');
+    }
+}
+
+// Chiama la funzione al caricamento e al resize
+displayLatestEpisode();
+window.addEventListener('resize', checkOverflow);
+
+// Ricalcola ogni 15 secondi
+setInterval(checkOverflow, 15000);
+
+
+
+
+
+
+
+
 /* LOGO NAVBAR */
 window.addEventListener('DOMContentLoaded', () => {
     // Funzione per aggiornare la larghezza dello sfondo della navbar

@@ -50,8 +50,8 @@ img {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 0;
-    height: 60px;
+    padding: 4px 0;
+    height: auto;
     overflow: hidden;
     background-color: #f18812;
     /* Imposta il colore di sfondo per la navbar */
@@ -60,7 +60,7 @@ img {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,12 +71,14 @@ img {
 .navbar-logo {
     position: relative;
     z-index: 2;
-    padding: 8px;
+    padding-right: 2px;
 }
 
 .navbar-logo img {
     height: clamp(30px, 5vw, 50px);
     border-top-right-radius: 15px;
+    padding-right: 2px;
+    margin-right: 10px;
 }
 
 .navbar-bg {
@@ -107,8 +109,8 @@ img {
     /* Forma a pillola */
     padding-left: clamp(2px, 4vw, 35px);
     padding-right: clamp(2px, 4vw, 35px);
-    padding-top: clamp(0.5px, 0.5vw, 3px);
-    padding-bottom: clamp(0.5px, 0.5vw, 3px);
+    padding-top: clamp(1px, 2vw, 4px);
+    padding-bottom: clamp(1px, 2vw, 4px);
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
@@ -119,13 +121,12 @@ img {
 
 .nav-element-text {
     color: #787878;
-    font-size: clamp(10px, 1vw, 12px);
-    margin-bottom: 2px;
+    font-size: clamp(8px, 1vw, 10px);
 }
 
 .nav-element-subtext {
     color: black;
-    font-size: clamp(12px, 1vw, 14px);
+    font-size: clamp(10px, 1vw, 12px);
 }
 
 .social-icons {
@@ -138,7 +139,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 8px;
     background-color: white;
     border-radius: 50%;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
@@ -148,8 +149,8 @@ img {
 }
 
 .social-icons svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     color: black;
     transition: color 0.3s;
 }
@@ -305,7 +306,7 @@ img {
     left: 0;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    border-radius: 30px;
     padding: 8px 0;
     min-width: 100px;
     z-index: 100;
@@ -355,7 +356,7 @@ img {
     /* Centra verticalmente */
     padding: 10px 15px;
     /* Aggiunge padding */
-    border: none;
+    border: 1px solid #e2e2e2;
     /* Rimuove il bordo */
     background-color: white;
     /* Colore di sfondo iniziale */
@@ -365,6 +366,7 @@ img {
     /* Cambia il cursore in pointer */
     font-size: 16px;
     /* Dimensione del testo */
+    border-radius: 30px;
 }
 
 #search-button svg {
@@ -432,7 +434,7 @@ img {
     flex: 1;
     /* Occupa tutto lo spazio disponibile */
     text-decoration: none;
-    color: #333;
+    color: #b3b3b3;
     font-weight: bold;
 }
 
@@ -456,7 +458,7 @@ img {
     left: 0;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    border-radius: 30px;
     padding: 2px 0;
     min-width: 50px;
     z-index: 100;
@@ -528,8 +530,8 @@ img {
     height: 100%;
     background-color: white;
     z-index: 999;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     display: flex;
     flex-direction: column;
     transition: left 0.3s ease;
@@ -596,16 +598,6 @@ img {
     color: #666;
 }
 
-.mobile-menu-login {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
 /* RICERCA MOBILE */
 .mobile-search-overlay {
     position: fixed;
@@ -661,7 +653,7 @@ img {
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     z-index: 1002;
-    border-radius: 20px 0px 0px 0px;
+    border-radius: 30px 0px 0px 0px;
 }
 
 .close-search {
@@ -692,16 +684,6 @@ img {
     /* Imposta una dimensione del font adeguata */
 }
 
-.mobile-search-login {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
 #mobile-menu-button,
 #mobile-search-button {
     display: none;
@@ -717,7 +699,7 @@ img {
 /* CARDS RICERCA */
 .search-card {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
@@ -739,7 +721,7 @@ img {
     padding: 15px;
     font-size: 16px;
     font-weight: bold;
-    color: #333;
+    color: #b3b3b3;
     text-align: center;
 }
 
@@ -770,7 +752,6 @@ img {
     z-index: 5;
     position: relative;
     /* Aggiunto per il contesto di posizionamento */
-    box-shadow: 0 5px 5px -5px #333;
     width: 100%;
     overflow: hidden;
 }
@@ -819,9 +800,9 @@ img {
 .articoli {
     position: relative;
     z-index: 1;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-shadow: 5px 0 5px -5px #333;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 5px 0 10px -5px #b3b3b3;
 }
 
 /* PAGINAZIONE */
@@ -865,7 +846,7 @@ img {
     /* h-10 */
     width: 2.5rem;
     /* w-10 */
-    border-radius: 9999px;
+    border-radius: 50px;
     /* rounded-full */
     display: flex;
     /* flex */
@@ -901,17 +882,19 @@ img {
     z-index: 0;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 5px 0 5px -5px #333;
-    width: 100%;
+    box-shadow: 5px 0 5px -5px #b3b3b3;
+    min-width: 25%;
     max-width: 25%;
     flex-shrink: 0;
     position: sticky;
     align-self: start;
     padding: 1rem;
-    background-color: #eeeeee;
+    background-color: #1E1E1E;
     min-height: 100vh;
-    overflow: visible; /* Mantiene l'overflow visibile */
-    transition: top 0.3s ease; /* Transizione per un effetto più fluido */
+    overflow: visible;
+    /* Mantiene l'overflow visibile */
+    transition: top 0.3s ease;
+    /* Transizione per un effetto più fluido */
 }
 
 /* Pseudo-elemento per estendere lo sfondo */
@@ -919,62 +902,225 @@ img {
     content: '';
     position: absolute;
     top: 0;
-    left: -25px; /* Estensione dello sfondo a sinistra */
-    width: calc(100% + 25px); /* Aggiungi 25px alla larghezza */
+    left: -25px;
+    /* Estensione dello sfondo a sinistra */
+    width: calc(100% + 25px);
+    /* Aggiungi 25px alla larghezza */
     height: 100%;
-    background-color: #eeeeee; /* Stesso colore dello sfondo della sidebar */
-    z-index: -1; /* Metti lo sfondo dietro il contenuto */
+    background-color: #1E1E1E;
+    /* Stesso colore dello sfondo della sidebar */
+    z-index: -1;
+    /* Metti lo sfondo dietro il contenuto */
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
 
 /* Stili per il titolo della barra laterale */
 .sidebar-title {
-    font-size: 1.25rem; /* text-xl */
+    font-size: 1.25rem;
+    /* text-xl */
     font-weight: bold;
     inline-size: 1;
     padding-top: 0;
     margin-top: 0;
     text-align: center;
+    color: #eeeeee;
+    margin-bottom: 8px;
 }
 
 /* Stili per il contenuto della barra laterale */
 .sidebar-content {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Spazio tra i frame */
+    gap: 10px;
+    /* Spazio tra i frame */
 }
 
 /* Stili per l'iframe */
 .video-frame {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 15px;
     position: relative;
-    height: 200px;
+    height: 152px;
+    border: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    overflow: hidden;
 }
 
 /* Stili per il pulsante */
 .sidebar-button {
-    text-align: center; /* Allinea il testo al centro del pulsante */
-    background-color: #e2e2e2; /* Colore di sfondo del pulsante */
-    color: #333; /* Colore del testo del pulsante */
-    padding: 0.5rem 1rem; /* Padding interno del pulsante */
-    border-radius: 25px; /* Bordo arrotondato del pulsante */
-    text-decoration: none; /* Rimuove la sottolineatura del link */
-    font-weight: 500; /* Peso del font del pulsante */
-    display: inline-flex; /* Usa inline-flex per evitare che il pulsante occupi tutta la larghezza */
-    align-items: center; /* Allinea verticalmente l'icona e il testo */
-    margin-left: auto; /* Spazio a sinistra per allineare il pulsante a destra */
-    margin-top: 1rem; /* Spazio sopra il pulsante */
+    text-align: center;
+    /* Allinea il testo al centro del pulsante */
+    background-color: #e2e2e2;
+    /* Colore di sfondo del pulsante */
+    color: #b3b3b3;
+    /* Colore del testo del pulsante */
+    padding: 0.5rem 1rem;
+    /* Padding interno del pulsante */
+    border-radius: 30px;
+    /* Bordo arrotondato del pulsante */
+    text-decoration: none;
+    /* Rimuove la sottolineatura del link */
+    font-weight: 500;
+    /* Peso del font del pulsante */
+    display: inline-flex;
+    /* Usa inline-flex per evitare che il pulsante occupi tutta la larghezza */
+    align-items: center;
+    /* Allinea verticalmente l'icona e il testo */
+    margin-left: auto;
+    /* Spazio a sinistra per allineare il pulsante a destra */
+    margin-top: 1rem;
+    /* Spazio sopra il pulsante */
 }
 
+
+/* SPOTIFY EMBEDDED */
+.latest-episode {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #242424;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.latest-episode img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.latest-episode .info {
+    text-align: center;
+    width: 100%;
+    color: #e2e2e2;
+}
+
+.scroll-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    margin-bottom: 10px;    
+}
+
+#episode-title {
+    white-space: nowrap;
+    display: inline-block;
+    transition: transform 0.3s ease-out;
+    color: #eeeeee;
+}
+
+.latest-episode p {
+    margin: 10px 0;
+}
+
+.play-icon {
+    width: 22px;
+    height: 22px;
+    color: #eeeeee;
+    transition: color 0.3s;
+}
+
+.spotify-logo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    color: #1DB954;
+}
+
+.spotify-button {
+    display: inline-block;
+    background-color: #1DB954;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.spotify-button:hover, .spotify-button:active, .spotify-button:focus {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    color: #e2e2e2 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+@keyframes scrollLeftToRight {
+    0%, 10%, 90%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(calc(-1 * var(--scroll-width)));
+    }
+}
+
+.scroll-container:hover .scroll {
+    animation: scrollLeftToRight 15s ease-in-out infinite;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#progress-slider {
+    width: 100%;
+    margin: 0 10px;
+    appearance: none;
+    height: 8px;
+    background: #eeeeee; /* Imposta il colore della progress bar */
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+/* Stile del thumb (manopola) della progress bar */
+#progress-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #f18812; /* Colore del thumb */
+    cursor: pointer;
+}
+
+#progress-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #f18812;
+    cursor: pointer;
+}
+
+
+#current-time, #duration {
+    font-size: 12px;
+    color: #e2e2e2;
+}
 
 
 /* POST - SINGLE */
 /* POST */
 
 .post_top {
-    box-shadow: 0 5px 5px -5px #333;
+    box-shadow: 0 5px 5px -5px #b3b3b3;
     width: 100%;
     overflow: hidden;
     height: 400px;
@@ -1023,7 +1169,8 @@ img {
 }
 
 .author-content {
-    max-width: 768px; /* Larghezza massima per il contenuto principale */
+    max-width: 768px;
+    /* Larghezza massima per il contenuto principale */
     margin: 0 auto;
 }
 
@@ -1050,8 +1197,9 @@ img {
 /* AVATAR AUTORE */
 .author-avatar {
     width: 60px;
-    height: 60px; 
-    border-radius: 50%; /* Avatar circolare */
+    height: 60px;
+    border-radius: 50%;
+    /* Avatar circolare */
 }
 
 /* NOME AUTORE */
@@ -1094,7 +1242,7 @@ img {
     z-index: 1;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 5px 0 5px -5px #333;
+    box-shadow: 5px 0 5px -5px #b3b3b3;
     padding: 20px;
 }
 
@@ -1111,7 +1259,7 @@ img {
 }
 
 .articolo img {
-    border-radius: 8px;
+    border-radius: 30px;
     margin: 20px auto;
     /* Aggiunge spazio sopra e sotto l'immagine */
     max-width: 100%;
@@ -1119,7 +1267,7 @@ img {
 }
 
 .sidebar-content img {
-    border-radius: 4px;
+    border-radius: 15px;
 }
 
 .entry-content {
@@ -1164,7 +1312,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
-    background-color: #ff8800;
+    background-color: #ff0000;
     color: white;
     padding: 10px 20px;
     border-radius: 50px;
@@ -1351,7 +1499,7 @@ img {
     max-width: 40rem;
     width: 100%;
     padding: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -1383,7 +1531,7 @@ img {
     padding: 0.75rem;
     padding-left: 2.5rem;
     border: 1px solid #E5E7EB;
-    border-radius: 0.375rem;
+    border-radius: 15px;
     font-size: 1rem;
     color: #111827;
     background-color: #ecebeb;
@@ -1444,7 +1592,7 @@ img {
     color: #FFFFFF;
     font-size: 1rem;
     border: none;
-    border-radius: 0.375rem;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -1525,13 +1673,17 @@ img {
 /* CAROSELLO RADIO */
 
 .radio-collection {
-    padding: 20px; /* Aggiungi padding per evitare che tocchi gli altri elementi */
+    padding: 20px;
+    /* Aggiungi padding per evitare che tocchi gli altri elementi */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Nasconde l'overflow e mantiene le cards dentro i limiti */
-    max-width: 100%; /* Assicura che la sezione non superi mai la larghezza della pagina */
-    box-sizing: border-box; /* Include il padding nel calcolo della larghezza */
+    overflow: hidden;
+    /* Nasconde l'overflow e mantiene le cards dentro i limiti */
+    max-width: 100%;
+    /* Assicura che la sezione non superi mai la larghezza della pagina */
+    box-sizing: border-box;
+    /* Include il padding nel calcolo della larghezza */
 }
 
 .radio-info {
@@ -1572,13 +1724,13 @@ img {
 .swiper-slide-active {
     filter: blur(0);
     transform: scale(1.1);
-    box-shadow: 0 5px 5px -5px #333;
+    box-shadow: 0 5px 5px -5px #b3b3b3;
 }
 
 .radio-content {
     width: 100%;
     background-color: #eeeeee;
-    border-radius: 20px;
+    border-radius: 30px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1621,17 +1773,21 @@ img {
 
 .radio-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1px 1fr; /* Due colonne di uguale dimensione con una linea divisoria centrale */
+    grid-template-columns: 1fr 1px 1fr;
+    /* Due colonne di uguale dimensione con una linea divisoria centrale */
     gap: 20px;
     align-items: center;
 }
 
-.radio-youtube-container, .radio-spotify-container {
+.radio-youtube-container,
+.radio-spotify-container {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
-    justify-content: center; /* Centra orizzontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center;
+    /* Centra orizzontalmente */
+    align-items: center;
+    /* Centra verticalmente */
     height: 250px;
 }
 
@@ -1641,13 +1797,17 @@ img {
 }
 
 .radio-video-frame {
-    border-radius: 20px; /* Angoli stondati per gli iframe */
-    width: 100%; /* Larghezza al 100% */
-    height: 100%; /* Altezza al 100% per l'iframe */
+    border-radius: 30px;
+    /* Angoli stondati per gli iframe */
+    width: 100%;
+    /* Larghezza al 100% */
+    height: 100%;
+    /* Altezza al 100% per l'iframe */
 }
 
 .radio-divider {
-    background-color: #d3d3d3; /* Linea grigia chiara */
+    background-color: #d3d3d3;
+    /* Linea grigia chiara */
     width: 1px;
     height: 100%;
 }
@@ -1655,15 +1815,19 @@ img {
 /* Responsività per dispositivi mobili */
 @media (max-width: 768px) {
     .radio-grid-container {
-        grid-template-columns: 1fr; /* Colonne singole */
-        grid-template-rows: auto auto; /* Metti gli elementi uno sotto l'altro */
+        grid-template-columns: 1fr;
+        /* Colonne singole */
+        grid-template-rows: auto auto;
+        /* Metti gli elementi uno sotto l'altro */
     }
 
     .radio-divider {
-        display: none; /* Nascondi la linea divisoria sui dispositivi mobili */
+        display: none;
+        /* Nascondi la linea divisoria sui dispositivi mobili */
     }
 
-    .radio-youtube-container, .radio-spotify-container {
+    .radio-youtube-container,
+    .radio-spotify-container {
         height: 180px;
     }
 }
@@ -1723,7 +1887,7 @@ img {
     font-weight: 500;
     color: #1f2937;
     background-color: #e2e2e2;
-    border-radius: 9999px;
+    border-radius: 50px;
     text-decoration: none;
 }
 
@@ -1736,12 +1900,16 @@ img {
 
 /* ARTICOLI SUGGERITI */
 .sidebar-card {
-    background: #fff; /* Colore di sfondo della card */
-    border-radius: 8px; /* Angoli arrotondati */
-    overflow: hidden; /* Nasconde il contenuto che esce dai bordi */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra della card */
-    margin-bottom: 0.5em; /* Spazio tra le card */
-    margin-top: 1em;
+    background: #fff;
+    /* Colore di sfondo della card */
+    border-radius: 15px;
+    /* Angoli arrotondati */
+    overflow: hidden;
+    /* Nasconde il contenuto che esce dai bordi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombra della card */
+    margin-bottom: 0.5em;
+    /* Spazio tra le card */
 }
 
 .sidebar-card-link {
@@ -1757,21 +1925,25 @@ img {
 
 .sidebar-card-thumbnail img {
     width: 100%;
-    height: auto; /* Mantiene le proporzioni dell'immagine */
+    height: auto;
+    /* Mantiene le proporzioni dell'immagine */
     display: block;
     max-height: 150px;
 }
 
 .sidebar-card-title {
-    padding: 0.5em 1em; /* Spazio interno nella parte inferiore della card */
+    padding: 0.5em 1em;
+    /* Spazio interno nella parte inferiore della card */
     font-size: 1.2em;
     font-weight: bold;
-    color: #333; /* Colore del testo */
-    background: #f9f9f9; /* Colore di sfondo sotto il titolo */
+    color: #b3b3b3;
+    /* Colore del testo */
+    background: #f9f9f9;
+    /* Colore di sfondo sotto il titolo */
 }
 
 .sidebar-card-title:hover {
-   color: #f18812;
+    color: #f18812;
 }
 
 .cards-border {
@@ -1889,7 +2061,7 @@ img {
 
     /* NAVBAR */
     .navbar-top {
-        height: 60px;
+        height: auto;
         /* Altezza fissa della navbar su schermi piccoli */
         background-color: white;
         /* Sfondo bianco per dispositivi mobili */
@@ -1903,8 +2075,6 @@ img {
         flex-direction: row;
         /* Disposizione orizzontale */
         align-items: center;
-        padding: 10px;
-        /* Padding interno */
         justify-content: space-between;
     }
 
@@ -2042,25 +2212,31 @@ img {
     }
 
     .swiper-slide {
-        width: 80vw; 
+        width: 80vw;
     }
 
     .radio-content {
-        flex-direction: column; /* Mantiene la disposizione della card in colonne */
-        width: 80%; /* Assicura che la card occupi l'intera larghezza disponibile */
+        flex-direction: column;
+        /* Mantiene la disposizione della card in colonne */
+        width: 80%;
+        /* Assicura che la card occupi l'intera larghezza disponibile */
         /* Permette alla card di adattarsi al contenuto */
-        margin-bottom: 20px; /* Spazio tra le cards per dispositivi più piccoli */
+        margin-bottom: 20px;
+        /* Spazio tra le cards per dispositivi più piccoli */
     }
 
     .radio-text-content {
-        padding: 1rem; /* Riduce il padding per adattarsi meglio alle dimensioni più piccole */
+        padding: 1rem;
+        /* Riduce il padding per adattarsi meglio alle dimensioni più piccole */
     }
 
     .radio-btn {
-        font-size: 0.8rem; /* Riduce la dimensione del font del bottone */
-        padding: 0.4rem 0.8rem; /* Adatta il padding del bottone */
+        font-size: 0.8rem;
+        /* Riduce la dimensione del font del bottone */
+        padding: 0.4rem 0.8rem;
+        /* Adatta il padding del bottone */
     }
-    
+
 }
 
 /* 1024PX E SUPERIORI */
@@ -2519,6 +2695,7 @@ input[type="submit"]:hover {
     border: none;
     outline: none;
     box-shadow: none;
+    color: none;
 }
 
 button:active,

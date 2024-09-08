@@ -36,6 +36,15 @@ function enqueue_custom_js()
 add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 
 /**
+ * SPOTIFY SDK
+ */
+function enqueue_spotify_sdk() {
+    wp_enqueue_script('spotify-sdk', 'https://sdk.scdn.co/spotify-player.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_spotify_sdk');
+
+
+/**
  * DATA E ORA ULTIMA MODIFICA
  */
 function get_last_modified_post_date_time()
