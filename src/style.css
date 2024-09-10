@@ -35,6 +35,12 @@ img {
 }
 
 
+/* WP-ADMIN */
+.required-field {
+    color: red;
+    font-weight: bold;
+}
+
 /* CONTENITORE GENERALE */
 .site_container {
     max-width: 1400px;
@@ -1009,7 +1015,7 @@ img {
     height: 40px;
     line-height: 40px;
     border-radius: 5px;
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
 }
 
 #episode-title {
@@ -1051,7 +1057,9 @@ img {
     margin-bottom: 15px;
 }
 
-.spotify-button:hover, .spotify-button:active, .spotify-button:focus {
+.spotify-button:hover,
+.spotify-button:active,
+.spotify-button:focus {
     transition: none !important;
     transform: none !important;
     box-shadow: none !important;
@@ -1061,9 +1069,14 @@ img {
 }
 
 @keyframes scrollLeftToRight {
-    0%, 10%, 90%, 100% {
+
+    0%,
+    10%,
+    90%,
+    100% {
         transform: translateX(0);
     }
+
     50% {
         transform: translateX(calc(-1 * var(--scroll-width)));
     }
@@ -1085,7 +1098,8 @@ img {
     margin: 0 10px;
     appearance: none;
     height: 8px;
-    background: #eeeeee; /* Imposta il colore della progress bar */
+    background: #eeeeee;
+    /* Imposta il colore della progress bar */
     border-radius: 5px;
     outline: none;
     transition: background 0.3s ease;
@@ -1097,7 +1111,8 @@ img {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: #f18812; /* Colore del thumb */
+    background: #f18812;
+    /* Colore del thumb */
     cursor: pointer;
 }
 
@@ -1110,7 +1125,8 @@ img {
 }
 
 
-#current-time, #duration {
+#current-time,
+#duration {
     font-size: 12px;
     color: #e2e2e2;
 }

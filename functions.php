@@ -38,7 +38,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 /**
  * SPOTIFY SDK
  */
-function enqueue_spotify_sdk() {
+function enqueue_spotify_sdk()
+{
     wp_enqueue_script('spotify-sdk', 'https://sdk.scdn.co/spotify-player.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_spotify_sdk');
@@ -433,6 +434,9 @@ function custom_user_profile_fields($user)
                 </select>
                 <br />
                 <span class="description"><?php _e("Seleziona l'unità di appartenenza."); ?></span>
+                <?php if (empty($unit)): ?>
+                    <p class="required-field"><?php _e("Questo campo è obbligatorio"); ?></p>
+                <?php endif; ?>
             </td>
         </tr>
 
@@ -451,6 +455,9 @@ function custom_user_profile_fields($user)
                 </select>
                 <br />
                 <span class="description"><?php _e("Seleziona il tuo ruolo UVM."); ?></span>
+                <?php if (empty($ruolo_uvm)): ?>
+                    <p class="required-field"><?php _e("Questo campo è obbligatorio"); ?></p>
+                <?php endif; ?>
             </td>
         </tr>
     </table>
@@ -463,19 +470,21 @@ add_action("user_new_form", "custom_user_profile_fields");
 
 function save_custom_user_profile_fields($user_id)
 {
-    # again do this only if you can
-    if (!current_user_can('manage_options'))
+    // Assicurati che l'utente possa modificare il profilo
+    if (!current_user_can('edit_user', $user_id)) {
         return false;
+    }
 
-    # save my custom field
-    update_user_meta($user_id, 'instagram', $_POST['instagram']);
-    update_user_meta($user_id, 'threads', $_POST['threads']);
-    update_user_meta($user_id, 'linkedin', $_POST['linkedin']);
-    update_user_meta($user_id, 'unit', $_POST['unit']);
-    update_user_meta($user_id, 'ruolo_uvm', $_POST['ruolo_uvm']);
+    // Salva i campi personalizzati
+    update_user_meta($user_id, 'instagram', sanitize_text_field($_POST['instagram']));
+    update_user_meta($user_id, 'threads', sanitize_text_field($_POST['threads']));
+    update_user_meta($user_id, 'linkedin', sanitize_text_field($_POST['linkedin']));
+    update_user_meta($user_id, 'unit', sanitize_text_field($_POST['unit']));
+    update_user_meta($user_id, 'ruolo_uvm', sanitize_text_field($_POST['ruolo_uvm']));
 }
-add_action('user_register', 'save_custom_user_profile_fields');
-add_action('profile_update', 'save_custom_user_profile_fields');
+add_action('personal_options_update', 'save_custom_user_profile_fields');
+add_action('edit_user_profile_update', 'save_custom_user_profile_fields');
+
 
 
 /*
@@ -577,7 +586,7 @@ function add_custom_avatar_field($user)
                     echo '<img src="' . esc_url($custom_avatar) . '" style="max-width: 150px; height: auto; border-radius: 50%;" /><br /><br />';
                 }
                 ?>
-                <input type="file" name="custom_avatar" id="custom_avatar" />
+                <input type="file" name="custom_avatar" id="custom_avatar" accept="image/*"/>
                 <p class="description">
                     <?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata e di almeno 150x150 pixel. Dopo, premi su "Aggiorna profilo"', 'textdomain'); ?>
                 </p>
