@@ -35,6 +35,31 @@ function enqueue_custom_js()
 // Usa l'hook wp_enqueue_scripts per fare l'enqueue dello script
 add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * SPOTIFY SDK
  */

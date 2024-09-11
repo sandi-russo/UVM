@@ -81,7 +81,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                         ?>
                         <section class="category-section mb-8">
                             <!-- Intestazione Categoria con Stile Specifico -->
-                            <div class="bg-white font-[sans-serif] my-4">
+                            <div class="bg-white my-4">
                                 <div class="max-w-7xl mx-auto">
                                     <div class="text-center">
                                         <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>">
@@ -210,10 +210,7 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
         <div class="sidebar-content">
             <?php /*echo youtube_embedded(); */ ?>
 
-
             <!-- SPOTIFY -->
-
-
             <div class="latest-episode">
                 <img id="episode-cover" src="" alt="Copertina Episodio" />
                 <div class="info">
@@ -241,22 +238,6 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
                     </g>
                 </svg>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div><!-- .sidebar-content -->
         <!-- Pulsante allineato a destra -->
         <a href="/radio"

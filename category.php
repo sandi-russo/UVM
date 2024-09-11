@@ -31,7 +31,7 @@ get_header();
                 <h1 class="page-title text-3xl font-bold text-gray-900 text-center">
                     <?php
                     /* translators: %s: category name. */
-                    printf(esc_html__('Categoria: %s', 'universome'), '<span class="text-[#ff8800]">' . single_cat_title('', false) . '</span>');
+                    printf(esc_html__('%s', 'universome'), '<span class="text-[#ff8800]">' . single_cat_title('', false) . '</span>');
                     ?>
                 </h1>
             </header><!-- .page-header -->
