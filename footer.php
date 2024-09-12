@@ -53,7 +53,7 @@
                     </div>
                     <p class="text-sm text-white text-sm ml-3">
                         <small class="block">Direttore Responsabile</small>
-                        <strong class="text-[#ff8800] text-sm text-white">Antonino Tavilla</strong>
+                        <strong class="text-[#ff8800] text-sm text-white">Antonio Tavilla</strong>
                         <br>
                         <em>atavilla@unime.it</em>
                         </>
