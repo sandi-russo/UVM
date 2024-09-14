@@ -95,6 +95,19 @@ function get_last_modified_post_date_time()
     return '';
 }
 
+/**
+ * Visualizzo le categorie nell'index
+ */
+function get_main_categories() {
+    $args = array(
+        'parent' => 0, // Prende solo le categorie principali
+        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')),
+        'hide_empty' => false // Mostra anche categorie senza post
+    );
+
+    return get_categories($args);
+}
+
 
 /**
  * VISUALIZZO LE CATEGORIE E LE LORO SOTTOCATEGORIE DESKTOP

@@ -10,12 +10,9 @@
 get_header();
 
 // Recupera le categorie salvate dalla navbar
-$navbar_categories = get_option('navbar_categories', array());
-
-// ID della categoria "Evidenza"
-$evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
-
+$main_categories = get_main_categories();
 ?>
+
 <main id="primary" class="site-main">
     <!-- Swiper Carousel -->
     <div class="w-full relative">
@@ -65,9 +62,10 @@ $evidenza_category_id = 1800; // ID reale della categoria "Evidenza"
         <!-- Sezione degli Articoli con angoli stondati a destra e shadow -->
         <div class="articoli flex-1 overflow-y-auto pr-4 px-5 bg-white">
             <?php
-            foreach ($navbar_categories as $category):
+
+            foreach ($main_categories as $category):
                 // Verifica se la categoria esiste e ha l'ID
-                if (isset($category->term_id) && $category->slug !== 'senza-categoria' && $category->slug !== 'evidenza'):
+                if (isset($category->term_id)):
                     // Query per ottenere i post della categoria
                     $category_posts = new WP_Query(
                         array(
