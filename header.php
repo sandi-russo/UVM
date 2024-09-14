@@ -44,7 +44,7 @@
 			<div class="sticky-header">
 				<!-- Ultima modifica su telefono -->
 				<div class="mobile-last-modified">
-					<span class="update-label">Ultimo aggiornamento: </span>
+					<span class="update-label">Ultimo aggiornamentoooooooooooo: </span>
 					<span class="update-time">
 						<?php echo get_last_modified_date(); ?>
 					</span>

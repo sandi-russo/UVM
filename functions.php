@@ -103,7 +103,7 @@ function display_categories_with_subcategories()
 {
     $args = array(
         'parent' => 0, // Prende solo le categorie principali
-        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza')), // Esclude la categoria "senza categoria" e "evidenza"
+        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')), // Esclude la categoria "senza categoria" e "evidenza"
         'hide_empty' => false // Mostra anche categorie senza post
     );
 
@@ -154,7 +154,7 @@ function display_mobile_categories()
 {
     $args = array(
         'parent' => 0, // Prende solo le categorie principali
-        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza')), // Esclude le categorie "senza categoria" e "evidenza"
+        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')), // Esclude le categorie "senza categoria" e "evidenza"
         'hide_empty' => false // Mostra anche categorie senza post
     );
 
