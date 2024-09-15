@@ -10,16 +10,14 @@
 get_header();
 ?>
 
-<div class="site_container min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-    <main id="primary" class="site-main mx-auto max-w-4xl">
+<div class="site_container">
+    <main id="primary" class="site-main">
 
-        <header class="page-header mb-8">
+        <header class="page-header">
             <div class="site_container">
                 <div>
-                    <div class="max-w-2xl mx-auto text-center">
                         <h2 class="titolo-pagina">PRIVACY POLICY</h2>
                         <p class="descrizione-pagina">Informazioni generali sulla privacy</p>
-                    </div>
                     <div>
                         <p class="text-p">La presente privacy policy è resa ai sensi dell’art. 13 del D.Lgs. 30 giugno 2003, n. 196
                             (“Codice in materia di protezione dei dati personali”).</p>

@@ -55,7 +55,7 @@ get_header(); ?>
                     if (!empty($users)) {
                         echo '<div class="chi-siamo-unit-section">';
                         echo '<div class="chi-siamo-unit-title">' . strtoupper(esc_html($unit)) . '</div>';
-                        echo '<div class="chi-siamo-grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 justify-center">';
+                        echo '<div class="chi-siamo-grid">';
 
                         foreach ($users as $user) {
                             // Controlla se esiste un avatar personalizzato

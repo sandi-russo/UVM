@@ -22,7 +22,7 @@ get_header(); ?>
                             <form id="contact-form" method="POST">
                                 <div class="form-grid">
                                     <!-- NOME -->
-                                    <div class="input-container full-width">
+                                    <div class="input-container">
                                         <input type="text" placeholder="Nome" class="input-field" name="nome"
                                             required />
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="input-icon">
@@ -34,7 +34,7 @@ get_header(); ?>
                                         </svg>
                                     </div>
                                     <!-- COGNOME -->
-                                    <div class="input-container full-width">
+                                    <div class="input-container">
                                         <input type="text" placeholder="Cognome" class="input-field" name="cognome"
                                             required />
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="input-icon">
@@ -46,7 +46,7 @@ get_header(); ?>
                                         </svg>
                                     </div>
                                     <!-- NUMERO DI TELEFONO -->
-                                    <div class="input-container full-width">
+                                    <div class="input-container">
                                         <input type="tel" placeholder="Numero di telefono" class="input-field"
                                             name="telefono" required />
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="input-icon">
@@ -56,7 +56,7 @@ get_header(); ?>
                                         </svg>
                                     </div>
                                     <!-- EMAIL -->
-                                    <div class="input-container full-width">
+                                    <div class="input-container">
                                         <input type="email" placeholder="Email" class="input-field" name="email"
                                             required />
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="input-icon">
@@ -65,7 +65,7 @@ get_header(); ?>
                                         </svg>
                                     </div>
                                     <!-- MESSAGGIO -->
-                                    <div class="input-container full-width">
+                                    <div class="input-container">
                                         <textarea placeholder="Scrivi la tua idea" class="input-field" name="messaggio"
                                             required></textarea>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="input-icon">
@@ -74,7 +74,7 @@ get_header(); ?>
                                         </svg>
                                     </div>
                                     <!-- SELEZIONE RUOLO CON CHECKBOX -->
-                                    <div class="role-selection full-width">
+                                    <div class="role-selection">
                                         <label>Che ruolo ti interessa?</label>
                                         <div class="checkbox-group">
                                             <label><input type="checkbox" name="ruolo[]"
@@ -88,7 +88,7 @@ get_header(); ?>
                                         </div>
                                     </div>
                                     <!-- BOTTONE INVIA -->
-                                    <div class="button-container full-width">
+                                    <div class="button-container">
                                         <button type="submit" class="submit-button">Invia</button>
                                     </div>
                                 </div>

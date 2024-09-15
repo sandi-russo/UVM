@@ -11,24 +11,24 @@
 
 ?>
 
-<footer id="colophon" class="site-footer bg-[#222222] py-10 px-10 font-sans tracking-wide">
+<footer id="colophon" class="site-footer">
     <!-- Sezione immagine -->
-    <div class="flex justify-center mb-10">
+    <div class="footer-img">
         <a href="https://universome.unime.it/">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/LOGO.png" alt="Logo UVM" class="w-52 h-auto">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/LOGO.png" alt="Logo UVM">
         </a>
     </div>
 
     <!-- Sezione colonne -->
-    <div class="grid grid-cols-1 md:grid-cols-2 max-w-screen-xl mx-auto">
+    <div class="footer-grid">
         <!-- Colonna 1 -->
         <div>
-            <h4 class="text-[#ff8800] font-bold text-lg">Informazioni</h4>
-            <p class="text-sm text-white mt-2">Testata multiforme degli studenti UniMe. <br> UniVersoMe è una testata
+            <h4 class="footer-title-cat">Informazioni</h4>
+            <p class="footer-text-cat">Testata multiforme degli studenti UniMe. <br> UniVersoMe è una testata
                 giornalistica registrata presso il Tribunale di Messina n.11 del 2015.</p>
-            <ul class="mt-6 space-y-6 ml-auto mx-auto">
+            <ul class="footer-list">
                 <!-- Lista contatti -->
-                <li class="flex items-center">
+                <li class="footer-info">
                     <div class="footer-icon">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 16" fill='#007bff'>
                             <path fill="currentColor"
@@ -37,28 +37,28 @@
                                 d="M13.5 11c-.28 0-.5-.22-.5-.5s.22-.5.5-.5s.5-.22.5-.5A2.5 2.5 0 0 0 11.5 7h-1c-.28 0-.5-.22-.5-.5s.22-.5.5-.5c.83 0 1.5-.67 1.5-1.5S11.33 3 10.5 3c-.28 0-.5-.22-.5-.5s.22-.5.5-.5A2.5 2.5 0 0 1 13 4.5c0 .62-.22 1.18-.6 1.62c1.49.4 2.6 1.76 2.6 3.38c0 .83-.67 1.5-1.5 1.5m-12 0C.67 11 0 10.33 0 9.5c0-1.62 1.1-2.98 2.6-3.38c-.37-.44-.6-1-.6-1.62A2.5 2.5 0 0 1 4.5 2c.28 0 .5.22.5.5s-.22.5-.5.5C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6c.28 0 .5.22.5.5s-.22.5-.5.5h-1A2.5 2.5 0 0 0 1 9.5c0 .28.22.5.5.5s.5.22.5.5s-.22.5-.5.5m9 3h-6c-.83 0-1.5-.67-1.5-1.5v-1C3 9.57 4.57 8 6.5 8h2c1.93 0 3.5 1.57 3.5 3.5v1c0 .83-.67 1.5-1.5 1.5m-4-5A2.5 2.5 0 0 0 4 11.5v1c0 .28.22.5.5.5h6c.28 0 .5-.22.5-.5v-1A2.5 2.5 0 0 0 8.5 9z" />
                         </svg>
                     </div>
-                    <p class="text-sm text-white text-sm ml-3">
+                    <p class="footer-info-type">
                         <small class="block">Coordinatrice Progetto</small>
-                        <strong class="text-[#ff8800] text-sm text-white">Giulia Cavallaro</strong>
+                        <strong class="footer-info-name">Giulia Cavallaro</strong>
                         <br>
                         <em>giulia.cavallaro@unime.it</em>
                     </p>
                 </li>
-                <li class="flex items-center">
+                <li class="footer-info">
                     <div class="footer-icon">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="M5 5h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3m0 1c-.5 0-.94.17-1.28.47l7.78 5.03l7.78-5.03C18.94 6.17 18.5 6 18 6zm6.5 6.71L3.13 7.28C3.05 7.5 3 7.75 3 8v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V8c0-.25-.05-.5-.13-.72z" />
                         </svg>
                     </div>
-                    <p class="text-sm text-white text-sm ml-3">
+                    <p class="footer-info-type">
                         <small class="block">Direttore Responsabile</small>
-                        <strong class="text-[#ff8800] text-sm text-white">Antonio Tavilla</strong>
+                        <strong class="footer-info-name">Antonio Tavilla</strong>
                         <br>
                         <em>atavilla@unime.it</em>
                         </>
                 </li>
-                <li class="flex items-center">
+                <li class="footer-info">
                     <div class="footer-icon">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -70,39 +70,35 @@
                             </g>
                         </svg>
                     </div>
-                    <p class="text-sm text-white text-sm ml-3">
+                    <p class="footer-info-type">
                         <small class="block">Piazza Pugliatti, 1</small>
-                        <strong class="text-[#ff8800] text-sm text-white">Messina</strong>
+                        <strong class="footer-info-name">Messina</strong>
                         </>
                 </li>
             </ul>
         </div>
 
         <!-- Colonna 2 -->
-        <div class="ml-auto mx-auto">
-            <h4 class="text-[#ff8800] font-bold text-lg">Giornalista?</h4>
-            <p class="text-sm text-white mt-2">Premi qui sotto per accedere.</p>
+        <div class="footer-col2">
+            <h4 class="footer-title-cat">Giornalista?</h4>
+            <p class="footer-text-cat">Premi qui sotto per accedere.</p>
             <a href="/login">
-                <button
-                    class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
-                    style="border: none;">Accedi</button>
+                <button class="footer-button" style="border: none;">Accedi</button>
             </a>
 
             <div>
-                <h4 class="text-[#ff8800] font-bold text-lg mt-6">Vuoi unirti al progetto?</h4>
-                <p class="text-sm text-white mt-2">Premi qui sotto per contattarci.</p>
+                <h4 class="footer-title-cat">Vuoi unirti al progetto?</h4>
+                <p class="footer-text-cat">Premi qui sotto per contattarci.</p>
                 <a href="/contattaci/">
-                    <button
-                        class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
-                        style="border: none;">Contattaci</button>
+                    <button class="footer-button">Contattaci</button>
                 </a>
             </div>
 
             <!-- Icone Social -->
             <div>
-                <h4 class="text-[#ff8800] font-bold text-lg mt-6">Social Network</h4>
-                <p class="text-sm text-white mt-2">Seguici per rimanere sempre aggiornato!</p>
-                <ul class="flex items-center mt-6 space-x-4 ml-auto mx-auto">
+                <h4 class="footer-title-cat">Social Network</h4>
+                <p class="footer-text-cat">Seguici per rimanere sempre aggiornato!</p>
+                <ul class="footer-div-icon">
                     <!-- Facebook -->
                     <li class="footer-icon">
                         <a class="icon-link" href="https://www.facebook.com/UniVersoMessina" target="_blank">
@@ -156,29 +152,28 @@
     </div>
 
     <!-- Link Footer -->
-    <div class="w-full flex justify-center">
-        <ul class="flex gap-4 ml-auto mx-auto">
+    <div class="footer-other-info">
+        <ul>
             <li>
-                <a href='/privacy-policy' class='text-white text-sm font-semibold'>Privacy Policy</a>
+                <a href='/privacy-policy'>Privacy Policy</a>
             </li>
         </ul>
     </div>
 
 
     <!-- Copyright Footer -->
-    <div class="ml-auto mx-auto w-full flex justify-center"
-        style="border-top: 1px solid #e6e6e6cf; margin-top: 4px; padding-top: 4px;">
-        <p class="text-white block">Codice Licenza SIAE n. 6195/I/8746</p>
+    <div class="footer-other-info" style="border-top: 1px solid #828282; margin-top: 4px; padding-top: 4px;">
+        <p>Codice Licenza SIAE n. 6195/I/8746</p>
     </div>
-    <div class="ml-auto mx-auto w-full flex justify-center">
-        <p class="text-white block">© <?php echo date("Y"); ?>
-            <a href="https://universome.unime.it/" class="text-white">UniVersoMe™</a>. Tutti i diritti sono
+    <div class="footer-other-info">
+        <p>© <?php echo date("Y"); ?>
+            <a href="https://universome.unime.it/">UniVersoMe™</a>. Tutti i diritti sono
             riservati.
         </p>
     </div>
 </footer>
 
-
+<!-- Pulsante per tornare in cima -->
 <div class="fixed-back-to-top" onclick="scrollToTop()">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
         <path fill="currentColor" stroke="currentColor" stroke-linejoin="round" stroke-width="4"

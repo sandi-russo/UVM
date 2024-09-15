@@ -52,16 +52,14 @@ $programs = [
 ?>
 
 
-<div class="site_container min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-    <main id="primary" class="site-main mx-auto max-w-4xl">
+<div class="site_container">
+    <main id="primary" class="site-main">
 
-        <header class="page-header mb-8">
+        <header class="page-header">
             <div class="site_container">
                 <div>
-                    <div class="max-w-2xl mx-auto text-center">
-                        <h2 class="titolo-pagina">RADIO UVM</h2>
-                        <p class="descrizione-pagina">Inserire motto!</p>
-                    </div>
+                    <h2 class="titolo-pagina">RADIO UVM</h2>
+                    <p class="descrizione-pagina">Inserire motto!</p>
                     <div>
                         <p class="text-p">Radio UniVersoMe è la radio ufficiale dell’Università degli Studi di Messina.
                             On Air per la
@@ -135,8 +133,6 @@ $programs = [
                     loading="lazy"></iframe>
             </div>
         </div>
-
-
 </div>
 
 </main><!-- #main -->

@@ -43,15 +43,14 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
 
 <main id="primary" class="site-main">
     <!-- Immagine in evidenza con titolo -->
-    <div class="post_top w-full relative mb-8">
-        <div class="relative overflow-hidden shadow-lg">
+    <div class="post_top">
+        <div class="post_top_space">
             <?php if (has_post_thumbnail()): ?>
                 <?php the_post_thumbnail('full', array('class' => 'post_img')); ?>
             <?php else: ?>
-                <div class="w-full h-96 bg-gray-300"></div>
             <?php endif; ?>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-10">
-                <h1 class="post_title text-white text-4xl font-bold"><?php the_title(); ?></h1>
+            <div class="carosello-titolo">
+                <h1 class="title"><?php the_title(); ?></h1>
             </div>
         </div>
     </div>
@@ -59,14 +58,14 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
     <div class="site_container">
 
         <!-- Informazioni Autore e Post -->
-        <div class="author-info rounded-lg p-6 mb-6 flex items-center justify-between">
+        <div class="author-info">
             <img src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>"
-                class="author-avatar rounded-full w-20 h-20 mr-4">
-            <div class="author-details flex-grow">
-                <a href="<?php echo esc_url($author_posts_url); ?>" class="author-name text-xl font-bold text-black">
+                class="author-avatar">
+            <div class="author-details">
+                <a href="<?php echo esc_url($author_posts_url); ?>" class="author-name">
                     <?php echo esc_html($author_name); ?>
                 </a>
-                <div class="post-date text-gray-600">
+                <div class="post-date">
                     <?php echo esc_html($post_date); ?>
                 </div>
             </div>
@@ -103,9 +102,9 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
         </div>
 
         <!-- Categoria e Tag -->
-        <div class="category-tags-wrapper flex flex-wrap gap-2 justify-center">
+        <div class="category-tags-wrapper">
             <?php if (!empty($category)): ?>
-                <div class="category-label bg-blue-100 text-blue-600 px-2 py-1 rounded">
+                <div class="category-label">
                     <?php echo esc_html($category[0]->name); ?>
                 </div>
             <?php endif; ?>
@@ -157,54 +156,45 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                     </article>
                 </div>
 
-<!-- Barra Laterale -->
-<div class="sidebar">
-    <h2 class="sidebar-title">Articoli Suggeriti</h2>
-    <div class="sidebar-content">
-        <?php
-        // Query per ottenere 4 articoli casuali
-        $args = array(
-            'post_type' => 'post', // Tipo di contenuto, ad esempio 'post'
-            'posts_per_page' => 4, // Numero di articoli da mostrare
-            'orderby' => 'rand', // Ordinamento casuale
-        );
-        $query = new WP_Query($args);
-        
-        if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-                ?>
-                <div class="sidebar-card">
-                    <a href="<?php the_permalink(); ?>" class="sidebar-card-link">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <div class="sidebar-card-thumbnail">
-                                <?php the_post_thumbnail('large'); // Dimensione dell'immagine per la card ?>
-                            </div>
-                        <?php endif; ?>
-                        <h3 class="sidebar-card-title"><?php the_title(); ?></h3>
-                    </a>
+                <!-- Barra Laterale -->
+                <div class="sidebar">
+                    <h2 class="sidebar-title">Articoli Suggeriti</h2>
+                    <div class="sidebar-content">
+                        <?php
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 4,
+                            'orderby' => 'rand',
+                            'meta_query' => array(
+                                array(
+                                    'key' => '_thumbnail_id',
+                                    'compare' => 'EXISTS'
+                                ),
+                            )
+                        );
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()):
+                            while ($query->have_posts()):
+                                $query->the_post();
+                                ?>
+                                <div class="sidebar-card cards-border">
+                                    <a href="<?php the_permalink(); ?>" class="sidebar-card-link">
+                                        <div class="sidebar-card-thumbnail">
+                                            <?php the_post_thumbnail('full'); ?>
+                                        </div>
+                                        <h3 class="card_title"><?php the_title(); ?></h3>
+                                    </a>
+                                </div>
+                                <?php
+                            endwhile;
+                            wp_reset_postdata();
+                        else:
+                            echo '<p>Nessun articolo trovato con immagine in evidenza.</p>';
+                        endif;
+                        ?>
+                    </div>
                 </div>
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        else :
-            echo '<p>Nessun articolo trovato.</p>';
-        endif;
-        ?>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         <?php endwhile; ?>
 
@@ -212,7 +202,6 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
         <button onclick="shareArticle()" class="fixed-share-button">
             Condividi Articolo
         </button>
-
 </main>
 </div>
 
