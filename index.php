@@ -33,7 +33,7 @@ $main_categories = get_main_categories();
                             <div class="relative overflow-hidden shadow-lg">
                                 <a href="<?php echo esc_url($post_url); ?>">
                                     <?php if (has_post_thumbnail()): ?>
-                                        <?php the_post_thumbnail('large', array('class' => 'post_img')); ?>
+                                        <?php the_post_thumbnail('full', array('class' => 'post_img')); ?>
                                     <?php else: ?>
                                         <div class="w-full h-64 bg-gray-300"></div>
                                     <?php endif; ?>
@@ -238,18 +238,16 @@ $main_categories = get_main_categories();
             </div>
         </div><!-- .sidebar-content -->
         <!-- Pulsante allineato a destra -->
-        <a href="/radio"
-            class="sidebar-button text-gray-900 bg-[#e2e2e2] focus:outline-none font-medium rounded-full text-sm text-center flex items-center">
-            <?php esc_html_e('Ascoltaci!', 'universome'); ?>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
-                <path
-                    d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
-            </svg>
-        </a>
+        <div class="sidebar-button-container">
+            <a href="/radio" class="sidebar-button">
+                <?php esc_html_e('Ascoltaci!', 'universome'); ?>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
+                    <path
+                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
+                </svg>
+            </a>
+        </div>
     </div><!-- .sidebar -->
-
-
-
     </div><!-- .w-full max-w-[1400px] -->
 </main><!-- #main -->
 

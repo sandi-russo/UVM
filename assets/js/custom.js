@@ -215,6 +215,10 @@ document.addEventListener('DOMContentLoaded', function () {
             pagination: {
                 el: ".swiper-pagination",
             },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
 
         // Riassegna il numero di slides visibili quando la finestra viene ridimensionata
@@ -235,6 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const height = card.offsetHeight
                     + parseFloat(computedStyle.marginTop)
                     + parseFloat(computedStyle.marginBottom)
+                    - parseFloat(computedStyle.paddingBottom);
                 maxHeight = Math.max(maxHeight, height);
             });
 
@@ -251,6 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('resize', adjustCardHeights);
     }
 });
+
 
 /* LOGO NAVBAR MOBILE */
 function checkScreenSize() {

@@ -905,6 +905,13 @@ img {
     flex-direction: column;
     gap: 10px;
     /* Spazio tra i frame */
+    align-items: flex-end;
+}
+
+.sidebar-button-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Allinea il pulsante a destra */
 }
 
 /* Stili per l'iframe */
@@ -1654,17 +1661,13 @@ img {
 /* CAROSELLO RADIO */
 
 .radio-collection {
-    padding: 20px;
-    /* Aggiungi padding per evitare che tocchi gli altri elementi */
+    padding: 20px; /* Aggiungi padding per evitare che tocchi gli altri elementi */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    /* Nasconde l'overflow e mantiene le cards dentro i limiti */
-    max-width: 100%;
-    /* Assicura che la sezione non superi mai la larghezza della pagina */
-    box-sizing: border-box;
-    /* Include il padding nel calcolo della larghezza */
+    overflow: hidden; /* Nasconde l'overflow e mantiene le cards dentro i limiti */
+    max-width: 100%; /* Assicura che la sezione non superi mai la larghezza della pagina */
+    box-sizing: border-box; /* Include il padding nel calcolo della larghezza */
 }
 
 .radio-info {
@@ -1696,22 +1699,23 @@ img {
 .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 70vw;
-    height: calc(40vw * 0.40);
+    width: 100vw;
+    height: 100%;
     filter: blur(4px);
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+    overflow: hidden; /* Nascondi qualsiasi overflow */
 }
 
 .swiper-slide-active {
     filter: blur(0);
     transform: scale(1.1);
-    box-shadow: 0 5px 5px -5px #b3b3b3;
+    box-shadow: 0 5px 5px -5px #333;
 }
 
 .radio-content {
     width: 100%;
     background-color: #eeeeee;
-    border-radius: 30px;
+    border-radius: 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1748,9 +1752,6 @@ img {
     color: #666;
     font-size: clamp(0.750rem, 2vw, 1rem);
 }
-
-
-
 
 .radio-grid-container {
     display: grid;
