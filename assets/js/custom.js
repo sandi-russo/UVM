@@ -1,3 +1,4 @@
+/* SPOTIFY */
 const clientId = 'badf08cb27534405ae65a9c5feffb686';
 const clientSecret = 'dd0dfa1d8be64b6983b5e8edbde5581b';
 
@@ -145,43 +146,6 @@ window.addEventListener('resize', checkOverflow);
 // Ricalcola ogni 15 secondi
 setInterval(checkOverflow, 15000);
 
-
-
-
-
-
-
-
-/* LOGO NAVBAR */
-window.addEventListener('DOMContentLoaded', () => {
-    // Funzione per aggiornare la larghezza dello sfondo della navbar
-    const updateNavbarBgWidth = () => {
-        const logo = document.getElementById('logo');
-        const navbarBg = document.querySelector('.navbar-bg');
-        const windowWidth = window.innerWidth;
-
-        if (windowWidth >= 1024) {
-            if (logo && navbarBg) {
-                // Calcola la larghezza del logo e la sua posizione
-                const logoRect = logo.getBoundingClientRect();
-                navbarBg.style.width = `${logoRect.right}px`;
-            }
-        } else {
-            if (navbarBg) {
-                // Ripristina la larghezza automatica quando lo schermo è <= 1024px
-                navbarBg.style.width = 'auto';
-            }
-        }
-        // console.log(`windowWidth: ${windowWidth}, navbarBg width: ${navbarBg.style.width}`);
-    };
-
-    // Esegui l'aggiornamento all'avvio
-    updateNavbarBgWidth();
-
-    // Aggiungi l'evento di resize per adattarsi ai cambiamenti di dimensione
-    window.addEventListener('resize', updateNavbarBgWidth);
-});
-
 /* PADDING MOBILE NAVBAR */
 document.addEventListener("DOMContentLoaded", function () {
     var header = document.querySelector('.navbar-top');
@@ -288,10 +252,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-
-
-
 /* LOGO NAVBAR MOBILE */
 function checkScreenSize() {
     // Ottieni la larghezza della finestra del browser
@@ -318,39 +278,6 @@ window.addEventListener('load', checkScreenSize);
 
 // Esegui la funzione al ridimensionamento della finestra
 window.addEventListener('resize', checkScreenSize);
-
-
-
-
-
-/* DATA E ORA NAVBAR */
-function updateDateTime() {
-    const now = new Date();
-
-    // Ottieni il giorno della settimana in italiano
-    const options = { weekday: 'long' };
-    const weekday = now.toLocaleDateString('it-IT', options);
-
-    // Ottieni la data nel formato "dd/mm/yyyy"
-    const date = now.toLocaleDateString('it-IT');
-
-    // Ottieni l'ora nel formato "hh:mm"
-    const time = now.toLocaleTimeString('it-IT', {
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-
-    // Utilizzo Unicode \u2022 (•)
-    const dateTimeString = `${date} \u2022 ${time}`;
-
-    // Aggiorna il contenuto dell'elemento con id "current-date-time"
-    document.getElementById('current-date-time').textContent = dateTimeString;
-}
-
-// Aggiorna data e ora all'avvio e poi ogni minuto
-updateDateTime();
-setInterval(updateDateTime, 60000);
-
 
 /* CATEGORIE NAVBAR */
 document.addEventListener('DOMContentLoaded', function () {
@@ -569,39 +496,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/* METEO MESSINA - OPENWEATHER*/
-function fetchWeather() {
-    const apiKey = 'b5f3e22f769ca30fcc07da47f31ea391';
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=38.1938&lon=15.554&units=metric&lang=it&appid=${apiKey}`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Estrai la temperatura dalla proprietà main.temp
-            const temp = Math.round(data.main.temp);
-
-            // Estrai la descrizione dalla prima voce dell'array weather
-            const description = data.weather[0].description;
-
-            const weatherInfo = document.getElementById('weather-info');
-            weatherInfo.textContent = `${temp}°C \u2022 ${description}`;
-        })
-        .catch(error => {
-            console.error('Errore nel recupero dei dati meteo:', error);
-            const weatherInfo = document.getElementById('weather-info');
-            weatherInfo.textContent = 'Dati meteo non disponibili';
-        });
-}
-
-// Esegui immediatamente e poi ogni 30 minuti
-fetchWeather();
-setInterval(fetchWeather, 30 * 60 * 1000);
-
 /* CATEGORIE MOBILE */
 document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('.menu-item');
@@ -747,11 +641,6 @@ function scrollToTop() {
     });
 }
 
-
-
-
-
-
 /* STICKY NAVBAR */
 document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.getElementById("navbar-bottom");
@@ -759,8 +648,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('Elemento navbar non trovato');
         return; // Esci se l'elemento navbar non è trovato
     }
-
-    const stickyLogo = navbar.querySelector('.sticky-logo');
     const sidebar = document.querySelector('.sidebar');
     const sticky = navbar.offsetTop;
     const placeholder = document.createElement('div');
@@ -769,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function adjustSidebarTop() {
         if (navbar.classList.contains('fixed-navbar')) {
             const navbarHeight = navbar.offsetHeight;
-            sidebar.style.top = navbarHeight + 'px';
+            sidebar.style.top = (navbarHeight + 'px');
         } else {
             sidebar.style.top = '0';
         }
@@ -779,14 +666,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (window.pageYOffset >= sticky) {
             if (!navbar.classList.contains("fixed-navbar")) {
                 navbar.classList.add("fixed-navbar");
-                stickyLogo.style.display = 'block';
                 navbar.parentNode.insertBefore(placeholder, navbar.nextSibling);
                 adjustSidebarTop();
             }
         } else {
             if (navbar.classList.contains("fixed-navbar")) {
                 navbar.classList.remove("fixed-navbar");
-                stickyLogo.style.display = 'none';
                 if (placeholder.parentNode) {
                     placeholder.parentNode.removeChild(placeholder);
                 }

@@ -16,7 +16,6 @@ if (!defined('_S_VERSION')) {
 function cg_your_theme_scripts()
 {
     wp_enqueue_style('output', get_template_directory_uri() . '/dist/output.css', array());
-    wp_enqueue_style('output', get_template_directory_uri() . '/src/style.css', array());
 }
 add_action('wp_enqueue_scripts', 'cg_your_theme_scripts');
 
@@ -98,7 +97,8 @@ function get_last_modified_post_date_time()
 /**
  * Visualizzo le categorie nell'index
  */
-function get_main_categories() {
+function get_main_categories()
+{
     $args = array(
         'parent' => 0, // Prende solo le categorie principali
         'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')),
@@ -322,11 +322,9 @@ function general_search()
         <div class="mobile-search-header">
             <span class="close-search" id="close-search">&times;</span>
             <div class="mobile-logo">
-                <?php
-                if (function_exists('the_custom_logo')) {
-                    the_custom_logo();
-                }
-                ?>
+                <a href="<?php echo home_url(); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/LOGO.png" alt="Logo">
+                </a>
             </div>
         </div>
 
@@ -624,7 +622,7 @@ function add_custom_avatar_field($user)
                     echo '<img src="' . esc_url($custom_avatar) . '" style="max-width: 150px; height: auto; border-radius: 50%;" /><br /><br />';
                 }
                 ?>
-                <input type="file" name="custom_avatar" id="custom_avatar" accept="image/*"/>
+                <input type="file" name="custom_avatar" id="custom_avatar" accept="image/*" />
                 <p class="description">
                     <?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata e di almeno 150x150 pixel. Dopo, premi su "Aggiorna profilo"', 'textdomain'); ?>
                 </p>
