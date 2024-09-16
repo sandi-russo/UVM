@@ -59,8 +59,11 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
 
         <!-- Informazioni Autore e Post -->
         <div class="author-info">
+            <!-- Avatar dell'autore -->
             <img src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>"
                 class="author-avatar">
+
+            <!-- Dettagli dell'autore -->
             <div class="author-details">
                 <a href="<?php echo esc_url($author_posts_url); ?>" class="author-name">
                     <?php echo esc_html($author_name); ?>
@@ -70,8 +73,9 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                 </div>
             </div>
 
+            <!-- Icone Social -->
             <?php if ($full_instagram_url || $full_twitter_url || $full_linkedin_url): ?>
-                <div class="post-social-icons flex-shrink-0">
+                <div class="post-social-icons">
                     <?php if ($full_instagram_url): ?>
                         <a href="<?php echo esc_url($full_instagram_url); ?>" target="_blank" title="Instagram">
                             <svg class="icon social-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +104,10 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                 </div>
             <?php endif; ?>
         </div>
+
+
+
+
 
         <!-- Categoria e Tag -->
         <div class="category-tags-wrapper">

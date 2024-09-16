@@ -69,7 +69,6 @@ img {
 }
 
 .site-main {
-    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -1439,7 +1438,6 @@ img {
 
 .post_top_space {
     overflow: hidden;
-    position: relative;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
@@ -1517,14 +1515,14 @@ img {
     margin-bottom: 1.5rem;
 }
 
+
 /* AVATAR AUTORE */
+/* Avatar a sinistra */
 .author-avatar {
     border-radius: 50%;
-    /* Avatar circolare */
     margin-right: 1rem;
     width: 5rem;
     height: 5rem;
-
 }
 
 /* NOME AUTORE */
@@ -1533,10 +1531,15 @@ img {
     line-height: 1.75rem;
     font-weight: 700;
     color: black;
+    margin-bottom: 0.25rem;
 }
 
-.author-detail {
-    flex-grow: 1;
+/* Avatar + Nome + Data allineati a sinistra */
+.author-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: auto; /* Questo spinge le icone social a destra */
 }
 
 .category-label {
@@ -1547,6 +1550,12 @@ img {
     border-radius: 0.25rem;
     color: #2563EB;
     background-color: #DBEAFE;
+}
+
+/* DATA AUTORE */
+.post-date {
+    font-size: 0.875rem;
+    color: #666;
 }
 
 .post-date,
@@ -1560,7 +1569,8 @@ img {
 /* ICONE SOCIAL AUTORE */
 .post-social-icons {
     display: flex;
-    gap: 10px;
+    gap: 0.5rem;
+    margin-left: auto;
 }
 
 .social-icon {
