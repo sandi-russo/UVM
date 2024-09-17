@@ -1206,6 +1206,55 @@ img {
     border-bottom-right-radius: 30px;
 }
 
+.single_sidebar {
+    position: relative;
+    z-index: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 5px 0 5px -5px #b3b3b3;
+    min-width: 25%;
+    max-width: 25%;
+    flex-shrink: 0;
+    position: sticky;
+    align-self: start;
+    padding: 1rem;
+    background-color: #eeeeee;
+    min-height: 100vh;
+    overflow: visible;
+    /* Mantiene l'overflow visibile */
+    transition: top 0.3s ease;
+    /* Transizione per un effetto più fluido */
+}
+
+.single_sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -25px;
+    /* Estensione dello sfondo a sinistra */
+    width: calc(100% + 25px);
+    /* Aggiungi 25px alla larghezza */
+    height: 100%;
+    background-color: #eeeeee;
+    /* Stesso colore dello sfondo della sidebar */
+    z-index: -1;
+    /* Metti lo sfondo dietro il contenuto */
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.single_sidebar-title {
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: bold;
+    inline-size: 1;
+    padding-top: 0;
+    margin-top: 0;
+    text-align: center;
+    color: black;
+    margin-bottom: 8px;
+}
+
 /* Stili per il titolo della barra laterale */
 .sidebar-title {
     font-size: 1.25rem;
@@ -1527,7 +1576,7 @@ img {
 
 /* NOME AUTORE */
 .author-name {
-    font-size: 1.25rem;
+    font-size: clamp(0.850rem, 2vw, 1.25rem);
     line-height: 1.75rem;
     font-weight: 700;
     color: black;
@@ -1539,7 +1588,8 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: auto; /* Questo spinge le icone social a destra */
+    margin-right: auto;
+    /* Questo spinge le icone social a destra */
 }
 
 .category-label {
@@ -1554,11 +1604,10 @@ img {
 
 /* DATA AUTORE */
 .post-date {
-    font-size: 0.875rem;
+    font-size: clamp(0.750rem, 2vw, 0.850rem);
     color: #666;
 }
 
-.post-date,
 .category-label,
 .tag-label {
     font-size: 1rem;
@@ -2359,12 +2408,13 @@ img {
 
 /* ARTICOLI SUGGERITI */
 .sidebar-card {
-    background: #eeeeee;
+    background: #e2e2e2;
     border-radius: 8px;
     /* Angoli arrotondati per la card */
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 0.5em;
+    border: 2px solid #e2e2e2;
 }
 
 .sidebar-card-link {
@@ -2392,7 +2442,7 @@ img {
     font-size: 1.2em;
     font-weight: bold;
     color: #b3b3b3;
-    background: #eeeeee;
+    background: #e2e2e2;
 }
 
 .sidebar-card-title:hover {
@@ -2471,17 +2521,15 @@ img {
         font-size: 1.2rem;
     }
 
+    .carosello-titolo .title {
+        font-size: 1.2rem;
+    }
+
     .author-avatar {
         width: 25px;
         height: 25px;
     }
 
-    .author-name {
-        font-size: 1rem;
-        /* 16px */
-    }
-
-    .post-date,
     .category-label,
     .tag-label {
         font-size: 0.75rem;
@@ -2602,6 +2650,10 @@ img {
         display: none;
     }
 
+    .single_sidebar {
+        display: none;
+    }
+
     .category-tags-wrapper {
         margin-bottom: 0px;
     }
@@ -2626,6 +2678,10 @@ img {
 
 
     .swiper-slide .title {
+        font-size: 1.2rem;
+    }
+
+    .carosello-titolo .title {
         font-size: 1.2rem;
     }
 
@@ -2662,12 +2718,6 @@ img {
         box-shadow: none;
     }
 
-    .author-name {
-        font-size: 1.125rem;
-        /* 18px */
-    }
-
-    .post-date,
     .category-label,
     .tag-label {
         font-size: 0.875rem;

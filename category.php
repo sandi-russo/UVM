@@ -45,7 +45,7 @@ get_header();
                     <article class="page-cards">
                         <a href="<?php the_permalink(); ?>">
                             <?php if (has_post_thumbnail()): ?>
-                                <?php the_post_thumbnail('full', ['class' => 'card_img']); ?>
+                                <?php the_post_thumbnail('thumbnail', ['class' => 'card_img']); ?>
                             <?php else: ?>
                                 <div class="card_img_not_available">
                                     <p>Immagine non disponibile</p>

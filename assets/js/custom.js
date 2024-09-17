@@ -61,7 +61,7 @@ async function displayLatestEpisode() {
 
     // Continuiamo a usare l'anteprima per la riproduzione in-page
     audio.src = episode.audio_preview_url;
-    
+
     setupAudioControls();
     checkOverflow();
 }
@@ -146,45 +146,31 @@ window.addEventListener('resize', checkOverflow);
 // Ricalcola ogni 15 secondi
 setInterval(checkOverflow, 15000);
 
-/* PADDING MOBILE NAVBAR */
+/* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
 document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector('.navbar-top');
+    var stickyHeader = document.querySelector('.sticky-header');
+    var navbarTop = document.querySelector('.navbar-top');
     var mobileLastModified = document.querySelector('.mobile-last-modified');
     var content = document.querySelector('main, .content, .primary-content .primary .site_container');
 
     function adjustContentPadding() {
-        var headerHeight = header.offsetHeight;
-        var mobileLastModifiedHeight = mobileLastModified ? mobileLastModified.offsetHeight : 0;
-        var totalHeight = headerHeight + mobileLastModifiedHeight;
+        var totalHeight = 0;
 
+        // Verifica se siamo su uno schermo mobile (max 1024px)
         if (window.innerWidth <= 1024) {
+            // Se esiste sticky-header, usa solo la sua altezza
+            if (stickyHeader) {
+                totalHeight = stickyHeader.offsetHeight;
+            }
+            // Se esistono mobile-last-modified e navbar-top, somma le loro altezze
+            else if (navbarTop || mobileLastModified) {
+                totalHeight = (navbarTop ? navbarTop.offsetHeight : 0) + (mobileLastModified ? mobileLastModified.offsetHeight : 0);
+            }
+            // Applica il padding calcolato
             content.style.paddingTop = totalHeight + 'px';
         } else {
-            content.style.paddingTop = ''; // Rimuove il padding se la larghezza è > 1024px
-        }
-    }
-
-    // Regola il padding al caricamento della pagina
-    adjustContentPadding();
-
-    // Ricalcola il padding se la finestra viene ridimensionata (utile per design responsivi)
-    window.addEventListener('resize', adjustContentPadding);
-});
-
-/* CALCOLO AUTOMATICO PADDING DA LASCIARE PER LA STICKY HEADER */
-document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector('.sticky-header');
-    var content = document.querySelector('main') || document.querySelector('.content') || document.querySelector('.primary-content .primary .site_container');
-
-    function adjustContentPadding() {
-        if (header && content) {
-            var headerHeight = header.offsetHeight;
-
-            if (window.innerWidth <= 1024) {
-                content.style.paddingTop = headerHeight + 'px';
-            } else {
-                content.style.paddingTop = ''; // Rimuove il padding se la larghezza è >= 1024px
-            }
+            // Rimuove il padding se la larghezza è > 1024px
+            content.style.paddingTop = '';
         }
     }
 
@@ -194,6 +180,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ricalcola il padding se la finestra viene ridimensionata
     window.addEventListener('resize', adjustContentPadding);
 });
+
+
 
 /* SWIPER RADIO */
 document.addEventListener('DOMContentLoaded', function () {
@@ -655,16 +643,27 @@ document.addEventListener("DOMContentLoaded", function () {
         return; // Esci se l'elemento navbar non è trovato
     }
     const sidebar = document.querySelector('.sidebar');
+    const sidebarSidebar = document.querySelector('.single_sidebar');
     const sticky = navbar.offsetTop;
     const placeholder = document.createElement('div');
     placeholder.style.height = `${navbar.offsetHeight}px`;
 
     function adjustSidebarTop() {
+        const navbarHeight = navbar.offsetHeight;
         if (navbar.classList.contains('fixed-navbar')) {
-            const navbarHeight = navbar.offsetHeight;
-            sidebar.style.top = (navbarHeight + 'px');
+            if (sidebar) {
+                sidebar.style.top = (navbarHeight + 'px');
+            }
+            if (sidebarSidebar) {
+                sidebarSidebar.style.top = (navbarHeight + 'px');
+            }
         } else {
-            sidebar.style.top = '0';
+            if (sidebar) {
+                sidebar.style.top = '0';
+            }
+            if (sidebarSidebar) {
+                sidebarSidebar.style.top = '0';
+            }
         }
     }
 

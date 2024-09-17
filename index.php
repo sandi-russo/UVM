@@ -101,7 +101,7 @@ $main_categories = get_main_categories();
                                             <a href="<?php the_permalink(); ?>">
                                                 <div>
                                                     <?php if (has_post_thumbnail()): ?>
-                                                        <?php the_post_thumbnail('full', array('class' => 'card_img')); ?>
+                                                        <?php the_post_thumbnail('thumbnail', array('class' => 'card_img')); ?>
                                                     <?php else: ?>
                                                         <div class="card_img_not_available">
                                                             <p>Immagine non disponibile</p>

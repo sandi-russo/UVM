@@ -41,7 +41,7 @@ $full_twitter_url = !empty($twitter) ? 'https://twitter.com/' . esc_attr($twitte
 $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_attr($linkedin) : '';
 ?>
 
-<main id="primary" class="site-main">
+<main class="site-main">
     <!-- Immagine in evidenza con titolo -->
     <div class="post_top">
         <div class="post_top_space">
@@ -165,8 +165,8 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                 </div>
 
                 <!-- Barra Laterale -->
-                <div class="sidebar">
-                    <h2 class="sidebar-title">Articoli Suggeriti</h2>
+                <div class="single_sidebar">
+                    <h2 class="single_sidebar-title">Articoli Suggeriti</h2>
                     <div class="sidebar-content">
                         <?php
                         $args = array(
@@ -186,10 +186,10 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                             while ($query->have_posts()):
                                 $query->the_post();
                                 ?>
-                                <div class="sidebar-card cards-border">
+                                <div class="sidebar-card">
                                     <a href="<?php the_permalink(); ?>" class="sidebar-card-link">
                                         <div class="sidebar-card-thumbnail">
-                                            <?php the_post_thumbnail('full'); ?>
+                                            <?php the_post_thumbnail('thumbnail'); ?>
                                         </div>
                                         <h3 class="card_title"><?php the_title(); ?></h3>
                                     </a>
