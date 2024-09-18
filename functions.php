@@ -37,12 +37,32 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 
 
 
+/**
+ * YOAST REMOVE PROFILE
+ */
+add_filter('user_contactmethods', 'yoast_seo_admin_user_remove_social', 99);
 
+function yoast_seo_admin_user_remove_social ( $contactmethods ) {
+  unset( $contactmethods['facebook'] );
+  unset( $contactmethods['instagram'] );
+  unset( $contactmethods['linkedin'] );
+  unset( $contactmethods['myspace'] );
+  unset( $contactmethods['pinterest'] );
+  unset( $contactmethods['soundcloud'] );
+  unset( $contactmethods['tumblr'] );
+  unset( $contactmethods['twitter'] );
+  unset( $contactmethods['youtube'] );
+  unset( $contactmethods['wikipedia'] );
+  unset( $contactmethods['mastodon'] ); // Premium feature
 
+  //Do not remove the lines below
+  return $contactmethods;
+}
 
+/** 
+ * Modifica il form di login
+*/
 
-
-// Modifica il form di login
 function custom_login_form() {
     add_action('login_footer', 'add_custom_login_script');
 }

@@ -64,21 +64,37 @@ get_header();
                             <div class="card_info_author">
                                 <div class="card_author">
                                     <?php
+                                    // Recupera l'ID dell'autore
+                                    $author_id = get_the_author_meta('ID');
+
                                     // Recupera il nome e il cognome dell'autore
-                                    $first_name = get_the_author_meta('first_name');
-                                    $last_name = get_the_author_meta('last_name');
+                                    $first_name = get_the_author_meta('first_name', $author_id);
+                                    $last_name = get_the_author_meta('last_name', $author_id);
                                     $display_name = trim($first_name . ' ' . $last_name);
 
                                     // Usa il nome utente come fallback
                                     if (empty($display_name)) {
-                                        $display_name = get_the_author_meta('user_login');
+                                        $display_name = get_the_author_meta('user_login', $author_id);
                                     }
+
+                                    // Ottieni l'URL della pagina dell'autore
+                                    $author_posts_url = get_author_posts_url($author_id);
                                     ?>
-                                    <p class="card_author"><?php echo esc_html($display_name); ?></p>
+
+                                    <!-- Nome dell'autore cliccabile che reindirizza alla pagina dell'autore -->
+                                    <a href="<?php echo esc_url($author_posts_url); ?>" class="card_author-link">
+                                        <p class="card_author"><?php echo esc_html($display_name); ?></p>
+                                    </a>
+
+                                    <!-- Data del post -->
                                     <p class="card_author"><?php echo get_the_date(); ?></p>
                                 </div>
+
                                 <div class="card_author-space">
-                                    <?php echo get_avatar(get_the_author_meta('ID'), 24, '', '', array('class' => 'card_author_avatar')); ?>
+                                    <!-- Avatar dell'autore cliccabile che reindirizza alla pagina dell'autore -->
+                                    <a href="<?php echo esc_url($author_posts_url); ?>" class="card_author-avatar-link">
+                                        <?php echo get_avatar($author_id, 24, '', '', array('class' => 'card_author_avatar')); ?>
+                                    </a>
                                 </div>
                             </div>
                         </div>

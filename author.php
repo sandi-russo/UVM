@@ -16,7 +16,14 @@ get_header();
         <?php
         // Ottieni le informazioni dell'autore
         $author_id = get_queried_object_id();
-        $author_name = get_the_author_meta('display_name', $author_id);
+
+        // Ottieni nome e cognome dell'autore
+        $author_first_name = get_the_author_meta('first_name', $author_id);
+        $author_last_name = get_the_author_meta('last_name', $author_id);
+
+        // Concatena nome e cognome e applica la formattazione (tutto minuscolo e prime lettere maiuscole)
+        $author_name = ucwords(strtolower($author_first_name . ' ' . $author_last_name));
+
         // $author_bio = get_the_author_meta('description', $author_id);
         $author_avatar = get_avatar($author_id, 96, '', '', array('class' => 'rounded-full'));
 
@@ -37,11 +44,8 @@ get_header();
                 <div class="page-author-avatar">
                     <?php echo $author_avatar; ?>
                     <h1 class="page-title">
-                        <?php printf(esc_html__('Articoli di %s', 'universome'), '<span class="page-element-info">' . $author_name . '</span>'); ?>
+                        <?php printf(esc_html__('Articoli di %s', 'universome'), '<span class="page-element-info">' . esc_html($author_name) . '</span>'); ?>
                     </h1>
-                    <?php if ($author_bio): ?>
-                        <p class="author-bio"><?php // echo esc_html($author_bio); ?></p>
-                    <?php endif; ?>
                 </div>
             </header><!-- .page-header -->
 

@@ -12,7 +12,16 @@ get_header();
 
 <?php
 $author_id = get_post_field('post_author', get_the_ID());
-$author_name = get_the_author_meta('display_name', $author_id);
+
+// Ottieni nome e cognome dell'autore
+$first_name = get_the_author_meta('first_name', $author_id);
+$last_name = get_the_author_meta('last_name', $author_id);
+
+// Combina il nome e il cognome
+$author_name = $first_name . ' ' . $last_name;
+
+// Applica la formattazione corretta: prima lettera maiuscola e il resto minuscolo
+$author_name = ucwords(strtolower($author_name));
 
 // Controlla se esiste un avatar personalizzato
 $custom_avatar = get_user_meta($author_id, 'custom_avatar', true);
@@ -46,8 +55,13 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
     <div class="post_top">
         <div class="post_top_space">
             <?php if (has_post_thumbnail()): ?>
+                <!-- Se l'immagine in evidenza esiste, mostra l'immagine -->
                 <?php the_post_thumbnail('full', array('class' => 'post_img')); ?>
             <?php else: ?>
+                <!-- Se l'immagine in evidenza non esiste, mostra il messaggio -->
+                <div class="post_img_not_available">
+                    <p>Immagine non disponibile</p>
+                </div>
             <?php endif; ?>
             <div class="carosello-titolo">
                 <h1 class="title"><?php the_title(); ?></h1>
@@ -78,27 +92,17 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                 <div class="post-social-icons">
                     <?php if ($full_instagram_url): ?>
                         <a href="<?php echo esc_url($full_instagram_url); ?>" target="_blank" title="Instagram">
-                            <svg class="icon social-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
-                            </svg>
+                            <!-- icona Instagram -->
                         </a>
                     <?php endif; ?>
                     <?php if ($full_twitter_url): ?>
                         <a href="<?php echo esc_url($full_twitter_url); ?>" target="_blank" title="Twitter">
-                            <svg class="icon social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                <path fill="currentColor"
-                                    d="M9.294 6.928L14.357 1h-1.2L8.762 6.147L5.25 1H1.2l5.31 7.784L1.2 15h1.2l4.642-5.436L10.751 15h4.05zM7.651 8.852l-.538-.775L2.832 1.91h1.843l3.454 4.977l.538.775l4.491 6.47h-1.843z" />
-                            </svg>
+                            <!-- icona Twitter -->
                         </a>
                     <?php endif; ?>
                     <?php if ($full_linkedin_url): ?>
                         <a href="<?php echo esc_url($full_linkedin_url); ?>" target="_blank" title="LinkedIn">
-                            <svg class="icon social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M4.001 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m1 2v14h14V5zm2.5 4a1.5 1.5 0 1 1 0-3a1.5 1.5 0 0 1 0 3m-1 1h2v7.5h-2zm5.5.43c.584-.565 1.266-.93 2-.93c2.071 0 3.5 1.679 3.5 3.75v4.25h-2v-4.25a1.75 1.75 0 1 0-3.5 0v4.25h-2V10h2z" />
-                            </svg>
+                            <!-- icona LinkedIn -->
                         </a>
                     <?php endif; ?>
                 </div>
