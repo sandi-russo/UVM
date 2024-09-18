@@ -17,7 +17,7 @@ get_header();
         // Ottieni le informazioni dell'autore
         $author_id = get_queried_object_id();
         $author_name = get_the_author_meta('display_name', $author_id);
-        $author_bio = get_the_author_meta('description', $author_id);
+        // $author_bio = get_the_author_meta('description', $author_id);
         $author_avatar = get_avatar($author_id, 96, '', '', array('class' => 'rounded-full'));
 
         // Imposta la query per mostrare 9 post per pagina
@@ -40,7 +40,7 @@ get_header();
                         <?php printf(esc_html__('Articoli di %s', 'universome'), '<span class="page-element-info">' . $author_name . '</span>'); ?>
                     </h1>
                     <?php if ($author_bio): ?>
-                        <p class="author-bio"><?php echo esc_html($author_bio); ?></p>
+                        <p class="author-bio"><?php // echo esc_html($author_bio); ?></p>
                     <?php endif; ?>
                 </div>
             </header><!-- .page-header -->
