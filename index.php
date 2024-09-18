@@ -161,7 +161,7 @@ $main_categories = get_main_categories();
                                                     </a>
 
                                                     <!-- Data del post -->
-                                                    <p class="card_author"><?php echo get_the_date(); ?></p>
+                                                    <p><?php echo get_the_date(); ?></p>
                                                 </div>
 
                                                 <div class="card_author-space">
