@@ -859,11 +859,63 @@ img {
 .category_name {
     display: inline-block;
     position: relative;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
     font-weight: 800;
     color: black;
+    margin-bottom: 1rem; /* Spazio per la linea */
+    text-align: center; /* Centrare il testo */
 }
+
+.category_name::after {
+    content: ""; /* Necessario per visualizzare l'elemento */
+    display: block;
+    width: 60px; /* Lunghezza fissa per tutte le categorie */
+    height: 4px; /* Spessore della linea */
+    background-color: transparent; /* Colore di default */
+    position: absolute;
+    left: 50%; /* Posiziona al centro */
+    bottom: -4px; /* Sposta la linea sotto il testo */
+    transform: translateX(-50%); /* Centra la linea sotto il testo */
+    border-radius: 2px; /* Arrotonda gli angoli della linea */
+}
+
+.attualita::after {
+    background-color: cyan;
+}
+
+.cultura::after {
+    background-color: blue;
+}
+
+.eventi::after {
+    background-color: purple;
+}
+
+.inchiostro::after {
+    background-color: red;
+}
+
+.ipse-dixit::after {
+    background-color: orange;
+}
+
+.recensioni::after {
+    background-color: yellow;
+}
+
+.scienza-salute::after {
+    background-color: greenyellow;
+}
+
+.vita-universitaria::after {
+    background-color: green;
+}
+
+
+
+
+
 
 .grid-home {
     display: grid;

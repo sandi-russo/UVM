@@ -99,13 +99,14 @@ $main_categories = get_main_categories();
                                 <div>
                                     <div>
                                         <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>">
-                                            <h2 class="category_name">
+                                            <div class="category_name <?php echo esc_attr($category->slug); ?>">
                                                 <?php echo esc_html($category->name); ?>
-                                            </h2>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="grid-home">
                                 <?php
                                 $first_post = true;
