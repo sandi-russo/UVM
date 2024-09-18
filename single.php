@@ -41,12 +41,12 @@ $tags = get_the_tags();
 
 // Recupera i dati dei campi social dell'autore
 $instagram = get_the_author_meta('instagram', $author_id);
-$twitter = get_the_author_meta('twitter', $author_id);
+$threads = get_the_author_meta('threads', $author_id);
 $linkedin = get_the_author_meta('linkedin', $author_id);
 
 // Definisci gli URL di base per i social network
 $full_instagram_url = !empty($instagram) ? 'https://www.instagram.com/' . esc_attr($instagram) : '';
-$full_twitter_url = !empty($twitter) ? 'https://twitter.com/' . esc_attr($twitter) : '';
+$full_threads_url = !empty($threads) ? 'https://www.threads.net/' . esc_attr($threads) : '';
 $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_attr($linkedin) : '';
 ?>
 
@@ -88,16 +88,16 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
             </div>
 
             <!-- Icone Social -->
-            <?php if ($full_instagram_url || $full_twitter_url || $full_linkedin_url): ?>
+            <?php if ($full_instagram_url || $full_threads_url || $full_linkedin_url): ?>
                 <div class="post-social-icons">
                     <?php if ($full_instagram_url): ?>
                         <a href="<?php echo esc_url($full_instagram_url); ?>" target="_blank" title="Instagram">
                             <!-- icona Instagram -->
                         </a>
                     <?php endif; ?>
-                    <?php if ($full_twitter_url): ?>
-                        <a href="<?php echo esc_url($full_twitter_url); ?>" target="_blank" title="Twitter">
-                            <!-- icona Twitter -->
+                    <?php if ($full_threads_url): ?>
+                        <a href="<?php echo esc_url($full_threads_url); ?>" target="_blank" title="threads">
+                            <!-- icona threads -->
                         </a>
                     <?php endif; ?>
                     <?php if ($full_linkedin_url): ?>
