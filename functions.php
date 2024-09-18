@@ -142,27 +142,6 @@ add_filter('authenticate', 'restrict_login_for_non_admins', 30, 3);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * SPOTIFY SDK
  */

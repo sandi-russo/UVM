@@ -148,9 +148,9 @@ setInterval(checkOverflow, 15000);
 
 
  /* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
     var stickyHeader = document.querySelector('.sticky-header');
-    var content = document.querySelector('main, .content, .primary-content .primary .site_container');
+    var content = document.querySelector('.content, .primary-content .primary');
 
     function adjustContentPadding() {
         var totalHeight = 0;
@@ -175,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ricalcola il padding se la finestra viene ridimensionata
     window.addEventListener('resize', adjustContentPadding);
 });
+
 
 /* SWIPER RADIO */
 document.addEventListener('DOMContentLoaded', function () {
