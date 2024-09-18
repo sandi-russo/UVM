@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<div class="site_container">
+<div class="other_site_container">
     <main id="primary" class="site-main">
 
         <?php

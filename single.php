@@ -41,7 +41,7 @@ $full_twitter_url = !empty($twitter) ? 'https://twitter.com/' . esc_attr($twitte
 $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_attr($linkedin) : '';
 ?>
 
-<main class="site-main">
+<main>
     <!-- Immagine in evidenza con titolo -->
     <div class="post_top">
         <div class="post_top_space">
@@ -191,7 +191,7 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                                         <div class="sidebar-card-thumbnail">
                                             <?php the_post_thumbnail('thumbnail'); ?>
                                         </div>
-                                        <h3 class="card_title"><?php the_title(); ?></h3>
+                                        <h3 class="sidebar-card-title"><?php the_title(); ?></h3>
                                     </a>
                                 </div>
                                 <?php
@@ -203,6 +203,10 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                         ?>
                     </div>
                 </div>
+
+
+
+
             </div>
         <?php endwhile; ?>
 

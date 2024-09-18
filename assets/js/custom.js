@@ -146,11 +146,10 @@ window.addEventListener('resize', checkOverflow);
 // Ricalcola ogni 15 secondi
 setInterval(checkOverflow, 15000);
 
-/* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
+
+ /* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
 document.addEventListener("DOMContentLoaded", function () {
     var stickyHeader = document.querySelector('.sticky-header');
-    var navbarTop = document.querySelector('.navbar-top');
-    var mobileLastModified = document.querySelector('.mobile-last-modified');
     var content = document.querySelector('main, .content, .primary-content .primary .site_container');
 
     function adjustContentPadding() {
@@ -158,14 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Verifica se siamo su uno schermo mobile (max 1024px)
         if (window.innerWidth <= 1024) {
-            // Se esiste sticky-header, usa solo la sua altezza
             if (stickyHeader) {
-                totalHeight = stickyHeader.offsetHeight;
+                totalHeight = stickyHeader.offsetHeight; // Calcola l'altezza totale del sticky-header
             }
-            // Se esistono mobile-last-modified e navbar-top, somma le loro altezze
-            else if (navbarTop || mobileLastModified) {
-                totalHeight = (navbarTop ? navbarTop.offsetHeight : 0) + (mobileLastModified ? mobileLastModified.offsetHeight : 0);
-            }
+
             // Applica il padding calcolato
             content.style.paddingTop = totalHeight + 'px';
         } else {
@@ -180,8 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ricalcola il padding se la finestra viene ridimensionata
     window.addEventListener('resize', adjustContentPadding);
 });
-
-
 
 /* SWIPER RADIO */
 document.addEventListener('DOMContentLoaded', function () {
@@ -596,6 +589,27 @@ function shareArticle() {
 document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('scroll', function () {
         const shareButton = document.querySelector('.fixed-share-button');
+        if (!shareButton) {
+            return; // Esci dalla funzione se l'elemento non è trovato
+        }
+
+        const scrollPosition = window.scrollY;
+        const documentHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollPosition / documentHeight) * 100;
+
+        // Mostra il pulsante dopo aver scrolled oltre il 5% della pagina
+        if (scrollPercentage > 5 && scrollPercentage < 95) {
+            shareButton.classList.add('visible');
+        } else {
+            shareButton.classList.remove('visible');
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('scroll', function () {
+        const shareButton = document.querySelector('.radio-uvm-button-container');
         if (!shareButton) {
             return; // Esci dalla funzione se l'elemento non è trovato
         }
