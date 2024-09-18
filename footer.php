@@ -82,7 +82,7 @@
         <div class="footer-col2">
             <h4 class="footer-title-cat">Giornalista?</h4>
             <p class="footer-text-cat">Premi qui sotto per accedere.</p>
-            <a href="/login">
+            <a href="/area-accesso">
                 <button class="footer-button" style="border: none;">Accedi</button>
             </a>
 

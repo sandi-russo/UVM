@@ -1164,6 +1164,36 @@ img {
     color: #828282;
 }
 
+/* Stile per il pulsante Radio UVM */
+.radio-uvm-button-container {
+    display: none;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.radio-uvm-button {
+    display: flex;
+    align-items: center;
+    background-color: #1a202c; /* Colore di sfondo scuro, puoi modificarlo */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.radio-uvm-button:hover {
+    background-color: #2d3748; /* Colore di sfondo al passaggio del mouse */
+}
+
+.radio-uvm-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
 
 
 /* SIDEBAR */
@@ -2644,6 +2674,10 @@ img {
     .search-form {
         display: none;
         /* Nasconde il form di ricerca per i dispositivi mobili */
+    }
+
+    .radio-uvm-button-container {
+        display: flex;
     }
 
     .sidebar {

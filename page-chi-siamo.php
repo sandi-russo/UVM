@@ -72,7 +72,7 @@ get_header(); ?>
                             // Ottieni il nome completo, la biografia, l'email e il ruolo UVM dell'utente
                             $full_name = ucwords(esc_html($user->first_name . ' ' . $user->last_name));
                             $biography = esc_html(get_the_author_meta('description', $user->ID));
-                            $email = esc_html($user->user_email);
+                            // $email = esc_html($user->user_email);
                             $ruolo_uvm = ucwords(str_replace('_', ' ', esc_html(get_the_author_meta('ruolo_uvm', $user->ID))));
 
                             // Ottieni i nomi utenti dei social media
@@ -93,7 +93,7 @@ get_header(); ?>
                             echo '<img src="' . esc_url($avatar) . '" class="chi-siamo-avatar" />';
                             echo '<h4 class="chi-siamo-name"><a href="' . esc_url($author_posts_url) . '" class="text-xl font-bold text-black">' . esc_html($full_name) . '</a></h4>';
                             echo '<p class="chi-siamo-role">' . esc_html($ruolo_uvm) . '</p>';
-                            echo '<p class="chi-siamo-email"><a href="mailto:' . esc_attr($email) . '">' . esc_html($email) . '</a></p>';
+                            //echo '<p class="chi-siamo-email"><a href="mailto:' . esc_attr($email) . '">' . esc_html($email) . '</a></p>';
 
                             // Aggiungi le icone social
                             echo '<div class="chi-siamo-social-icons">';

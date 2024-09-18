@@ -265,7 +265,7 @@ function footer_menu_mobile()
     $html = '
     <div class="mobile-menu-footer">
         <p>Sei un giornalista?</p>
-        <a href="https://universome.unime.it/login">
+        <a href="/area-accesso">
             <button
                 class="text-white bg-[#787878] hover:bg-[#f28b0c] font-semibold rounded-md text-sm px-6 py-3 block w-full mt-3"
                 style="border: none;">Accedi</button>
@@ -530,19 +530,17 @@ VERIFICO SE L'UTENTE HA INSERITO DESCRIZIONE, AVATAR E UNITÀ/RUOLO
 function check_user_profile_completion()
 {
     $current_user = wp_get_current_user();
-    $user_description = get_user_meta($current_user->ID, 'description', true);
     $custom_avatar = get_user_meta($current_user->ID, 'custom_avatar', true);
     $unit = get_user_meta($current_user->ID, 'unit', true);
     $ruolo_uvm = get_user_meta($current_user->ID, 'ruolo_uvm', true);
 
     // Aggiungiamo un log per debug
     error_log("Debug: User ID: " . $current_user->ID);
-    error_log("Debug: User Description: " . $user_description);
     error_log("Debug: Custom Avatar: " . $custom_avatar);
     error_log("Debug: Unit: " . $unit);
     error_log("Debug: Ruolo UVM: " . $ruolo_uvm);
 
-    if (empty($user_description) || empty($custom_avatar) || empty($unit) || empty($ruolo_uvm)) {
+    if (empty($custom_avatar) || empty($unit) || empty($ruolo_uvm)) {
         return false;
     }
     return true;
@@ -568,15 +566,12 @@ function show_profile_completion_notice()
     if (!check_user_profile_completion()) {
         $class = 'notice notice-warning';
         $current_user = wp_get_current_user();
-        $user_description = get_user_meta($current_user->ID, 'description', true);
         $custom_avatar = get_user_meta($current_user->ID, 'custom_avatar', true);
         $unit = get_user_meta($current_user->ID, 'unit', true);
         $ruolo_uvm = get_user_meta($current_user->ID, 'ruolo_uvm', true);
 
-        if (empty($user_description) && empty($custom_avatar) && empty($unit) && empty($ruolo_uvm)) {
-            $message = __('Per favore, completa il tuo profilo aggiungendo le informazioni biografiche, un avatar personalizzato, la tua unità di appartenenza e il tuo ruolo UVM.', 'textdomain');
-        } elseif (empty($user_description)) {
-            $message = __('Per favore, completa il tuo profilo aggiungendo le informazioni biografiche.', 'textdomain');
+        if (empty($custom_avatar) && empty($unit) && empty($ruolo_uvm)) {
+            $message = __('Per favore, completa il tuo profilo aggiungendo un avatar personalizzato, la tua unità di appartenenza e il tuo ruolo UVM.', 'textdomain');
         } elseif (empty($custom_avatar)) {
             $message = __('Per favore, completa il tuo profilo aggiungendo un avatar personalizzato.', 'textdomain');
         } elseif (empty($unit)) {
