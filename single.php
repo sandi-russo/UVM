@@ -109,10 +109,6 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
             <?php endif; ?>
         </div>
 
-
-
-
-
         <!-- Categoria e Tag -->
         <div class="category-tags-wrapper">
             <?php if (!empty($category)): ?>
@@ -124,7 +120,7 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
             <?php if (!empty($tags)): ?>
                 <?php foreach ($tags as $index => $tag): ?>
                     <?php if ($index < 5): ?>
-                        <span class="tag-label bg-green-100 text-green-600 px-2 py-1 rounded">
+                        <span class="tag-label">
                             <?php echo esc_html($tag->name); ?>
                         </span>
                     <?php endif; ?>
@@ -135,16 +131,16 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
         <?php while (have_posts()):
             the_post(); ?>
             <!-- Wrapper per centralizzare il contenuto -->
-            <div class="mx-auto flex">
+            <div class="articolo_container">
                 <!-- Sezione dell'Articolo -->
-                <div class="articolo flex-1 overflow-y-auto pr-4 px-5 bg-white rounded-l-lg shadow-lg">
+                <div class="articolo">
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                         <div class="entry-content">
                             <?php the_content(); ?>
                         </div>
 
                         <?php if (get_edit_post_link()): ?>
-                            <footer class="entry-footer mt-4">
+                            <footer class="entry-footer">
                                 <?php
                                 edit_post_link(
                                     sprintf(
@@ -207,10 +203,6 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                         ?>
                     </div>
                 </div>
-
-
-
-
             </div>
         <?php endwhile; ?>
 

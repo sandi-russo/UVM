@@ -64,6 +64,10 @@ img {
     padding-right: 1rem;
 }
 
+main {
+    background-color: #eeeeee;
+}
+
 .other_site_container {
     max-width: 1400px;
     margin-left: auto;
@@ -836,11 +840,9 @@ img {
     z-index: 1;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 5px 0 10px -5px #b3b3b3;
     overflow-y: auto;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    padding-right: 1rem;
     flex: 1 1 0%;
     background-color: white;
 }
@@ -859,25 +861,37 @@ img {
 .category_name {
     display: inline-block;
     position: relative;
-    font-size: 1.875rem; /* 30px */
-    line-height: 2.25rem; /* 36px */
+    font-size: 1.875rem;
+    /* 30px */
+    line-height: 2.25rem;
+    /* 36px */
     font-weight: 800;
     color: black;
-    margin-bottom: 1rem; /* Spazio per la linea */
-    text-align: center; /* Centrare il testo */
+    margin-bottom: 1rem;
+    /* Spazio per la linea */
+    text-align: center;
+    /* Centrare il testo */
 }
 
 .category_name::after {
-    content: ""; /* Necessario per visualizzare l'elemento */
+    content: "";
+    /* Necessario per visualizzare l'elemento */
     display: block;
-    width: 60px; /* Lunghezza fissa per tutte le categorie */
-    height: 4px; /* Spessore della linea */
-    background-color: transparent; /* Colore di default */
+    width: 60px;
+    /* Lunghezza fissa per tutte le categorie */
+    height: 4px;
+    /* Spessore della linea */
+    background-color: transparent;
+    /* Colore di default */
     position: absolute;
-    left: 50%; /* Posiziona al centro */
-    bottom: -4px; /* Sposta la linea sotto il testo */
-    transform: translateX(-50%); /* Centra la linea sotto il testo */
-    border-radius: 2px; /* Arrotonda gli angoli della linea */
+    left: 50%;
+    /* Posiziona al centro */
+    bottom: -4px;
+    /* Sposta la linea sotto il testo */
+    transform: translateX(-50%);
+    /* Centra la linea sotto il testo */
+    border-radius: 2px;
+    /* Arrotonda gli angoli della linea */
 }
 
 .attualita::after {
@@ -1223,7 +1237,8 @@ img {
 /* Stile per il pulsante Radio UVM */
 .radio-uvm-button-container {
     position: fixed;
-    bottom: -100px; /* Nasconde il pulsante inizialmente fuori dallo schermo */
+    bottom: -100px;
+    /* Nasconde il pulsante inizialmente fuori dallo schermo */
     left: 50%;
     transform: translateX(-50%);
     background-color: #1E1E1E;
@@ -1248,8 +1263,10 @@ img {
 .radio-uvm-button {
     display: flex;
     align-items: center;
-    background-color: inherit; /* Eredita il colore di sfondo dal contenitore */
-    color: inherit; /* Eredita il colore del testo dal contenitore */
+    background-color: inherit;
+    /* Eredita il colore di sfondo dal contenitore */
+    color: inherit;
+    /* Eredita il colore del testo dal contenitore */
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
@@ -1270,7 +1287,6 @@ img {
     z-index: 0;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 5px 0 5px -5px #b3b3b3;
     min-width: 25%;
     max-width: 25%;
     flex-shrink: 0;
@@ -1308,14 +1324,13 @@ img {
     z-index: 0;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 5px 0 5px -5px #b3b3b3;
     min-width: 25%;
     max-width: 25%;
     flex-shrink: 0;
     position: sticky;
     align-self: start;
     padding: 1rem;
-    background-color: #eeeeee;
+    background-color: #e2e2e2;
     min-height: 100vh;
     overflow: visible;
     /* Mantiene l'overflow visibile */
@@ -1324,6 +1339,7 @@ img {
 }
 
 .single_sidebar::before {
+    padding: 1rem;
     content: '';
     position: absolute;
     top: 0;
@@ -1332,7 +1348,7 @@ img {
     width: calc(100% + 25px);
     /* Aggiungi 25px alla larghezza */
     height: 100%;
-    background-color: #eeeeee;
+    background-color: #e2e2e2;
     /* Stesso colore dello sfondo della sidebar */
     z-index: -1;
     /* Metti lo sfondo dietro il contenuto */
@@ -1345,7 +1361,7 @@ img {
     /* text-xl */
     font-weight: bold;
     inline-size: 1;
-    padding-top: 0;
+    padding-top: 1rem;
     margin-top: 0;
     text-align: center;
     color: black;
@@ -1358,7 +1374,7 @@ img {
     /* text-xl */
     font-weight: bold;
     inline-size: 1;
-    padding-top: 0;
+    padding-top: 1rem;
     margin-top: 0;
     text-align: center;
     color: #eeeeee;
@@ -1372,6 +1388,7 @@ img {
     gap: 10px;
     /* Spazio tra i frame */
     align-items: flex-end;
+    padding: 1rem;
 }
 
 .sidebar-button-container {
@@ -1655,7 +1672,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #eeeeee;
+    background-color: #e2e2e2;
     border-radius: 30px;
     padding: 20px;
     margin-bottom: 1.5rem;
@@ -1710,6 +1727,16 @@ img {
     font-size: 1rem;
     /* 16px */
     color: #828282;
+}
+
+.tag-label {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.25rem;
+    color: #059669;
+    background-color: #D1FAE5;
 }
 
 /* ICONE SOCIAL AUTORE */
@@ -1846,13 +1873,24 @@ img {
 }
 
 .articolo {
-    align-items: center;
-    /* Centra gli elementi orizzontalmente */
-    z-index: 1;
+    z-index: 10;
+    overflow-y: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-right: 1rem;
+    flex: 1 1 0%;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 5px 0 5px -5px #b3b3b3;
-    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.articolo_container {
+    display: flex;
+}
+
+.entry-footer {
+    margin-top: 1rem;
 }
 
 /* GESTIONE TITOLI ARTICOLO */
@@ -2509,18 +2547,22 @@ img {
 
 /* ARTICOLI SUGGERITI */
 .single_sidebar {
-    padding: 0 10px; /* Opzionale, per un po' di spazio laterale */
+    padding: 0 10px;
+    /* Opzionale, per un po' di spazio laterale */
 }
 
 .sidebar-card {
     background: #e2e2e2;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più evidente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    /* Ombra più evidente */
     margin-bottom: 0.5em;
     border: 2px solid #e2e2e2;
-    width: 100%; /* Assicurati che la card occupi tutta la larghezza */
-    box-sizing: border-box; /* Include padding e border nella larghezza totale */
+    width: 100%;
+    /* Assicurati che la card occupi tutta la larghezza */
+    box-sizing: border-box;
+    /* Include padding e border nella larghezza totale */
 }
 
 .sidebar-card-link {
@@ -2543,15 +2585,20 @@ img {
 }
 
 .sidebar-card-title {
-    padding: 0.5em 1em; /* Padding standard */
-    padding-top: 0.75em; /* Aumenta il padding superiore */
-    padding-left: 1em; /* Padding a sinistra */
-    padding-right: 1em; /* Padding a destra */
+    padding: 0.5em 1em;
+    /* Padding standard */
+    padding-top: 0.75em;
+    /* Aumenta il padding superiore */
+    padding-left: 1em;
+    /* Padding a sinistra */
+    padding-right: 1em;
+    /* Padding a destra */
     font-size: 1.2em;
     font-weight: bold;
     color: black;
     background: #e2e2e2;
 }
+
 
 .sidebar-card-title:hover {
     color: #f18812;
