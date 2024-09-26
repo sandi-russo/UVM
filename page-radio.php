@@ -11,7 +11,7 @@ get_header();
 ?>
 
 
-<m?php
+<?php
 $programs = [
     [
         'title' => 'UniVersoGol',

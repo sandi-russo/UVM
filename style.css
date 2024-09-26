@@ -194,8 +194,6 @@ img {
     flex-grow: 1;
 }
 
-
-
 /* Stili per il contenitore del form di ricerca */
 .search-form {
     display: flex;
@@ -252,12 +250,37 @@ img {
     white-space: nowrap;
 }
 
-.main-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.categories-wrapper {
     display: flex;
+    flex-direction: column;
+    /* Assicura che le due righe siano una sopra l'altra */
+    align-items: center;
+    /* Centra il contenuto */
 }
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+    /* Centra gli elementi nella riga */
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+}
+
+.main-menu.first-row,
+.main-menu.second-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Spaziatura tra gli elementi */
+}
+
+.main-menu.first-row .category-item,
+.main-menu.second-row .category-item {
+    flex: 0 1 auto;
+}
+
+
 
 .category-item {
     position: relative;
@@ -280,6 +303,13 @@ img {
     /* Angoli arrotondati durante l'hover */
 }
 
+.active {
+    background-color: #f0f0f0;
+    color: #f18812;
+    border-radius: 30px;
+    /* Angoli arrotondati durante l'hover */
+}
+
 .category-item>a svg {
     margin-left: 5px;
     width: 12px;
@@ -289,6 +319,17 @@ img {
 
 .category-item:hover>a svg {
     transform: rotate(180deg);
+}
+
+.cateogry-link {
+    display: flex;
+    align-items: center;
+}
+
+.category-icon {
+    margin-left: 0.25rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 /* Sottocategorie */
@@ -339,6 +380,12 @@ img {
 
 .category-item:hover .subcategory-menu {
     display: block;
+}
+
+.subcategory-link {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 /* Ricerca Desktop*/
@@ -1101,8 +1148,8 @@ img {
     z-index: 9999;
     background-color: #ff8800;
     color: white;
-    padding: 6px;
-    border-radius: 50px;
+    padding: 5px;
+    border-radius: 100%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: bottom 0.5s ease;
@@ -1465,6 +1512,8 @@ img {
     height: 22px;
     color: #eeeeee;
     transition: color 0.3s;
+    display: inline-block;
+    fill: currentColor;
 }
 
 .spotify-logo {
@@ -1664,6 +1713,7 @@ img {
     margin-right: 10px;
     margin-left: 10px;
 }
+
 /* NOME AUTORE */
 .author-name {
     font-size: clamp(0.850rem, 2vw, 1.25rem);
@@ -1788,7 +1838,7 @@ img {
 }
 
 .card_author_avatar {
-    border-radius: 9999px;
+    border-radius: 50%;
 }
 
 /* PAGINAZIONE */
@@ -1857,7 +1907,7 @@ img {
     background: #eeeeee;
 }
 
-.articolo { 
+.articolo {
     z-index: 10;
     overflow-y: auto;
     padding-left: 1.25rem;
@@ -1878,7 +1928,9 @@ img {
     align-items: flex-start;
 }
 
-.author-info, .category-tags-wrapper, .entry-content {
+.author-info,
+.category-tags-wrapper,
+.entry-content {
     text-align: left;
 
 }
@@ -1896,11 +1948,11 @@ img {
 .articolo h6 {
     margin: 20px 0px 10px 0px;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase
 }
 
 .articolo img {
-    border-radius: 30px;
+    border-radius: 8px;
     margin: 20px auto;
     /* Aggiunge spazio sopra e sotto l'immagine */
     max-width: 100%;
@@ -1912,7 +1964,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: justify;
+    text-align: left;
     font-size: 1.5rem;
 }
 
@@ -1933,7 +1985,7 @@ img {
 }
 
 .entry-content p {
-    font-size: clamp(0.750rem, 3vw, 1.15rem);
+    font-size: clamp(0.650rem, 3vw, 1.15rem);
 }
 
 .side_text {
@@ -2651,6 +2703,7 @@ img {
     .articolo,
     .articoli {
         box-shadow: none;
+        border-radius: 0px;
     }
 
     /* STICKY HEADER */
@@ -2665,35 +2718,37 @@ img {
 
     .sticky-header .navbar-top {
         background-color: #fff;
-        /* Cambia il colore di sfondo se necessario */
         border-bottom: 1px solid #ddd;
-        /* Aggiungi una linea di separazione se necessario */
+        display: flex;
+        justify-content: space-between;
     }
 
-    /* NAVBAR */
     .navbar-top {
         height: auto;
-        /* Altezza fissa della navbar su schermi piccoli */
         background-color: white;
-        /* Sfondo bianco per dispositivi mobili */
         padding: 15px;
-        /* Rimuove il padding */
         position: relative;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-evenly;
+        /* Distribuisce equamente gli elementi */
+        align-items: center;
+        /* Allinea verticalmente gli elementi */
     }
 
     .container {
         flex-direction: row;
-        /* Disposizione orizzontale */
-        align-items: center;
+        display: flex;
         justify-content: space-between;
+        width: 100%;
+        /* Imposta la larghezza al 100% */
     }
 
     .navbar-logo {
-        margin: 0 auto;
-        /* Logo centrato */
+        margin: 0;
         box-shadow: none;
         border-radius: none;
+        /* Se vuoi centrare il logo, puoi usare margin o flex con il logo */
     }
 
     .mobile-last-modified {

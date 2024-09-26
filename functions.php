@@ -218,9 +218,9 @@ function get_main_categories()
 function display_categories_with_subcategories()
 {
     $args = array(
-        'parent' => 0, // Prende solo le categorie principali
-        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')), // Esclude la categoria "senza categoria" e "evidenza"
-        'hide_empty' => false // Mostra anche categorie senza post
+        'parent' => 0,
+        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')),
+        'hide_empty' => false
     );
 
     $categories = get_categories($args);
@@ -233,19 +233,24 @@ function display_categories_with_subcategories()
         ));
         $has_subcategories = !empty($subcategories);
 
-        echo '<li class="category-item relative">';
-        echo '<a href="' . get_category_link($category->term_id) . '" class="flex items-center">' . $category->name;
+        // Verifica se la categoria è quella corrente o se una delle sue sottocategorie è attiva
+        $is_active = is_category($category->term_id) || (is_category() && in_array(get_query_var('cat'), wp_list_pluck($subcategories, 'term_id'))) ? 'active' : '';
+
+        echo '<li class="category-item ' . $is_active . '">';
+        echo '<a href="' . get_category_link($category->term_id) . '" class="category-link">' . $category->name;
 
         if ($has_subcategories) {
-            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ml-1 w-4 h-4"><path fill="currentColor" d="M10.103 12.778L16.81 6.08a.69.69 0 0 1 .99.012a.726.726 0 0 1-.012 1.012l-7.203 7.193a.69.69 0 0 1-.985-.006L2.205 6.72a.727.727 0 0 1 0-1.01a.69.69 0 0 1 .99 0z"/></svg>';
+            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="category-icon"><path fill="currentColor" d="M10.103 12.778L16.81 6.08a.69.69 0 0 1 .99.012a.726.726 0 0 1-.012 1.012l-7.203 7.193a.69.69 0 0 1-.985-.006L2.205 6.72a.727.727 0 0 1 0-1.01a.69.69 0 0 1 .99 0z"/></svg>';
         }
 
         echo '</a>';
 
         if ($has_subcategories) {
-            echo '<ul class="subcategory-menu absolute left-0  bg-white shadow-lg rounded-md hidden">';
+            echo '<ul class="subcategory-menu">';
             foreach ($subcategories as $subcategory) {
-                echo '<li><a href="' . get_category_link($subcategory->term_id) . '" class="block text-sm">' . $subcategory->name . '</a></li>';
+                // Verifica se la sottocategoria è quella corrente
+                $is_active_sub = is_category($subcategory->term_id) ? 'active' : '';
+                echo '<li><a href="' . get_category_link($subcategory->term_id) . '" class="subcategory-link ' . $is_active_sub . '">' . $subcategory->name . '</a></li>';
             }
             echo '</ul>';
         }
@@ -253,13 +258,13 @@ function display_categories_with_subcategories()
         echo '</li>';
     }
 
-    // Aggiungi il link alla pagina "chi-siamo" alla fine
     echo '<li class="category-item">';
-    echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="flex items-center">Chi Siamo</a>';
+    echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="category-link">Chi Siamo</a>';
     echo '</li>';
 
     echo '</ul>';
 }
+
 
 
 
@@ -269,42 +274,41 @@ function display_categories_with_subcategories()
 function display_mobile_categories()
 {
     $args = array(
-        'parent' => 0, // Prende solo le categorie principali
-        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')), // Esclude le categorie "senza categoria" e "evidenza"
-        'hide_empty' => false // Mostra anche categorie senza post
+        'parent' => 0,
+        'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')),
+        'hide_empty' => false
     );
 
     $categories = get_categories($args);
     echo '<ul class="mobile-menu">';
 
     foreach ($categories as $category) {
-        // Estrai le sottocategorie
         $subcategories = get_categories(array(
             'parent' => $category->term_id,
             'hide_empty' => false
         ));
         $has_subcategories = !empty($subcategories);
 
-        echo '<li class="menu-item">';
+        // Verifica se la categoria è quella corrente
+        $is_active = is_category($category->term_id) ? 'active' : '';
 
-        // Contenitore per l'elemento padre e la freccia
+        echo '<li class="menu-item ' . $is_active . '">';
+
         echo '<div class="menu-item-content">';
-
-        // Link della categoria principale
         echo '<a href="' . get_category_link($category->term_id) . '" class="menu-link">' . $category->name . '</a>';
 
-        // Icona della freccia (per aprire/chiudere il sottomenu)
         if ($has_subcategories) {
             echo '<span class="arrow-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M10.103 12.778L16.81 6.08a.69.69 0 0 1 .99.012a.726.726 0 0 1-.012 1.012l-7.203 7.193a.69.69 0 0 1-.985-.006L2.205 6.72a.727.727 0 0 1 0-1.01a.69.69 0 0 1 .99 0z"/></svg></span>';
         }
 
-        echo '</div>'; // Chiusura del contenitore menu-item-content
+        echo '</div>';
 
-        // Sottomenu
         if ($has_subcategories) {
             echo '<ul class="submenu hidden">';
             foreach ($subcategories as $subcategory) {
-                echo '<li><a href="' . get_category_link($subcategory->term_id) . '" class="submenu-link">' . $subcategory->name . '</a></li>';
+                // Verifica se la sottocategoria è quella corrente
+                $is_active_sub = is_category($subcategory->term_id) ? 'active' : '';
+                echo '<li><a href="' . get_category_link($subcategory->term_id) . '" class="submenu-link ' . $is_active_sub . '">' . $subcategory->name . '</a></li>';
             }
             echo '</ul>';
         }
@@ -312,7 +316,6 @@ function display_mobile_categories()
         echo '</li>';
     }
 
-    // Aggiungi il link alla pagina "chi-siamo" alla fine del menu, mantenendo lo stesso stile
     echo '<li class="menu-item">';
     echo '<div class="menu-item-content">';
     echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="menu-link">Chi Siamo</a>';
