@@ -10,8 +10,8 @@
 get_header();
 ?>
 
-<div class="site_container">
-    <main id="primary" class="site-main">
+<main id="primary" class="site-main custom-background">
+<div class="other_site_container">
 
         <header class="page-header">
             <div class="site_container">
@@ -132,9 +132,8 @@ get_header();
                 </div>
             </div>
         </header><!-- .page-header -->
-    </main><!-- #main -->
 </div>
-
+</main> 
 <?php
 get_sidebar();
 get_footer();

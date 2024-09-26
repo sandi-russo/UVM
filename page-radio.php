@@ -11,7 +11,7 @@ get_header();
 ?>
 
 
-<?php
+<m?php
 $programs = [
     [
         'title' => 'UniVersoGol',
@@ -52,8 +52,8 @@ $programs = [
 ?>
 
 
-<div class="site_container">
-    <main id="primary" class="site-main">
+<main id="primary" class="site-main custom-background">
+<div class="other_site_container">
 
         <header class="page-header">
             <div class="site_container">
@@ -135,9 +135,8 @@ $programs = [
         </div>
 </div>
 
-</main><!-- #main -->
 </div>
-
+</main><!-- #main -->
 <?php
 get_sidebar();
 get_footer();

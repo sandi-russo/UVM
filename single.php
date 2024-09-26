@@ -50,7 +50,7 @@ $full_threads_url = !empty($threads) ? 'https://www.threads.net/' . esc_attr($th
 $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_attr($linkedin) : '';
 ?>
 
-<main>
+<main class="custom-background">
     <!-- Immagine in evidenza con titolo -->
     <div class="post_top">
         <div class="post_top_space">
@@ -70,70 +70,75 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
     </div>
 
     <div class="site_container">
-
-        <!-- Informazioni Autore e Post -->
-        <div class="author-info">
-            <!-- Avatar dell'autore -->
-            <img src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>"
-                class="author-avatar">
-
-            <!-- Dettagli dell'autore -->
-            <div class="author-details">
-                <a href="<?php echo esc_url($author_posts_url); ?>" class="author-name">
-                    <?php echo esc_html($author_name); ?>
-                </a>
-                <div class="post-date">
-                    <?php echo esc_html($post_date); ?>
-                </div>
-            </div>
-
-            <!-- Icone Social -->
-            <?php if ($full_instagram_url || $full_threads_url || $full_linkedin_url): ?>
-                <div class="post-social-icons">
-                    <?php if ($full_instagram_url): ?>
-                        <a href="<?php echo esc_url($full_instagram_url); ?>" target="_blank" title="Instagram">
-                            <!-- icona Instagram -->
-                        </a>
-                    <?php endif; ?>
-                    <?php if ($full_threads_url): ?>
-                        <a href="<?php echo esc_url($full_threads_url); ?>" target="_blank" title="threads">
-                            <!-- icona threads -->
-                        </a>
-                    <?php endif; ?>
-                    <?php if ($full_linkedin_url): ?>
-                        <a href="<?php echo esc_url($full_linkedin_url); ?>" target="_blank" title="LinkedIn">
-                            <!-- icona LinkedIn -->
-                        </a>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-        </div>
-
-        <!-- Categoria e Tag -->
-        <div class="category-tags-wrapper">
-            <?php if (!empty($category)): ?>
-                <div class="category-label">
-                    <?php echo esc_html($category[0]->name); ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!empty($tags)): ?>
-                <?php foreach ($tags as $index => $tag): ?>
-                    <?php if ($index < 5): ?>
-                        <span class="tag-label">
-                            <?php echo esc_html($tag->name); ?>
-                        </span>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-
         <?php while (have_posts()):
             the_post(); ?>
+
             <!-- Wrapper per centralizzare il contenuto -->
             <div class="articolo_container">
                 <!-- Sezione dell'Articolo -->
                 <div class="articolo">
+
+                    <!-- Informazioni Autore e Post -->
+                    <div class="author-info">
+                        <!-- Avatar dell'autore -->
+                        <img src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>"
+                            class="author-avatar">
+
+                        <!-- Dettagli dell'autore -->
+                        <div class="author-details">
+                            <a href="<?php echo esc_url($author_posts_url); ?>" class="author-name">
+                                <?php echo esc_html($author_name); ?>
+                            </a>
+                            <div class="post-date">
+                                <?php echo esc_html($post_date); ?>
+                            </div>
+                        </div>
+
+                        <!-- Icone Social -->
+                        <?php if ($full_instagram_url || $full_threads_url || $full_linkedin_url): ?>
+                            <div class="post-social-icons">
+                                <?php if ($full_instagram_url): ?>
+                                    <a href="<?php echo esc_url($full_instagram_url); ?>" target="_blank" title="Instagram">
+                                        <img src="path/to/instagram-icon.png" alt="Instagram">
+                                        <!-- Inserisci qui l'icona di Instagram -->
+                                    </a>
+                                <?php endif; ?>
+                                <?php if ($full_threads_url): ?>
+                                    <a href="<?php echo esc_url($full_threads_url); ?>" target="_blank" title="Threads">
+                                        <img src="path/to/threads-icon.png" alt="Threads"> <!-- Inserisci qui l'icona di Threads -->
+                                    </a>
+                                <?php endif; ?>
+                                <?php if ($full_linkedin_url): ?>
+                                    <a href="<?php echo esc_url($full_linkedin_url); ?>" target="_blank" title="LinkedIn">
+                                        <img src="path/to/linkedin-icon.png" alt="LinkedIn">
+                                        <!-- Inserisci qui l'icona di LinkedIn -->
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+
+                    <!-- Categoria e Tag -->
+                    <div class="category-tags-wrapper">
+                        <?php if (!empty($category)): ?>
+                            <div class="category-label">
+                                <?php echo esc_html($category[0]->name); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($tags)): ?>
+                            <?php foreach ($tags as $index => $tag): ?>
+                                <?php if ($index < 5): ?>
+                                    <span class="tag-label">
+                                        <?php echo esc_html($tag->name); ?>
+                                    </span>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Contenuto dell'articolo -->
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                         <div class="entry-content">
                             <?php the_content(); ?>
@@ -181,25 +186,32 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                             )
                         );
                         $query = new WP_Query($args);
-
                         if ($query->have_posts()):
                             while ($query->have_posts()):
-                                $query->the_post();
-                                ?>
-                                <div class="sidebar-card">
-                                    <a href="<?php the_permalink(); ?>" class="sidebar-card-link">
-                                        <div class="sidebar-card-thumbnail">
-                                            <?php the_post_thumbnail('thumbnail'); ?>
+                                $query->the_post(); ?>
+                                <div class="card-home-other">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php if (has_post_thumbnail()): ?>
+                                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="card_img"
+                                                alt="<?php the_title_attribute(); ?>">
+
+                                        <?php else: ?>
+                                            <div class="card_img_not_available">
+                                                <p>Immagine non disponibile</p>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="card_background">
+                                            <h3 class="card_title">
+                                                <?php the_title(); ?>
+                                            </h3>
                                         </div>
-                                        <h3 class="sidebar-card-title"><?php the_title(); ?></h3>
                                     </a>
                                 </div>
-                                <?php
-                            endwhile;
-                            wp_reset_postdata();
-                        else:
-                            echo '<p>Nessun articolo trovato con immagine in evidenza.</p>';
+                            <?php endwhile;
                         endif;
+
+                        // Reset Post Data
+                        wp_reset_postdata();
                         ?>
                     </div>
                 </div>

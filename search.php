@@ -44,7 +44,7 @@ get_header();
                     ?>
                     <article class="page-cards">
                         <a href="<?php the_permalink(); ?>">
-                            <div class="card_space">
+                          
                                 <?php if (has_post_thumbnail()): ?>
                                     <?php the_post_thumbnail('full', ['class' => 'card_img']); ?>
                                 <?php else: ?>
@@ -52,7 +52,7 @@ get_header();
                                         <p>Immagine non disponibile</p>
                                     </div>
                                 <?php endif; ?>
-                            </div>
+                
                         </a>
                         <div class="card_background">
                             <h2 class="card_title">

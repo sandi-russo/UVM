@@ -10,8 +10,8 @@
 get_header();
 ?>
 
+<main id="primary" class="site-main custom-background">
 <div class="other_site_container">
-    <main id="primary" class="site-main">
 
         <?php
         // Imposta la query per mostrare 9 post per pagina
@@ -44,7 +44,7 @@ get_header();
                     ?>
                     <article class="page-cards">
                         <a href="<?php the_permalink(); ?>">
-                            <div class="card_space">
+
                                 <?php if (has_post_thumbnail()): ?>
                                     <?php the_post_thumbnail('thumbnail', ['class' => 'card_img']); ?>
                                 <?php else: ?>
@@ -52,7 +52,7 @@ get_header();
                                         <p>Immagine non disponibile</p>
                                     </div>
                                 <?php endif; ?>
-                            </div>
+           
                         </a>
                         <div class="card_background">
                             <h2 class="card_title">
@@ -124,9 +124,8 @@ get_header();
 
         <?php endif; ?>
 
-    </main><!-- #main -->
 </div>
-
+</main><!-- #main -->
 <?php
 get_sidebar();
 get_footer();

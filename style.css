@@ -21,6 +21,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.custom-background {
+    background-color: #e2e2e2;
+}
+
+
 /* DISABILITA SELEZIONE IMG */
 img {
     user-select: none;
@@ -67,6 +72,7 @@ img {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 1rem;
+    background-color: white;
 }
 
 .site_home {
@@ -903,6 +909,7 @@ img {
     width: 100%;
     max-height: 600px;
     border: 10px solid #eeeeee;
+    background-color: #eeeeee;
 }
 
 .card-home-other {
@@ -915,6 +922,7 @@ img {
     width: 100%;
     max-height: 600px;
     border: 10px solid #eeeeee;
+    background-color: #eeeeee;
 }
 
 .more-category-button {
@@ -939,10 +947,6 @@ img {
     color: black;
 }
 
-.card_space {
-    flex: 1 1 0%;
-    background-color: #eeeeee;
-}
 
 /* FOOTER */
 .site-footer {
@@ -982,7 +986,7 @@ img {
 }
 
 .footer-text-cat {
-    margin-top: 0.5rem;
+    margin-top: 8px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: white;
@@ -1190,6 +1194,7 @@ img {
     max-height: 600px;
     border: 10px solid #eeeeee;
     position: relative;
+    background-color: #eeeeee;
 }
 
 .page-no-results {
@@ -1278,21 +1283,18 @@ img {
     /* Stesso colore dello sfondo della sidebar */
     z-index: -1;
     /* Metti lo sfondo dietro il contenuto */
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
 }
 
 .single_sidebar {
     position: relative;
     z-index: 0;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
     min-width: 25%;
     max-width: 25%;
     flex-shrink: 0;
     position: sticky;
     align-self: start;
-    padding: 1rem;
+    padding: 8px;
+    padding-bottom: 16px;
     background-color: #e2e2e2;
     min-height: 100vh;
     overflow: visible;
@@ -1302,7 +1304,8 @@ img {
 }
 
 .single_sidebar::before {
-    padding: 1rem;
+    padding: 8px;
+    padding-bottom: 16px;
     content: '';
     position: absolute;
     top: 0;
@@ -1351,7 +1354,17 @@ img {
     gap: 10px;
     /* Spazio tra i frame */
     align-items: flex-end;
-    padding: 1rem;
+    padding-left: clamp(10px, 1vw, 40px);
+    padding-right: clamp(10px, 1vw, 40px);
+}
+
+.sidebar-content .card-home-other .card_img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 12rem;
+    border-radius: 5px;
+    background-color: white;
 }
 
 .sidebar-button-container {
@@ -1380,7 +1393,7 @@ img {
     /* Colore di sfondo del pulsante */
     color: #b3b3b3;
     /* Colore del testo del pulsante */
-    padding: 0.5rem 1rem;
+    padding: 8px 1rem;
     /* Padding interno del pulsante */
     border-radius: 30px;
     /* Bordo arrotondato del pulsante */
@@ -1559,7 +1572,6 @@ img {
     width: 100%;
     overflow: hidden;
     height: 400px;
-    margin-bottom: 2rem;
 }
 
 .post_top_space {
@@ -1610,7 +1622,7 @@ img {
 }
 
 .author-bio {
-    margin-top: 0.5rem;
+    margin-top: 8px;
     color: #eeeeee;
 }
 
@@ -1636,8 +1648,9 @@ img {
     align-items: center;
     justify-content: space-between;
     background-color: #e2e2e2;
-    border-radius: 30px;
-    padding: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
@@ -1645,12 +1658,12 @@ img {
 /* AVATAR AUTORE */
 /* Avatar a sinistra */
 .author-avatar {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    margin-right: 1rem;
-    width: 5rem;
-    height: 5rem;
+    margin-right: 10px;
+    margin-left: 10px;
 }
-
 /* NOME AUTORE */
 .author-name {
     font-size: clamp(0.850rem, 2vw, 1.25rem);
@@ -1662,18 +1675,20 @@ img {
 
 /* Avatar + Nome + Data allineati a sinistra */
 .author-details {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: auto;
     /* Questo spinge le icone social a destra */
+    padding-left: 20px;
 }
 
 .category-label {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 8px;
+    padding-right: 8px;
     border-radius: 0.25rem;
     color: #2563EB;
     background-color: #DBEAFE;
@@ -1695,8 +1710,8 @@ img {
 .tag-label {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 8px;
+    padding-right: 8px;
     border-radius: 0.25rem;
     color: #059669;
     background-color: #D1FAE5;
@@ -1705,7 +1720,7 @@ img {
 /* ICONE SOCIAL AUTORE */
 .post-social-icons {
     display: flex;
-    gap: 0.5rem;
+    gap: 8px;
     margin-left: auto;
 }
 
@@ -1723,15 +1738,17 @@ img {
     margin-bottom: 24px;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 8px;
     justify-content: center;
 }
 
 .card_title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: 700;
+    margin-top: 8px;
+    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
 }
 
 .card_description {
@@ -1800,8 +1817,8 @@ img {
 }
 
 .paginazione-cambio span {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 
@@ -1810,10 +1827,12 @@ img {
 }
 
 .card_img {
+    display: block;
     object-fit: cover;
     width: 100%;
     height: 12rem;
     border-radius: 5px;
+    background-color: white;
 }
 
 .card_img_not_available {
@@ -1838,21 +1857,30 @@ img {
     background: #eeeeee;
 }
 
-.articolo {
+.articolo { 
     z-index: 10;
     overflow-y: auto;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    padding-right: 1rem;
     flex: 1 1 0%;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     background-color: #ffffff;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* Allinea il contenuto a sinistra */
+    text-align: left;
 }
 
 .articolo_container {
     display: flex;
+    /* Evita la centratura non voluta */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.author-info, .category-tags-wrapper, .entry-content {
+    text-align: left;
+
 }
 
 .entry-footer {
@@ -1877,10 +1905,6 @@ img {
     /* Aggiunge spazio sopra e sotto l'immagine */
     max-width: 100%;
     height: auto;
-}
-
-.sidebar-content img {
-    border-radius: 15px;
 }
 
 .entry-content {
@@ -2048,7 +2072,7 @@ img {
 .chi-siamo-email {
     color: #3b82f6;
     font-size: 0.875rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
 }
 
 /* Stile per i link delle email all'interno della card */
@@ -2061,7 +2085,7 @@ img {
 .chi-siamo-social-icons {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 8px;
 }
 
 /* Contenitore per ogni icona dei social media */
@@ -2172,7 +2196,7 @@ img {
 }
 
 .role-selection label {
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     font-size: 1rem;
     color: #374151;
 }
@@ -2180,7 +2204,7 @@ img {
 .checkbox-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 8px;
 }
 
 .checkbox-group label {
@@ -2191,7 +2215,7 @@ img {
 }
 
 .checkbox-group input {
-    margin-right: 0.5rem;
+    margin-right: 8px;
 }
 
 /* Bottone invia */
@@ -2255,7 +2279,7 @@ img {
 }
 
 .text-h3 {
-    font-size: clamp(0.5rem, 2vw, 2rem);
+    font-size: clamp(8px, 2vw, 2rem);
     /* Gestisce la dimensione di h3 */
 }
 
@@ -2310,13 +2334,13 @@ img {
 .radio-info span {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
 }
 
 .radio-info .icon {
     width: 1.5rem;
     height: 1.5rem;
-    margin-right: 0.5rem;
+    margin-right: 8px;
 }
 
 
@@ -2373,7 +2397,7 @@ img {
 
 .radio-text-content h3 {
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     font-size: clamp(1.2rem, 2vw, 1.3rem);
 }
 
@@ -2507,70 +2531,9 @@ img {
 .icona-casa {
     width: 1rem;
     height: 1rem;
-    margin-left: 0.5rem;
+    margin-left: 8px;
     fill: currentColor;
 }
-
-/* ARTICOLI SUGGERITI */
-.single_sidebar {
-    padding: 0 10px;
-    /* Opzionale, per un po' di spazio laterale */
-}
-
-.sidebar-card {
-    background: #e2e2e2;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    /* Ombra più evidente */
-    margin-bottom: 0.5em;
-    border: 2px solid #e2e2e2;
-    width: 100%;
-    /* Assicurati che la card occupi tutta la larghezza */
-    box-sizing: border-box;
-    /* Include padding e border nella larghezza totale */
-}
-
-.sidebar-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.sidebar-card-thumbnail {
-    width: 100%;
-    height: auto;
-}
-
-.sidebar-card-thumbnail img {
-    width: 100%;
-    height: auto;
-    display: block;
-    max-height: 150px;
-    border-radius: 0;
-}
-
-.sidebar-card-title {
-    padding: 0.5em 1em;
-    /* Padding standard */
-    padding-top: 0.75em;
-    /* Aumenta il padding superiore */
-    padding-left: 1em;
-    /* Padding a sinistra */
-    padding-right: 1em;
-    /* Padding a destra */
-    font-size: 1.2em;
-    font-weight: bold;
-    color: black;
-    background: #e2e2e2;
-}
-
-
-.sidebar-card-title:hover {
-    color: #f18812;
-}
-
-
 
 /* Media query per schermi più grandi di 768px */
 @media (min-width: 768px) {

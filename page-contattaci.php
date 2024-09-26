@@ -5,8 +5,8 @@
 
 get_header(); ?>
 
-<div class="chi-siamo-container">
-    <main id="primary" class="chi-siamo-main">
+<main id="primary" class="site-main custom-background">
+<div class="other_site_container">
         <header class="chi-siamo-header">
             <div class="chi-siamo-header-container">
                 <div class="chi-siamo-intro">
@@ -98,7 +98,7 @@ get_header(); ?>
                     </div>
                 </div>
         </header>
-    </main>
 </div>
+</main> 
 
 <?php get_footer(); ?>
