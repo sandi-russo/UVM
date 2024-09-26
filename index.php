@@ -118,7 +118,7 @@ $main_categories = get_main_categories();
                                         <!-- PRIMA CARDS -->
                                         <div class="card-home">
                                             <a href="<?php the_permalink(); ?>">
-                                                <div>
+                                                <div class="card_space">
                                                     <?php if (has_post_thumbnail()): ?>
                                                         <?php the_post_thumbnail('thumbnail', array('class' => 'card_img')); ?>
                                                     <?php else: ?>
@@ -178,7 +178,7 @@ $main_categories = get_main_categories();
                                     <!-- ALTRE CARDS -->
                                     <div class="card-home-other">
                                         <a href="<?php the_permalink(); ?>">
-                                            <div>
+                                            <div class="card_space">
                                                 <?php if (has_post_thumbnail()): ?>
                                                     <?php the_post_thumbnail('full', array('class' => 'card_img')); ?>
                                                 <?php else: ?>

@@ -417,11 +417,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (result.message) {
                                 resultsContainer.innerHTML += '<p>' + result.message + '</p>';
                             } else {
-                                var resultHTML = '<div class="search-card">';
+                                var resultHTML = '<div class="card-home-other">';
                                 if (result.image) {
-                                    resultHTML += '<a href="' + result.link + '"><img src="' + result.image + '" class="search-card-image" /></a>';
+                                    resultHTML += '<a href="' + result.link + '"><img src="' + result.image + '" class="card_img" /></a>';
                                 }
-                                resultHTML += '<h3 class="search-card-title"><a href="' + result.link + '">' + result.title + '</a></h3>';
+                                resultHTML += '<div class="card_background">';
+                                resultHTML += '<h3 class="card_title"><a href="' + result.link + '">' + result.title + '</a></h3>';
+                                resultHTML += '</div>';
                                 resultHTML += '</div>';
                                 resultsContainer.innerHTML += resultHTML;
                             }

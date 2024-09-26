@@ -44,13 +44,15 @@ get_header();
                     ?>
                     <article class="page-cards">
                         <a href="<?php the_permalink(); ?>">
-                            <?php if (has_post_thumbnail()): ?>
-                                <?php the_post_thumbnail('thumbnail', ['class' => 'card_img']); ?>
-                            <?php else: ?>
-                                <div class="card_img_not_available">
-                                    <p>Immagine non disponibile</p>
-                                </div>
-                            <?php endif; ?>
+                            <div class="card_space">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <?php the_post_thumbnail('thumbnail', ['class' => 'card_img']); ?>
+                                <?php else: ?>
+                                    <div class="card_img_not_available">
+                                        <p>Immagine non disponibile</p>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </a>
                         <div class="card_background">
                             <h2 class="card_title">

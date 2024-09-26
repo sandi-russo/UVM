@@ -12,11 +12,6 @@ Text Domain: uvm
 Tags: UVM, UniVersoMe, Testata, Giornale, Sito
 */
 
-/* INCLUDO TAILWIND */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 a {
     color: #007bff;
 }
@@ -64,9 +59,6 @@ img {
     padding-right: 1rem;
 }
 
-main {
-    background-color: #eeeeee;
-}
 
 .other_site_container {
     max-width: 1400px;
@@ -666,6 +658,14 @@ main {
     padding: 20px;
 }
 
+.mobile-search-bar {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 9999px;
+    background: #e2e2e2;
+}
+
 .search-hint {
     display: block;
     /* Assicura che il messaggio occupi l'intera larghezza disponibile */
@@ -690,45 +690,6 @@ main {
     gap: 20px;
     padding: 10px;
 }
-
-/* CARDS RICERCA */
-.search-card {
-    background-color: white;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-    text-align: center;
-}
-
-.search-card:hover {
-    transform: scale(1.05);
-}
-
-.search-card-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.search-card-title {
-    padding: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #b3b3b3;
-    text-align: center;
-}
-
-.search-card-title a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.search-card-title a:hover {
-    text-decoration: none;
-}
-
 
 /* SWIPER - CAROUSEL */
 .carosello {
@@ -938,11 +899,10 @@ main {
     position: relative;
     margin-top: 1rem;
     flex-direction: column;
-    border-radius: 0.5rem;
+    border-radius: 10px;
     width: 100%;
-    background-color: #ffffff;
     max-height: 600px;
-    border: 2px solid #eeeeee;
+    border: 10px solid #eeeeee;
 }
 
 .card-home-other {
@@ -951,11 +911,10 @@ main {
     position: relative;
     margin-top: 1rem;
     flex-direction: column;
-    border-radius: 0.5rem;
+    border-radius: 10px;
     width: 100%;
-    background-color: #ffffff;
     max-height: 600px;
-    border: 2px solid #eeeeee;
+    border: 10px solid #eeeeee;
 }
 
 .more-category-button {
@@ -978,6 +937,11 @@ main {
     text-align: center;
     background: #eeeeee;
     color: black;
+}
+
+.card_space {
+    flex: 1 1 0%;
+    background-color: #eeeeee;
 }
 
 /* FOOTER */
@@ -1221,11 +1185,10 @@ main {
     display: flex;
     overflow: hidden;
     flex-direction: column;
-    border-radius: 0.5rem;
+    border-radius: 10px;
     background-color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     max-height: 600px;
-    border: 2px solid #eeeeee;
+    border: 10px solid #eeeeee;
     position: relative;
 }
 
@@ -1789,9 +1752,9 @@ main {
     flex-direction: column;
     flex: 1 1 0%;
     font-size: 0.875rem;
-    line-height: 1.25rem;
     text-align: right;
     color: #828282;
+    margin: 0px
 }
 
 .card_author:hover {
@@ -1800,6 +1763,7 @@ main {
 
 .card_author p {
     color: #828282;
+    margin: 0px;
 }
 
 .card_author-space {
@@ -1849,6 +1813,7 @@ main {
     object-fit: cover;
     width: 100%;
     height: 12rem;
+    border-radius: 5px;
 }
 
 .card_img_not_available {
@@ -1858,6 +1823,7 @@ main {
     width: 100%;
     height: 12rem;
     background-color: white;
+    border-radius: 5px;
 }
 
 .card_img_not_available p {

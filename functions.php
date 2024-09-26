@@ -434,7 +434,7 @@ function general_search()
         <!-- Risultati di ricerca -->
         <div class="mobile-search-content">
             <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
-                class="flex items-center bg-[#e2e2e2] rounded-full overflow-hidden">
+                class="mobile-search-bar">
                 <input type="text" id="live-search" name="s" placeholder="Cerca..." autocomplete="off"
                     class="search-field" />
             </form>
