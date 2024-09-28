@@ -39,6 +39,7 @@
                     </div>
                     <p class="footer-info-type">
                         <small class="block">Coordinatrice Progetto</small>
+                        <br>
                         <strong class="footer-info-name">Giulia Cavallaro</strong>
                         <br>
                         <em>giulia.cavallaro@unime.it</em>
@@ -53,6 +54,7 @@
                     </div>
                     <p class="footer-info-type">
                         <small class="block">Direttore Responsabile</small>
+                        <br>
                         <strong class="footer-info-name">Antonio Tavilla</strong>
                         <br>
                         <em>atavilla@unime.it</em>
@@ -72,6 +74,7 @@
                     </div>
                     <p class="footer-info-type">
                         <small class="block">Piazza Pugliatti, 1</small>
+                        <br>
                         <strong class="footer-info-name">Messina</strong>
                         </>
                 </li>

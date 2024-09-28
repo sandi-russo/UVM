@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-<main id="primary" class="site-main custom-background">
+<main class="custom-background">
 <div class="other_site_container">
         <header class="chi-siamo-header">
             <div class="chi-siamo-header-container">

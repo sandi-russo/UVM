@@ -52,7 +52,7 @@ $programs = [
 ?>
 
 
-<main id="primary" class="site-main custom-background">
+<main class="custom-background">
 <div class="other_site_container">
 
         <header class="page-header">

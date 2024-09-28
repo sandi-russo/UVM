@@ -25,7 +25,6 @@ html {
     background-color: #e2e2e2;
 }
 
-
 /* DISABILITA SELEZIONE IMG */
 img {
     user-select: none;
@@ -60,8 +59,6 @@ img {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
 
 
@@ -69,9 +66,7 @@ img {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
+    padding: clamp(8px, 1.5vw, 16px);
     background-color: white;
 }
 
@@ -80,7 +75,12 @@ img {
 }
 
 .site-main {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
+}
+
+main {
+    padding: 0px;
+    margin: 0px;
 }
 
 
@@ -214,7 +214,7 @@ img {
 .search-field {
     width: 100%;
     /* Occupa tutta la larghezza disponibile del form */
-    padding: 8px;
+    padding: clamp(4px, 1.5vw, 8px);
     font-size: clamp(12px, 2vw, 16px);
     /* Adatta la dimensione del font */
     background-color: #e2e2e2;
@@ -327,9 +327,9 @@ img {
 }
 
 .category-icon {
-    margin-left: 0.25rem;
-    width: 1rem;
-    height: 1rem;
+    margin-left: 4px;
+    width: 16px;
+    height: 16px;
 }
 
 /* Sottocategorie */
@@ -384,8 +384,8 @@ img {
 
 .subcategory-link {
     display: block;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 /* Ricerca Desktop*/
@@ -553,6 +553,7 @@ img {
     z-index: 100;
     opacity: 0;
     visibility: hidden;
+    border-radius: 0px;
 }
 
 .mobile-menu-overlay.active {
@@ -588,7 +589,6 @@ img {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
-    border-radius: 0px 20px 0px 0px;
 }
 
 .mobile-logo {
@@ -629,7 +629,6 @@ img {
     padding: 15px;
     text-align: center;
     border-top: 1px solid #e5e5e5;
-    border-radius: 0px 0px 20px 0px;
 }
 
 .mobile-menu-footer p {
@@ -650,6 +649,7 @@ img {
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
+    border-radius: 0px;
 }
 
 .mobile-search-overlay.active {
@@ -693,7 +693,6 @@ img {
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     z-index: 1002;
-    border-radius: 30px 0px 0px 0px;
 }
 
 .close-search {
@@ -775,7 +774,7 @@ img {
     /* Centra il contenitore rispetto al viewport */
     transform: translateX(-50%);
     /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
-    font-size: 2rem;
+    font-size: clamp(12px, 1.5vw, 32px);
     /* Dimensione del testo */
     font-weight: bold;
     /* Testo in grassetto */
@@ -836,7 +835,7 @@ img {
     /* Centra il contenitore rispetto al viewport */
     transform: translateX(-50%);
     /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
-    font-size: 2rem;
+    font-size: 32px;
     /* Dimensione del testo */
     font-weight: bold;
     /* Testo in grassetto */
@@ -855,33 +854,32 @@ img {
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     overflow-y: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 20px;
+    padding-right: 20px;
     flex: 1 1 0%;
     background-color: white;
 }
 
 .category-section {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
 }
 
 .category-section-title {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: clamp(8px, 1.5vw, 14px); 
+    margin-bottom: clamp(2px, 1.5vw, 14px);
     text-align: center;
-    max-width: 80rem;
 }
 
 .category_name {
     display: inline-block;
     position: relative;
-    font-size: 1.875rem;
+    font-size: clamp(15px, 1.5vw, 30px);
     /* 30px */
-    line-height: 2.25rem;
+    line-height: 36px;
     /* 36px */
     font-weight: 800;
     color: black;
-    margin-bottom: 1rem;
+    margin-bottom: clamp(2px, 1.5vw, 14px);
     /* Spazio per la linea */
     text-align: center;
     /* Centrare il testo */
@@ -943,64 +941,71 @@ img {
 .grid-home {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
+    gap: clamp(8px, 1.5vw, 16px);
 }
 
 .card-home {
     display: flex;
     overflow: hidden;
     position: relative;
-    margin-top: 1rem;
+    margin-top: 16px;
     flex-direction: column;
     border-radius: 10px;
     width: 100%;
     max-height: 600px;
-    border: 10px solid #eeeeee;
-    background-color: #eeeeee;
+    border: 10px solid #e2e2e2;
+    background-color: #e2e2e2;
 }
 
 .card-home-other {
     display: flex;
     overflow: hidden;
     position: relative;
-    margin-top: 1rem;
+    margin-top: 16px;
     flex-direction: column;
     border-radius: 10px;
     width: 100%;
     max-height: 600px;
-    border: 10px solid #eeeeee;
-    background-color: #eeeeee;
+    border: 10px solid #e2e2e2;
+    background-color: #e2e2e2;
 }
 
 .more-category-button {
     display: flex;
-    margin-top: 1rem;
+    margin-top: 16px;
     justify-content: flex-end;
 }
 
 .more-category-button a {
     display: flex;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-top: clamp(5px, 1.5vw, 10px);
+    padding-bottom: clamp(5px, 1.5vw, 10px);
+    padding-left: clamp(12px, 1.5vw, 24px);
+    padding-right: clamp(12px, 1.5vw, 24px);
     align-items: center;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: clamp(10px, 1.5vw, 14px);
+    line-height: 20px;
     font-weight: 500;
     text-align: center;
-    background: #eeeeee;
+    background: #e2e2e2;
     color: black;
+    min-width: 100px;
 }
 
+.category-svg {
+    width: clamp(12px, 1.5vw, 16px);
+    height: clamp(12px, 1.5vw, 16px);
+    fill: currentColor;
+}
 
 /* FOOTER */
 .site-footer {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     letter-spacing: 0.025em;
     background: #222222;
@@ -1008,12 +1013,12 @@ img {
 
 .footer-img {
     display: flex;
-    margin-bottom: 2.5rem;
+    margin-bottom: 40px;
     justify-content: center;
 }
 
 .footer-img img {
-    width: 13rem;
+    width: 208px;
     height: auto;
 }
 
@@ -1025,22 +1030,22 @@ img {
 }
 
 .footer-title-cat {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 18px;
+    line-height: 28px;
     font-weight: 700;
     color: #ff8800;
-    margin-top: 1rem;
+    margin-top: 16px;
 }
 
 .footer-text-cat {
     margin-top: 8px;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 14px;
+    line-height: 20px;
     color: white;
 }
 
 .footer-list {
-    margin-top: 1.5rem;
+    margin-top: 24px;
     margin-left: 0;
 }
 
@@ -1050,9 +1055,9 @@ img {
 }
 
 .footer-info-type {
-    margin-left: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    margin-left: 12px;
+    font-size: 14px;
+    line-height: 20px;
     color: white;
 }
 
@@ -1063,15 +1068,15 @@ img {
 
 .footer-button {
     display: block;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin-top: 0.75rem;
-    border-radius: 0.375rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: 12px;
+    border-radius: 6px;
     width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: 600;
     color: #ffffff;
     background: #787878;
@@ -1084,15 +1089,15 @@ img {
 
 .footer-div-icon {
     display: flex;
-    margin-top: 1.5rem;
-    margin-left: 1rem;
+    margin-top: 24px;
+    margin-left: 16px;
     align-items: center;
     justify-content: space-between;
 }
 
 .footer-info-name {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 14px;
+    line-height: 20px;
     color: white;
 }
 
@@ -1118,12 +1123,12 @@ img {
     justify-content: center;
     /* Centra orizzontalmente il link */
     align-items: center;
-    padding-bottom: 1rem;
+    padding-bottom: 16px;
 }
 
 .footer-other-info a {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -1134,9 +1139,9 @@ img {
 }
 
 .footer-other-info p {
-    margin-left: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    margin-left: 12px;
+    font-size: 14px;
+    line-height: 20px;
     color: white;
 }
 
@@ -1154,6 +1159,11 @@ img {
     cursor: pointer;
     transition: bottom 0.5s ease;
     /* Animazione di scorrimento dal basso verso l'alto */
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fixed-back-to-top svg {
@@ -1164,15 +1174,17 @@ img {
 
 .fixed-back-to-top.visible {
     bottom: 2%;
+    width: 48px;
+    height: 48px;
     /* Posizione finale del pulsante quando è visibile */
 }
 
 .footer-icon {
-    background-color: #e6e6e6cf;
+    background-color: #e2e2e2;
     /* bg-[#e6e6e6cf] */
-    height: 2.5rem;
+    height: 40px;
     /* h-10 */
-    width: 2.5rem;
+    width: 40px;
     /* w-10 */
     border-radius: 50px;
     /* rounded-full */
@@ -1187,9 +1199,9 @@ img {
 }
 
 .icon {
-    width: 20px;
+    width: 15px;
     /* Modifica la dimensione secondo le tue necessità */
-    height: 20px;
+    height: 15px;
     /* Modifica la dimensione secondo le tue necessità */
     color: black;
     /* Colore specificato */
@@ -1204,7 +1216,7 @@ img {
 
 /* TEMPLATE PAGINE */
 .page-header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
     text-align: center;
 }
 
@@ -1212,12 +1224,17 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 50% !important;
+}
+
+.page-author-avatar img {
+    border-radius: 50%;
 }
 
 .page-title {
-    margin-top: 1rem;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    margin-top: 16px;
+    font-size: 30px;
+    line-height: 36px;
     font-weight: 700;
     color: black;
 }
@@ -1229,7 +1246,7 @@ img {
 .page-grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 24px;
 }
 
 .page-cards {
@@ -1239,9 +1256,9 @@ img {
     border-radius: 10px;
     background-color: white;
     max-height: 600px;
-    border: 10px solid #eeeeee;
+    border: 10px solid #e2e2e2;
     position: relative;
-    background-color: #eeeeee;
+    background-color: #e2e2ee;
 }
 
 .page-no-results {
@@ -1307,7 +1324,7 @@ img {
     flex-shrink: 0;
     position: sticky;
     align-self: start;
-    padding: 1rem;
+    padding: clamp(8px, 1.5vw, 16px);
     background-color: #1E1E1E;
     min-height: 100vh;
     overflow: visible;
@@ -1340,9 +1357,9 @@ img {
     flex-shrink: 0;
     position: sticky;
     align-self: start;
-    padding: 8px;
+    padding: clamp(4px, 1.5vw, 8px);
     padding-bottom: 16px;
-    background-color: #e2e2e2;
+    background-color: #1E1E1E;
     min-height: 100vh;
     overflow: visible;
     /* Mantiene l'overflow visibile */
@@ -1351,7 +1368,7 @@ img {
 }
 
 .single_sidebar::before {
-    padding: 8px;
+    padding: clamp(4px, 1.5vw, 8px);
     padding-bottom: 16px;
     content: '';
     position: absolute;
@@ -1361,7 +1378,7 @@ img {
     width: calc(100% + 25px);
     /* Aggiungi 25px alla larghezza */
     height: 100%;
-    background-color: #e2e2e2;
+    background-color: #1E1E1E;
     /* Stesso colore dello sfondo della sidebar */
     z-index: -1;
     /* Metti lo sfondo dietro il contenuto */
@@ -1370,24 +1387,24 @@ img {
 }
 
 .single_sidebar-title {
-    font-size: 1.25rem;
+    font-size: 20px;
     /* text-xl */
     font-weight: bold;
     inline-size: 1;
-    padding-top: 1rem;
+    padding-top: 16px;
     margin-top: 0;
     text-align: center;
-    color: black;
+    color: #eeeeee;
     margin-bottom: 8px;
 }
 
 /* Stili per il titolo della barra laterale */
 .sidebar-title {
-    font-size: 1.25rem;
+    font-size: 20px;
     /* text-xl */
     font-weight: bold;
     inline-size: 1;
-    padding-top: 1rem;
+    padding-top: 16px;
     margin-top: 0;
     text-align: center;
     color: #eeeeee;
@@ -1409,7 +1426,7 @@ img {
     display: block;
     object-fit: cover;
     width: 100%;
-    height: 12rem;
+    height: 132px;
     border-radius: 5px;
     background-color: white;
 }
@@ -1440,7 +1457,7 @@ img {
     /* Colore di sfondo del pulsante */
     color: #b3b3b3;
     /* Colore del testo del pulsante */
-    padding: 8px 1rem;
+    padding: 8px 16px;
     /* Padding interno del pulsante */
     border-radius: 30px;
     /* Bordo arrotondato del pulsante */
@@ -1454,7 +1471,7 @@ img {
     /* Allinea verticalmente l'icona e il testo */
     margin-left: auto;
     /* Spazio a sinistra per allineare il pulsante a destra */
-    margin-top: 1rem;
+    margin-top: 16px;
     /* Spazio sopra il pulsante */
 }
 
@@ -1514,6 +1531,10 @@ img {
     transition: color 0.3s;
     display: inline-block;
     fill: currentColor;
+}
+
+#play-pause-btn {
+    background-color: #242424;
 }
 
 .spotify-logo {
@@ -1640,7 +1661,7 @@ img {
     /* Centra il contenitore rispetto al viewport */
     transform: translateX(-50%);
     /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
-    font-size: 2rem;
+    font-size: 32px;
     /* Dimensione del testo */
     font-weight: bold;
     /* Testo in grassetto */
@@ -1667,7 +1688,7 @@ img {
 /* INFORMAZIONI AUTORE */
 .author-main {
     min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 32px 16px;
 }
 
 .author-bio {
@@ -1682,7 +1703,7 @@ img {
 }
 
 .author-header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
     text-align: center;
 }
 
@@ -1699,8 +1720,8 @@ img {
     background-color: #e2e2e2;
     border-radius: 8px;
     padding: 10px;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 
@@ -1712,15 +1733,17 @@ img {
     border-radius: 50%;
     margin-right: 10px;
     margin-left: 10px;
+    object-fit: cover;
+    border-radius: 50% !important;
 }
 
 /* NOME AUTORE */
 .author-name {
-    font-size: clamp(0.850rem, 2vw, 1.25rem);
-    line-height: 1.75rem;
+    font-size: clamp(13.6px, 2vw, 20px);
+    line-height: 28px;
     font-weight: 700;
     color: black;
-    margin-bottom: 0.25rem;
+    margin-bottom: 4px;
 }
 
 /* Avatar + Nome + Data allineati a sinistra */
@@ -1735,34 +1758,34 @@ img {
 }
 
 .category-label {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;
-    border-radius: 0.25rem;
+    border-radius: 4px;
     color: #2563EB;
     background-color: #DBEAFE;
 }
 
 /* DATA AUTORE */
 .post-date {
-    font-size: clamp(0.750rem, 2vw, 0.850rem);
+    font-size: clamp(12px, 2vw, 13.6px);
     color: #666;
 }
 
 .category-label,
 .tag-label {
-    font-size: 1rem;
+    font-size: 16px;
     /* 16px */
     color: #828282;
 }
 
 .tag-label {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;
-    border-radius: 0.25rem;
+    border-radius: 4px;
     color: #059669;
     background-color: #D1FAE5;
 }
@@ -1793,23 +1816,24 @@ img {
 }
 
 .card_title {
-    margin-bottom: 8px;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    margin-bottom: clamp(2px, 1.5vw, 6px);
+    margin-top: clamp(2px, 1.5vw, 6px);
+    font-size: 20px;
+    line-height: 28px;
     font-weight: 700;
-    margin-top: 8px;
-    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    font-size: clamp(14px, 1.5vw, 20px);
 }
 
 .card_description {
-    margin-bottom: 1rem;
+    margin-bottom: clamp(2px, 1.5vw, 6px);
+    margin-top: clamp(2px, 1.5vw, 6px);
     flex: 1 1 0%;
     color: #828282;
 }
 
 .card_info_author {
     display: flex;
-    margin-top: 1.5rem;
+    margin-top: clamp(2px, 1.5vw, 6px);
     justify-content: space-between;
     align-items: center;
 }
@@ -1818,7 +1842,7 @@ img {
     display: flex;
     flex-direction: column;
     flex: 1 1 0%;
-    font-size: 0.875rem;
+    font-size: 14px;
     text-align: right;
     color: #828282;
     margin: 0px
@@ -1834,7 +1858,7 @@ img {
 }
 
 .card_author-space {
-    margin-left: 1rem;
+    margin-left: 16px;
 }
 
 .card_author_avatar {
@@ -1844,7 +1868,7 @@ img {
 /* PAGINAZIONE */
 .paginazione {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 32px;
     justify-content: space-between;
     scale: 100%;
     gap: 6px;
@@ -1852,14 +1876,14 @@ img {
 
 .paginazione-cambio {
     display: inline-flex;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     align-items: center;
     border-radius: 9999px;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: 500;
     text-align: center;
     color: #111827;
@@ -1880,7 +1904,7 @@ img {
     display: block;
     object-fit: cover;
     width: 100%;
-    height: 12rem;
+    height: 192px;
     border-radius: 5px;
     background-color: white;
 }
@@ -1890,7 +1914,7 @@ img {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 12rem;
+    height: 192px;
     background-color: white;
     border-radius: 5px;
 }
@@ -1901,17 +1925,17 @@ img {
 
 .card_background {
     display: flex;
-    padding: 1.5rem;
+    padding: 10px;
     flex-direction: column;
     flex: 1 1 0%;
-    background: #eeeeee;
+    background: #e2e2e2;
 }
 
 .articolo {
     z-index: 10;
     overflow-y: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 20px;
+    padding-right: 20px;
     flex: 1 1 0%;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -1936,7 +1960,7 @@ img {
 }
 
 .entry-footer {
-    margin-top: 1rem;
+    margin-top: 16px;
 }
 
 /* GESTIONE TITOLI ARTICOLO */
@@ -1965,7 +1989,7 @@ img {
     justify-content: center;
     align-items: center;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 
 .entry-content img {
@@ -1985,11 +2009,11 @@ img {
 }
 
 .entry-content p {
-    font-size: clamp(0.650rem, 3vw, 1.15rem);
+    font-size: clamp(10.4px, 3vw, 18.4px);
 }
 
 .side_text {
-    font-size: 0.875rem;
+    font-size: 14px;
     line-height: normal;
 }
 
@@ -2021,7 +2045,7 @@ img {
 /* PAGINA CHI SIAMO */
 .chi-siamo-grid {
     display: grid;
-    gap: 2rem;
+    gap: 32px;
     /* Spazio tra gli elementi della griglia */
     justify-content: center;
     align-items: center;
@@ -2031,7 +2055,7 @@ img {
 /* Contenitore principale che si estende per tutta l'altezza della finestra del browser e aggiunge padding */
 .chi-siamo-container {
     min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 32px 16px;
 }
 
 /* Contenitore principale per il contenuto, centrato con una larghezza massima */
@@ -2042,7 +2066,7 @@ img {
 
 /* Margine inferiore per l'intestazione della pagina */
 .chi-siamo-header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
 }
 
 /* Contenitore per l'intestazione della pagina, centrato */
@@ -2059,17 +2083,17 @@ img {
 /* Sezione del ruolo con testo centrato e margine inferiore */
 .chi-siamo-role {
     display: flex;
-    justify-content: center;
     /* Centra orizzontalmente */
     align-items: center;
     /* Centra verticalmente */
     text-align: center;
+    margin: 0px;
 }
 
 .chi-siamo-unit-title {
     color: black;
     /* text-black */
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 600;
     margin: 15px;
 }
@@ -2079,7 +2103,7 @@ img {
 .chi-siamo-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 32px;
     max-width: 960px;
     margin: 0 auto;
 }
@@ -2087,9 +2111,8 @@ img {
 /* Card individuale, con testo centrato e stile della card */
 .chi-siamo-card {
     text-align: center;
-    background-color: white;
-    border-radius: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #e2e2e2;
+    border-radius: 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -2099,31 +2122,36 @@ img {
 
 /* Avatar dell'utente con dimensioni e forma rotonda */
 .chi-siamo-avatar {
-    width: 6rem;
-    height: 6rem;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    margin-bottom: 1rem;
 }
 
 /* Nome dell'utente con dimensioni del font e peso del font */
 .chi-siamo-name {
     color: #4a4a4a;
-    font-size: 1.125rem;
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin: 0px;
+}
+
+.chi-siamo-name a {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
 }
 
 /* Biografia dell'utente con dimensioni del font più piccole e margine inferiore */
 .chi-siamo-biography {
     color: #6b7280;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
+    font-size: 14px;
+    margin-bottom: 4px;
 }
 
 /* Email dell'utente con colore blu e margine inferiore */
 .chi-siamo-email {
     color: #3b82f6;
-    font-size: 0.875rem;
+    font-size: 14px;
     margin-bottom: 8px;
 }
 
@@ -2148,8 +2176,8 @@ img {
 
 /* Stile delle icone dei social media con dimensioni e colore specifici */
 .chi-siamo-icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
     color: #787878;
 }
 
@@ -2164,30 +2192,30 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
+    padding: clamp(16px, 1.5vw, 32px);
 }
 
 /* Header del form */
 .form-header {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
 }
 
 .form-header h2 {
-    font-size: 1.75rem;
+    font-size: 28px;
     font-weight: 700;
 }
 
 .form-header p {
-    font-size: 1rem;
+    font-size: 16px;
     color: #6B7280;
 }
 
 /* Corpo del form */
 .form-body {
-    max-width: 40rem;
+    max-width: 640px;
     width: 100%;
-    padding: 2rem;
+    padding: clamp(16px, 1.5vw, 32px);
     border-radius: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -2200,7 +2228,7 @@ img {
 /* Griglia del form */
 .form-grid {
     display: grid;
-    gap: 1rem;
+    gap: 16px;
     grid-template-columns: 1fr;
     /* Una colonna */
 }
@@ -2218,11 +2246,11 @@ img {
 
 .input-field {
     width: 100%;
-    padding: 0.75rem;
-    padding-left: 2.5rem;
+    padding: 12px;
+    padding-left: 40px;
     border: 1px solid #E5E7EB;
     border-radius: 15px;
-    font-size: 1rem;
+    font-size: 16px;
     color: black;
     background-color: #ecebeb;
 }
@@ -2234,10 +2262,10 @@ img {
 .input-icon {
     position: absolute;
     top: 50%;
-    left: 0.75rem;
+    left: 12px;
     transform: translateY(-50%);
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
     color: #787878;
 }
 
@@ -2249,7 +2277,7 @@ img {
 
 .role-selection label {
     margin-bottom: 8px;
-    font-size: 1rem;
+    font-size: 16px;
     color: #374151;
 }
 
@@ -2260,7 +2288,7 @@ img {
 }
 
 .checkbox-group label {
-    font-size: 1rem;
+    font-size: 16px;
     color: #374151;
     display: flex;
     align-items: center;
@@ -2277,10 +2305,10 @@ img {
 }
 
 .submit-button {
-    padding: 0.75rem 3rem;
+    padding: 12px 48px;
     background-color: #787878;
     color: white;
-    font-size: 1rem;
+    font-size: 16px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -2294,7 +2322,7 @@ img {
 .titolo-pagina {
     color: black;
     /* text-black */
-    font-size: 2.25rem;
+    font-size: 36px;
     /* text-4xl (36px) */
     font-weight: 800;
 }
@@ -2303,11 +2331,11 @@ img {
     color: #787878;
     /* text-[#787878] */
     /* text-sm (14px) */
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
     line-height: 1.625;
     /* leading-relaxed (line-height of 1.625) */
-    font-size: clamp(0.750rem, 3vw, 1.15rem);
+    font-size: clamp(12px, 3vw, 18.4px);
 }
 
 
@@ -2321,32 +2349,32 @@ img {
 }
 
 .text-h1 {
-    font-size: clamp(1rem, 2vw, 3rem);
+    font-size: clamp(16px, 2vw, 48px);
     /* Gestisce la dimensione di h1 */
 }
 
 .text-h2 {
-    font-size: clamp(0.875rem, 2vw, 2.5rem);
+    font-size: clamp(14px, 2vw, 40px);
     /* Gestisce la dimensione di h2 */
 }
 
 .text-h3 {
-    font-size: clamp(8px, 2vw, 2rem);
+    font-size: clamp(8px, 2vw, 32px);
     /* Gestisce la dimensione di h3 */
 }
 
 .text-h4 {
-    font-size: clamp(0.55rem, 2vw, 1.75rem);
+    font-size: clamp(8.8px, 2vw, 28px);
     /* Gestisce la dimensione di h4 */
 }
 
 .text-h5 {
-    font-size: clamp(0.4rem, 2vw, 1.5rem);
+    font-size: clamp(6.4px, 2vw, 24px);
     /* Gestisce la dimensione di h5 */
 }
 
 .text-h6 {
-    font-size: clamp(0.25rem, 2vw, 1.25rem);
+    font-size: clamp(4px, 2vw, 20px);
     /* Gestisce la dimensione di h6 */
 }
 
@@ -2379,8 +2407,8 @@ img {
 .radio-info {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
-    font-size: clamp(0.650rem, 2vw, 0.750rem);
+    margin-bottom: 16px;
+    font-size: clamp(10.4px, 2vw, 12px);
 }
 
 .radio-info span {
@@ -2390,8 +2418,8 @@ img {
 }
 
 .radio-info .icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
     margin-right: 8px;
 }
 
@@ -2442,7 +2470,7 @@ img {
     align-items: flex-start;
     flex-direction: column;
     flex-grow: 1;
-    padding: 1rem;
+    padding: clamp(8px, 1.5vw, 16px);
     text-align: left;
     background: #eeeeee;
 }
@@ -2450,14 +2478,14 @@ img {
 .radio-text-content h3 {
     font-weight: 600;
     margin-bottom: 8px;
-    font-size: clamp(1.2rem, 2vw, 1.3rem);
+    font-size: clamp(1.32px, 2vw, 20.8px);
 }
 
 .radio-text-content p {
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
     color: #666;
-    font-size: clamp(0.750rem, 2vw, 1rem);
+    font-size: clamp(12px, 2vw, 16px);
 }
 
 .radio-grid-container {
@@ -2527,7 +2555,7 @@ img {
 }
 
 .contenitore-404 {
-    padding: 2rem 1rem;
+    padding: 32px 16px;
     margin: 0 auto;
     max-width: 1280px;
 }
@@ -2539,8 +2567,8 @@ img {
 }
 
 .titolo-404 {
-    margin-bottom: 1rem;
-    font-size: 4.5rem;
+    margin-bottom: 16px;
+    font-size: 72px;
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.025em;
@@ -2548,16 +2576,16 @@ img {
 }
 
 .sottotitolo-404 {
-    margin-bottom: 1rem;
-    font-size: 1.875rem;
+    margin-bottom: 16px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1.2;
     color: #1f2937;
 }
 
 .messaggio-404 {
-    margin-bottom: 1rem;
-    font-size: 1.125rem;
+    margin-bottom: 16px;
+    font-size: 18px;
     font-weight: 300;
     color: #6b7280;
 }
@@ -2565,14 +2593,14 @@ img {
 .contenitore-bottone-404 {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 16px;
 }
 
 .bottone-404 {
     display: flex;
     align-items: center;
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
+    padding: 10px 20px;
+    font-size: 14px;
     font-weight: 500;
     color: #1f2937;
     background-color: #e2e2e2;
@@ -2581,8 +2609,8 @@ img {
 }
 
 .icona-casa {
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
     margin-left: 8px;
     fill: currentColor;
 }
@@ -2628,7 +2656,8 @@ img {
     }
 
     .card_title {
-        font-size: 1.2rem;
+        font-size: 12px;
+        line-height: normal;
     }
 
     .card_img {
@@ -2636,15 +2665,15 @@ img {
     }
 
     .card_description {
-        font-size: 0.75rem;
+        font-size: 12px;
     }
 
     .card_author {
-        font-size: 0.75rem;
+        font-size: 12px;
     }
 
     .category_name {
-        font-size: 1.4rem;
+        font-size: 22px;
     }
 
     .swiper-container {
@@ -2656,11 +2685,11 @@ img {
     }
 
     .swiper-slide .title {
-        font-size: 1.2rem;
+        font-size: 12px;
     }
 
     .carosello-titolo .title {
-        font-size: 1.2rem;
+        font-size: 12px;
     }
 
     .author-avatar {
@@ -2670,7 +2699,7 @@ img {
 
     .category-label,
     .tag-label {
-        font-size: 0.75rem;
+        font-size: 12px;
         /* 12px */
     }
 
@@ -2686,11 +2715,17 @@ img {
     .category-tags-wrapper {
         margin-bottom: 0px;
     }
+
 }
+
 
 
 /* 1024PX E INFERIORI */
 @media (max-width: 1024px) {
+
+    .card_img_not_available {
+        height: 150px;
+    }
 
     .update-info {
         display: none;
@@ -2791,6 +2826,15 @@ img {
         display: flex;
     }
 
+    .radio-uvm-button {
+        font-size: 12px;
+    }
+
+    .radio-uvm-icon {
+        width: 15px;
+        height: 15px;
+    }
+
     .sidebar {
         display: none;
     }
@@ -2823,11 +2867,11 @@ img {
 
 
     .swiper-slide .title {
-        font-size: 1.2rem;
+        font-size: 12pxpx;
     }
 
     .carosello-titolo .title {
-        font-size: 1.2rem;
+        font-size: 12px;
     }
 
     /* POST - SINGLE */
@@ -2840,7 +2884,7 @@ img {
     }
 
     .post_title {
-        font-size: 1.2rem;
+        font-size: 1.32px;
         line-height: normal;
     }
 
@@ -2865,16 +2909,16 @@ img {
 
     .category-label,
     .tag-label {
-        font-size: 0.875rem;
+        font-size: 14px;
         /* 14px */
     }
 
     .entry-content {
-        font-size: 1.2rem;
+        font-size: 1.32px;
     }
 
     .entry-content p {
-        font-size: 1rem;
+        font-size: 16px;
     }
 
     .swiper-slide {
@@ -2892,15 +2936,19 @@ img {
     }
 
     .radio-text-content {
-        padding: 1rem;
+        padding: clamp(8px, 1.5vw, 16px);
         /* Riduce il padding per adattarsi meglio alle dimensioni più piccole */
     }
 
     .radio-btn {
-        font-size: 0.8rem;
+        font-size: 12.8px;
         /* Riduce la dimensione del font del bottone */
-        padding: 0.4rem 0.8rem;
+        padding: 6.4px 12.8px;
         /* Adatta il padding del bottone */
+    }
+
+    .custom-background {
+        background-color: transparent;
     }
 
 }
@@ -3183,7 +3231,7 @@ optgroup,
 textarea {
     color: #404040;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.5;
     border: none;
     outline: none;
@@ -3202,7 +3250,7 @@ h6 {
 
 /* Dimensione del font per tutti i <p> */
 p {
-    font-size: 0.875rem;
+    font-size: 14px;
     /* Equivalente a text-sm in Tailwind */
     color: #787878;
     /* Colore per text-gray-500 */
@@ -3307,6 +3355,7 @@ object {
 img {
     height: auto;
     max-width: 100%;
+    object-fit: cover;
 }
 
 figure {

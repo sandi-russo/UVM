@@ -99,19 +99,29 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                             <div class="post-social-icons">
                                 <?php if ($full_instagram_url): ?>
                                     <a href="<?php echo esc_url($full_instagram_url); ?>" target="_blank" title="Instagram">
-                                        <img src="path/to/instagram-icon.png" alt="Instagram">
-                                        <!-- Inserisci qui l'icona di Instagram -->
+                                        <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                                        </svg>
                                     </a>
                                 <?php endif; ?>
                                 <?php if ($full_threads_url): ?>
                                     <a href="<?php echo esc_url($full_threads_url); ?>" target="_blank" title="Threads">
-                                        <img src="path/to/threads-icon.png" alt="Threads"> <!-- Inserisci qui l'icona di Threads -->
+                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4"
+                                                color="currentColor" />
+                                        </svg>
                                     </a>
                                 <?php endif; ?>
                                 <?php if ($full_linkedin_url): ?>
                                     <a href="<?php echo esc_url($full_linkedin_url); ?>" target="_blank" title="LinkedIn">
-                                        <img src="path/to/linkedin-icon.png" alt="LinkedIn">
-                                        <!-- Inserisci qui l'icona di LinkedIn -->
+                                        <svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill="currentColor" fill-rule="evenodd"
+                                                d="M5 1.25a2.75 2.75 0 1 0 0 5.5a2.75 2.75 0 0 0 0-5.5M3.75 4a1.25 1.25 0 1 1 2.5 0a1.25 1.25 0 0 1-2.5 0m-1.5 4A.75.75 0 0 1 3 7.25h4a.75.75 0 0 1 .75.75v13a.75.75 0 0 1-.75.75H3a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V8.75zM9.25 8a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75v.434l.435-.187a7.8 7.8 0 0 1 2.358-.595C20.318 7.4 22.75 9.58 22.75 12.38V21a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75v-7a1.25 1.25 0 0 0-2.5 0v7a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V14a2.75 2.75 0 1 1 5.5 0v6.25h2.5v-7.87c0-1.904-1.661-3.408-3.57-3.234a6.3 6.3 0 0 0-1.904.48l-1.48.635a.75.75 0 0 1-1.046-.69V8.75z"
+                                                clip-rule="evenodd" />
+                                        </svg>
                                     </a>
                                 <?php endif; ?>
                             </div>

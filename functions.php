@@ -42,123 +42,139 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_js');
  */
 add_filter('user_contactmethods', 'yoast_seo_admin_user_remove_social', 99);
 
-function yoast_seo_admin_user_remove_social ( $contactmethods ) {
-  unset( $contactmethods['facebook'] );
-  unset( $contactmethods['instagram'] );
-  unset( $contactmethods['linkedin'] );
-  unset( $contactmethods['myspace'] );
-  unset( $contactmethods['pinterest'] );
-  unset( $contactmethods['soundcloud'] );
-  unset( $contactmethods['tumblr'] );
-  unset( $contactmethods['twitter'] );
-  unset( $contactmethods['youtube'] );
-  unset( $contactmethods['wikipedia'] );
-  unset( $contactmethods['mastodon'] ); // Premium feature
+function yoast_seo_admin_user_remove_social($contactmethods)
+{
+    unset($contactmethods['facebook']);
+    unset($contactmethods['instagram']);
+    unset($contactmethods['linkedin']);
+    unset($contactmethods['myspace']);
+    unset($contactmethods['pinterest']);
+    unset($contactmethods['soundcloud']);
+    unset($contactmethods['tumblr']);
+    unset($contactmethods['twitter']);
+    unset($contactmethods['youtube']);
+    unset($contactmethods['wikipedia']);
+    unset($contactmethods['mastodon']); // Premium feature
 
-  //Do not remove the lines below
-  return $contactmethods;
+    //Do not remove the lines below
+    return $contactmethods;
 }
 
 /** 
  * Modifica il form di login
-*/
+ */
 
-function custom_login_form() {
+function custom_login_form()
+{
     add_action('login_footer', 'add_custom_login_script');
 }
 add_action('login_init', 'custom_login_form');
 
-function add_custom_login_script() {
+function add_custom_login_script()
+{
     ?>
     <style>
         /* Stile per il pulsante di accesso */
         #show-admin-login {
             display: inline-block;
-            padding: 5px 10px; /* Riduce il padding per un pulsante più piccolo */
-            background-color: red; /* Colore rosso per il pulsante */
+            padding: 5px 10px;
+            /* Riduce il padding per un pulsante più piccolo */
+            background-color: red;
+            /* Colore rosso per il pulsante */
             color: white;
             border: none;
             border-radius: 4px;
-            font-size: 12px; /* Dimensione del font più piccola */
+            font-size: 12px;
+            /* Dimensione del font più piccola */
             cursor: pointer;
             text-decoration: none;
         }
 
         #show-admin-login:hover {
-            background-color: darkred; /* Colore rosso scuro al passaggio del mouse */
+            background-color: darkred;
+            /* Colore rosso scuro al passaggio del mouse */
         }
 
         /* Centrare il pulsante all'interno del contenitore */
         #admin-login-container {
-            text-align: center; /* Centra il contenuto all'interno del contenitore */
-            margin-top: 20px; /* Aggiungi uno spazio sopra il contenitore */
+            text-align: center;
+            /* Centra il contenuto all'interno del contenitore */
+            margin-top: 20px;
+            /* Aggiungi uno spazio sopra il contenitore */
         }
 
         /* Allineare il contenitore al centro del modulo di login */
         #loginform {
-            position: relative; /* Per gestire il posizionamento del contenitore */
+            position: relative;
+            /* Per gestire il posizionamento del contenitore */
         }
     </style>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var loginForm = document.getElementById('loginform');
-        var userLoginWrap = document.getElementById('user_login').parentNode; // Wrapper del campo username
-        var userPassWrap = document.getElementById('user_pass').parentNode; // Wrapper del campo password
-        var userPass = document.getElementById('user_pass'); // Campo password
-        var submitButton = document.getElementById('wp-submit');
-        var passwordLabel = document.querySelector('label[for="user_pass"]'); // Etichetta della password
-        
-        // Creare e inserire il contenitore per il pulsante
-        var adminLoginContainer = document.createElement('div');
-        adminLoginContainer.id = 'admin-login-container';
-        loginForm.parentNode.insertBefore(adminLoginContainer, loginForm);
-        
-        // Creare e inserire il nuovo pulsante
-        var showLoginButton = document.createElement('button');
-        showLoginButton.type = 'button';
-        showLoginButton.id = 'show-admin-login';
-        showLoginButton.textContent = 'Accedi con le credenziali (solo amministratori)';
-        adminLoginContainer.appendChild(showLoginButton);
-        
-        // Nascondere inizialmente i campi di login e disabilitare il campo della password
-        if (userLoginWrap && userPassWrap && submitButton && userPass && passwordLabel) {
-            userLoginWrap.style.display = 'none';
-            userPassWrap.style.display = 'none';
-            submitButton.style.display = 'none';
-            userPass.disabled = true;
-            passwordLabel.style.display = 'none'; // Nascondere l'etichetta della password
-        }
-        
-        showLoginButton.addEventListener('click', function() {
-            if (userLoginWrap.style.display === 'none') {
-                userLoginWrap.style.display = 'block';
-                userPassWrap.style.display = 'block';
-                submitButton.style.display = 'block';
-                userPass.disabled = false; // Abilitare il campo della password
-                passwordLabel.style.display = 'block'; // Mostrare l'etichetta della password
-                this.textContent = 'Nascondi form di login';
-            } else {
+        document.addEventListener('DOMContentLoaded', function () {
+            var loginForm = document.getElementById('loginform');
+            var userLoginWrap = document.getElementById('user_login').parentNode; // Wrapper del campo username
+            var userPassWrap = document.getElementById('user_pass').parentNode; // Wrapper del campo password
+            var userPass = document.getElementById('user_pass'); // Campo password
+            var submitButton = document.getElementById('wp-submit');
+            var passwordLabel = document.querySelector('label[for="user_pass"]'); // Etichetta della password
+
+            // Creare e inserire il contenitore per il pulsante
+            var adminLoginContainer = document.createElement('div');
+            adminLoginContainer.id = 'admin-login-container';
+            loginForm.parentNode.insertBefore(adminLoginContainer, loginForm);
+
+            // Creare e inserire il nuovo pulsante
+            var showLoginButton = document.createElement('button');
+            showLoginButton.type = 'button';
+            showLoginButton.id = 'show-admin-login';
+            showLoginButton.textContent = 'Accedi con le credenziali (solo amministratori)';
+            adminLoginContainer.appendChild(showLoginButton);
+
+            // Nascondere inizialmente i campi di login e disabilitare il campo della password
+            if (userLoginWrap && userPassWrap && submitButton && userPass && passwordLabel) {
                 userLoginWrap.style.display = 'none';
                 userPassWrap.style.display = 'none';
                 submitButton.style.display = 'none';
-                userPass.disabled = true; // Disabilitare il campo della password
+                userPass.disabled = true;
                 passwordLabel.style.display = 'none'; // Nascondere l'etichetta della password
-                this.textContent = 'Accedi con le credenziali (solo amministratori)';
             }
+
+            showLoginButton.addEventListener('click', function () {
+                if (userLoginWrap.style.display === 'none') {
+                    userLoginWrap.style.display = 'block';
+                    userPassWrap.style.display = 'block';
+                    submitButton.style.display = 'block';
+                    userPass.disabled = false; // Abilitare il campo della password
+                    passwordLabel.style.display = 'block'; // Mostrare l'etichetta della password
+                    this.textContent = 'Nascondi form di login';
+                } else {
+                    userLoginWrap.style.display = 'none';
+                    userPassWrap.style.display = 'none';
+                    submitButton.style.display = 'none';
+                    userPass.disabled = true; // Disabilitare il campo della password
+                    passwordLabel.style.display = 'none'; // Nascondere l'etichetta della password
+                    this.textContent = 'Accedi con le credenziali (solo amministratori)';
+                }
+            });
         });
-    });
     </script>
     <?php
 }
 
 // La funzione che hai già aggiunto per limitare l'accesso
-function restrict_login_for_non_admins($user, $username, $password) {
-    if (isset($user->roles) && is_array($user->roles) && in_array('administrator', $user->roles)) {
+// La funzione che limita l'accesso
+function restrict_login_for_non_admins($user, $username, $password)
+{
+    // Verifica se l'utente ha i ruoli di amministratore o redazione (personalizzato)
+    if (isset($user->roles) && is_array($user->roles) && (in_array('administrator', $user->roles) || in_array('redazione', $user->roles))) {
         return $user;
     }
-    return new WP_Error('no_login', __('L\'accesso tramite username e password è riservato solo agli amministratori. Si prega di usare il login SSO.'));
+
+    // Se l'utente non ha il ruolo appropriato, viene restituito un errore
+    return new WP_Error('no_login', __('L\'accesso tramite username e password è riservato solo agli amministratori e alla redazione. Si prega di usare il login tramite UNIME.'));
 }
 add_filter('authenticate', 'restrict_login_for_non_admins', 30, 3);
+
 
 
 
@@ -258,7 +274,10 @@ function display_categories_with_subcategories()
         echo '</li>';
     }
 
-    echo '<li class="category-item">';
+    // Verifica se la pagina corrente è "chi-siamo"
+    $is_active_chi_siamo = is_page('chi-siamo') ? 'active' : '';
+
+    echo '<li class="category-item ' . $is_active_chi_siamo . '">';
     echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="category-link">Chi Siamo</a>';
     echo '</li>';
 
@@ -436,8 +455,7 @@ function general_search()
 
         <!-- Risultati di ricerca -->
         <div class="mobile-search-content">
-            <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"
-                class="mobile-search-bar">
+            <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="mobile-search-bar">
                 <input type="text" id="live-search" name="s" placeholder="Cerca..." autocomplete="off"
                     class="search-field" />
             </form>

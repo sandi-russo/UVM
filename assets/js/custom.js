@@ -149,8 +149,8 @@ setInterval(checkOverflow, 15000);
 
  /* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
  document.addEventListener("DOMContentLoaded", function () {
-    var stickyHeader = document.querySelector('.sticky-header');
-    var content = document.querySelector('.content, .primary-content .primary');
+    var stickyHeader = document.querySelector('.navbar-top');
+    var content = document.querySelector('.main');
 
     function adjustContentPadding() {
         var totalHeight = 0;
@@ -174,6 +174,9 @@ setInterval(checkOverflow, 15000);
 
     // Ricalcola il padding se la finestra viene ridimensionata
     window.addEventListener('resize', adjustContentPadding);
+
+    // Ricalcola il padding ogni 30 secondi
+    setInterval(adjustContentPadding, 30000);
 });
 
 
