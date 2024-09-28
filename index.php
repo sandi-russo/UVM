@@ -178,15 +178,15 @@ $main_categories = get_main_categories();
                                     <!-- ALTRE CARDS -->
                                     <div class="card-home-other">
                                         <a href="<?php the_permalink(); ?>">
-                            
-                                                <?php if (has_post_thumbnail()): ?>
-                                                    <?php the_post_thumbnail('full', array('class' => 'card_img')); ?>
-                                                <?php else: ?>
-                                                    <div class="card_img_not_available">
-                                                        <p>Immagine non disponibile</p>
-                                                    </div>
-                                                <?php endif; ?>
-                                          
+
+                                            <?php if (has_post_thumbnail()): ?>
+                                                <?php the_post_thumbnail('full', array('class' => 'card_img')); ?>
+                                            <?php else: ?>
+                                                <div class="card_img_not_available">
+                                                    <p>Immagine non disponibile</p>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <div class="card_background">
                                                 <h3 class="card_title">
                                                     <?php the_title(); ?>
@@ -260,7 +260,6 @@ $main_categories = get_main_categories();
     <div class="sidebar">
         <h2 class="sidebar-title">Ascolta Radio UVM</h2>
         <div class="sidebar-content">
-            <?php /*echo youtube_embedded(); */ ?>
 
             <!-- SPOTIFY -->
             <div class="latest-episode">
@@ -274,7 +273,7 @@ $main_categories = get_main_categories();
                     <div class="audio-controls">
                         <button id="play-pause-btn" onclick="togglePlayPause()">
                             <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path 
+                                <path
                                     d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z" />
                             </svg>
                         </button>
@@ -290,12 +289,17 @@ $main_categories = get_main_categories();
                     </g>
                 </svg>
             </div>
+
+            <!-- YouTube -->
+            <?php echo youtube_embedded(); ?>
+
+            <!-- Pulsante per ascoltare la radio -->
         </div><!-- .sidebar-content -->
         <!-- Pulsante allineato a destra -->
         <div class="sidebar-button-container">
             <a href="/radio" class="sidebar-button">
                 <?php esc_html_e('Ascoltaci!', 'universome'); ?>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ml-2 fill-current">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="category-svg">
                     <path
                         d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
                 </svg>

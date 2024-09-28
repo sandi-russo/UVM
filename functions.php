@@ -242,6 +242,13 @@ function display_categories_with_subcategories()
     $categories = get_categories($args);
     echo '<ul class="main-menu">';
 
+    // Verifica se la pagina corrente è "home"
+    $is_active_home = is_front_page() ? 'active' : '';
+
+    echo '<li class="category-item ' . $is_active_home . '">';
+    echo '<a href="' . home_url() . '" class="category-link">Home</a>';
+    echo '</li>';
+
     foreach ($categories as $category) {
         $subcategories = get_categories(array(
             'parent' => $category->term_id,
@@ -300,6 +307,13 @@ function display_mobile_categories()
 
     $categories = get_categories($args);
     echo '<ul class="mobile-menu">';
+
+    // Aggiungi il link per tornare alla home
+    echo '<li class="menu-item">';
+    echo '<div class="menu-item-content">';
+    echo '<a href="' . home_url() . '" class="menu-link">Home</a>';
+    echo '</div>';
+    echo '</li>';
 
     foreach ($categories as $category) {
         $subcategories = get_categories(array(

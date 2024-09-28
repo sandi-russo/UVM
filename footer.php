@@ -99,6 +99,7 @@
 
             <!-- Icone Social -->
             <div>
+
                 <h4 class="footer-title-cat">Social Network</h4>
                 <p class="footer-text-cat">Seguici per rimanere sempre aggiornato!</p>
                 <ul class="footer-div-icon">
@@ -148,6 +149,7 @@
                         </a>
                     </li>
                 </ul>
+
             </div>
         </div>
 

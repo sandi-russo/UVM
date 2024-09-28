@@ -11,7 +11,6 @@ License URI: LICENSE
 Text Domain: uvm
 Tags: UVM, UniVersoMe, Testata, Giornale, Sito
 */
-
 a {
     color: #007bff;
 }
@@ -47,7 +46,6 @@ img {
     /* Disabilita il trascinamento delle immagini su tutti i browser moderni */
 }
 
-
 /* WP-ADMIN */
 .required-field {
     color: red;
@@ -61,29 +59,22 @@ img {
     margin-right: auto;
 }
 
-
 .other_site_container {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    padding: clamp(8px, 1.5vw, 16px);
-    background-color: white;
+    padding: clamp(10px, 1.5vw, 16px);
+    background-color: #ffffff;
 }
 
 .site_home {
     display: flex;
 }
 
-.site-main {
-    margin-bottom: 32px;
-}
-
 main {
     padding: 0px;
     margin: 0px;
 }
-
-
 
 /* NAVBAR */
 /* Navbar Top*/
@@ -92,7 +83,6 @@ main {
     top: 0;
     display: flex;
     align-items: center;
-    padding: 4px 0;
     height: auto;
     overflow: hidden;
     background-color: #f18812;
@@ -101,7 +91,6 @@ main {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,7 +111,7 @@ main {
 
 .desktop-update-label,
 .desktop-update-time {
-    color: white;
+    color: #ffffff;
     margin: 0 5px;
 }
 
@@ -138,7 +127,7 @@ main {
 .navbar-logo {
     position: relative;
     z-index: 2;
-    padding-right: 2px;
+    padding: 8px;
 }
 
 .navbar-logo img {
@@ -150,7 +139,7 @@ main {
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: white;
+    background-color: #ffffff;
     z-index: 1;
     box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.8);
 }
@@ -158,9 +147,9 @@ main {
 /* NAVBAR BOTTOM */
 .navbar-bottom {
     z-index: 100;
-    background-color: white;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 0px;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .fixed-navbar {
@@ -168,7 +157,7 @@ main {
     top: 0;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .navbar-bottom .container {
@@ -178,7 +167,7 @@ main {
 }
 
 .navbar-bottom .navbar-logo img {
-    height: clamp(15px, 3vw, 30px);
+    height: clamp(18px, 1.5vw, 30px);
     width: auto;
     display: block;
     margin: 0 auto;
@@ -198,31 +187,21 @@ main {
 .search-form {
     display: flex;
     justify-content: center;
-    /* Centra orizzontalmente */
     align-items: center;
-    /* Centra verticalmente */
     flex-grow: 1;
     max-width: 200px;
-    /* Imposta una larghezza massima */
     min-width: 100px;
-    /* Imposta una larghezza minima */
     margin: 0 auto;
-    /* Centra il form all'interno del contenitore genitore */
 }
 
 /* Stili per il campo di ricerca */
 .search-field {
     width: 100%;
-    /* Occupa tutta la larghezza disponibile del form */
     padding: clamp(4px, 1.5vw, 8px);
     font-size: clamp(12px, 2vw, 16px);
-    /* Adatta la dimensione del font */
     background-color: #e2e2e2;
-    /* Colore di sfondo */
     border-radius: 30px;
-    /* Raggio del bordo per angoli arrotondati */
     outline: none;
-    /* Rimuove il contorno predefinito */
 }
 
 /* Stile quando sono in focus sul campo*/
@@ -235,34 +214,28 @@ main {
     position: relative;
     display: flex;
     justify-content: center;
-    /* Centra orizzontalmente */
     align-items: center;
-    /* Centra verticalmente */
     margin: 0 auto;
-    /* Centra il form all'interno del contenitore genitore */
 }
 
 /* Link categorie */
 .categories-nav a {
-    font-size: clamp(11px, 1vw, 14px);
+    font-size: clamp(10px, 1vw, 14px);
     padding: clamp(0.25px, 0.5vw, 2px);
     margin: clamp(0.25px, 1vw, 2px);
-    white-space: nowrap;
+    #ffffff-space: nowrap;
 }
 
 .categories-wrapper {
     display: flex;
     flex-direction: column;
-    /* Assicura che le due righe siano una sopra l'altra */
     align-items: center;
-    /* Centra il contenuto */
 }
 
 .main-menu {
     display: flex;
     justify-content: center;
-    /* Centra gli elementi nella riga */
-    padding: 0;
+    padding: 0px;
     margin: 10px 0;
     list-style: none;
 }
@@ -272,14 +245,12 @@ main {
     display: flex;
     justify-content: center;
     gap: 20px;
-    /* Spaziatura tra gli elementi */
 }
 
 .main-menu.first-row .category-item,
 .main-menu.second-row .category-item {
     flex: 0 1 auto;
 }
-
 
 
 .category-item {
@@ -289,9 +260,9 @@ main {
 
 .category-item>a {
     text-decoration: none;
-    color: #787878;
+    color: #1E1E1E;
     font-weight: 600;
-    padding: clamp(4px, 1vw, 14px);
+    padding: clamp(4px, 1vw, 12px);
     display: flex;
     align-items: center;
 }
@@ -300,14 +271,12 @@ main {
     background-color: #f0f0f0;
     color: #f18812;
     border-radius: 30px;
-    /* Angoli arrotondati durante l'hover */
 }
 
 .active {
     background-color: #f0f0f0;
     color: #f18812;
     border-radius: 30px;
-    /* Angoli arrotondati durante l'hover */
 }
 
 .category-item>a svg {
@@ -338,17 +307,16 @@ main {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 30px;
+    border-radius: 8px;
     padding: 8px 0;
     min-width: 100px;
     z-index: 100;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    border: 1px solid #eee;
-    /* Bordo di contorno */
+    border: 1px solid #eeeeee;
 }
 
 .subcategory-menu.visible {
@@ -357,7 +325,7 @@ main {
 }
 
 .subcategory-menu li {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eeeeee;
 }
 
 .subcategory-menu li:last-child {
@@ -384,45 +352,37 @@ main {
 
 .subcategory-link {
     display: block;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
 }
 
 /* Ricerca Desktop*/
+.search-space {
+    padding: 8px;
+}
+
 #search-button {
     display: flex;
-    /* Allinea la scritta e l'icona in orizzontale */
     align-items: center;
-    /* Centra verticalmente */
     padding: 10px 15px;
-    /* Aggiunge padding */
     border: 1px solid #e2e2e2;
-    /* Rimuove il bordo */
-    background-color: white;
-    /* Colore di sfondo iniziale */
+    background-color: #ffffff;
     color: #000;
-    /* Colore del testo e dell'icona iniziale */
     cursor: pointer;
-    /* Cambia il cursore in pointer */
     font-size: 16px;
-    /* Dimensione del testo */
     border-radius: 30px;
 }
 
 #search-button svg {
     margin-left: 8px;
-    /* Spazio tra la scritta e l'icona */
     width: clamp(18px, 1vw, 24px);
     height: clamp(18px, 1vw, 24px);
 }
 
 #search-button:hover {
     background-color: #f0f0f0;
-    /* Colore di sfondo al passaggio del mouse */
     color: #f18812;
-    /* Colore del testo e dell'icona al passaggio del mouse */
     border-radius: 30px;
-    /* Angoli arrotondati durante l'hover */
 }
 
 .search-text {
@@ -436,7 +396,7 @@ main {
 .mobile-last-modified {
     display: none;
     background-color: #ff8800;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 5px;
     font-size: 10px;
@@ -447,13 +407,11 @@ main {
     font-weight: bold;
 }
 
-
 /* Stili generali per il menu mobile */
 .mobile-menu {
     list-style: none;
-    padding: 0;
+    padding: 0px;
     margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 .menu-item {
@@ -472,9 +430,8 @@ main {
 /* Link della categoria principale */
 .menu-link {
     flex: 1;
-    /* Occupa tutto lo spazio disponibile */
     text-decoration: none;
-    color: #b3b3b3;
+    color: #e2e2e2;
     font-weight: bold;
 }
 
@@ -483,20 +440,18 @@ main {
     width: 16px;
     height: 16px;
     margin-left: auto;
-    /* Allinea la freccia a destra */
     transition: transform 0.3s ease;
 }
 
 .menu-link:hover {
     color: #f18812;
-    /* Colore del testo e dell'icona al passaggio del mouse */
 }
 
 .submenu {
     list-style: none;
     top: 100%;
     left: 0;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     padding: 2px 0;
@@ -562,14 +517,14 @@ main {
 }
 
 #mobile-menu {
-    padding: 0;
+    padding: 0px;
     margin: 0;
     position: fixed;
     top: 0;
     left: -300px;
     width: 300px;
     height: 100%;
-    background-color: white;
+    background-color: #ffffff;
     z-index: 999;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -583,7 +538,7 @@ main {
 }
 
 .mobile-menu-header {
-    background-color: white;
+    background-color: #ffffff;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -618,14 +573,14 @@ main {
 
 .mobile-menu-categories {
     list-style-type: none;
-    padding: 0;
+    padding: 0px;
     margin: 0;
 }
 
 .mobile-menu-footer {
     position: sticky;
     bottom: 0;
-    background-color: white;
+    background-color: #ffffff;
     padding: 15px;
     text-align: center;
     border-top: 1px solid #e5e5e5;
@@ -633,7 +588,7 @@ main {
 
 .mobile-menu-footer p {
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     color: #666;
 }
 
@@ -660,20 +615,17 @@ main {
 }
 
 #mobile-search {
-    padding: 0;
+    padding: 0px;
     margin: 0;
     position: fixed;
     top: 0;
     right: -300px;
-    /* Sposta il pannello fuori schermo a destra */
     width: 300px;
     height: 100%;
-    background-color: white;
+    background-color: #ffffff;
     z-index: 1000;
     border-top-left-radius: 10px;
-    /* Modifica il bordo per sinistra */
     border-bottom-left-radius: 10px;
-    /* Modifica il bordo per sinistra */
     display: flex;
     flex-direction: column;
     transition: right 0.3s ease;
@@ -685,13 +637,13 @@ main {
 }
 
 .mobile-search-header {
-    background-color: white;
+    background-color: #ffffff;
     padding: 15px;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e2e2e2;
     z-index: 1002;
 }
 
@@ -720,15 +672,10 @@ main {
 
 .search-hint {
     display: block;
-    /* Assicura che il messaggio occupi l'intera larghezza disponibile */
     text-align: center;
-    /* Centra il testo orizzontalmente */
     color: #787878;
-    /* Imposta il colore del testo */
     margin-top: 8px;
-    /* Aggiungi uno spazio tra il form e il messaggio */
-    font-size: 14px;
-    /* Imposta una dimensione del font adeguata */
+    font-size: clamp(12px, 1.5vw, 14px);
 }
 
 #mobile-menu-button,
@@ -739,8 +686,8 @@ main {
 #search-results {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 10px;
+    gap: 8px;
+    padding: clamp(5px, 1.5vw, 10px);
 }
 
 /* SWIPER - CAROUSEL */
@@ -754,43 +701,32 @@ main {
     left: 0;
     right: 0;
     background: linear-gradient(to top, black, transparent);
-    padding: 40px;
+    padding: clamp(20px, 1.5vw, 40x);
 }
 
 .carosello-titolo p {
-    color: white;
+    color: #ffffff;
 }
 
 .carosello-titolo h1 {
-    color: white;
+    color: #ffffff;
     width: 90%;
-    /* Occupa il 90% della larghezza */
     margin: 0 auto;
-    /* Centra il titolo orizzontalmente */
     position: absolute;
     bottom: 20px;
-    /* Posiziona il titolo vicino al bordo inferiore */
     left: 50%;
-    /* Centra il contenitore rispetto al viewport */
     transform: translateX(-50%);
-    /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
-    font-size: clamp(12px, 1.5vw, 32px);
-    /* Dimensione del testo */
+    font-size: clamp(12px, 1.5vw, 28px);
     font-weight: bold;
-    /* Testo in grassetto */
-    color: white;
-    /* Colore del testo */
+    color: #ffffff;
     z-index: 10;
-    /* Assicura che il titolo sia sopra altri elementi */
     text-align: center;
-    /* Centra il testo all'interno del contenitore */
 }
 
 .swiper-button-prev,
 .swiper-button-next {
     color: #ff8800 !important;
 }
-
 
 /* non visualizzati */
 .swiper-pagination-bullet {
@@ -799,10 +735,8 @@ main {
 
 .swiper-container {
     height: 400px;
-    /* Imposta l'altezza desiderata per il carousel */
     z-index: 5;
     position: relative;
-    /* Aggiunto per il contesto di posizionamento */
     width: 100%;
     overflow: hidden;
 }
@@ -815,36 +749,23 @@ main {
 .post_img {
     width: 100%;
     height: 400px;
-    /* Assicura che le immagini riempiano l'altezza del carousel */
     object-fit: cover;
-    /* Mantiene le proporzioni delle immagini */
     border-radius: 0 !important;
-    /* Rimuove gli angoli stondati */
 }
 
 /* stile per il titolo */
 .swiper-slide .title {
     width: 90%;
-    /* Occupa il 90% della larghezza */
     margin: 0 auto;
-    /* Centra il titolo orizzontalmente */
     position: absolute;
     bottom: 20px;
-    /* Posiziona il titolo vicino al bordo inferiore */
     left: 50%;
-    /* Centra il contenitore rispetto al viewport */
     transform: translateX(-50%);
-    /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
     font-size: 32px;
-    /* Dimensione del testo */
     font-weight: bold;
-    /* Testo in grassetto */
-    color: white;
-    /* Colore del testo */
+    color: #ffffff;
     z-index: 10;
-    /* Assicura che il titolo sia sopra altri elementi */
     text-align: center;
-    /* Centra il testo all'interno del contenitore */
 }
 
 /* ARTICOLI */
@@ -854,10 +775,10 @@ main {
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     overflow-y: auto;
-    padding-left: clamp(10px, 1.5vw, 20px);
-    padding-right: clamp(10px, 1.5vw, 20px);
+    padding-left: clamp(10px, 1.5vw, 16px);
+    padding-right: clamp(10px, 1.5vw, 16px);
     flex: 1 1 0%;
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .category-section {
@@ -873,37 +794,25 @@ main {
 .category_name {
     display: inline-block;
     position: relative;
-    font-size: clamp(15px, 1.5vw, 30px);
-    /* 30px */
+    font-size: clamp(20px, 1.5vw, 30px);
     line-height: 36px;
-    /* 36px */
     font-weight: 800;
     color: black;
     margin-bottom: clamp(2px, 1.5vw, 14px);
-    /* Spazio per la linea */
     text-align: center;
-    /* Centrare il testo */
 }
 
 .category_name::after {
     content: "";
-    /* Necessario per visualizzare l'elemento */
     display: block;
     width: 60px;
-    /* Lunghezza fissa per tutte le categorie */
     height: 4px;
-    /* Spessore della linea */
     background-color: transparent;
-    /* Colore di default */
     position: absolute;
     left: 50%;
-    /* Posiziona al centro */
     bottom: -4px;
-    /* Sposta la linea sotto il testo */
     transform: translateX(-50%);
-    /* Centra la linea sotto il testo */
     border-radius: 2px;
-    /* Arrotonda gli angoli della linea */
 }
 
 .attualita::after {
@@ -941,14 +850,13 @@ main {
 .grid-home {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: clamp(8px, 1.5vw, 16px);
+    gap: clamp(10px, 1.5vw, 24px);
 }
 
 .card-home {
     display: flex;
     overflow: hidden;
     position: relative;
-    margin-top: 16px;
     flex-direction: column;
     border-radius: 10px;
     width: 100%;
@@ -961,7 +869,6 @@ main {
     display: flex;
     overflow: hidden;
     position: relative;
-    margin-top: 16px;
     flex-direction: column;
     border-radius: 10px;
     width: 100%;
@@ -986,7 +893,7 @@ main {
     justify-content: center;
     border-radius: 8px;
     font-size: clamp(10px, 1.5vw, 14px);
-    line-height: 20px;
+    line-height: clamp(12px, 1.5vw, 20px);
     font-weight: 500;
     text-align: center;
     background: #e2e2e2;
@@ -1002,18 +909,14 @@ main {
 
 /* FOOTER */
 .site-footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    padding: clamp(12px, 1.5vw, 24px);
     letter-spacing: 0.025em;
     background: #222222;
 }
 
 .footer-img {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: clamp(12px, 1.5vw, 24px);
     justify-content: center;
 }
 
@@ -1030,22 +933,22 @@ main {
 }
 
 .footer-title-cat {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: clamp(12px, 1.5vw, 18px);
+    line-height: clamp(12px, 1.5vw, 24px);
     font-weight: 700;
     color: #ff8800;
     margin-top: 16px;
 }
 
 .footer-text-cat {
-    margin-top: 8px;
-    font-size: 14px;
-    line-height: 20px;
-    color: white;
+    margin-top: clamp(4px, 1.5vw, 8px);
+    font-size: clamp(10px, 1.5vw, 16px);
+    line-height: clamp(12px, 1.5vw, 20px);
+    color: #ffffff;
 }
 
 .footer-list {
-    margin-top: 24px;
+    margin-top: clamp(18px, 1.5vw, 24px);
     margin-left: 0;
 }
 
@@ -1056,9 +959,9 @@ main {
 
 .footer-info-type {
     margin-left: 12px;
-    font-size: 14px;
-    line-height: 20px;
-    color: white;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
+    color: #ffffff;
 }
 
 .footer-col2 {
@@ -1068,15 +971,15 @@ main {
 
 .footer-button {
     display: block;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
-    margin-top: 12px;
-    border-radius: 6px;
+    padding-top: clamp(10px, 1.5vw, 12px);
+    padding-bottom: clamp(10px, 1.5vw, 12px);
+    padding-left: clamp(20px, 1.5vw, 24px);
+    padding-right: clamp(20px, 1.5vw, 24px);
+    margin-top: clamp(8px, 1.5vw, 12px);
+    border-radius: 8px;
     width: 100%;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
     font-weight: 600;
     color: #ffffff;
     background: #787878;
@@ -1089,76 +992,71 @@ main {
 
 .footer-div-icon {
     display: flex;
-    margin-top: 24px;
-    margin-left: 16px;
+    margin-top: clamp(18px, 1.5vw, 24px);
+    margin-bottom: clamp(18px, 1.5vw, 24px);
+    margin-left: clamp(8px, 1.5vw, 12px);
+    margin-right: clamp(8px, 1.5vw, 12px);
     align-items: center;
     justify-content: space-between;
+    padding: 0px;
 }
 
 .footer-info-name {
-    font-size: 14px;
-    line-height: 20px;
-    color: white;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
+    color: #ffffff;
 }
 
 .footer-other-info {
     display: flex;
     justify-content: center;
-    /* Centra orizzontalmente il contenuto */
     align-items: center;
-    /* Centra verticalmente il contenuto */
     width: 100%;
     margin: 0;
 }
 
 .footer-other-info ul {
     list-style: none;
-    /* Rimuove i puntini dal list item */
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 .footer-other-info li {
     display: flex;
     justify-content: center;
-    /* Centra orizzontalmente il link */
     align-items: center;
-    padding-bottom: 16px;
+    padding-bottom: 14px;
 }
 
 .footer-other-info a {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
     font-weight: 600;
-    color: white;
+    color: #ffffff;
     text-align: center;
-    /* Centra il testo del link */
     display: inline-block;
     text-decoration: none;
-    /* Rimuove la sottolineatura del link */
 }
 
 .footer-other-info p {
     margin-left: 12px;
-    font-size: 14px;
-    line-height: 20px;
-    color: white;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
+    color: #ffffff;
 }
 
 .fixed-back-to-top {
     position: fixed;
     bottom: -100px;
-    /* Nasconde il pulsante inizialmente fuori dallo schermo */
     right: 2%;
     z-index: 9999;
     background-color: #ff8800;
-    color: white;
+    color: #ffffff;
     padding: 5px;
     border-radius: 100%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: bottom 0.5s ease;
-    /* Animazione di scorrimento dal basso verso l'alto */
     width: 48px;
     height: 48px;
     display: flex;
@@ -1169,54 +1067,40 @@ main {
 .fixed-back-to-top svg {
     width: 36px;
     height: 36px;
-    fill: white;
+    fill: #ffffff;
 }
 
 .fixed-back-to-top.visible {
     bottom: 2%;
     width: 48px;
     height: 48px;
-    /* Posizione finale del pulsante quando è visibile */
 }
 
 .footer-icon {
     background-color: #e2e2e2;
-    /* bg-[#e6e6e6cf] */
     height: 40px;
-    /* h-10 */
     width: 40px;
-    /* w-10 */
-    border-radius: 50px;
-    /* rounded-full */
+    border-radius: 50%;
     display: flex;
-    /* flex */
     align-items: center;
-    /* items-center */
     justify-content: center;
-    /* justify-center */
     flex-shrink: 0;
-    /* shrink-0 */
 }
 
 .icon {
     width: 15px;
-    /* Modifica la dimensione secondo le tue necessità */
     height: 15px;
-    /* Modifica la dimensione secondo le tue necessità */
     color: black;
-    /* Colore specificato */
     transition: color 0.3s;
-    /* Aggiunge una transizione sul colore */
 }
 
 .footer-icon:hover .icon {
     color: #ff8800;
-    /* Colore quando l'icona è in hover */
 }
 
 /* TEMPLATE PAGINE */
 .page-header {
-    margin-bottom: 32px;
+    margin-bottom: clamp(10px, 1.5vw, 32px);
     text-align: center;
 }
 
@@ -1229,11 +1113,14 @@ main {
 
 .page-author-avatar img {
     border-radius: 50%;
+    width: clamp(50px, 1.5vw, 90px);
+    height: clamp(50px, 1.5vw, 90px);
 }
 
 .page-title {
-    margin-top: 16px;
-    font-size: 30px;
+    margin-top: clamp(10px, 1.5vw, 16px);
+    margin-bottom: clamp(10px, 1.5vw, 16px);
+    font-size: clamp(18px, 1.5vw, 28px);
     line-height: 36px;
     font-weight: 700;
     color: black;
@@ -1246,7 +1133,7 @@ main {
 .page-grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 24px;
+    gap: clamp(10px, 1.5vw, 24px);
 }
 
 .page-cards {
@@ -1254,7 +1141,7 @@ main {
     overflow: hidden;
     flex-direction: column;
     border-radius: 10px;
-    background-color: white;
+    background-color: #ffffff;
     max-height: 600px;
     border: 10px solid #e2e2e2;
     position: relative;
@@ -1270,12 +1157,11 @@ main {
 .radio-uvm-button-container {
     position: fixed;
     bottom: -100px;
-    /* Nasconde il pulsante inizialmente fuori dallo schermo */
     left: 50%;
     transform: translateX(-50%);
     background-color: #1E1E1E;
     z-index: 9999;
-    color: white;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 50px;
     font-size: 16px;
@@ -1283,22 +1169,18 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: bottom 0.5s ease, background-color 0.3s ease;
-    /* Animazione di scorrimento dal basso verso l'alto e cambio colore */
 }
 
 /* Stile per quando il pulsante è visibile */
 .radio-uvm-button-container.visible {
     bottom: 20px;
-    /* Posizione finale del pulsante quando è visibile */
 }
 
 .radio-uvm-button {
     display: flex;
     align-items: center;
     background-color: inherit;
-    /* Eredita il colore di sfondo dal contenitore */
     color: inherit;
-    /* Eredita il colore del testo dal contenitore */
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
@@ -1309,7 +1191,6 @@ main {
     height: 24px;
     margin-right: 10px;
 }
-
 
 
 /* SIDEBAR */
@@ -1328,9 +1209,7 @@ main {
     background-color: #1E1E1E;
     min-height: 100vh;
     overflow: visible;
-    /* Mantiene l'overflow visibile */
     transition: top 0.3s ease;
-    /* Transizione per un effetto più fluido */
 }
 
 /* Pseudo-elemento per estendere lo sfondo */
@@ -1339,14 +1218,10 @@ main {
     position: absolute;
     top: 0;
     left: -25px;
-    /* Estensione dello sfondo a sinistra */
     width: calc(100% + 25px);
-    /* Aggiungi 25px alla larghezza */
     height: 100%;
     background-color: #1E1E1E;
-    /* Stesso colore dello sfondo della sidebar */
     z-index: -1;
-    /* Metti lo sfondo dietro il contenuto */
 }
 
 .single_sidebar {
@@ -1362,9 +1237,7 @@ main {
     background-color: #1E1E1E;
     min-height: 100vh;
     overflow: visible;
-    /* Mantiene l'overflow visibile */
     transition: top 0.3s ease;
-    /* Transizione per un effetto più fluido */
 }
 
 .single_sidebar::before {
@@ -1374,21 +1247,16 @@ main {
     position: absolute;
     top: 0;
     left: -25px;
-    /* Estensione dello sfondo a sinistra */
     width: calc(100% + 25px);
-    /* Aggiungi 25px alla larghezza */
     height: 100%;
     background-color: #1E1E1E;
-    /* Stesso colore dello sfondo della sidebar */
     z-index: -1;
-    /* Metti lo sfondo dietro il contenuto */
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
 
 .single_sidebar-title {
-    font-size: 20px;
-    /* text-xl */
+    font-size: clamp(16px, 1.5vw, 20px);
     font-weight: bold;
     inline-size: 1;
     padding-top: 16px;
@@ -1400,8 +1268,7 @@ main {
 
 /* Stili per il titolo della barra laterale */
 .sidebar-title {
-    font-size: 20px;
-    /* text-xl */
+    font-size: clamp(16px, 1.5vw, 20px);
     font-weight: bold;
     inline-size: 1;
     padding-top: 16px;
@@ -1415,8 +1282,7 @@ main {
 .sidebar-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    /* Spazio tra i frame */
+    gap: 8px;
     align-items: flex-end;
     padding-left: clamp(10px, 1vw, 40px);
     padding-right: clamp(10px, 1vw, 40px);
@@ -1427,54 +1293,42 @@ main {
     object-fit: cover;
     width: 100%;
     height: 132px;
-    border-radius: 5px;
-    background-color: white;
+    border-radius: 8px;
+    background-color: #ffffff;
 }
 
 .sidebar-button-container {
     display: flex;
     justify-content: flex-end;
-    /* Allinea il pulsante a destra */
 }
 
 /* Stili per l'iframe */
 .video-frame {
     width: 100%;
-    border-radius: 15px;
+    border-radius: 8px;
     position: relative;
     height: 152px;
     border: 0px;
     margin-bottom: 0;
     padding-bottom: 0;
     overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Stili per il pulsante */
 .sidebar-button {
     text-align: center;
-    /* Allinea il testo al centro del pulsante */
     background-color: #e2e2e2;
-    /* Colore di sfondo del pulsante */
-    color: #b3b3b3;
-    /* Colore del testo del pulsante */
+    color: #000000;
     padding: 8px 16px;
-    /* Padding interno del pulsante */
     border-radius: 30px;
-    /* Bordo arrotondato del pulsante */
     text-decoration: none;
-    /* Rimuove la sottolineatura del link */
     font-weight: 500;
-    /* Peso del font del pulsante */
     display: inline-flex;
-    /* Usa inline-flex per evitare che il pulsante occupi tutta la larghezza */
     align-items: center;
-    /* Allinea verticalmente l'icona e il testo */
     margin-left: auto;
-    /* Spazio a sinistra per allineare il pulsante a destra */
     margin-top: 16px;
-    /* Spazio sopra il pulsante */
 }
-
 
 /* SPOTIFY EMBEDDED */
 .latest-episode {
@@ -1549,9 +1403,9 @@ main {
 .spotify-button {
     display: inline-block;
     background-color: #1DB954;
-    color: white;
+    color: #ffffff;
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
     margin-top: 15px;
@@ -1600,7 +1454,6 @@ main {
     appearance: none;
     height: 8px;
     background: #eeeeee;
-    /* Imposta il colore della progress bar */
     border-radius: 5px;
     outline: none;
     transition: background 0.3s ease;
@@ -1609,33 +1462,29 @@ main {
 /* Stile del thumb (manopola) della progress bar */
 #progress-slider::-webkit-slider-thumb {
     appearance: none;
-    width: 15px;
+    width: clamp(12px, 1.5vw, 14px);
     height: 15px;
     border-radius: 50%;
     background: #f18812;
-    /* Colore del thumb */
     cursor: pointer;
 }
 
 #progress-slider::-moz-range-thumb {
-    width: 15px;
+    width: clamp(12px, 1.5vw, 14px);
     height: 15px;
     border-radius: 50%;
     background: #f18812;
     cursor: pointer;
 }
 
-
 #current-time,
 #duration {
-    font-size: 12px;
+    font-size: clamp(10px, 1.5vw, 12px);
     color: #e2e2e2;
 }
 
-
 /* POST - SINGLE */
 /* POST */
-
 .post_top {
     position: relative;
     box-shadow: 0 5px 5px -5px #b3b3b3;
@@ -1651,38 +1500,24 @@ main {
 
 .post_title {
     width: 90%;
-    /* Occupa il 90% della larghezza */
     margin: 0 auto;
-    /* Centra il titolo orizzontalmente */
     position: absolute;
     bottom: 20px;
-    /* Posiziona il titolo vicino al bordo inferiore */
     left: 50%;
-    /* Centra il contenitore rispetto al viewport */
     transform: translateX(-50%);
-    /* Assicura che il titolo sia centrato rispetto alla propria larghezza */
     font-size: 32px;
-    /* Dimensione del testo */
     font-weight: bold;
-    /* Testo in grassetto */
-    color: white;
-    /* Colore del testo */
+    color: #ffffff;
     z-index: 10;
-    /* Assicura che il titolo sia sopra altri elementi */
     text-align: center;
-    /* Centra il testo all'interno del contenitore */
 }
-
 
 
 .post_img {
     width: 100%;
     height: 400px;
-    /* Assicura che le immagini riempiano l'altezza del div */
     object-fit: cover;
-    /* Mantiene le proporzioni delle immagini */
     border-radius: 0 !important;
-    /* Rimuove gli angoli stondati */
 }
 
 /* INFORMAZIONI AUTORE */
@@ -1698,7 +1533,6 @@ main {
 
 .author-content {
     max-width: 768px;
-    /* Larghezza massima per il contenuto principale */
     margin: 0 auto;
 }
 
@@ -1724,7 +1558,6 @@ main {
     margin-bottom: 24px;
 }
 
-
 /* AVATAR AUTORE */
 /* Avatar a sinistra */
 .author-avatar {
@@ -1746,14 +1579,12 @@ main {
     margin-bottom: 4px;
 }
 
-/* Avatar + Nome + Data allineati a sinistra */
 .author-details {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: auto;
-    /* Questo spinge le icone social a destra */
     padding-left: clamp(10px, 1.5vw, 20px);
 }
 
@@ -1842,7 +1673,7 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1 1 0%;
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     text-align: right;
     color: #828282;
     margin: 0px
@@ -1855,6 +1686,7 @@ main {
 .card_author p {
     color: #828282;
     margin: 0px;
+    font-size: clamp(10px, 1.5vw, 12px);
 }
 
 .card_author-space {
@@ -1882,8 +1714,8 @@ main {
     padding-right: clamp(10px, 1.5vw, 20px);
     align-items: center;
     border-radius: 9999px;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: clamp(12px, 1.5vw, 20px);
     font-weight: 500;
     text-align: center;
     color: #111827;
@@ -1895,7 +1727,6 @@ main {
     margin-right: 8px;
 }
 
-
 .card_title a {
     color: black;
 }
@@ -1906,7 +1737,7 @@ main {
     width: 100%;
     height: 192px;
     border-radius: 5px;
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .card_img_not_available {
@@ -1915,7 +1746,7 @@ main {
     align-items: center;
     width: 100%;
     height: 192px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 5px;
 }
 
@@ -1934,14 +1765,13 @@ main {
 .articolo {
     z-index: 10;
     overflow-y: auto;
-    padding-left: clamp(10px, 1.5vw, 20px);
-    padding-right: clamp(10px, 1.5vw, 20px);
+    padding-left: clamp(10px, 1.5vw, 16px);
+    padding-right: clamp(10px, 1.5vw, 16px);
     flex: 1 1 0%;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     background-color: #ffffff;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    /* Allinea il contenuto a sinistra */
     text-align: left;
     margin: 0px;
     padding-top: 0px;
@@ -1949,7 +1779,6 @@ main {
 
 .articolo_container {
     display: flex;
-    /* Evita la centratura non voluta */
     justify-content: flex-start;
     align-items: flex-start;
 }
@@ -1958,7 +1787,6 @@ main {
 .category-tags-wrapper,
 .entry-content {
     text-align: left;
-
 }
 
 .entry-footer {
@@ -1980,7 +1808,6 @@ main {
 .articolo img {
     border-radius: 8px;
     margin: 20px auto;
-    /* Aggiunge spazio sopra e sotto l'immagine */
     max-width: 100%;
     height: auto;
 }
@@ -2015,7 +1842,7 @@ main {
 }
 
 .side_text {
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     line-height: normal;
 }
 
@@ -2023,12 +1850,11 @@ main {
 .fixed-share-button {
     position: fixed;
     bottom: -100px;
-    /* Nasconde il pulsante inizialmente fuori dallo schermo */
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
     background-color: #ff0000;
-    color: white;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 50px;
     font-size: 16px;
@@ -2036,16 +1862,13 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: bottom 0.5s ease;
-    /* Animazione di scorrimento dal basso verso l'alto */
 }
 
 .fixed-share-button.visible {
     bottom: 20px;
-    /* Posizione finale del pulsante quando è visibile */
 }
 
 /* PAGINA CHI SIAMO */
-
 .chi-siamo-banner {
     position: relative;
     box-shadow: 0 5px 5px -5px #b3b3b3;
@@ -2057,7 +1880,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding: 10px;
+    padding: clamp(24px, 1.5vw, 48px);
 }
 
 .chi-siamo-banner-space {
@@ -2066,9 +1889,9 @@ main {
 }
 
 .chi-siamo-title {
-    font-size: clamp(24px, 5vw, 60px);
+    font-size: clamp(24px, 1.5vw, 48px);
     font-weight: 900;
-    color: white;
+    color: #ffffff;
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: left;
@@ -2076,22 +1899,22 @@ main {
 
 .chi-siamo-description {
     font-weight: 400;
-    color: white;
+    color: #ffffff;
     text-align: left;
     line-height: normal;
 }
 
 .chi-siamo-description p {
     margin: 0;
-    padding: 0;
-    color: white;
-    font-size: clamp(12px, 1.5vw, 24px);
+    padding: 0px;
+    color: #ffffff;
+    font-size: clamp(12px, 1.5vw, 20px);
     text-align: left;
     line-height: noerm;
 }
 
 .chi-siamo-description b {
-    color: white;
+    color: #ffffff;
 }
 
 /* Stile per ogni elemento dell'utente */
@@ -2125,15 +1948,12 @@ main {
 
 .chi-siamo-unit-title {
     color: black;
-    /* text-black */
     font-size: 24px;
     font-weight: 600;
     margin: 15px;
 }
 
-
 /* Contenitore delle cards, con layout a griglia che mostra 3 cards per riga */
-
 /* Add this to ensure consistent grid layout */
 .chi-siamo-grid {
     display: grid;
@@ -2152,8 +1972,8 @@ main {
 }
 
 .chi-siamo-avatar {
-    width: clamp(50px, 1.5vw, 90px); 
-    height: clamp(50px, 1.5vw, 90px); 
+    width: clamp(50px, 1.5vw, 90px);
+    height: clamp(50px, 1.5vw, 90px);
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -2177,7 +1997,6 @@ main {
 
 .chi-siamo-name {
     margin: 5px 0px 5px 0px;
-    
 }
 
 .chi-siamo-name a {
@@ -2208,7 +2027,7 @@ main {
 /* Email dell'utente con colore blu e margine inferiore */
 .chi-siamo-email {
     color: #3b82f6;
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     margin-bottom: 8px;
 }
 
@@ -2217,7 +2036,6 @@ main {
     text-decoration: none;
     color: inherit;
 }
-
 
 /* CONTACT FORM */
 /* Contenitore principale del form */
@@ -2263,12 +2081,10 @@ main {
     display: grid;
     gap: 16px;
     grid-template-columns: 1fr;
-    /* Una colonna */
 }
 
 .full-width {
     grid-column: span 1;
-    /* Estende a tutta la larghezza nella singola colonna */
 }
 
 /* Input e textarea */
@@ -2340,7 +2156,7 @@ main {
 .submit-button {
     padding: 12px 48px;
     background-color: #787878;
-    color: white;
+    color: #ffffff;
     font-size: 16px;
     border: none;
     border-radius: 15px;
@@ -2354,87 +2170,68 @@ main {
 
 .titolo-pagina {
     color: black;
-    /* text-black */
     font-size: 36px;
-    /* text-4xl (36px) */
     font-weight: 800;
 }
 
 .descrizione-pagina {
     color: #787878;
-    /* text-[#787878] */
-    /* text-sm (14px) */
+
     margin-top: 16px;
     margin-bottom: 16px;
     line-height: 1.625;
-    /* leading-relaxed (line-height of 1.625) */
     font-size: clamp(12px, 3vw, 18.4px);
 }
-
 
 /* POLICY E COPYRIGHT PAGINA */
 .text-h {
     color: #000;
     text-align: center;
-    /* Dimensioni variabili in base all'intestazione */
     margin: 10px;
     font-weight: 700;
 }
 
 .text-h1 {
     font-size: clamp(16px, 2vw, 48px);
-    /* Gestisce la dimensione di h1 */
 }
 
 .text-h2 {
     font-size: clamp(14px, 2vw, 40px);
-    /* Gestisce la dimensione di h2 */
 }
 
 .text-h3 {
     font-size: clamp(8px, 2vw, 32px);
-    /* Gestisce la dimensione di h3 */
 }
 
 .text-h4 {
     font-size: clamp(8.8px, 2vw, 28px);
-    /* Gestisce la dimensione di h4 */
 }
 
 .text-h5 {
     font-size: clamp(6.4px, 2vw, 24px);
-    /* Gestisce la dimensione di h5 */
 }
 
 .text-h6 {
     font-size: clamp(4px, 2vw, 20px);
-    /* Gestisce la dimensione di h6 */
 }
 
 .text-p {
     font-size: clamp(12px, 2vw, 16px);
-    /* Gestisce la dimensione dei paragrafi */
     color: #000;
     text-align: left;
 }
 
 
-
 /* RADIO */
 /* CAROSELLO RADIO */
-
 .radio-collection {
     padding: 20px;
-    /* Aggiungi padding per evitare che tocchi gli altri elementi */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Nasconde l'overflow e mantiene le cards dentro i limiti */
     max-width: 100%;
-    /* Assicura che la sezione non superi mai la larghezza della pagina */
     box-sizing: border-box;
-    /* Include il padding nel calcolo della larghezza */
 }
 
 .radio-info {
@@ -2456,7 +2253,6 @@ main {
     margin-right: 8px;
 }
 
-
 .swiper {
     width: 100%;
     padding-top: 30px;
@@ -2471,7 +2267,6 @@ main {
     filter: blur(4px);
     transition: all 0.5s ease;
     overflow: hidden;
-    /* Nascondi qualsiasi overflow */
 }
 
 .swiper-slide-active {
@@ -2524,7 +2319,6 @@ main {
 .radio-grid-container {
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
-    /* Due colonne di uguale dimensione con una linea divisoria centrale */
     gap: 20px;
     align-items: center;
 }
@@ -2535,9 +2329,7 @@ main {
     border-radius: 30px;
     display: flex;
     justify-content: center;
-    /* Centra orizzontalmente */
     align-items: center;
-    /* Centra verticalmente */
     height: 250px;
 }
 
@@ -2548,43 +2340,19 @@ main {
 
 .radio-video-frame {
     border-radius: 30px;
-    /* Angoli stondati per gli iframe */
     width: 100%;
-    /* Larghezza al 100% */
     height: 100%;
-    /* Altezza al 100% per l'iframe */
 }
 
 .radio-divider {
     background-color: #d3d3d3;
-    /* Linea grigia chiara */
     width: 1px;
     height: 100%;
 }
 
-/* Responsività per dispositivi mobili */
-@media (max-width: 768px) {
-    .radio-grid-container {
-        grid-template-columns: 1fr;
-        /* Colonne singole */
-        grid-template-rows: auto auto;
-        /* Metti gli elementi uno sotto l'altro */
-    }
-
-    .radio-divider {
-        display: none;
-        /* Nascondi la linea divisoria sui dispositivi mobili */
-    }
-
-    .radio-youtube-container,
-    .radio-spotify-container {
-        height: 180px;
-    }
-}
-
 /* 404 */
 .sezione-error {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .contenitore-404 {
@@ -2633,7 +2401,7 @@ main {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     font-weight: 500;
     color: #1f2937;
     background-color: #e2e2e2;
@@ -2700,24 +2468,12 @@ main {
         font-size: 12px;
     }
 
-    .category_name {
-        font-size: 22px;
-    }
-
     .swiper-container {
         height: 220px;
     }
 
     .post_img {
         height: 220px;
-    }
-
-    .swiper-slide .title {
-        font-size: 12px;
-    }
-
-    .carosello-titolo .title {
-        font-size: 12px;
     }
 
     .author-avatar {
@@ -2744,13 +2500,24 @@ main {
         margin-bottom: 0px;
     }
 
-}
+    .radio-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
 
+    .radio-divider {
+        display: none;
+    }
+
+    .radio-youtube-container,
+    .radio-spotify-container {
+        height: 180px;
+    }
+}
 
 
 /* 1024PX E INFERIORI */
 @media (max-width: 1024px) {
-
     .card_img_not_available {
         height: 150px;
     }
@@ -2776,7 +2543,6 @@ main {
         left: 0;
         width: 100%;
         z-index: 100;
-        /* Assicura che l'intestazione rimanga sopra altri contenuti */
     }
 
     .sticky-header .navbar-top {
@@ -2788,7 +2554,7 @@ main {
 
     .navbar-top {
         height: auto;
-        background-color: white;
+        background-color: #ffffff;
         padding: 15px;
         position: sticky;
         top: 0;
@@ -2796,9 +2562,7 @@ main {
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         display: flex;
         justify-content: space-evenly;
-        /* Distribuisce equamente gli elementi */
         align-items: center;
-        /* Allinea verticalmente gli elementi */
     }
 
     .container {
@@ -2806,21 +2570,18 @@ main {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        /* Imposta la larghezza al 100% */
     }
 
     .navbar-logo {
         margin: 0;
         box-shadow: none;
         border-radius: none;
-        /* Se vuoi centrare il logo, puoi usare margin o flex con il logo */
     }
 
     .mobile-last-modified {
         display: block;
         max-height: 25px;
     }
-
 
     #mobile-menu-button,
     #mobile-search-button {
@@ -2844,12 +2605,10 @@ main {
 
     .navbar-bottom {
         display: none;
-        /* Nasconde la navbar-bottom per i dispositivi mobili */
     }
 
     .search-form {
         display: none;
-        /* Nasconde il form di ricerca per i dispositivi mobili */
     }
 
     .radio-uvm-button-container {
@@ -2895,7 +2654,6 @@ main {
         height: 220px;
     }
 
-
     .swiper-slide .title {
         font-size: 12pxpx;
     }
@@ -2939,7 +2697,7 @@ main {
 
     .category-label,
     .tag-label {
-        font-size: 14px;
+        font-size: clamp(12px, 1.5vw, 14px);
         /* 14px */
     }
 
@@ -2949,37 +2707,29 @@ main {
 
     .radio-content {
         flex-direction: column;
-        /* Mantiene la disposizione della card in colonne */
         width: 80%;
-        /* Assicura che la card occupi l'intera larghezza disponibile */
-        /* Permette alla card di adattarsi al contenuto */
+
         margin-bottom: 20px;
-        /* Spazio tra le cards per dispositivi più piccoli */
     }
 
     .radio-text-content {
         padding: clamp(8px, 1.5vw, 16px);
-        /* Riduce il padding per adattarsi meglio alle dimensioni più piccole */
     }
 
     .radio-btn {
         font-size: 12.8px;
-        /* Riduce la dimensione del font del bottone */
         padding: 6.4px 12.8px;
-        /* Adatta il padding del bottone */
     }
 
     .custom-background {
         background-color: transparent;
     }
-
 }
 
 /* 1024PX E SUPERIORI */
 @media (min-width: 1024px) {
     #mobile-menu-button {
         display: none;
-        /* Nasconde i pulsanti per schermi più grandi */
     }
 
     .page-grid {
@@ -2990,7 +2740,6 @@ main {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
-
 
 /*--------------------------------------------------------------
 >>> INDICE WORDPRESS:
@@ -3018,19 +2767,14 @@ main {
 	- Accessibilità
 	- Allineamenti
 
-
 --------------------------------------------------------------*/
-
 /*--------------------------------------------------------------
 # Generale
 --------------------------------------------------------------*/
-
 /* Normalizzazione
 --------------------------------------------- */
-
 /* Documento
 	 ========================================================================== */
-
 /**
  * 1. Specifico l'interlinea per tutti i browser.
  * 2. Specifico la dimensione del font.
@@ -3042,7 +2786,6 @@ html {
 
 /* Sezioni
 	 ========================================================================== */
-
 /**
  * Rimuovo i margini da tutti i browser.
  */
@@ -3067,7 +2810,6 @@ h1 {
 
 /* Dimensione dei box
 	 ========================================================================== */
-
 /**
  * 1. Aggiungo la corretta dimensione su Firefox.
  * 2. Mostro l'overflow su Edge e IE.
@@ -3088,7 +2830,6 @@ pre {
 
 /* Semantica testo
 	 ========================================================================== */
-
 /**
  * Rimuovo il colore dai link 'attivi' su IE 10.
  */
@@ -3114,10 +2855,8 @@ strong {
     color: black;
 }
 
-
 /* Contenuto Embedded
 	 ========================================================================== */
-
 /**
  * Rimuovo il bordo dalle immagini.
  */
@@ -3127,7 +2866,6 @@ img {
 
 /* Form
 	 ========================================================================== */
-
 /**
  * 1. Cambio lo stile del font.
  * 2. Rimuovo i margini su Firefox e Safari.
@@ -3157,7 +2895,6 @@ input {
     box-shadow: none;
 }
 
-
 /**
  * Sistemo il bottone per l'uso sui sistemi iOS e Safari.
  */
@@ -3169,9 +2906,7 @@ button,
     border: none;
     outline: none;
     box-shadow: none;
-
 }
-
 
 /**
  * Correggo il ritorno a capo del testo.
@@ -3181,8 +2916,8 @@ legend {
     color: inherit;
     display: table;
     max-width: 100%;
-    padding: 0;
-    white-space: normal;
+    padding: 0px;
+    #ffffff-space: normal;
 }
 
 /**
@@ -3211,7 +2946,6 @@ progress {
 
 /* Interattivo
 	 ========================================================================== */
-
 /*
  * Sistemo la visualizzazione su Edge, IE 10+, e Firefox.
  */
@@ -3228,7 +2962,6 @@ summary {
 
 /* Dimensione dei box
 --------------------------------------------- */
-
 *,
 *::before,
 *::after {
@@ -3242,7 +2975,6 @@ html {
 /*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
-
 /* Tipografia
 --------------------------------------------- */
 body,
@@ -3272,7 +3004,7 @@ h6 {
 
 /* Dimensione del font per tutti i <p> */
 p {
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     /* Equivalente a text-sm in Tailwind */
     color: #787878;
     /* Colore per text-gray-500 */
@@ -3285,7 +3017,6 @@ p {
         /* Colore per dark:text-gray-400 */
     }
 }
-
 
 dfn,
 cite,
@@ -3338,11 +3069,11 @@ big {
 /* Elementi
 --------------------------------------------- */
 body {
-    background: white;
+    background: #ffffff;
 }
 
 hr {
-    background-color: white;
+    background-color: #ffffff;
     border: 0;
     height: 1px;
     margin-bottom: 1.5em;
@@ -3509,11 +3240,9 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
-
 /*--------------------------------------------------------------
 # Componenti
 --------------------------------------------------------------*/
-
 /* navigazione
 --------------------------------------------- */
 .main-navigation {
@@ -3573,7 +3302,6 @@ textarea {
 }
 
 @media screen and (min-width: 37.5em) {
-
     .menu-toggle {
         display: none;
     }
@@ -3662,7 +3390,7 @@ textarea {
     border: none;
     margin-bottom: 0;
     margin-top: 0;
-    padding: 0;
+    padding: 0px;
 }
 
 .custom-logo-link {
@@ -3746,10 +3474,8 @@ textarea {
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
-
 /* Jetpack infinite scroll
 --------------------------------------------- */
-
 /* Hide the Posts Navigation and the Footer when Infinite Scroll is in use. */
 .infinite-scroll .posts-navigation,
 .infinite-scroll.neverending .site-footer {
