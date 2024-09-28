@@ -85,11 +85,11 @@ main {
 
 
 
-
 /* NAVBAR */
 /* Navbar Top*/
 .navbar-top {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     padding: 4px 0;
@@ -854,8 +854,8 @@ main {
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     overflow-y: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: clamp(10px, 1.5vw, 20px);
+    padding-right: clamp(10px, 1.5vw, 20px);
     flex: 1 1 0%;
     background-color: white;
 }
@@ -865,7 +865,7 @@ main {
 }
 
 .category-section-title {
-    margin-top: clamp(8px, 1.5vw, 14px); 
+    margin-top: clamp(8px, 1.5vw, 14px);
     margin-bottom: clamp(2px, 1.5vw, 14px);
     text-align: center;
 }
@@ -1754,7 +1754,7 @@ main {
     justify-content: center;
     margin-right: auto;
     /* Questo spinge le icone social a destra */
-    padding-left: 20px;
+    padding-left: clamp(10px, 1.5vw, 20px);
 }
 
 .category-label {
@@ -1878,8 +1878,8 @@ main {
     display: inline-flex;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: clamp(10px, 1.5vw, 20px);
+    padding-right: clamp(10px, 1.5vw, 20px);
     align-items: center;
     border-radius: 9999px;
     font-size: 14px;
@@ -1934,8 +1934,8 @@ main {
 .articolo {
     z-index: 10;
     overflow-y: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: clamp(10px, 1.5vw, 20px);
+    padding-right: clamp(10px, 1.5vw, 20px);
     flex: 1 1 0%;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -1943,6 +1943,8 @@ main {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     /* Allinea il contenuto a sinistra */
     text-align: left;
+    margin: 0px;
+    padding-top: 0px;
 }
 
 .articolo_container {
@@ -1989,7 +1991,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: left;
-    font-size: 24px;
+    font-size: clamp(12px, 1.5vw, 20px);
 }
 
 .entry-content img {
@@ -2009,7 +2011,7 @@ main {
 }
 
 .entry-content p {
-    font-size: clamp(10.4px, 3vw, 18.4px);
+    font-size: clamp(12px, 3vw, 18px);
 }
 
 .side_text {
@@ -2043,12 +2045,53 @@ main {
 }
 
 /* PAGINA CHI SIAMO */
-.chi-siamo-grid {
-    display: grid;
-    gap: 32px;
-    /* Spazio tra gli elementi della griglia */
+
+.chi-siamo-banner {
+    position: relative;
+    box-shadow: 0 5px 5px -5px #b3b3b3;
+    width: 100%;
+    overflow: hidden;
+    height: 400px;
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+    padding: 10px;
+}
+
+.chi-siamo-banner-space {
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.chi-siamo-title {
+    font-size: clamp(24px, 5vw, 60px);
+    font-weight: 900;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.chi-siamo-description {
+    font-weight: 400;
+    color: white;
+    text-align: left;
+    line-height: normal;
+}
+
+.chi-siamo-description p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: clamp(12px, 1.5vw, 24px);
+    text-align: left;
+    line-height: noerm;
+}
+
+.chi-siamo-description b {
+    color: white;
 }
 
 /* Stile per ogni elemento dell'utente */
@@ -2080,16 +2123,6 @@ main {
     margin: 0 auto;
 }
 
-/* Sezione del ruolo con testo centrato e margine inferiore */
-.chi-siamo-role {
-    display: flex;
-    /* Centra orizzontalmente */
-    align-items: center;
-    /* Centra verticalmente */
-    text-align: center;
-    margin: 0px;
-}
-
 .chi-siamo-unit-title {
     color: black;
     /* text-black */
@@ -2100,52 +2133,76 @@ main {
 
 
 /* Contenitore delle cards, con layout a griglia che mostra 3 cards per riga */
-.chi-siamo-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    max-width: 960px;
-    margin: 0 auto;
-}
 
-/* Card individuale, con testo centrato e stile della card */
-.chi-siamo-card {
-    text-align: center;
-    background-color: #e2e2e2;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Add this to ensure consistent grid layout */
+.chi-siamo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     justify-content: center;
 }
 
-/* Avatar dell'utente con dimensioni e forma rotonda */
-.chi-siamo-avatar {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
+.chi-siamo-card {
+    display: flex;
+    align-items: center;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 20px;
 }
 
-/* Nome dell'utente con dimensioni del font e peso del font */
-.chi-siamo-name {
-    color: #4a4a4a;
-    font-size: 18px;
-    font-weight: 700;
+.chi-siamo-avatar {
+    width: clamp(50px, 1.5vw, 90px); 
+    height: clamp(50px, 1.5vw, 90px); 
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.chi-siamo-info {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    height: 100%;
+    text-align: left;
+    justify-content: center;
+}
+
+.chi-siamo-role {
     margin: 0px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: #787878;
+    text-transform: uppercase;
+}
+
+.chi-siamo-name {
+    margin: 5px 0px 5px 0px;
+    
 }
 
 .chi-siamo-name a {
-    font-size: 20px;
+    font-size: clamp(14px, 1.5vw, 18px);
     font-weight: 700;
     color: #000000;
+    text-decoration: none;
+    margin: 0px;
 }
 
-/* Biografia dell'utente con dimensioni del font più piccole e margine inferiore */
-.chi-siamo-biography {
-    color: #6b7280;
-    font-size: 14px;
-    margin-bottom: 4px;
+.chi-siamo-social-icons {
+    display: flex;
+    gap: 8px;
+}
+
+.chi-siamo-icon {
+    display: flex;
+    width: clamp(18px, 1.5vw, 24px);
+    height: clamp(18px, 1.5vw, 24px);
+    color: #787878;
+    transition: color 0.3s ease;
+}
+
+.chi-siamo-icon:hover {
+    color: #f18812;
 }
 
 /* Email dell'utente con colore blu e margine inferiore */
@@ -2159,30 +2216,6 @@ main {
 .chi-siamo-email a {
     text-decoration: none;
     color: inherit;
-}
-
-/* Contenitore per le icone dei social media, centrato e con spazio tra le icone */
-.chi-siamo-social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-/* Contenitore per ogni icona dei social media */
-.chi-siamo-social-icon {
-    display: inline-flex;
-    align-items: center;
-}
-
-/* Stile delle icone dei social media con dimensioni e colore specifici */
-.chi-siamo-icon {
-    width: 24px;
-    height: 24px;
-    color: #787878;
-}
-
-.chi-siamo-icon:hover {
-    color: #f18812;
 }
 
 
@@ -2644,11 +2677,6 @@ main {
 
 /* Media query per schermi più piccoli di 768px */
 @media (max-width: 768px) {
-    .articolo {
-        padding: 0px 5px 5px 5px;
-        padding-top: 0px;
-        margin: 0px;
-    }
 
     .swiper-button-prev,
     .swiper-button-next {
@@ -2762,7 +2790,9 @@ main {
         height: auto;
         background-color: white;
         padding: 15px;
-        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         display: flex;
         justify-content: space-evenly;
@@ -2911,14 +2941,6 @@ main {
     .tag-label {
         font-size: 14px;
         /* 14px */
-    }
-
-    .entry-content {
-        font-size: 1.32px;
-    }
-
-    .entry-content p {
-        font-size: 16px;
     }
 
     .swiper-slide {

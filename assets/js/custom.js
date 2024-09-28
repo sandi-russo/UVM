@@ -150,6 +150,7 @@ setInterval(checkOverflow, 15000);
  /* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
  document.addEventListener("DOMContentLoaded", function () {
     var stickyHeader = document.querySelector('.navbar-top');
+    var mobileLastModified = document.querySelector('.mobile-last-modified');
     var content = document.querySelector('.main');
 
     function adjustContentPadding() {
@@ -158,7 +159,10 @@ setInterval(checkOverflow, 15000);
         // Verifica se siamo su uno schermo mobile (max 1024px)
         if (window.innerWidth <= 1024) {
             if (stickyHeader) {
-                totalHeight = stickyHeader.offsetHeight; // Calcola l'altezza totale del sticky-header
+                totalHeight += stickyHeader.offsetHeight; // Calcola l'altezza totale del sticky-header
+            }
+            if (mobileLastModified) {
+                totalHeight += mobileLastModified.offsetHeight; // Aggiungi l'altezza di mobile-last-modified
             }
 
             // Applica il padding calcolato
@@ -688,13 +692,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkSticky() {
-        if (window.pageYOffset >= sticky) {
-            if (!navbar.classList.contains("fixed-navbar")) {
-                navbar.classList.add("fixed-navbar");
-                navbar.parentNode.insertBefore(placeholder, navbar.nextSibling);
-                adjustSidebarTop();
+        if (window.innerWidth > 1024) { // Applica lo sticky solo se la larghezza della finestra è maggiore di 1024px
+            if (window.pageYOffset >= sticky) {
+                if (!navbar.classList.contains("fixed-navbar")) {
+                    navbar.classList.add("fixed-navbar");
+                    navbar.parentNode.insertBefore(placeholder, navbar.nextSibling);
+                    adjustSidebarTop();
+                }
+            } else {
+                if (navbar.classList.contains("fixed-navbar")) {
+                    navbar.classList.remove("fixed-navbar");
+                    if (placeholder.parentNode) {
+                        placeholder.parentNode.removeChild(placeholder);
+                    }
+                    adjustSidebarTop();
+                }
             }
         } else {
+            // Rimuovi la classe sticky e il placeholder
             if (navbar.classList.contains("fixed-navbar")) {
                 navbar.classList.remove("fixed-navbar");
                 if (placeholder.parentNode) {
