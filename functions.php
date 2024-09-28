@@ -349,6 +349,14 @@ function display_mobile_categories()
         echo '</li>';
     }
 
+    // Aggiungi il link per la pagina "Radio"
+    echo '<li class="menu-item">';
+    echo '<div class="menu-item-content">';
+    echo '<a href="' . get_permalink(get_page_by_path('radio')) . '" class="menu-link">Radio</a>';
+    echo '</div>';
+    echo '</li>';
+
+    // Aggiungi il link per la pagina "Chi Siamo"
     echo '<li class="menu-item">';
     echo '<div class="menu-item-content">';
     echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="menu-link">Chi Siamo</a>';
