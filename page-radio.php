@@ -59,7 +59,7 @@ $programs = [
             <div class="site_container">
                 <div>
                     <h2 class="titolo-pagina">RADIO UVM</h2>
-                    <p class="descrizione-pagina">Inserire motto!</p>
+                    <p class="descrizione-pagina">Radio ufficiale degli Studenti Unime!</p>
                     <div>
                         <p class="text-p">Radio UniVersoMe è la radio ufficiale dell’Università degli Studi di Messina.
                             On Air per la
