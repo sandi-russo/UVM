@@ -76,8 +76,22 @@ main {
     margin: 0px;
 }
 
+
 /* NAVBAR */
 /* Navbar Top*/
+.logo-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+
+.search-space {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-top {
     position: sticky;
     top: 0;

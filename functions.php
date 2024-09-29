@@ -243,11 +243,11 @@ function display_categories_with_subcategories()
     echo '<ul class="main-menu">';
 
     // Verifica se la pagina corrente è "home"
-    $is_active_home = is_front_page() ? 'active' : '';
+   /* $is_active_home = is_front_page() ? 'active' : '';
 
     echo '<li class="category-item ' . $is_active_home . '">';
     echo '<a href="' . home_url() . '" class="category-link">Home</a>';
-    echo '</li>';
+    echo '</li>';*/
 
     foreach ($categories as $category) {
         $subcategories = get_categories(array(
