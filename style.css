@@ -505,7 +505,7 @@ main {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
-    z-index: 100;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     border-radius: 0px;
@@ -701,7 +701,7 @@ main {
     left: 0;
     right: 0;
     background: linear-gradient(to top, black, transparent);
-    padding: clamp(20px, 1.5vw, 40x);
+    padding: clamp(20px, 1.5vw, 40px);
 }
 
 .carosello-titolo p {
@@ -716,7 +716,7 @@ main {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: clamp(12px, 1.5vw, 28px);
+    font-size: clamp(14px, 1.5vw, 28px);
     font-weight: bold;
     color: #ffffff;
     z-index: 10;
@@ -761,7 +761,7 @@ main {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 32px;
+    font-size: clamp(14px, 1.5vw, 28px);
     font-weight: bold;
     color: #ffffff;
     z-index: 10;
@@ -1049,7 +1049,7 @@ main {
     position: fixed;
     bottom: -100px;
     right: 2%;
-    z-index: 9999;
+    z-index: 100;
     background-color: #ff8800;
     color: #ffffff;
     padding: 5px;
@@ -1160,7 +1160,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     background-color: #1E1E1E;
-    z-index: 9999;
+    z-index: 100;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 50px;
@@ -1852,7 +1852,7 @@ main {
     bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 9999;
+    z-index: 100;
     background-color: #ff0000;
     color: #ffffff;
     padding: 10px 20px;
@@ -2652,14 +2652,6 @@ main {
 
     .post_img {
         height: 220px;
-    }
-
-    .swiper-slide .title {
-        font-size: 12pxpx;
-    }
-
-    .carosello-titolo .title {
-        font-size: 12px;
     }
 
     /* POST - SINGLE */

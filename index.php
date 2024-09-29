@@ -55,7 +55,7 @@ $main_categories = get_main_categories();
         </div>
     </div>
 
-    <!-- Pulsante Radio UVM (visibile solo sotto i 1024px) -->
+    <!-- Pulsante Radio UVM  -->
     <div class="radio-uvm-button-container">
         <a href="/radio" class="radio-uvm-button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="radio-uvm-icon">
