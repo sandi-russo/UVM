@@ -1,9 +1,9 @@
 /*!
 Theme Name: UNIVERSOME
 Theme URI: https://github.com/sandi-russo/UVM
-Author: Sandi Russo
+Author: Sandi Russo, Danil Parrello, Filippo Filloramo, Alessandro Guarnera
 Description: Sito Web Testa Multiforme degli Studenti Unime
-Version: 1.0.0
+Version: 1.2.0
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -223,7 +223,7 @@ main {
     font-size: clamp(10px, 1vw, 14px);
     padding: clamp(0.25px, 0.5vw, 2px);
     margin: clamp(0.25px, 1vw, 2px);
-    #ffffff-space: nowrap;
+    white-space: nowrap;
 }
 
 .categories-wrapper {
@@ -2768,7 +2768,6 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-    -webkit-appearance: button;
     border: none;
     outline: none;
     box-shadow: none;
@@ -2783,7 +2782,7 @@ legend {
     display: table;
     max-width: 100%;
     padding: 0px;
-    #ffffff-space: normal;
+    white-space: normal;
 }
 
 /**
