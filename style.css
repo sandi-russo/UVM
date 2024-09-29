@@ -927,9 +927,16 @@ main {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     max-width: 1280px;
     margin: auto;
+}
+
+.footer-col2 {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .footer-title-cat {
@@ -964,11 +971,6 @@ main {
     color: #ffffff;
 }
 
-.footer-col2 {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .footer-button {
     display: block;
     padding-top: clamp(10px, 1.5vw, 12px);
@@ -994,11 +996,13 @@ main {
     display: flex;
     margin-top: clamp(18px, 1.5vw, 24px);
     margin-bottom: clamp(18px, 1.5vw, 24px);
-    margin-left: clamp(8px, 1.5vw, 12px);
-    margin-right: clamp(8px, 1.5vw, 12px);
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 300px;
     align-items: center;
     justify-content: space-between;
-    padding: 0px;
+    padding-left: clamp(10px, 1.5vw, 48px);
+    padding-right: clamp(10px, 1.5vw, 48px);
 }
 
 .footer-info-name {
@@ -2037,136 +2041,6 @@ main {
     color: inherit;
 }
 
-/* CONTACT FORM */
-/* Contenitore principale del form */
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: clamp(16px, 1.5vw, 32px);
-}
-
-/* Header del form */
-.form-header {
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.form-header h2 {
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.form-header p {
-    font-size: 16px;
-    color: #6B7280;
-}
-
-/* Corpo del form */
-.form-body {
-    max-width: 640px;
-    width: 100%;
-    padding: clamp(16px, 1.5vw, 32px);
-    border-radius: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-content {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Griglia del form */
-.form-grid {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: 1fr;
-}
-
-.full-width {
-    grid-column: span 1;
-}
-
-/* Input e textarea */
-.input-container {
-    position: relative;
-    width: 100%;
-}
-
-.input-field {
-    width: 100%;
-    padding: 12px;
-    padding-left: 40px;
-    border: 1px solid #E5E7EB;
-    border-radius: 15px;
-    font-size: 16px;
-    color: black;
-    background-color: #ecebeb;
-}
-
-.input-field::placeholder {
-    color: #9CA3AF;
-}
-
-.input-icon {
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    color: #787878;
-}
-
-/* Selezione del Ruolo con checkbox */
-.role-selection {
-    display: flex;
-    flex-direction: column;
-}
-
-.role-selection label {
-    margin-bottom: 8px;
-    font-size: 16px;
-    color: #374151;
-}
-
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.checkbox-group label {
-    font-size: 16px;
-    color: #374151;
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-group input {
-    margin-right: 8px;
-}
-
-/* Bottone invia */
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-.submit-button {
-    padding: 12px 48px;
-    background-color: #787878;
-    color: #ffffff;
-    font-size: 16px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #f18812;
-}
 
 .titolo-pagina {
     color: black;
@@ -2426,10 +2300,6 @@ main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .grid-home {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -2512,6 +2382,10 @@ main {
     .radio-youtube-container,
     .radio-spotify-container {
         height: 180px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
     }
 }
 

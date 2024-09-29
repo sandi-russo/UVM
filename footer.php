@@ -22,7 +22,7 @@
     <!-- Sezione colonne -->
     <div class="footer-grid">
         <!-- Colonna 1 -->
-        <div>
+        <div class="footer-col2">
             <h4 class="footer-title-cat">Informazioni</h4>
             <p class="footer-text-cat">Testata multiforme degli studenti UniMe. <br> UniVersoMe è una testata
                 giornalistica registrata presso il Tribunale di Messina n.11 del 2015.</p>
@@ -89,17 +89,8 @@
                 <button class="footer-button" style="border: none;">Accedi</button>
             </a>
 
-            <div>
-                <h4 class="footer-title-cat">Vuoi unirti al progetto?</h4>
-                <p class="footer-text-cat">Premi qui sotto per contattarci.</p>
-                <a href="/contattaci/">
-                    <button class="footer-button">Contattaci</button>
-                </a>
-            </div>
-
             <!-- Icone Social -->
             <div>
-
                 <h4 class="footer-title-cat">Social Network</h4>
                 <p class="footer-text-cat">Seguici per rimanere sempre aggiornato!</p>
                 <ul class="footer-div-icon">
@@ -152,8 +143,6 @@
 
             </div>
         </div>
-
-
     </div>
 
     <!-- Link Footer -->
