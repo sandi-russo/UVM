@@ -149,10 +149,24 @@
     <div class="footer-other-info">
         <ul>
             <li>
+                <a href='/cookie-policy-ue'>Cookie Policy</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
                 <a href='/privacy-policy'>Privacy Policy</a>
             </li>
         </ul>
+        <ul>
+            <li>
+                <a href='/terms-and-conditions'>Termini e Condizioni</a>
+            </li>
+        </ul>
     </div>
+
+
+
+
 
 
     <!-- Copyright Footer -->

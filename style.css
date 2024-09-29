@@ -1044,6 +1044,7 @@ main {
     justify-content: center;
     align-items: center;
     padding-bottom: 14px;
+    padding: 5px;
 }
 
 .footer-other-info a {
