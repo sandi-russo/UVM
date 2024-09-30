@@ -96,7 +96,19 @@
 						</a>
 					</div>
 					<nav class="categories-nav">
+
+						<!-- Visualizza l'elenco delle pagine sotto le categorie -->
+						<div class="all-pages">
+							<?php view_all_pages(); ?>
+						</div>
+
+						<!-- Linea divisoria -->
+						<hr class="nav-divider">
+
+						<!-- Visualizza le categorie -->
 						<?php display_categories_with_subcategories(); ?>
+
+
 					</nav>
 					<!-- Icona di ricerca -->
 					<div class="search-space">

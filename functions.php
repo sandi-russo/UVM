@@ -243,11 +243,11 @@ function display_categories_with_subcategories()
     echo '<ul class="main-menu">';
 
     // Verifica se la pagina corrente è "home"
-   /* $is_active_home = is_front_page() ? 'active' : '';
+    /* $is_active_home = is_front_page() ? 'active' : '';
 
-    echo '<li class="category-item ' . $is_active_home . '">';
-    echo '<a href="' . home_url() . '" class="category-link">Home</a>';
-    echo '</li>';*/
+     echo '<li class="category-item ' . $is_active_home . '">';
+     echo '<a href="' . home_url() . '" class="category-link">Home</a>';
+     echo '</li>';*/
 
     foreach ($categories as $category) {
         $subcategories = get_categories(array(
@@ -282,11 +282,11 @@ function display_categories_with_subcategories()
     }
 
     // Verifica se la pagina corrente è "chi-siamo"
-    $is_active_chi_siamo = is_page('chi-siamo') ? 'active' : '';
+    /*$is_active_chi_siamo = is_page('chi-siamo') ? 'active' : '';
 
     echo '<li class="category-item ' . $is_active_chi_siamo . '">';
     echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="category-link">Chi Siamo</a>';
-    echo '</li>';
+    echo '</li>';*/
 
     echo '</ul>';
 }
@@ -297,8 +297,7 @@ function display_categories_with_subcategories()
 /**
  * VISUALIZZO LE CATEGORIE E LE LORO SOTTOCATEGORIE DESKTOP
  */
-function display_mobile_categories()
-{
+function display_mobile_categories() {
     $args = array(
         'parent' => 0,
         'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')),
@@ -315,6 +314,7 @@ function display_mobile_categories()
     echo '</div>';
     echo '</li>';
 
+    // Aggiungi le categorie
     foreach ($categories as $category) {
         $subcategories = get_categories(array(
             'parent' => $category->term_id,
@@ -322,11 +322,9 @@ function display_mobile_categories()
         ));
         $has_subcategories = !empty($subcategories);
 
-        // Verifica se la categoria è quella corrente
         $is_active = is_category($category->term_id) ? 'active' : '';
 
         echo '<li class="menu-item ' . $is_active . '">';
-
         echo '<div class="menu-item-content">';
         echo '<a href="' . get_category_link($category->term_id) . '" class="menu-link">' . $category->name . '</a>';
 
@@ -339,7 +337,6 @@ function display_mobile_categories()
         if ($has_subcategories) {
             echo '<ul class="submenu hidden">';
             foreach ($subcategories as $subcategory) {
-                // Verifica se la sottocategoria è quella corrente
                 $is_active_sub = is_category($subcategory->term_id) ? 'active' : '';
                 echo '<li><a href="' . get_category_link($subcategory->term_id) . '" class="submenu-link ' . $is_active_sub . '">' . $subcategory->name . '</a></li>';
             }
@@ -349,22 +346,59 @@ function display_mobile_categories()
         echo '</li>';
     }
 
-    // Aggiungi il link per la pagina "Radio"
-    echo '<li class="menu-item">';
-    echo '<div class="menu-item-content">';
-    echo '<a href="' . get_permalink(get_page_by_path('radio')) . '" class="menu-link">Radio</a>';
-    echo '</div>';
-    echo '</li>';
+    // Elenca tutte le pagine pubblicate
+    $pages = get_pages(array('sort_column' => 'post_title', 'sort_order' => 'asc'));
+    foreach ($pages as $page) {
+        $is_active = is_page($page->ID) ? 'active' : '';
 
-    // Aggiungi il link per la pagina "Chi Siamo"
-    echo '<li class="menu-item">';
-    echo '<div class="menu-item-content">';
-    echo '<a href="' . get_permalink(get_page_by_path('chi-siamo')) . '" class="menu-link">Chi Siamo</a>';
-    echo '</div>';
-    echo '</li>';
+        echo '<li class="menu-item ' . $is_active . '">';
+        echo '<div class="menu-item-content">';
+        echo '<a href="' . get_permalink($page->ID) . '" class="menu-link">' . esc_html($page->post_title) . '</a>';
+        echo '</div>';
+        echo '</li>';
+    }
 
-    echo '</ul>';
+    echo '</ul>'; // Fine della lista non ordinata
 }
+
+
+
+/**
+ * Visualizzo tutte le pagine
+ */
+function view_all_pages()
+{
+    // Ottieni tutte le pagine pubblicate
+    $pages = get_pages(array('sort_column' => 'post_title', 'sort_order' => 'asc'));
+
+    // Inizio dell'output HTML
+    echo '<div class="all-pages">';
+    echo '<ul>'; // Inizio della lista non ordinata
+
+    // Aggiungi il link alla homepage
+    $is_active_home = is_front_page() ? 'active' : '';
+    echo '<li class="category-item ' . $is_active_home . '">';
+    echo '<a href="' . home_url() . '" class="category-link">Home</a>';
+    echo '</li>';
+
+    // Elenca tutte le altre pagine
+    foreach ($pages as $page) {
+        // Controlla se la pagina corrente è quella visualizzata
+        $is_active = is_page($page->ID) ? 'active' : '';
+
+        // Crea un link per ogni pagina con classe attiva se necessario
+        echo '<li class="category-item ' . $is_active . '">';
+        echo '<a href="' . get_permalink($page->ID) . '" class="category-link">' . esc_html($page->post_title) . '</a>';
+        echo '</li>';
+    }
+
+    echo '</ul>'; // Fine della lista non ordinata
+    echo '</div>';
+}
+
+
+
+
 
 
 /**
@@ -577,7 +611,8 @@ function custom_user_profile_fields($user)
             <td>
                 <input type="text" class="regular-text" name="instagram" value="<?php echo esc_attr($instagram); ?>"
                     id="instagram" /><br />
-                <span class="description"><?php _e("Inserisci il tuo profilo Instagram."); ?></span>
+                <span
+                    class="description"><?php _e("Inserisci il tuo profilo Instagram.<br>INSERISCI L'USERNAME, NON IL LINK COMPLETO."); ?></span>
             </td>
         </tr>
 
@@ -587,7 +622,8 @@ function custom_user_profile_fields($user)
             <td>
                 <input type="text" class="regular-text" name="threads" value="<?php echo esc_attr($threads); ?>"
                     id="threads" /><br />
-                <span class="description"><?php _e("Inserisci il tuo profilo threads."); ?></span>
+                <span
+                    class="description"><?php _e("Inserisci il tuo profilo Threads.<br>INSERISCI L'USERNAME, NON IL LINK COMPLETO."); ?></span>
             </td>
         </tr>
 
@@ -597,7 +633,8 @@ function custom_user_profile_fields($user)
             <td>
                 <input type="text" class="regular-text" name="linkedin" value="<?php echo esc_attr($linkedin); ?>"
                     id="linkedin" /><br />
-                <span class="description"><?php _e("Inserisci il tuo profilo LinkedIn."); ?></span>
+                <span
+                    class="description"><?php _e("Inserisci il tuo profilo LinkedIn.<br>INSERISCI L'USERNAME, NON IL LINK COMPLETO."); ?></span>
             </td>
         </tr>
 
