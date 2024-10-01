@@ -843,18 +843,50 @@ function save_custom_avatar($user_id)
         require_once(ABSPATH . 'wp-admin/includes/file.php');
         require_once(ABSPATH . 'wp-admin/includes/media.php');
 
+        // Carica l'immagine come allegato
         $attachment_id = media_handle_upload('custom_avatar', 0);
 
         if (is_wp_error($attachment_id)) {
             error_log('Errore nel caricamento dell\'avatar: ' . $attachment_id->get_error_message());
         } else {
             $attachment_url = wp_get_attachment_url($attachment_id);
-            update_user_meta($user_id, 'custom_avatar', $attachment_url);
+
+            // Ritaglia l'immagine per renderla circolare
+            $file_path = get_attached_file($attachment_id);
+            $image = wp_get_image_editor($file_path);
+
+            if (!is_wp_error($image)) {
+                // Ottieni dimensioni dell'immagine
+                $size = $image->get_size();
+                $width = $size['width'];
+                $height = $size['height'];
+
+                // Calcola il lato minimo per rendere l'immagine quadrata
+                $min_size = min($width, $height);
+                $x = ($width - $min_size) / 2;
+                $y = ($height - $min_size) / 2;
+
+                // Ritaglia l'immagine come quadrata
+                $image->crop($x, $y, $min_size, $min_size, 150, 150);
+
+                // Salva l'immagine ritagliata
+                $saved = $image->save($file_path);
+
+                if (!is_wp_error($saved)) {
+                    // Applica il ritaglio circolare via CSS (aggiungiamo un campo meta)
+                    update_user_meta($user_id, 'custom_avatar', $attachment_url);
+                } else {
+                    error_log('Errore nel salvataggio dell\'immagine ritagliata: ' . $saved->get_error_message());
+                }
+            } else {
+                error_log('Errore nell\'editor di immagini: ' . $image->get_error_message());
+            }
         }
     }
 }
 add_action('personal_options_update', 'save_custom_avatar');
 add_action('edit_user_profile_update', 'save_custom_avatar');
+
 
 
 
@@ -922,13 +954,14 @@ function use_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
     if ($user && is_object($user)) {
         $custom_avatar = get_user_meta($user->ID, 'custom_avatar', true);
         if ($custom_avatar) {
-            $avatar = "<img alt='{$alt}' src='{$custom_avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+            $avatar = "<img alt='{$alt}' src='{$custom_avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' style='border-radius: 50%; object-fit: cover;' />";
         }
     }
 
     return $avatar;
 }
 add_filter('get_avatar', 'use_custom_avatar', 10, 5);
+
 
 // Applica le modifiche solo nella pagina del profilo
 
