@@ -45,7 +45,7 @@ get_header();
             <div class="page-author-avatar">
                 <?php echo $author_avatar; ?>
                 <h1 class="page-title">
-                    <?php printf(esc_html__('Articoli di %s', 'universome'), '<span class="page-element-info">' . esc_html($author_name) . '</span>'); ?>
+                    <?php printf(esc_html__('Articoli di %s', 'universome'), '<span class="page-element-info">' . get_author_full_name_uppercase($author_id). '</span>'); ?>
                 </h1>
             </div>
         </header><!-- .page-header -->

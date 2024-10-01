@@ -157,7 +157,7 @@ $main_categories = get_main_categories();
 
                                                     <!-- Nome dell'autore cliccabile che reindirizza alla pagina dell'autore -->
                                                     <a href="<?php echo esc_url($author_posts_url); ?>" class="card_author-link">
-                                                        <p class="card_author"><?php echo esc_html($display_name); ?></p>
+                                                        <p class="card_author"><?php echo get_author_full_name_uppercase($author_id); ?></p>
                                                     </a>
 
                                                     <!-- Data del post -->
@@ -217,7 +217,7 @@ $main_categories = get_main_categories();
 
                                                 <!-- Nome dell'autore cliccabile che reindirizza alla pagina dell'autore -->
                                                 <a href="<?php echo esc_url($author_posts_url); ?>" class="card_author-link">
-                                                    <p class="card_author"><?php echo esc_html($display_name); ?></p>
+                                                    <p class="card_author"><?php echo get_author_full_name_uppercase($author_id); ?></p>
                                                 </a>
 
                                                 <!-- Data del post -->

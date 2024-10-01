@@ -182,6 +182,7 @@ main {
 .navbar-bottom .navbar-logo {
     display: flex;
     align-items: center;
+    padding: 8px;
 }
 
 

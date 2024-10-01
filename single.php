@@ -87,7 +87,7 @@ $full_linkedin_url = !empty($linkedin) ? 'https://www.linkedin.com/in/' . esc_at
                         <!-- Dettagli dell'autore -->
                         <div class="author-details">
                             <a href="<?php echo esc_url($author_posts_url); ?>" class="author-name">
-                                <?php echo esc_html($author_name); ?>
+                                <?php echo get_author_full_name_uppercase($author_id); ?>
                             </a>
                             <div class="post-date">
                                 <?php echo esc_html($post_date); ?>

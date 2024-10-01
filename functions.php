@@ -60,6 +60,18 @@ function yoast_seo_admin_user_remove_social($contactmethods)
     return $contactmethods;
 }
 
+
+/**
+ *  USER NAME AND SURNAME IN UPPERCASE
+ */
+function get_author_full_name_uppercase($author_id)
+{
+    $first_name = strtoupper(get_the_author_meta('first_name', $author_id));
+    $last_name = strtoupper(get_the_author_meta('last_name', $author_id));
+    return $first_name . ' ' . $last_name;
+}
+
+
 /** 
  * Modifica il form di login
  */
@@ -297,7 +309,8 @@ function display_categories_with_subcategories()
 /**
  * VISUALIZZO LE CATEGORIE E LE LORO SOTTOCATEGORIE DESKTOP
  */
-function display_mobile_categories() {
+function display_mobile_categories()
+{
     $args = array(
         'parent' => 0,
         'exclude' => array(get_cat_ID('senza categoria'), get_cat_ID('evidenza'), get_cat_ID('Redazione UniVersoMe')),

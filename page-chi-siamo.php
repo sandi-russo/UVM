@@ -84,9 +84,9 @@ get_header(); ?>
                             }
 
                             // Ottieni il nome completo, la biografia, l'email e il ruolo UVM dell'utente
-                            $full_name = ucwords(esc_html($user->first_name . ' ' . $user->last_name));
+                            $full_name = strtoupper(esc_html($user->first_name . ' ' . $user->last_name));
                             $biography = esc_html(get_the_author_meta('description', $user->ID));
-                            $ruolo_uvm = ucwords(str_replace('_', ' ', esc_html(get_the_author_meta('ruolo_uvm', $user->ID))));
+                            $ruolo_uvm = strtoupper(str_replace('_', ' ', esc_html(get_the_author_meta('ruolo_uvm', $user->ID))));
 
                             // Ottieni i nomi utenti dei social media
                             $instagram_username = esc_html(get_the_author_meta('instagram', $user->ID));
