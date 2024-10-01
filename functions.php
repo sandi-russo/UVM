@@ -381,8 +381,22 @@ function view_all_pages()
     echo '<a href="' . home_url() . '" class="category-link">Home</a>';
     echo '</li>';
 
+    // Aggiungi il link alla pagina della radio subito dopo la homepage
+    $radio_page = get_page_by_path('radio');
+    if ($radio_page) {
+        $is_active_radio = is_page($radio_page->ID) ? 'active' : '';
+        echo '<li class="category-item ' . $is_active_radio . '">';
+        echo '<a href="' . get_permalink($radio_page->ID) . '" class="category-link">' . esc_html($radio_page->post_title) . '</a>';
+        echo '</li>';
+    }
+
     // Elenca tutte le altre pagine
     foreach ($pages as $page) {
+        // Salta la pagina della radio poiché è già stata aggiunta
+        if ($page->post_name == 'radio') {
+            continue;
+        }
+
         // Controlla se la pagina corrente è quella visualizzata
         $is_active = is_page($page->ID) ? 'active' : '';
 
@@ -665,6 +679,9 @@ function custom_user_profile_fields($user)
             <td>
                 <select name="ruolo_uvm" id="ruolo_uvm">
                     <option value="">Seleziona un ruolo</option>
+                    </option>
+                    <option value="membro" <?php selected($ruolo_uvm, 'membro'); ?>>Membro
+                    </option>
                     <option value="caposervizio" <?php selected($ruolo_uvm, 'caposervizio'); ?>>Caposervizio</option>
                     <option value="redattore" <?php selected($ruolo_uvm, 'redattore'); ?>>Redattore</option>
                     <option value="responsabile_unit" <?php selected($ruolo_uvm, 'responsabile_unit'); ?>>Responsabile UNIT
