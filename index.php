@@ -293,6 +293,9 @@ $main_categories = get_main_categories();
             <!-- YouTube -->
             <!-- <?php echo youtube_embedded(); ?> -->
 
+           <!-- RADIO UVM -->
+           <iframe src="https://radiouvm.unime.it/public/universome/embed?theme=dark" frameborder="0" allowtransparency="true" style="width: 100%; min-height: 150px; border: 0;"></iframe> 
+
             <!-- Pulsante per ascoltare la radio -->
         </div><!-- .sidebar-content -->
         <!-- Pulsante allineato a destra -->
