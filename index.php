@@ -291,7 +291,7 @@ $main_categories = get_main_categories();
             </div>
 
             <!-- YouTube -->
-            <?php echo youtube_embedded(); ?>
+            <!-- <?php echo youtube_embedded(); ?> -->
 
             <!-- Pulsante per ascoltare la radio -->
         </div><!-- .sidebar-content -->
