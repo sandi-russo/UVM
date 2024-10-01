@@ -3,7 +3,7 @@ Theme Name: UNIVERSOME
 Theme URI: https://github.com/sandi-russo/UVM
 Author: Sandi Russo, Danil Parrello, Filippo Filloramo, Alessandro Guarnera
 Description: Sito Web Testa Multiforme degli Studenti Unime
-Version: 1.2.0
+Version: 1.2.5
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -67,9 +67,9 @@ img {
     display: flex;
 }
 
-/*.custom-background {
+.custom-background {
     background-color: #e2e2e2;
-}*/
+}
 
 main {
     padding: 0px;
@@ -776,7 +776,7 @@ main {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: clamp(14px, 1.5vw, 28px);
+    font-size: clamp(14px, 2vw, 36px);
     font-weight: bold;
     color: #ffffff;
     z-index: 10;
@@ -1620,8 +1620,9 @@ main {
     border-radius: 8px;
     padding-left: clamp(6px, 1.5vw, 10px);
     padding-right: clamp(6px, 1.5vw, 10px);
-    margin-top: clamp(18px, 1.5vw, 24px);
-    margin-bottom: clamp(18px, 1.5vw, 24px);
+    margin: clamp(16px, 1.5vw, 24px);
+    margin-left: clamp(5px, 1.5vw, 8px);
+    margin-right: clamp(5px, 1.5vw, 8px);
 }
 
 /* AVATAR AUTORE */
@@ -1862,17 +1863,44 @@ main {
     margin-top: 16px;
 }
 
+
+/* GESTIONE TITOLI ARTICOLO */
 /* GESTIONE TITOLI ARTICOLO */
 .articolo h1,
 .articolo h2,
 .articolo h3,
 .articolo h4,
 .articolo h5,
-.articolo h6 {
-    margin: 20px 0px 10px 0px;
-    font-weight: bold;
-    text-transform: uppercase
+.articolo h6,
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+    text-align: center;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: bold !important; /* Assicurati che il font-weight bold venga applicato */
+    text-transform: uppercase;
+    margin-top: clamp(8px, 1.5vw, 14px);
+    margin-bottom: clamp(8px, 1.5vw, 14px);
+    color: #000000 !important; /* Assicurati che il colore nero venga applicato */
 }
+
+/* GESTIONE DEL TESTO DELL'ARTICOLO */
+.articolo, .articolo * {
+    font-family: 'Calibri', serif !important;
+    font-size: clamp(12px, 3vw, 16px);
+    color: black; /* Colore grigio per il testo normale */
+}
+
+/* Mantieni i testi bold se specificati */
+.articolo strong,
+.articolo b {
+    font-weight: bold;
+    color: #000000 !important; /* Il testo bold sarà nero */
+}
+
 
 .articolo img,
 .entry-content img {
@@ -1881,7 +1909,8 @@ main {
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-    margin: 20px auto;
+    margin-top: clamp(8px, 1.5vw, 14px);
+    margin-bottom: clamp(8px, 1.5vw, 14px);
     box-sizing: border-box;
 }
 
@@ -1891,7 +1920,8 @@ main {
 .entry-content figure {
     max-width: 100%;
     width: auto !important;
-    margin: 20px auto;
+    margin-top: clamp(8px, 1.5vw, 14px);
+    margin-bottom: clamp(6px, 1.5vw, 12px);
     box-sizing: border-box;
 }
 
@@ -1921,7 +1951,8 @@ main {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 20px auto;
+    margin-top: clamp(8px, 1.5vw, 14px);
+    margin-bottom: clamp(8px, 1.5vw, 14px);
 }
 
 /* Per gestire immagini allineate */
@@ -1951,9 +1982,7 @@ main {
     align-items: center;
     text-align: left;
     font-size: clamp(12px, 1.5vw, 20px);
-
     padding: 0;
-    margin: 0;
     overflow-x: visible;
     width: 100%;
     box-sizing: border-box;
@@ -1962,16 +1991,13 @@ main {
 .page-content,
 .entry-content,
 .entry-summary {
-    margin: 1.5em 0 0;
+    margin-top: clamp(4px, 1.5vw, 6px);
+    margin-bottom: clamp(4px, 1.5vw, 6px);
 }
 
 .side_img {
     height: 100px;
     width: auto;
-}
-
-.entry-content p {
-    font-size: clamp(12px, 3vw, 18px);
 }
 
 .side_text {
@@ -3133,9 +3159,6 @@ img {
     object-fit: cover;
 }
 
-figure {
-    margin: 1em 0;
-}
 
 table {
     margin: 0 0 1.5em;
@@ -3371,12 +3394,6 @@ textarea {
 
 .updated:not(.published) {
     display: none;
-}
-
-.page-content,
-.entry-content,
-.entry-summary {
-    margin: 1.5em 0 0;
 }
 
 .page-links {
