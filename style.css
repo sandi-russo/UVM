@@ -173,7 +173,7 @@ main {
 }
 
 .navbar-bottom .navbar-logo img {
-    height: clamp(15px, 2.5vw, 40px);
+    height: clamp(15px, 2.5vw, 30px);
     width: auto;
     display: block;
 }
@@ -1430,7 +1430,6 @@ main {
     height: 40px;
     line-height: 40px;
     border-radius: 5px;
-    margin-bottom: 10px;
 }
 
 #episode-title {
@@ -1441,7 +1440,13 @@ main {
 }
 
 .latest-episode p {
-    margin: 10px 0;
+    margin: 0px;
+}
+
+#podcast-name {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
 }
 
 .play-icon {
@@ -1474,7 +1479,7 @@ main {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 
@@ -1511,7 +1516,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 #progress-slider {
@@ -1547,6 +1552,25 @@ main {
 #duration {
     font-size: clamp(10px, 1.5vw, 12px);
     color: #e2e2e2;
+}
+
+/* AZURACAST */
+.artist-name {
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: #787878;
+}
+
+.radio-control-play-button {
+    background-color: #242424;
+}
+
+.azuracast-logo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    color: blue;
 }
 
 /* POST - SINGLE */
@@ -1724,7 +1748,6 @@ main {
 .card_title {
     margin-bottom: clamp(2px, 1.5vw, 6px);
     margin-top: clamp(2px, 1.5vw, 6px);
-    font-size: 20px;
     line-height: 28px;
     font-weight: 700;
     font-size: clamp(14px, 1.5vw, 20px);
@@ -1900,7 +1923,7 @@ main {
 /* GESTIONE DEL TESTO DELL'ARTICOLO */
 .articolo,
 .articolo * {
-    font-family: 'Calibri', serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     font-size: clamp(12px, 3vw, 16px);
     color: black;
     /* Colore grigio per il testo normale */
@@ -2059,13 +2082,13 @@ main {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.container {
+.container-banner {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-template-rows: 1fr;
-    gap: 0px 20px; 
+    gap: 0px 20px;
     grid-template-areas:
         ". .";
 }

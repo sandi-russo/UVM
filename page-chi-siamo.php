@@ -10,7 +10,7 @@ get_header(); ?>
 <div class="chi-siamo-banner">
     <div class="chi-siamo-banner-space">
     </div>
-    <div class="container">
+    <div class="container-banner">
         <!-- Descrizione UniVersoMe -->
         <div class="chi-siamo-description">
         <h1 class="chi-siamo-title">UNIVERSOME</h1>
@@ -86,7 +86,7 @@ get_header(); ?>
                 foreach ($units as $unit => $users) {
                     if (!empty($users)) {
                         echo '<div class="chi-siamo-unit-section">';
-                        echo '<div class="chi-siamo-unit-title">' . strtoupper(esc_html($unit)) . '</div>';
+                        echo '<div class="chi-siamo-unit-title">' . mb_strtoupper(esc_html($unit)) . '</div>';
                         echo '<div class="chi-siamo-grid">';
 
                         foreach ($users as $user) {
@@ -102,9 +102,9 @@ get_header(); ?>
                             }
 
                             // Ottieni il nome completo, la biografia, l'email e il ruolo UVM dell'utente
-                            $full_name = strtoupper(esc_html($user->first_name . ' ' . $user->last_name));
+                            $full_name = mb_strtoupper(esc_html($user->first_name . ' ' . $user->last_name));
                             $biography = esc_html(get_the_author_meta('description', $user->ID));
-                            $ruolo_uvm = strtoupper(str_replace('_', ' ', esc_html(get_the_author_meta('ruolo_uvm', $user->ID))));
+                            $ruolo_uvm = mb_strtoupper(str_replace('_', ' ', esc_html(get_the_author_meta('ruolo_uvm', $user->ID))));
 
                             // Ottieni i nomi utenti dei social media
                             $instagram_username = esc_html(get_the_author_meta('instagram', $user->ID));

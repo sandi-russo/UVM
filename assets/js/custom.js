@@ -48,7 +48,7 @@ async function displayLatestEpisode() {
 
     document.getElementById('episode-cover').src = episode.images[0].url;
     document.getElementById('episode-title').textContent = episode.name;
-    document.getElementById('podcast-name').textContent = podcast.name;
+    // document.getElementById('podcast-name').textContent = podcast.name;
     document.getElementById('episode-date').textContent = new Date(episode.release_date).toLocaleDateString('it-IT');
 
     // Aggiungiamo un pulsante per aprire l'episodio completo su Spotify
@@ -146,9 +146,8 @@ window.addEventListener('resize', checkOverflow);
 // Ricalcola ogni 15 secondi
 setInterval(checkOverflow, 15000);
 
-
- /* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
- document.addEventListener("DOMContentLoaded", function () {
+/* CALCOLO AUTOMATICO PADDING PER STICKY HEADER O NAVBAR MOBILE */
+document.addEventListener("DOMContentLoaded", function () {
     var stickyHeader = document.querySelector('.navbar-top');
     var mobileLastModified = document.querySelector('.mobile-last-modified');
     var content = document.querySelector('.main');
@@ -245,6 +244,81 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('resize', adjustCardHeights);
     }
 });
+
+
+/* AZURACAST */
+const apiUrl = 'https://radiouvm.unime.it/api/nowplaying'; // Endpoint JSON per nowplaying
+const defaultImage = 'default_image.jpg'; // Imposta qui l'immagine predefinita
+const audioUrl = 'https://radiouvm.unime.it:8000/radio.mp3'; // URL audio
+let audio_radio = new Audio(audioUrl); // Crea un oggetto Audio
+let isPlaying_radio = false; // Stato di riproduzione
+
+// Funzione per ottenere i metadati
+async function getNowPlaying() {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Errore di rete');
+        }
+        const data = await response.json();
+
+        if (data.length > 0) { // Verifica che ci siano dati
+            const nowPlaying = data[0].now_playing; // Accedi al primo elemento dell'array
+            const song = nowPlaying.song; // Ottieni i dettagli della canzone
+
+            // Aggiorna i metadati nel DOM
+            document.getElementById('episode-title-azuracast').textContent = song.title || 'Titolo sconosciuto';
+            document.getElementById('artist-name').textContent = song.artist || 'Artista sconosciuto';
+            document.getElementById('album-art').src = song.art || defaultImage;
+        } else {
+            console.error('Impossibile collegarsi alla radio.');
+        }
+    } catch (error) {
+        console.error('Errore nell\'estrazione dei dati:', error);
+    }
+}
+
+// Funzione per gestire la riproduzione
+function togglePlay() {
+    const playButton = document.getElementById('play-button');
+    if (isPlaying_radio) {
+        audio_radio.pause();
+        playButton.setAttribute('title', 'Play');
+        playButton.innerHTML = `
+            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z"/>
+            </svg>
+        `;
+        isPlaying_radio = false;
+    } else {
+        audio_radio.play().catch(error => {
+            console.error('Errore nella riproduzione:', error);
+        });
+        playButton.setAttribute('title', 'Pause');
+        playButton.innerHTML = `
+            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+                    <rect width="4" height="14" x="6" y="5" rx="1"/>
+                    <rect width="4" height="14" x="14" y="5" rx="1"/>
+                </g>
+            </svg>
+        `;
+        isPlaying_radio = true;
+    }
+}
+
+// Aggiungi evento click al pulsante play/pause
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('play-button').addEventListener('click', togglePlay);
+
+    // Chiamata iniziale per ottenere i metadati
+    getNowPlaying();
+
+    // Aggiornamento dei metadati ogni 5 secondi
+    setInterval(getNowPlaying, 5000); // Aggiorna ogni 5 secondi
+});
+
+
 
 
 /* LOGO NAVBAR MOBILE */

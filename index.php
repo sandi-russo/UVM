@@ -294,11 +294,40 @@ $main_categories = get_main_categories();
             <!-- <?php echo youtube_embedded(); ?> -->
 
             <!-- RADIO UVM -->
-            <iframe src="https://radiouvm.unime.it/public/universome/embed?theme=dark" frameborder="0"
-                allowtransparency="true" style="width: 100%; min-height: 150px; border: 0;"></iframe>
+            <div class="latest-episode">
+                <img src="default_image.jpg" alt="Copertina Album" id="album-art">
+                <div class="info">
+                    <div class="scroll-container episode-title" id="episode-title-azuracast">Caricamento...</div>
+                    <div class="artist-name" id="artist-name">Caricamento...</div>
+                </div>
+                <button type="button" title="Play" aria-label="Play" class="radio-control-play-button" id="play-button">
+                    <!-- Icona di Play -->
+                    <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                        height="24">
+                        <path fill="currentColor"
+                            d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z" />
+                    </svg>
+                </button>
+                <svg class="azuracast-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    class="radio-uvm-icon">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" color="currentColor">
+                        <path d="M7 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0m0 0V2c.333.5.6 2.6 3 3" />
+                        <circle cx="10.5" cy="19.5" r="2.5" />
+                        <circle cx="20" cy="18" r="2" />
+                        <path
+                            d="M13 19.5V11c0-.91 0-1.365.247-1.648c.246-.282.747-.35 1.748-.487c3.014-.411 5.206-1.667 6.375-2.436c.28-.184.42-.276.525-.22s.105.223.105.554v11.163" />
+                        <path d="M13 13c4.8 0 8-2.333 9-3" />
+                    </g>
+                </svg>
+            </div>
 
-            <!-- Pulsante per ascoltare la radio -->
+
+
+
         </div><!-- .sidebar-content -->
+
+        <!-- Pulsante per ascoltare la radio -->
         <!-- Pulsante allineato a destra -->
         <div class="sidebar-button-container">
             <a href="/radio" class="sidebar-button">

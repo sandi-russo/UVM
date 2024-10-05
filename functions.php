@@ -66,8 +66,8 @@ function yoast_seo_admin_user_remove_social($contactmethods)
  */
 function get_author_full_name_uppercase($author_id)
 {
-    $first_name = strtoupper(get_the_author_meta('first_name', $author_id));
-    $last_name = strtoupper(get_the_author_meta('last_name', $author_id));
+    $first_name = mb_strtoupper(get_the_author_meta('first_name', $author_id));
+    $last_name = mb_strtoupper(get_the_author_meta('last_name', $author_id));
     return $first_name . ' ' . $last_name;
 }
 
