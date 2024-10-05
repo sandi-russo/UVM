@@ -1637,7 +1637,7 @@ main {
     object-fit: cover;
 }
 
-.author-avatar img{
+.author-avatar img {
     width: 40px;
     height: 40px;
     border-radius: 50% !important;
@@ -1888,25 +1888,30 @@ main {
 .entry-content h6 {
     text-align: center;
     font-size: clamp(14px, 1.5vw, 18px);
-    font-weight: bold !important; /* Assicurati che il font-weight bold venga applicato */
+    font-weight: bold !important;
+    /* Assicurati che il font-weight bold venga applicato */
     text-transform: uppercase;
     margin-top: clamp(8px, 1.5vw, 14px);
     margin-bottom: clamp(8px, 1.5vw, 14px);
-    color: #000000 !important; /* Assicurati che il colore nero venga applicato */
+    color: #000000 !important;
+    /* Assicurati che il colore nero venga applicato */
 }
 
 /* GESTIONE DEL TESTO DELL'ARTICOLO */
-.articolo, .articolo * {
+.articolo,
+.articolo * {
     font-family: 'Calibri', serif !important;
     font-size: clamp(12px, 3vw, 16px);
-    color: black; /* Colore grigio per il testo normale */
+    color: black;
+    /* Colore grigio per il testo normale */
 }
 
 /* Mantieni i testi bold se specificati */
 .articolo strong,
 .articolo b {
     font-weight: bold;
-    color: #000000 !important; /* Il testo bold sarà nero */
+    color: #000000 !important;
+    /* Il testo bold sarà nero */
 }
 
 
@@ -2038,16 +2043,15 @@ main {
 /* PAGINA CHI SIAMO */
 .chi-siamo-banner {
     position: relative;
-    box-shadow: 0 5px 5px -5px #b3b3b3;
     width: 100%;
     overflow: hidden;
     height: 400px;
     background-color: #1E1E1E;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding: clamp(24px, 1.5vw, 48px);
+    padding-left: clamp(24px, 1.5vw, 48px);
+    padding-right: clamp(24px, 1.5vw, 48px);
 }
 
 .chi-siamo-banner-space {
@@ -2055,8 +2059,35 @@ main {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+.container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 20px; 
+    grid-template-areas:
+        ". .";
+}
+
+.chi-siamo-banner-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.chi-siamo-banner-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .chi-siamo-title {
-    font-size: clamp(24px, 1.5vw, 48px);
+    font-size: clamp(18px, 1.5vw, 36px);
     font-weight: 900;
     color: #ffffff;
     margin-top: 0px;
@@ -2072,10 +2103,10 @@ main {
 }
 
 .chi-siamo-description p {
-    margin: 0;
+    margin: 0px;
     padding: 0px;
     color: #ffffff;
-    font-size: clamp(12px, 1.5vw, 20px);
+    font-size: clamp(10px, 1.5vw, 16px);
     text-align: left;
     line-height: noerm;
 }

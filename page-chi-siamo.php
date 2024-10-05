@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Team Page
  */
@@ -9,15 +10,32 @@ get_header(); ?>
 <div class="chi-siamo-banner">
     <div class="chi-siamo-banner-space">
     </div>
-    <!-- Descrizione UniVersoMe -->
-    <h1 class="chi-siamo-title">UNIVERSOME</h1>
-    <div class="chi-siamo-description">
-        <p><b>UniVersoMe</b> è la piattaforma multimediale ufficiale dell'<b>Università degli Studi di Messina</b>, un progetto dinamico e in continua evoluzione che offre uno spazio privilegiato per la produzione e la diffusione di contenuti giornalistici creati dagli studenti. Si tratta di un ambiente di condivisione e crescita, dove i giovani talenti dell'ateneo possono esprimere le proprie idee, affinare le loro capacità e confrontarsi con il mondo dell'informazione universitaria.</p>
-        <p>Ma UniVersoMe non si ferma agli articoli. Il progetto include RadioUVM, la web radio ufficiale dell'Università degli Studi di Messina, che arricchisce ulteriormente l'offerta editoriale con programmi radiofonici di musica, intrattenimento e approfondimento culturale.</p>
-        <p>Vuoi entrare a far parte della redazione o scoprire di più su UniVersoMe? Puoi unirti anche tu, portando il tuo contributo, le tue passioni e le tue competenze per fare la differenza e crescere insieme al team.</p>
-        <p>Di seguito trovi l'elenco completo di tutti i partecipanti al progetto, divisi per unità di appartenenza, con i relativi ruoli ed eventuali collegamenti ai rispettivi social.</p>
+    <div class="container">
+        <!-- Descrizione UniVersoMe -->
+        <div class="chi-siamo-description">
+        <h1 class="chi-siamo-title">UNIVERSOME</h1>
+            <p><b>UniVersoMe</b> è la piattaforma multimediale ufficiale dell'<b>Università degli Studi di Messina</b>,
+                un
+                progetto dinamico e in continua evoluzione che offre uno spazio privilegiato per la produzione e la
+                diffusione di contenuti giornalistici creati dagli studenti. Si tratta di un ambiente di condivisione e
+                crescita, dove i giovani talenti dell'ateneo possono esprimere le proprie idee, affinare le loro
+                capacità e
+                confrontarsi con il mondo dell'informazione universitaria.</p>
+            <p>Ma UniVersoMe non si ferma agli articoli. Il progetto include RadioUVM, la web radio ufficiale
+                dell'Università degli Studi di Messina, che arricchisce ulteriormente l'offerta editoriale con programmi
+                radiofonici di musica, intrattenimento e approfondimento culturale.</p>
+            <p>Vuoi entrare a far parte della redazione o scoprire di più su UniVersoMe? Puoi unirti anche tu, portando
+                il
+                tuo contributo, le tue passioni e le tue competenze per fare la differenza e crescere insieme al team.
+            </p>
+            <p>Di seguito trovi l'elenco completo di tutti i partecipanti al progetto, divisi per unità di appartenenza,
+                con
+                i relativi ruoli ed eventuali collegamenti ai rispettivi social.</p>
+        </div>
+        <div class="chi-siamo-banner-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8SdsR9K6qNNxkExuSRl5RWtaas2EIeFLl8A&">
+        </div>
     </div>
-</div>
 </div>
 
 <main class="custom-background">
@@ -104,26 +122,43 @@ get_header(); ?>
                             // Mostra le informazioni dell'utente
                             ?>
                             <div class="chi-siamo-card">
-                                <img src="<?php echo esc_url($avatar); ?>" class="chi-siamo-avatar" alt="<?php echo esc_attr($full_name); ?>" />
+                                <img src="<?php echo esc_url($avatar); ?>" class="chi-siamo-avatar"
+                                    alt="<?php echo esc_attr($full_name); ?>" />
                                 <div class="chi-siamo-info">
                                     <p class="chi-siamo-role"><?php echo esc_html($ruolo_uvm); ?></p>
-                                    <h4 class="chi-siamo-name"><a href="<?php echo esc_url($author_posts_url); ?>"><?php echo esc_html($full_name); ?></a></h4>
+                                    <h4 class="chi-siamo-name"><a
+                                            href="<?php echo esc_url($author_posts_url); ?>"><?php echo esc_html($full_name); ?></a>
+                                    </h4>
                                     <div class="chi-siamo-social-icons">
                                         <?php if ($instagram_url): ?>
-                                            <a href="<?php echo esc_url($instagram_url); ?>" target="_blank" class="chi-siamo-social-icon">
-                                                <svg class="chi-siamo-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                    <path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                                            <a href="<?php echo esc_url($instagram_url); ?>" target="_blank"
+                                                class="chi-siamo-social-icon">
+                                                <svg class="chi-siamo-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
                                                 </svg>
                                             </a>
                                         <?php endif; ?>
                                         <?php if ($threads_url): ?>
-                                            <a href="<?php echo esc_url($threads_url); ?>" target="_blank" class="chi-siamo-social-icon">
-                                                <svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4" color="currentColor"/></svg>
+                                            <a href="<?php echo esc_url($threads_url); ?>" target="_blank"
+                                                class="chi-siamo-social-icon">
+                                                <svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="1.5"
+                                                        d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4"
+                                                        color="currentColor" />
+                                                </svg>
                                             </a>
                                         <?php endif; ?>
                                         <?php if ($linkedin_url): ?>
-                                            <a href="<?php echo esc_url($linkedin_url); ?>" target="_blank" class="chi-siamo-social-icon">
-                                                <svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5 1.25a2.75 2.75 0 1 0 0 5.5a2.75 2.75 0 0 0 0-5.5M3.75 4a1.25 1.25 0 1 1 2.5 0a1.25 1.25 0 0 1-2.5 0m-1.5 4A.75.75 0 0 1 3 7.25h4a.75.75 0 0 1 .75.75v13a.75.75 0 0 1-.75.75H3a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V8.75zM9.25 8a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75v.434l.435-.187a7.8 7.8 0 0 1 2.358-.595C20.318 7.4 22.75 9.58 22.75 12.38V21a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75v-7a1.25 1.25 0 0 0-2.5 0v7a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V14a2.75 2.75 0 1 1 5.5 0v6.25h2.5v-7.87c0-1.904-1.661-3.408-3.57-3.234a6.3 6.3 0 0 0-1.904.48l-1.48.635a.75.75 0 0 1-1.046-.69V8.75z" clip-rule="evenodd"/></svg>
+                                            <a href="<?php echo esc_url($linkedin_url); ?>" target="_blank"
+                                                class="chi-siamo-social-icon">
+                                                <svg class="chi-siamo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" fill-rule="evenodd"
+                                                        d="M5 1.25a2.75 2.75 0 1 0 0 5.5a2.75 2.75 0 0 0 0-5.5M3.75 4a1.25 1.25 0 1 1 2.5 0a1.25 1.25 0 0 1-2.5 0m-1.5 4A.75.75 0 0 1 3 7.25h4a.75.75 0 0 1 .75.75v13a.75.75 0 0 1-.75.75H3a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V8.75zM9.25 8a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75v.434l.435-.187a7.8 7.8 0 0 1 2.358-.595C20.318 7.4 22.75 9.58 22.75 12.38V21a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75v-7a1.25 1.25 0 0 0-2.5 0v7a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1-.75-.75zm1.5.75v11.5h2.5V14a2.75 2.75 0 1 1 5.5 0v6.25h2.5v-7.87c0-1.904-1.661-3.408-3.57-3.234a6.3 6.3 0 0 0-1.904.48l-1.48.635a.75.75 0 0 1-1.046-.69V8.75z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
                                             </a>
                                         <?php endif; ?>
                                     </div>
