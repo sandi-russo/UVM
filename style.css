@@ -1570,7 +1570,7 @@ main {
     right: 10px;
     width: 20px;
     height: 20px;
-    color: blue;
+    color: rgb(67, 115, 217);
 }
 
 /* POST - SINGLE */
@@ -2073,8 +2073,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding-left: clamp(24px, 1.5vw, 48px);
-    padding-right: clamp(24px, 1.5vw, 48px);
+    padding-left: 0px;/*clamp(24px, 1.5vw, 48px);*/
+    padding-right: 0px; /*clamp(24px, 1.5vw, 48px)*/;
 }
 
 .chi-siamo-banner-space {
@@ -2109,7 +2109,7 @@ main {
     object-fit: cover;
 }
 
-.chi-siamo-title {
+.chi-siamo-description b {
     font-size: clamp(18px, 1.5vw, 36px);
     font-weight: 900;
     color: #ffffff;
@@ -2123,15 +2123,17 @@ main {
     color: #ffffff;
     text-align: left;
     line-height: normal;
+    padding: clamp(10px, 1.5vw, 16px);
+
 }
 
 .chi-siamo-description p {
     margin: 0px;
     padding: 0px;
     color: #ffffff;
-    font-size: clamp(10px, 1.5vw, 16px);
-    text-align: left;
+    font-size: clamp(14px, 1.5vw, 20px);
     line-height: noerm;
+    text-align: justify;
 }
 
 .chi-siamo-description b {
@@ -2827,6 +2829,18 @@ main {
 
     .custom-background {
         background-color: transparent;
+    }
+    .chi-siamo-banner-img {
+        display: none;
+
+    }
+    .container-banner {
+        grid-template-columns: 2fr;
+        grid-template-areas:
+            ".";
+    }
+    .chi-siamo-description p{
+        text-align: left;
     }
 }
 
