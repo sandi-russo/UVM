@@ -13,8 +13,8 @@ get_header(); ?>
     <div class="container-banner">
         <!-- Descrizione UniVersoMe -->
         <div class="chi-siamo-description">
-        <h1 class="chi-siamo-title">UNIVERSOME</h1>
-            <p><b>UniVersoMe</b> è la piattaforma multimediale ufficiale dell'<b>Università degli Studi di Messina</b>,
+        <!--<h1 class="chi-siamo-title">UNIVERSOME</h1>-->
+            <p><b>UNIVERSOME</b> è la piattaforma multimediale ufficiale dell'Università degli Studi di Messina,
                 un
                 progetto dinamico e in continua evoluzione che offre uno spazio privilegiato per la produzione e la
                 diffusione di contenuti giornalistici creati dagli studenti. Si tratta di un ambiente di condivisione e
@@ -33,7 +33,7 @@ get_header(); ?>
                 i relativi ruoli ed eventuali collegamenti ai rispettivi social.</p>
         </div>
         <div class="chi-siamo-banner-img">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8SdsR9K6qNNxkExuSRl5RWtaas2EIeFLl8A&">
+            <img src="https://t4.ftcdn.net/jpg/03/54/00/91/360_F_354009182_Cc6DzlgU402u1bXAGyvXAbmp5EgYAV9D.jpg">
         </div>
     </div>
 </div>

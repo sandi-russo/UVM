@@ -325,7 +325,6 @@ $main_categories = get_main_categories();
 
 
 
-        </div><!-- .sidebar-content -->
 
         <!-- Pulsante per ascoltare la radio -->
         <!-- Pulsante allineato a destra -->
@@ -338,6 +337,8 @@ $main_categories = get_main_categories();
                 </svg>
             </a>
         </div>
+        </div><!-- .sidebar-content -->
+
     </div><!-- .sidebar -->
     </div><!-- .w-full max-w-[1400px] -->
 </main><!-- #main -->
