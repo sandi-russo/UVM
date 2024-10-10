@@ -262,85 +262,27 @@ $main_categories = get_main_categories();
         <div class="sidebar-content">
 
             <!-- SPOTIFY -->
-            <div class="latest-episode">
-                <img id="episode-cover" src="" alt="Copertina Episodio" />
-                <div class="info">
-                    <div class="scroll-container">
-                        <span id="episode-title"></span>
-                    </div>
-                    <p id="podcast-name"></p>
-                    <p>Pubblicato il: <span id="episode-date"></span></p>
-                    <div class="audio-controls">
-                        <button id="play-pause-btn" onclick="togglePlayPause()">
-                            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z" />
-                            </svg>
-                        </button>
-                        <input type="range" id="progress-slider" min="0" max="100" value="0">
-                        <span id="current-time">0:00</span> / <span id="duration">0:00</span>
-                    </div>
-                </div>
-                <svg class="spotify-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="1.5">
-                        <path d="M7 15s4.5-1 9 1m-9.5-4s6-1.5 11 1.5M6 9c3-.5 8-1 13 2" />
-                        <path d="M12 22.5a10.5 10.5 0 1 0 0-21a10.5 10.5 0 0 0 0 21Z" />
-                    </g>
-                </svg>
-            </div>
-
-            <!-- YouTube -->
-            <!-- <?php echo youtube_embedded(); ?> -->
+            <?php echo spotify_embedded(); ?>
 
             <!-- RADIO UVM -->
-            <div class="latest-episode">
-                <img src="default_image.jpg" alt="Copertina Album" id="album-art">
-                <div class="info">
-                    <div class="scroll-container episode-title" id="episode-title-azuracast">Caricamento...</div>
-                    <div class="artist-name" id="artist-name">Caricamento...</div>
-                </div>
-                <button type="button" title="Play" aria-label="Play" class="radio-control-play-button" id="play-button">
-                    <!-- Icona di Play -->
-                    <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                        height="24">
-                        <path fill="currentColor"
-                            d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z" />
-                    </svg>
-                </button>
-                <svg class="azuracast-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                    class="radio-uvm-icon">
-                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="1.5" color="currentColor">
-                        <path d="M7 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0m0 0V2c.333.5.6 2.6 3 3" />
-                        <circle cx="10.5" cy="19.5" r="2.5" />
-                        <circle cx="20" cy="18" r="2" />
+            <?php echo radio_embedded(); ?>
+
+            <!-- Pulsante per ascoltare la radio -->
+            <!-- Pulsante allineato a destra -->
+            <div class="sidebar-button-container">
+                <a href="/radio" class="sidebar-button">
+                    <?php esc_html_e('Ascoltaci!', 'universome'); ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="category-svg">
                         <path
-                            d="M13 19.5V11c0-.91 0-1.365.247-1.648c.246-.282.747-.35 1.748-.487c3.014-.411 5.206-1.667 6.375-2.436c.28-.184.42-.276.525-.22s.105.223.105.554v11.163" />
-                        <path d="M13 13c4.8 0 8-2.333 9-3" />
-                    </g>
-                </svg>
+                            d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
+                    </svg>
+                </a>
             </div>
-
-
-
-
-
-        <!-- Pulsante per ascoltare la radio -->
-        <!-- Pulsante allineato a destra -->
-        <div class="sidebar-button-container">
-            <a href="/radio" class="sidebar-button">
-                <?php esc_html_e('Ascoltaci!', 'universome'); ?>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="category-svg">
-                    <path
-                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82" />
-                </svg>
-            </a>
-        </div>
         </div><!-- .sidebar-content -->
 
     </div><!-- .sidebar -->
     </div><!-- .w-full max-w-[1400px] -->
+
 </main><!-- #main -->
 
 <?php

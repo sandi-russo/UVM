@@ -186,65 +186,34 @@ document.addEventListener("DOMContentLoaded", function () {
 /* SWIPER RADIO */
 document.addEventListener('DOMContentLoaded', function () {
     // Controlla se esiste l'elemento Swiper
-    if (document.querySelector('.mySwiper')) {
-        var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: window.innerWidth <= 768 ? 1.5 : 3,
-            loop: true,
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 2,
-                slideShadows: true,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+    var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: window.innerWidth <= 768 ? 1.5 : 1.5,
+        loop: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 
-        // Riassegna il numero di slides visibili quando la finestra viene ridimensionata
-        window.addEventListener('resize', function () {
-            swiper.params.slidesPerView = window.innerWidth <= 768 ? 1.5 : 3;
-            swiper.update();
-        });
-
-        // Funzione per impostare l'altezza delle card
-        function adjustCardHeights() {
-            const cards = document.querySelectorAll('.radio-text-content');
-            let maxHeight = 0;
-
-            // Calcola l'altezza massima tra tutte le card
-            cards.forEach(card => {
-                // Include il padding e i margini
-                const computedStyle = window.getComputedStyle(card);
-                const height = card.offsetHeight
-                    + parseFloat(computedStyle.marginTop)
-                    + parseFloat(computedStyle.marginBottom)
-                    - parseFloat(computedStyle.paddingBottom);
-                maxHeight = Math.max(maxHeight, height);
-            });
-
-            // Imposta l'altezza massima a tutte le card
-            cards.forEach(card => {
-                card.style.height = `${maxHeight}px`;
-            });
-        }
-
-        // Applica l'altezza dopo che il DOM è stato completamente caricato
-        adjustCardHeights();
-
-        // Ricalcola l'altezza quando la finestra viene ridimensionata
-        window.addEventListener('resize', adjustCardHeights);
-    }
+    // Riassegna il numero di slides visibili quando la finestra viene ridimensionata
+    window.addEventListener('resize', function () {
+        swiper.params.slidesPerView = window.innerWidth <= 768 ? 1.5 : 3;
+        swiper.update();
+    });
 });
-
 
 /* AZURACAST */
 const apiUrl = 'https://radiouvm.unime.it/api/nowplaying'; // Endpoint JSON per nowplaying

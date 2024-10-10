@@ -802,11 +802,6 @@ main {
     overflow: hidden;
 }
 
-.swiper-slide {
-    width: 100%;
-    flex-shrink: 0;
-}
-
 .post_img {
     width: 100%;
     height: 400px;
@@ -828,6 +823,8 @@ main {
     z-index: 10;
     text-align: center;
 }
+
+
 
 /* ARTICOLI */
 .articoli {
@@ -1257,6 +1254,7 @@ main {
     height: 24px;
     margin-right: 10px;
 }
+
 
 
 /* SIDEBAR */
@@ -2073,8 +2071,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding-left: 0px;/*clamp(24px, 1.5vw, 48px);*/
-    padding-right: 0px; /*clamp(24px, 1.5vw, 48px)*/;
+    padding-left: 0px;
+    /*clamp(24px, 1.5vw, 48px);*/
+    padding-right: 0px;
+    /*clamp(24px, 1.5vw, 48px)*/
+    ;
 }
 
 .chi-siamo-banner-space {
@@ -2357,7 +2358,6 @@ main {
     background-size: cover;
     width: 100vw;
     height: 100%;
-    filter: blur(4px);
     transition: all 0.5s ease;
     overflow: hidden;
 }
@@ -2374,14 +2374,14 @@ main {
     border-radius: 20px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     transition: box-shadow 0.3s ease;
     margin-bottom: 10px;
 }
 
 .radio-content img {
-    width: 100%;
-    height: 50%;
+    width: 20%;
+    height: 20%;
     object-fit: cover;
 }
 
@@ -2416,14 +2416,13 @@ main {
     align-items: center;
 }
 
-.radio-youtube-container,
+.radio-radio-container,
 .radio-spotify-container {
     padding: 10px;
     border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px;
 }
 
 .radio-spotify-container {
@@ -2598,7 +2597,7 @@ main {
         display: none;
     }
 
-    .radio-youtube-container,
+    .radio-radio-container,
     .radio-spotify-container {
         height: 180px;
     }
@@ -2807,10 +2806,6 @@ main {
         /* 14px */
     }
 
-    .swiper-slide {
-        width: 80vw;
-    }
-
     .radio-content {
         flex-direction: column;
         width: 80%;
@@ -2830,16 +2825,19 @@ main {
     .custom-background {
         background-color: transparent;
     }
+
     .chi-siamo-banner-img {
         display: none;
 
     }
+
     .container-banner {
         grid-template-columns: 2fr;
         grid-template-areas:
             ".";
     }
-    .chi-siamo-description p{
+
+    .chi-siamo-description p {
         text-align: left;
     }
 }

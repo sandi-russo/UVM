@@ -53,7 +53,7 @@ $programs = [
 
 
 <main class="custom-background">
-<div class="other_site_container">
+    <div class="other_site_container">
 
         <header class="page-header">
             <div class="site_container">
@@ -75,12 +75,14 @@ $programs = [
 
         <section class="radio-collection">
             <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
+                <div>
                     <?php foreach ($programs as $program): ?>
-                        <div class="radio-content swiper-slide">
+
+                        <!-- <div class="container-banner radio-text-content">-->
+                        <div class="radio-content">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/radio/<?php echo $program['image']; ?>"
                                 alt="">
-                            <div class="radio-text-content">
+                            <div class="">
                                 <h3><?php echo $program['title']; ?></h3>
                                 <?php if (isset($program['time']) || isset($program['speakers'])): ?>
                                     <div class="radio-info">
@@ -110,32 +112,36 @@ $programs = [
                                 <?php endif; ?>
                                 <p><?php echo $program['description']; ?></p>
                             </div>
+                            <!--under this-->
+
+
                         </div>
                     <?php endforeach; ?>
                 </div>
             </div>
         </section>
 
-        <div class="radio-grid-container">
-            <!-- YouTube iframe -->
-            <div class="radio-youtube-container">
-                <?php echo radio_youtube_embedded(); ?>
-            </div>
+        <?php /* 
+    <div class="radio-grid-container">
 
-            <div class="radio-divider"></div> <!-- Linea divisoria grigia chiara -->
+       <!-- Spotify iframe -->
+       <div class="radio-spotify-container">
+           <?php echo spotify_embedded(); ?>
+       </div>
+       <div class="radio-divider"></div> <!-- Linea divisoria grigia chiara -->
 
-            <!-- Spotify iframe -->
-            <div class="radio-spotify-container">
-                <iframe class="radio-video-frame"
-                    src="https://open.spotify.com/embed/show/5J3Ai6sP7r89LG6d8HaAOe?utm_source=generator"
-                    frameborder="0" allowfullscreen=""
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
-            </div>
-        </div>
-</div>
+       <!-- Radio iframe -->
+       <div class="radio-radio-container">
+           <?php echo radio_embedded(); ?>
+       </div>
+   </div>
+   */ ?>
 
-</div>
+
+
+    </div>
+
+    </div>
 </main><!-- #main -->
 <?php
 get_sidebar();
