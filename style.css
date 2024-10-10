@@ -2071,11 +2071,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding-left: 0px;
-    /*clamp(24px, 1.5vw, 48px);*/
-    padding-right: 0px;
-    /*clamp(24px, 1.5vw, 48px)*/
-    ;
+    padding-left: clamp(24px, 1.5vw, 48px);
+    padding-right: clamp(24px, 1.5vw, 48px);
 }
 
 .chi-siamo-banner-space {
@@ -2824,21 +2821,6 @@ main {
 
     .custom-background {
         background-color: transparent;
-    }
-
-    .chi-siamo-banner-img {
-        display: none;
-
-    }
-
-    .container-banner {
-        grid-template-columns: 2fr;
-        grid-template-areas:
-            ".";
-    }
-
-    .chi-siamo-description p {
-        text-align: left;
     }
 }
 
