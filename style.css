@@ -2316,32 +2316,14 @@ main {
 /* RADIO */
 /* CAROSELLO RADIO */
 .radio-collection {
+    margin: 0 auto;
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-.radio-info {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 16px;
-    font-size: clamp(10.4px, 2vw, 12px);
-}
-
-.radio-info span {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.radio-info .icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
+.radioSwiper {
+    padding: 40px 0;
 }
 
 .swiper {
@@ -2386,7 +2368,7 @@ main {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
     padding: clamp(8px, 1.5vw, 16px);
     text-align: left;
@@ -2504,6 +2486,67 @@ main {
     margin-left: 8px;
     fill: currentColor;
 }
+
+.mobile_card {
+    background-color: #232323;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.mobile_card_image {
+    width: 100%;
+    height: auto; 
+}
+
+.mobile_card_content {
+    padding: 20px;
+    text-align: left;
+}
+
+.mobile_card_title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: left;
+}
+
+.mobile_card-text {
+    font-size: 16px;
+    color: #bbbbbb;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.mobile_card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+.mobile_card_grid {  display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 11px;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas:
+      ". .";
+    
+  }
+  
+.radio_visibility {
+    display: none;
+}
+
+
 
 /* Media query per schermi più grandi di 768px */
 @media (min-width: 768px) {
@@ -2822,6 +2865,11 @@ main {
     .custom-background {
         background-color: transparent;
     }
+
+    .radio_visibility {
+        display: block;
+    }
+
 }
 
 /* 1024PX E SUPERIORI */
@@ -2837,6 +2885,11 @@ main {
     .chi-siamo-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+
+    
+    
+
+
 
     .articolo .alignwide,
     .entry-content .alignwide {

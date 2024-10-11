@@ -55,6 +55,19 @@ $main_categories = get_main_categories();
         </div>
     </div>
 
+
+    <div class="mobile_card radio_visibility">
+        <div class="mobile_card_grid">
+            <img src="https://via.placeholder.com/300x200" alt="Immagine della card" class="card-image">
+            <div class="mobile_card_content">
+                <h2 class="mobile_card-title">titolo della Card</h2>
+                <p class="mobile_card-text">Questa è una descrizione della card. Puoi aggiungere testo e personalizzare il contenuto come desideri.</p>
+                <a href="#" class="card-button">Scopri di più</a>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Pulsante Radio UVM  -->
     <div class="radio-uvm-button-container">
         <a href="/radio" class="radio-uvm-button">
@@ -75,6 +88,7 @@ $main_categories = get_main_categories();
 
     <!-- Wrapper per centralizzare il contenuto -->
     <div class="site_container site_home">
+        
         <!-- Sezione degli Articoli con angoli stondati a destra e shadow -->
         <div class="articoli">
             <?php
@@ -89,6 +103,7 @@ $main_categories = get_main_categories();
                             'posts_per_page' => 3
                         )
                     );
+
 
                     // Mostra la sezione solo se ci sono post
                     if ($category_posts->have_posts()):

@@ -207,12 +207,6 @@ document.addEventListener('DOMContentLoaded', function () {
             prevEl: '.swiper-button-prev',
         },
     });
-
-    // Riassegna il numero di slides visibili quando la finestra viene ridimensionata
-    window.addEventListener('resize', function () {
-        swiper.params.slidesPerView = window.innerWidth <= 768 ? 1.5 : 3;
-        swiper.update();
-    });
 });
 
 /* AZURACAST */
