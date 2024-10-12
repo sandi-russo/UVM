@@ -1208,7 +1208,7 @@ main {
     max-height: 600px;
     border: 10px solid #e2e2e2;
     position: relative;
-    background-color: #e2e2ee;
+    background-color: #e2e2e2;
 }
 
 .page-no-results {
@@ -2312,18 +2312,20 @@ main {
     text-align: left;
 }
 
-
 /* RADIO */
-/* CAROSELLO RADIO */
-.radio-collection {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 100%;
-    box-sizing: border-box;
+
+.radiovisibility {
+    display: none;
 }
 
-.radioSwiper {
-    padding: 40px 0;
+.radiouvm {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #000;
+    width: 100%;
+    min-height: 150px;
+    border: 0;
+    border-radius: 10px;
 }
 
 .swiper {
@@ -2345,47 +2347,6 @@ main {
     filter: blur(0);
     transform: scale(1.1);
     box-shadow: 0 5px 5px -5px #333;
-}
-
-.radio-content {
-    width: 100%;
-    background-color: #eeeeee;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    transition: box-shadow 0.3s ease;
-    margin-bottom: 10px;
-}
-
-.radio-content img {
-    width: 20%;
-    height: 20%;
-    object-fit: cover;
-}
-
-.radio-text-content {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: row;
-    flex-grow: 1;
-    padding: clamp(8px, 1.5vw, 16px);
-    text-align: left;
-    background: #eeeeee;
-}
-
-.radio-text-content h3 {
-    font-weight: 600;
-    margin-bottom: 8px;
-    font-size: clamp(1.32px, 2vw, 20.8px);
-}
-
-.radio-text-content p {
-    font-weight: 400;
-    margin-bottom: 16px;
-    color: #666;
-    font-size: clamp(12px, 2vw, 16px);
 }
 
 .radio-grid-container {
@@ -2499,7 +2460,7 @@ main {
 
 .mobile_card_image {
     width: 100%;
-    height: auto; 
+    height: auto;
 }
 
 .mobile_card_content {
@@ -2530,7 +2491,9 @@ main {
     text-decoration: none;
     font-size: 16px;
 }
-.mobile_card_grid {  display: grid;
+
+.mobile_card_grid {
+    display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
     gap: 0px 11px;
@@ -2538,10 +2501,10 @@ main {
     justify-content: center;
     align-items: center;
     grid-template-areas:
-      ". .";
-    
-  }
-  
+        ". .";
+
+}
+
 .radio_visibility {
     display: none;
 }
@@ -2866,7 +2829,7 @@ main {
         background-color: transparent;
     }
 
-    .radio_visibility {
+    .radiovisibility {
         display: block;
     }
 
@@ -2886,8 +2849,8 @@ main {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    
-    
+
+
 
 
 

@@ -183,32 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/* SWIPER RADIO */
-document.addEventListener('DOMContentLoaded', function () {
-    // Controlla se esiste l'elemento Swiper
-    var swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: window.innerWidth <= 768 ? 1.5 : 1.5,
-        loop: true,
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2,
-            slideShadows: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-});
-
 /* AZURACAST */
 const apiUrl = 'https://radiouvm.unime.it/api/nowplaying'; // Endpoint JSON per nowplaying
 const defaultImage = 'default_image.jpg'; // Imposta qui l'immagine predefinita

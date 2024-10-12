@@ -1010,7 +1010,6 @@ function spotify_embedded() {
     ';
 }
 
-
 /**
  * Radio
  */
