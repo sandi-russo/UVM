@@ -37,6 +37,104 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 
 
 
+
+
+
+
+
+
+
+function update_all_usernames() {
+    global $wpdb;
+
+    // Ottieni tutti gli utenti
+    $users = get_users();
+    
+    // Array per tenere traccia dei nomi utente già utilizzati
+    $used_usernames = array();
+    
+    foreach ($users as $user) {
+        $first_name = get_user_meta($user->ID, 'first_name', true);
+        $last_name = get_user_meta($user->ID, 'last_name', true);
+        
+        // Se nome o cognome sono vuoti, salta questo utente
+        if (empty($first_name) || empty($last_name)) {
+            continue;
+        }
+        
+        // Rimuovi gli spazi e converti in minuscolo
+        $first_name = strtolower(str_replace(' ', '', $first_name));
+        $last_name = strtolower(str_replace(' ', '', $last_name));
+        
+        // Crea il nuovo nome utente base
+        $new_username = sanitize_user($first_name . '.' . $last_name);
+        
+        // Gestisci gli omonimi
+        $final_username = $new_username;
+        $counter = 1;
+        while (username_exists($final_username) && $final_username !== $user->user_login) {
+            $final_username = $new_username . $counter;
+            $counter++;
+        }
+        
+        // Aggiorna il nome utente
+        if ($user->user_login !== $final_username) {
+            $wpdb->update(
+                $wpdb->users,
+                array('user_login' => $final_username),
+                array('ID' => $user->ID)
+            );
+            
+            // Aggiorna anche user_nicename per coerenza
+            wp_update_user(array(
+                'ID' => $user->ID,
+                'user_nicename' => $final_username
+            ));
+            
+            // Log dell'aggiornamento (opzionale)
+            error_log("Aggiornato nome utente per l'utente ID {$user->ID} da {$user->user_login} a {$final_username}");
+        }
+    }
+}
+
+// Aggancia la funzione all'azione di login
+add_action('wp_login', 'update_all_usernames');
+
+// Funzione per aggiornare un singolo utente (utile per i nuovi registrati)
+function update_single_username($user_id) {
+    $user = get_user_by('ID', $user_id);
+    if ($user) {
+        update_all_usernames();
+    }
+}
+
+// Aggancia la funzione alla creazione di un nuovo utente
+add_action('user_register', 'update_single_username');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * YOAST REMOVE PROFILE
  */
@@ -978,7 +1076,8 @@ add_filter('get_avatar', 'use_custom_avatar', 10, 5);
 /**
  * Spotify
  */
-function spotify_embedded() {
+function spotify_embedded()
+{
     return '
                 <div class="latest-episode">
                 <img id="episode-cover" src="" alt="Copertina Episodio" />
@@ -1013,7 +1112,8 @@ function spotify_embedded() {
 /**
  * Radio
  */
-function radio_embedded() {
+function radio_embedded()
+{
     return '
         <div class="latest-episode">
             <img src="default_image.jpg" alt="Copertina Album" id="album-art">
