@@ -183,14 +183,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/* AZURACAST */
-const apiUrl = 'https://radiouvm.unime.it/api/nowplaying'; // Endpoint JSON per nowplaying
-const defaultImage = 'default_image.jpg'; // Imposta qui l'immagine predefinita
-const audioUrl = 'https://radiouvm.unime.it:8000/radio.mp3'; // URL audio
-let audio_radio = new Audio(audioUrl); // Crea un oggetto Audio
-let isPlaying_radio = false; // Stato di riproduzione
+/* AZURACAST DESKTOP E MOBILE */
+const apiUrl = 'https://radiouvm.unime.it/api/nowplaying';
+const defaultImage = 'default_image.jpg';
+const audioUrl = 'https://radiouvm.unime.it:8000/radio.mp3';
+let audio_radio = new Audio(audioUrl);
+let isPlaying_radio = false;
 
-// Funzione per ottenere i metadati
 async function getNowPlaying() {
     try {
         const response = await fetch(apiUrl);
@@ -199,14 +198,13 @@ async function getNowPlaying() {
         }
         const data = await response.json();
 
-        if (data.length > 0) { // Verifica che ci siano dati
-            const nowPlaying = data[0].now_playing; // Accedi al primo elemento dell'array
-            const song = nowPlaying.song; // Ottieni i dettagli della canzone
+        if (data.length > 0) {
+            const nowPlaying = data[0].now_playing;
+            const song = nowPlaying.song;
 
-            // Aggiorna i metadati nel DOM
-            document.getElementById('episode-title-azuracast').textContent = song.title || 'Titolo sconosciuto';
-            document.getElementById('artist-name').textContent = song.artist || 'Artista sconosciuto';
-            document.getElementById('album-art').src = song.art || defaultImage;
+            // Aggiorna i metadati per entrambi i set di elementi
+            updateElements('episode-title-azuracast', 'artist-name', 'album-art', song);
+            updateElements('episode-title-azuracast_mobile', 'artist-name_mobile', 'album-art_mobile', song);
         } else {
             console.error('Impossibile collegarsi alla radio.');
         }
@@ -215,7 +213,12 @@ async function getNowPlaying() {
     }
 }
 
-// Funzione per gestire la riproduzione
+function updateElements(titleId, artistId, artId, song) {
+    document.getElementById(titleId).textContent = song.title || 'Titolo sconosciuto';
+    document.getElementById(artistId).textContent = song.artist || 'Artista sconosciuto';
+    document.getElementById(artId).src = song.art || defaultImage;
+}
+
 function togglePlay() {
     const playButton = document.getElementById('play-button');
     if (isPlaying_radio) {
@@ -244,18 +247,11 @@ function togglePlay() {
     }
 }
 
-// Aggiungi evento click al pulsante play/pause
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('play-button').addEventListener('click', togglePlay);
-
-    // Chiamata iniziale per ottenere i metadati
     getNowPlaying();
-
-    // Aggiornamento dei metadati ogni 5 secondi
-    setInterval(getNowPlaying, 5000); // Aggiorna ogni 5 secondi
+    setInterval(getNowPlaying, 5000);
 });
-
-
 
 
 /* LOGO NAVBAR MOBILE */
@@ -741,38 +737,3 @@ document.addEventListener("DOMContentLoaded", function () {
     checkSticky();
     adjustSidebarTop();
 });
-
-
-/* MESSAGGIO CONTACT FORM */
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var formData = new FormData(this);
-    var messageDiv = document.getElementById('form-message');
-
-    fetch('send_email.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            messageDiv.style.display = 'block';
-            if (data.success) {
-                messageDiv.style.color = 'green';
-                messageDiv.innerHTML = data.message;
-                document.getElementById('contact-form').reset();
-            } else {
-                messageDiv.style.color = 'red';
-                messageDiv.innerHTML = data.message || 'Si è verificato un errore durante l\'invio dell\'email.';
-            }
-        })
-        .catch(error => {
-            messageDiv.style.display = 'block';
-            messageDiv.style.color = 'red';
-            messageDiv.innerHTML = 'Si è verificato un errore durante l\'invio del messaggio.';
-            console.error('Error:', error);
-        });
-});
-
-
-
