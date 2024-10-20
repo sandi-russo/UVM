@@ -1560,6 +1560,7 @@ main {
 
 .radio-control-play-button {
     background-color: #242424;
+    padding: 0px;
 }
 
 .azuracast-logo {
@@ -2448,37 +2449,62 @@ main {
     fill: currentColor;
 }
 
+/* RADIO MOBILE */
 .mobile_card {
-    background-color: #0e0e0e;
+    position: relative;
+    background-color: #242424;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: clamp(10px, 1.5vw, 16px);
     overflow: hidden;
     transition: transform 0.3s ease;
-    text-align: center;
+    text-align: left;
     padding: clamp(20px, 1.5vw, 26px);
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 .mobile_card_grid {
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
-    gap: 0px 11px;
+    gap: 0px 10px;
     grid-auto-flow: row;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
-    grid-template-areas:
-        ". .";
-
+    grid-template-areas: "mobile_card-image mobile_card_content";
 }
+
+.mobile_card_image_container {
+    grid-area: mobile_card-image;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .mobile_card-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
 
-.mobile_card-content {
-    padding: 20px;
-    text-align: left;
+.mobile_card_content {
+    grid-area: mobile_card_content;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: start;
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start; /* Align all elements to the left */
 }
 
 .mobile_card-title {
@@ -2486,14 +2512,14 @@ main {
     margin-top: 0px;
     margin-bottom: 10px;
     color: #ffffff;
-    text-align: left;
+    text-align: start;
 }
 
 .mobile_card-text {
     font-size: 12px;
-    color: #777;
+    color: #787878;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: start;
 }
 
 .mobile_card-button {
@@ -2504,8 +2530,17 @@ main {
     border-radius: 5px;
     text-decoration: none;
     font-size: 16px;
+    text-align: start;
+    justify-items: start;
+    align-self: start; /* Align button to the left */
 }
 
+.mobile_card-button svg {
+    margin-left: 8px;
+    width: clamp(18px, 1vw, 24px);
+    height: clamp(18px, 1vw, 24px);
+    align-self: start; /* Align SVG to the left */
+}
 
 .radio_visibility {
     display: none;
@@ -2850,8 +2885,8 @@ main {
     .chi-siamo-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-    
-    .mobile_card{
+
+    .mobile_card {
         display: none;
     }
 
