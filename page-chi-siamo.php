@@ -13,7 +13,7 @@ get_header(); ?>
     <div class="container-banner">
         <!-- Descrizione UniVersoMe -->
         <div class="chi-siamo-description">
-        <!--<h1 class="chi-siamo-title">UNIVERSOME</h1>-->
+            <!--<h1 class="chi-siamo-title">UNIVERSOME</h1>-->
             <p><b>UNIVERSOME</b> è la piattaforma multimediale ufficiale dell'Università degli Studi di Messina,
                 un
                 progetto dinamico e in continua evoluzione che offre uno spazio privilegiato per la produzione e la
@@ -54,7 +54,7 @@ get_header(); ?>
                 $units = [
                     'giornale' => [],
                     'radio' => [],
-                    'fotografia / grafica / creativa' => [],
+                    'creativa_grafica' => [],
                     'social' => [],
                     'informatica' => [],
                     'membro' => []
@@ -86,7 +86,12 @@ get_header(); ?>
                 foreach ($units as $unit => $users) {
                     if (!empty($users)) {
                         echo '<div class="chi-siamo-unit-section">';
-                        echo '<div class="chi-siamo-unit-title">' . mb_strtoupper(esc_html($unit)) . '</div>';
+                        // Controlla se l'unità è "creativa_grafica" e mostra un titolo personalizzato
+                        if ($unit === 'creativa_grafica') {
+                            echo '<div class="chi-siamo-unit-title">FOTOGRAFIA / GRAFICA / CREATIVA</div>';
+                        } else {
+                            echo '<div class="chi-siamo-unit-title">' . mb_strtoupper(esc_html(str_replace('_', ' ', $unit))) . '</div>';
+                        }
                         echo '<div class="chi-siamo-grid">';
 
                         foreach ($users as $user) {
