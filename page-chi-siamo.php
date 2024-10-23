@@ -54,7 +54,7 @@ get_header(); ?>
                 $units = [
                     'giornale' => [],
                     'radio' => [],
-                    'creativa_grafica' => [],
+                    'fotografia / grafica / creativa' => [],
                     'social' => [],
                     'informatica' => [],
                     'membro' => []
