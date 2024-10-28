@@ -237,7 +237,7 @@ function add_custom_login_script()
             var showLoginButton = document.createElement('button');
             showLoginButton.type = 'button';
             showLoginButton.id = 'show-admin-login';
-            showLoginButton.textContent = 'Accedi con le credenziali (solo amministratori)';
+            showLoginButton.textContent = 'Accedi con le credenziali (solo rubriche)';
             adminLoginContainer.appendChild(showLoginButton);
 
             // Nascondere inizialmente i campi di login e disabilitare il campo della password
@@ -263,7 +263,7 @@ function add_custom_login_script()
                     submitButton.style.display = 'none';
                     userPass.disabled = true; // Disabilitare il campo della password
                     passwordLabel.style.display = 'none'; // Nascondere l'etichetta della password
-                    this.textContent = 'Accedi con le credenziali (solo amministratori)';
+                    this.textContent = 'Accedi con le credenziali (solo rubriche)';
                 }
             });
         });
