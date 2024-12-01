@@ -220,35 +220,53 @@ function updateElements(titleId, artistId, artId, song) {
 }
 
 function togglePlay() {
-    const playButton = document.getElementById('play-button');
+    const desktopPlayButton = document.getElementById('play-button');
+    const mobilePlayButton = document.getElementById('play-button-mobile');
+
     if (isPlaying_radio) {
         audio_radio.pause();
-        playButton.setAttribute('title', 'Play');
-        playButton.innerHTML = `
-            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path fill="currentColor" d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z"/>
-            </svg>
-        `;
+        updatePlayButtonState(desktopPlayButton, false);
+        updatePlayButtonState(mobilePlayButton, false);
         isPlaying_radio = false;
     } else {
         audio_radio.play().catch(error => {
             console.error('Errore nella riproduzione:', error);
         });
-        playButton.setAttribute('title', 'Pause');
-        playButton.innerHTML = `
-            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
-                    <rect width="4" height="14" x="6" y="5" rx="1"/>
-                    <rect width="4" height="14" x="14" y="5" rx="1"/>
-                </g>
-            </svg>
-        `;
+        updatePlayButtonState(desktopPlayButton, true);
+        updatePlayButtonState(mobilePlayButton, true);
         isPlaying_radio = true;
     }
 }
 
+function updatePlayButtonState(button, isPlaying) {
+    if (!button) return;
+    
+    button.setAttribute('title', isPlaying ? 'Pause' : 'Play');
+    button.innerHTML = isPlaying 
+        ? `<svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+                    <rect width="4" height="14" x="6" y="5" rx="1"/>
+                    <rect width="4" height="14" x="14" y="5" rx="1"/>
+                </g>
+            </svg>`
+        : `<svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M18.54 9L8.88 3.46a3.42 3.42 0 0 0-5.13 3v11.12A3.42 3.42 0 0 0 7.17 21a3.43 3.43 0 0 0 1.71-.46L18.54 15a3.42 3.42 0 0 0 0-5.92Zm-1 4.19l-9.66 5.62a1.44 1.44 0 0 1-1.42 0a1.42 1.42 0 0 1-.71-1.23V6.42a1.42 1.42 0 0 1 .71-1.23A1.5 1.5 0 0 1 7.17 5a1.54 1.54 0 0 1 .71.19l9.66 5.58a1.42 1.42 0 0 1 0 2.46Z"/>
+            </svg>`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('play-button').addEventListener('click', togglePlay);
+    // Aggiungi listener per entrambi i pulsanti
+    const desktopPlayButton = document.getElementById('play-button');
+    const mobilePlayButton = document.getElementById('play-button-mobile');
+
+    if (desktopPlayButton) {
+        desktopPlayButton.addEventListener('click', togglePlay);
+    }
+
+    if (mobilePlayButton) {
+        mobilePlayButton.addEventListener('click', togglePlay);
+    }
+
     getNowPlaying();
     setInterval(getNowPlaying, 5000);
 });
@@ -580,8 +598,22 @@ document.addEventListener('DOMContentLoaded', function () {
             prevEl: '.swiper-button-prev',
         },
     });
-});
 
+    new Swiper('.radio-sidebar', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.radio-sidebar-next',
+            prevEl: '.radio-sidebar-prev',
+        },
+
+    });
+});
 
 /* PULSANTE CONDIVISIONE ARTICOLO */
 function shareArticle() {
