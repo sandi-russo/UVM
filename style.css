@@ -873,6 +873,10 @@ main {
     border-radius: 2px;
 }
 
+.latest-news::after {
+    background-color: pink;
+}
+
 .attualita::after {
     background-color: cyan;
 }
