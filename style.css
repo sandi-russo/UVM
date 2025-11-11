@@ -221,7 +221,7 @@ body {
 
 
 /* ==========================================================================
-   Stile Menu Mobile Interattivo
+   Stile Menu Mobile Interattivo (BLOCCO CORRETTO)
    ========================================================================== */
 
 .mobile-menu .mobile-menu-list {
@@ -242,8 +242,9 @@ body {
     flex-grow: 1; /* Il link occupa tutto lo spazio disponibile */
 }
 
-/* Link di primo livello */
-.mobile-menu li > a {
+/* Link di primo livello (CORRETTO) */
+.mobile-menu li > a,
+.mobile-menu .menu-item-wrapper > a {
     display: block;
     padding: var(--space-md) var(--space-lg);
     color: var(--text);
@@ -254,7 +255,9 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.mobile-menu li > a:hover {
+/* Hover (CORRETTO) */
+.mobile-menu li > a:hover,
+.mobile-menu .menu-item-wrapper > a:hover {
     background-color: var(--secondary);
 }
 
@@ -274,35 +277,53 @@ body {
 /* Sottomenu (nascosto di default) */
 .mobile-menu .sub-menu {
     list-style: none;
-    padding: 0;
     margin: 0;
-    background-color: var(--secondary); /* Dinamico */
+    padding: 0; /* NESSUN padding sul contenitore */
+    background-color: transparent; /* NESSUNO sfondo */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* --- RESET DAGLI STILI DESKTOP --- */
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    min-width: 100%;
+    box-shadow: none;
+    margin-top: 0;
 }
 
 /* Link del sottomenu */
 .mobile-menu .sub-menu li a {
     display: block;
+    /* Padding: (sm) alto/basso, (lg) destra, (lg*1.5) SINISTRA per indentare */
     padding: var(--space-sm) var(--space-lg) var(--space-sm) calc(var(--space-lg) * 1.5);
     color: var(--text);
     text-decoration: none;
-    font-size: var(--text-base);
-    border-top: 1px solid var(--secondary);
+    font-size: var(--text-sm); /* <-- FONT PIÙ PICCOLO, come hai chiesto */
+    font-weight: 400; /* Più leggero del genitore */
+    border-top: 1px solid var(--secondary); /* Ripristina la linea divisoria */
+    background: transparent; /* NESSUNO sfondo */
+    border-radius: 0; /* NESSUN bordo stondato */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .mobile-menu .sub-menu li a:hover {
-    background-color: #e9e9e9; /* OK lasciare un grigio leggermente diverso per l'hover */
-    color: var(--primary);
+    background-color: var(--secondary); /* Sfondo grigio leggero all'hover */
+    color: var(--primary); /* Il testo diventa arancione */
 }
 
-/* Stato Aperto */
-.mobile-menu .menu-item-has-children.submenu-is-open > .menu-item-wrapper .submenu-toggle .arrow-down {
+/* --- STATO APERTO (LE REGOLE CHIAVE) --- */
+
+/* 1. Animazione Freccia (Questa già funzionava) */
+.mobile-menu .menu-item-has-children.submenu-is-open .submenu-toggle .arrow-down {
     transform: rotate(180deg);
 }
 
-.mobile-menu .menu-item-has-children.submenu-is-open > .sub-menu {
+/* 2. Apertura Menu (QUESTA È LA CORREZIONE) */
+/* Ho rimosso il '>' prima di .sub-menu */
+.mobile-menu .menu-item-has-children.submenu-is-open .sub-menu {
     max-height: 50rem; /* Valore arbitrario grande */
 }
 
@@ -1090,7 +1111,7 @@ body {
     transition: transform 0.2s ease-in-out;
 }
 
-.sub-menu {
+.nav-menu .sub-menu {
     position: absolute;
     top: 100%;
     left: 0;

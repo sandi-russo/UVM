@@ -188,7 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+// ===============================================
+    // ACCORDION PER MENU MOBILE (SOTTOMENU)
+    // ===============================================
     const mobileMenuToggles = document.querySelectorAll('.mobile-menu .submenu-toggle');
+
     mobileMenuToggles.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.preventDefault(); // Impedisce al link genitore di scattare
@@ -204,4 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
             toggle.setAttribute('aria-expanded', isExpanded);
         });
     });
+
+
 });

@@ -144,15 +144,18 @@ class UVM_Mobile_Nav_Walker extends Walker_Nav_Menu {
     function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
         $output .= "<li class='" . implode( " ", $item->classes ) . "'>";
 
-        if ( $args->walker->has_children ) {
+        // Logica di controllo migliorata e più affidabile
+        $has_children = in_array('menu-item-has-children', $item->classes);
+
+        if ( $has_children ) {
             $output .= '<div class="menu-item-wrapper">';
         }
 
         $output .= '<a href="' . $item->url . '">';
-        $output .= $item->title;
+        $output .= $item->title; // Il titolo del menu
         $output .= '</a>';
 
-        if ( $args->walker->has_children ) {
+        if ( $has_children ) {
             $output .= '<button class="submenu-toggle" aria-expanded="false"><svg class="arrow-down" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>';
             $output .= '</div>';
         }
@@ -162,7 +165,6 @@ class UVM_Mobile_Nav_Walker extends Walker_Nav_Menu {
         $output .= '</li>';
     }
 }
-
 // --- CAMPI PROFILO AUTORE ---
 /**
  * Aggiunge i nuovi campi social al profilo utente nell'area admin.
@@ -306,20 +308,24 @@ function uvm_modify_primary_nav_items( $title, $item, $args, $depth ) {
     // Applica le modifiche solo al menu 'primary'
     if ( 'primary' === $args->theme_location ) {
 
-        // Livello 0 (voci principali) che hanno figli: aggiungi la freccia
-        if ( $depth === 0 && in_array( 'menu-item-has-children', $item->classes ) ) {
-            $title .= ' <svg class="arrow-down" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>';
-        }
-        // Livelli > 0 (voci del sottomenu): avvolgi in <span>
-        elseif ( $depth > 0 ) {
-            $title = '<span>' . $title . '</span>';
+        // Controlla se siamo nel menu mobile (che usa il nostro Walker)
+        $is_mobile_menu = ( isset($args->walker) && is_a($args->walker, 'UVM_Mobile_Nav_Walker') );
+
+        // Se NON siamo sul mobile, applica le regole desktop
+        if ( !$is_mobile_menu ) {
+            // Livello 0 (voci principali) che hanno figli: aggiungi la freccia
+            if ( $depth === 0 && in_array( 'menu-item-has-children', $item->classes ) ) {
+                $title .= ' <svg class="arrow-down" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+            }
+            // Livelli > 0 (voci del sottomenu): avvolgi in <span>
+            elseif ( $depth > 0 ) {
+                $title = '<span>' . $title . '</span>';
+            }
         }
     }
-
     return $title;
 }
-
-// Assicurati di usare il filtro con il nome della nuova funzione
+// Assicurati che il filtro usi il nome corretto della funzione
 add_filter( 'nav_menu_item_title', 'uvm_modify_primary_nav_items', 10, 4 );
 
 ?>
