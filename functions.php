@@ -11,20 +11,20 @@ define( 'SWIPER_VERSION', '11.1.4' );
  * Setup del tema
  */
 function uvm_setup() {
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'html5', [ 'comment-form', 'comment-list', 'gallery', 'caption' ] );
-	add_theme_support( 'custom-logo', [
-		'height'      => 0,
-		'width'       => 0,
-		'flex-height' => true,
-		'flex-width'  => true,
-	] );
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'html5', [ 'comment-form', 'comment-list', 'gallery', 'caption' ] );
+    add_theme_support( 'custom-logo', [
+            'height'      => 0,
+            'width'       => 0,
+            'flex-height' => true,
+            'flex-width'  => true,
+    ] );
 
-	register_nav_menus( [
-		'primary' => 'Menu Principale Header',
-		'footer'  => 'Menu Footer',
-	] );
+    register_nav_menus( [
+            'primary' => 'Menu Principale Header',
+            'footer'  => 'Menu Footer',
+    ] );
 }
 
 add_action( 'after_setup_theme', 'uvm_setup' );
@@ -59,10 +59,9 @@ function uvm_scripts() {
     );
 
     // Rimuovi stili non necessari
-    wp_dequeue_style( 'wp-block-library' );
-    wp_dequeue_style( 'wp-block-library-theme' );
+//    wp_dequeue_style( 'wp-block-library' );
+//    wp_dequeue_style( 'wp-block-library-theme' );
 }
-add_action( 'wp_enqueue_scripts', 'uvm_scripts' );
 
 add_action( 'wp_enqueue_scripts', 'uvm_scripts' );
 
@@ -70,9 +69,9 @@ add_action( 'wp_enqueue_scripts', 'uvm_scripts' );
  * Pulizia head
  */
 function uvm_cleanup_head() {
-	remove_action( 'wp_head', 'wp_generator' );
-	remove_action( 'wp_head', 'rsd_link' );
-	remove_action( 'wp_head', 'wlwmanifest_link' );
+    remove_action( 'wp_head', 'wp_generator' );
+    remove_action( 'wp_head', 'rsd_link' );
+    remove_action( 'wp_head', 'wlwmanifest_link' );
 }
 
 add_action( 'init', 'uvm_cleanup_head' );
@@ -81,20 +80,20 @@ add_action( 'init', 'uvm_cleanup_head' );
  * Determina il layout in base al tipo di pagina
  */
 function uvm_get_layout_template() {
-	if ( is_single() ) {
-		return 'full-width';
-	} elseif ( is_front_page() || is_archive() || is_home() ) {
-		return 'with-sidebar';
-	} else {
-		return 'full-width';
-	}
+    if ( is_single() ) {
+        return 'with-sidebar'; // MODIFICATO
+    } elseif ( is_front_page() || is_archive() || is_home() ) {
+        return 'with-sidebar';
+    } else {
+        return 'full-width';
+    }
 }
 
 /**
  * Rimuove gli attributi dal tag <img> del logo personalizzato.
  */
 function uvm_remove_logo_attributes( $html ) {
-	return preg_replace( '/(width|height)="\d*"\s/', "", $html );
+    return preg_replace( '/(width|height)="\d*"\s/', "", $html );
 }
 
 add_filter( 'get_custom_logo', 'uvm_remove_logo_attributes' );
@@ -110,7 +109,7 @@ add_image_size( 'uvm_thumb', 150, 150, true );
  * Personalizza la lunghezza dell'estratto (excerpt).
  */
 function uvm_custom_excerpt_length( $length ) {
-	return 25;
+    return 25;
 }
 
 add_filter( 'excerpt_length', 'uvm_custom_excerpt_length', 999 );
@@ -119,7 +118,7 @@ add_filter( 'excerpt_length', 'uvm_custom_excerpt_length', 999 );
  * Personalizza i tre puntini alla fine dell'estratto.
  */
 function uvm_custom_excerpt_more( $more ) {
-	return '...';
+    return '...';
 }
 
 add_filter( 'excerpt_more', 'uvm_custom_excerpt_more' );
@@ -128,12 +127,12 @@ add_filter( 'excerpt_more', 'uvm_custom_excerpt_more' );
  * Recupera il codice SVG per un'icona specifica dalla cartella /assets/icons/.
  */
 function uvm_get_svg_icon( $icon_name ) {
-	$file_path = get_template_directory() . '/assets/icons/' . $icon_name . '.svg';
-	if ( file_exists( $file_path ) ) {
-		return file_get_contents( $file_path );
-	}
+    $file_path = get_template_directory() . '/assets/icons/' . $icon_name . '.svg';
+    if ( file_exists( $file_path ) ) {
+        return file_get_contents( $file_path );
+    }
 
-	return ''; // Ritorna una stringa vuota se l'icona non esiste
+    return ''; // Ritorna una stringa vuota se l'icona non esiste
 }
 
 /**
@@ -142,26 +141,26 @@ function uvm_get_svg_icon( $icon_name ) {
  * ma è pronto se si decide di passare a wp_nav_menu per il mobile.
  */
 class UVM_Mobile_Nav_Walker extends Walker_Nav_Menu {
-	function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-		$output .= "<li class='" . implode( " ", $item->classes ) . "'>";
+    function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+        $output .= "<li class='" . implode( " ", $item->classes ) . "'>";
 
-		if ( $args->walker->has_children ) {
-			$output .= '<div class="menu-item-wrapper">';
-		}
+        if ( $args->walker->has_children ) {
+            $output .= '<div class="menu-item-wrapper">';
+        }
 
-		$output .= '<a href="' . $item->url . '">';
-		$output .= $item->title;
-		$output .= '</a>';
+        $output .= '<a href="' . $item->url . '">';
+        $output .= $item->title;
+        $output .= '</a>';
 
-		if ( $args->walker->has_children ) {
-			$output .= '<button class="submenu-toggle" aria-expanded="false"><svg class="arrow-down" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>';
-			$output .= '</div>';
-		}
-	}
+        if ( $args->walker->has_children ) {
+            $output .= '<button class="submenu-toggle" aria-expanded="false"><svg class="arrow-down" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>';
+            $output .= '</div>';
+        }
+    }
 
-	function end_el( &$output, $item, $depth = 0, $args = null ) {
-		$output .= '</li>';
-	}
+    function end_el( &$output, $item, $depth = 0, $args = null ) {
+        $output .= '</li>';
+    }
 }
 
 // --- CAMPI PROFILO AUTORE ---
@@ -169,7 +168,7 @@ class UVM_Mobile_Nav_Walker extends Walker_Nav_Menu {
  * Aggiunge i nuovi campi social al profilo utente nell'area admin.
  */
 function uvm_add_custom_user_profile_fields( $user ) {
-	?>
+    ?>
     <h3><?php _e( 'Profili Social (Opzionali)', 'universome' ); ?></h3>
 
     <table class="form-table">
@@ -201,7 +200,7 @@ function uvm_add_custom_user_profile_fields( $user ) {
             </td>
         </tr>
     </table>
-	<?php
+    <?php
 }
 
 add_action( 'show_user_profile', 'uvm_add_custom_user_profile_fields' );
@@ -211,19 +210,19 @@ add_action( 'edit_user_profile', 'uvm_add_custom_user_profile_fields' );
  * Salva i dati dei campi social personalizzati quando il profilo viene aggiornato.
  */
 function uvm_save_custom_user_profile_fields( $user_id ) {
-	if ( ! current_user_can( 'edit_user', $user_id ) ) {
-		return false;
-	}
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
 
-	if ( isset( $_POST['linkedin_url'] ) ) {
-		update_user_meta( $user_id, 'linkedin_url', esc_url_raw( $_POST['linkedin_url'] ) );
-	}
-	if ( isset( $_POST['instagram_username'] ) ) {
-		update_user_meta( $user_id, 'instagram_username', sanitize_text_field( $_POST['instagram_username'] ) );
-	}
-	if ( isset( $_POST['threads_username'] ) ) {
-		update_user_meta( $user_id, 'threads_username', sanitize_text_field( $_POST['threads_username'] ) );
-	}
+    if ( isset( $_POST['linkedin_url'] ) ) {
+        update_user_meta( $user_id, 'linkedin_url', esc_url_raw( $_POST['linkedin_url'] ) );
+    }
+    if ( isset( $_POST['instagram_username'] ) ) {
+        update_user_meta( $user_id, 'instagram_username', sanitize_text_field( $_POST['instagram_username'] ) );
+    }
+    if ( isset( $_POST['threads_username'] ) ) {
+        update_user_meta( $user_id, 'threads_username', sanitize_text_field( $_POST['threads_username'] ) );
+    }
 }
 
 add_action( 'personal_options_update', 'uvm_save_custom_user_profile_fields' );
@@ -237,64 +236,90 @@ add_action( 'edit_user_profile_update', 'uvm_save_custom_user_profile_fields' );
 add_action( 'rest_api_init', 'uvm_register_spotify_route' );
 
 function uvm_register_spotify_route() {
-	register_rest_route( 'universome/v1', '/latest-episode', [
-		'methods'             => 'GET',
-		'callback'            => 'uvm_get_spotify_data',
-		'permission_callback' => '__return_true'
-	] );
+    register_rest_route( 'universome/v1', '/latest-episode', [
+            'methods'             => 'GET',
+            'callback'            => 'uvm_get_spotify_data',
+            'permission_callback' => '__return_true'
+    ] );
 }
+
 /**
  * La funzione callback che contatta l'API di Spotify dal server.
  */
 function uvm_get_spotify_data() {
-    $clientId = 'badf08cb27534405ae65a9c5feffb686';
+    $clientId     = 'badf08cb27534405ae65a9c5feffb686';
     $clientSecret = 'dd0dfa1d8be64b6983b5e8edbde5581b';
-    $showId = '5J3Ai6sP7r89LG6d8HaAOe';
+    $showId       = '5J3Ai6sP7r89LG6d8HaAOe';
 
-    $token = get_transient('spotify_access_token');
+    $token = get_transient( 'spotify_access_token' );
 
     if ( false === $token ) {
-        $response = wp_remote_post('https://accounts.spotify.com/api/token', [
-                'method' => 'POST',
+        $response = wp_remote_post( 'https://accounts.spotify.com/api/token', [
+                'method'  => 'POST',
                 'headers' => [
-                        'Content-Type' => 'application/x-www-form-urlencoded',
-                        'Authorization' => 'Basic ' . base64_encode($clientId . ':' . $clientSecret)
+                        'Content-Type'  => 'application/x-www-form-urlencoded',
+                        'Authorization' => 'Basic ' . base64_encode( $clientId . ':' . $clientSecret )
                 ],
-                'body' => 'grant_type=client_credentials'
-        ]);
+                'body'    => 'grant_type=client_credentials'
+        ] );
 
-        if ( is_wp_error($response) ) {
-            return new WP_Error('token_error', 'Impossibile contattare Spotify per il token.', ['status' => 500]);
+        if ( is_wp_error( $response ) ) {
+            return new WP_Error( 'token_error', 'Impossibile contattare Spotify per il token.', [ 'status' => 500 ] );
         }
 
-        $body = json_decode(wp_remote_retrieve_body($response), true);
+        $body = json_decode( wp_remote_retrieve_body( $response ), true );
 
-        if ( empty($body['access_token']) ) {
-            return new WP_Error('token_invalid', 'Token di accesso non valido.', ['status' => 500]);
+        if ( empty( $body['access_token'] ) ) {
+            return new WP_Error( 'token_invalid', 'Token di accesso non valido.', [ 'status' => 500 ] );
         }
 
         $token = $body['access_token'];
-        set_transient('spotify_access_token', $token, 50 * 60);
+        set_transient( 'spotify_access_token', $token, 50 * 60 );
     }
 
-    $episode_response = wp_remote_get("https://api.spotify.com/v1/shows/{$showId}/episodes?limit=1&market=IT", [
-            'method' => 'GET',
+    $episode_response = wp_remote_get( "https://api.spotify.com/v1/shows/{$showId}/episodes?limit=1&market=IT", [
+            'method'  => 'GET',
             'headers' => [
                     'Authorization' => 'Bearer ' . $token
             ]
-    ]);
+    ] );
 
-    if ( is_wp_error($episode_response) ) {
-        return new WP_Error('episode_error', 'Impossibile ottenere l\'episodio.', ['status' => 500]);
+    if ( is_wp_error( $episode_response ) ) {
+        return new WP_Error( 'episode_error', 'Impossibile ottenere l\'episodio.', [ 'status' => 500 ] );
     }
 
-    $episode_data = json_decode(wp_remote_retrieve_body($episode_response), true);
+    $episode_data = json_decode( wp_remote_retrieve_body( $episode_response ), true );
 
-    if ( empty($episode_data['items']) ) {
-        return new WP_Error('no_episodes', 'Nessun episodio trovato.', ['status' => 404]);
+    if ( empty( $episode_data['items'] ) ) {
+        return new WP_Error( 'no_episodes', 'Nessun episodio trovato.', [ 'status' => 404 ] );
     }
 
-    return new WP_REST_Response($episode_data['items'][0], 200);
+    return new WP_REST_Response( $episode_data['items'][0], 200 );
 }
+
+/**
+ * Aggiunge una freccia (SVG) alle voci di menu 'primary' che hanno sottomenu.
+ * Questo permette al CSS (::hover) di animare la freccia.
+ */
+function uvm_modify_primary_nav_items( $title, $item, $args, $depth ) {
+
+    // Applica le modifiche solo al menu 'primary'
+    if ( 'primary' === $args->theme_location ) {
+
+        // Livello 0 (voci principali) che hanno figli: aggiungi la freccia
+        if ( $depth === 0 && in_array( 'menu-item-has-children', $item->classes ) ) {
+            $title .= ' <svg class="arrow-down" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+        }
+        // Livelli > 0 (voci del sottomenu): avvolgi in <span>
+        elseif ( $depth > 0 ) {
+            $title = '<span>' . $title . '</span>';
+        }
+    }
+
+    return $title;
+}
+
+// Assicurati di usare il filtro con il nome della nuova funzione
+add_filter( 'nav_menu_item_title', 'uvm_modify_primary_nav_items', 10, 4 );
 
 ?>

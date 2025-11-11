@@ -1,6 +1,6 @@
 <?php
 /**
- * Header Navigation Component (v4.1 - Dropdown Submenus Commented & Corrected Overlays)
+ * Header Navigation Component (v4.2 - Integrazione wp_nav_menu)
  */
 ?>
 
@@ -55,6 +55,7 @@
 
         <div class="nav-menu-wrapper">
             <?php
+            /* --- VECCHIO CODICE (BASATO SU GET_CATEGORIES) ---
             $excluded_categories = [ 'evidenza', 'ipse dixit', 'redazione universome' ];
             $categories          = get_categories( [ 'parent' => 0, 'hide_empty' => true ] );
             if ( $categories ) :
@@ -65,46 +66,33 @@
                         if ( in_array( strtolower( $category->name ), $excluded_categories ) ) {
                             continue;
                         }
-
-                        /* --- INIZIO LOGICA SOTTOMENU COMMENTATA ---
-                        $child_categories = get_categories( [ 'parent' => $category->term_id, 'hide_empty' => true ] );
-                        $has_children     = ! empty( $child_categories );
-                        $li_class         = $has_children ? ' class="menu-item-has-children"' : '';
-                        --- FINE LOGICA SOTTOMENU COMMENTATA --- */
+                        // ... vecchia logica sottomenu ...
                         ?>
-
-                        <li<?php /* echo $li_class; */ ?>> <?php // Rimuoviamo la classe dal <li> ?>
+                        <li>
                             <a href="<?php echo get_category_link( $category->term_id ); ?>">
                                 <?php echo esc_html( $category->name ); ?>
-
-                                <?php /* --- INIZIO FRECCIA COMMENTATA ---
-                                <?php if ( $has_children ) : ?>
-                                    <svg class="arrow-down" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2">
-                                        <polyline points="6 9 12 15 18 9"></polyline>
-                                    </svg>
-                                <?php endif; ?>
-                                --- FINE FRECCIA COMMENTATA --- */ ?>
                             </a>
-
-                            <?php /* --- INIZIO SOTTOMENU COMMENTATO ---
-                            <?php if ( $has_children ) : ?>
-                                <ul class="sub-menu">
-                                    <?php foreach ( $child_categories as $child ) : ?>
-                                        <li>
-                                            <a href="<?php echo get_category_link( $child->term_id ); ?>">
-                                                <span><?php echo esc_html( $child->name ); ?></span>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php endif; ?>
-                            --- FINE SOTTOMENU COMMENTATO --- */ ?>
+                            <?php // ... vecchio sottomenu commentato ... ?>
                         </li>
-
                     <?php endforeach; ?>
                 </ul>
-            <?php endif; ?>
+            <?php endif; */
+
+
+            // === NUOVO CODICE (BASATO SU WP_NAV_MENU) ===
+            // Carica il menu che hai assegnato alla posizione 'primary'
+            if ( has_nav_menu( 'primary' ) ) {
+                wp_nav_menu( [
+                        'theme_location' => 'primary',
+                        'container'      => false,        // Non vogliamo un <div> extra
+                        'menu_class'     => 'nav-menu',   // La tua classe CSS per l'<ul>
+                        'depth'          => 2,            // Supporta 1 livello di sottomenu (per i tuoi stili futuri)
+                ] );
+            } else {
+                // Messaggio di fallback se nessun menu è assegnato
+                echo '<ul class="nav-menu"><li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">Assegna un menu alla posizione "Primary"</a></li></ul>';
+            }
+            ?>
         </div>
 
         <button class="search-toggle" aria-label="Apri ricerca">
@@ -128,7 +116,7 @@
                 echo '<img src="' . esc_url( $logo_svg_uri ) . '" alt="' . get_bloginfo( 'name' ) . '">';
                 ?>
             </div>
-            <button class="search-close" aria-label="Chiudi ricerca">&times;</button>
+            <button class="search-close" aria-label="Chiudi ricerca">×</button>
         </header>
         <div class="overlay-content">
             <form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="search-form">
@@ -157,12 +145,12 @@
                 echo '<img src="' . esc_url( $logo_svg_uri ) . '" alt="' . get_bloginfo( 'name' ) . '">';
                 ?>
             </div>
-            <button class="mobile-nav-close" aria-label="Chiudi menu">&times;</button>
+            <button class="mobile-nav-close" aria-label="Chiudi menu">×</button>
         </header>
         <div class="overlay-content">
             <nav class="mobile-menu">
                 <?php
-                // Menu mobile semplificato (solo categorie principali)
+                /* --- VECCHIO CODICE (BASATO SU GET_CATEGORIES) ---
                 $excluded_categories = [ 'evidenza', 'ipse dixit', 'redazione universome' ];
                 $categories          = get_categories( [ 'parent' => 0, 'hide_empty' => true ] );
                 if ( $categories ) :
@@ -175,6 +163,19 @@
                     endforeach;
                     echo '</ul>';
                 endif;
+                */
+
+                // === NUOVO CODICE (BASATO SU WP_NAV_MENU) ===
+                // Usa lo stesso menu 'primary', ma applica il tuo Walker personalizzato
+                if ( has_nav_menu( 'primary' ) ) {
+                    wp_nav_menu( [
+                            'theme_location' => 'primary',
+                            'container'      => false,
+                            'menu_class'     => 'mobile-menu-list', // La tua classe per l'<ul> mobile
+                            'depth'          => 2,                  // Supporta sottomenu
+                            'walker'         => new UVM_Mobile_Nav_Walker() // Applica il Walker da functions.php
+                    ] );
+                }
                 ?>
             </nav>
         </div>

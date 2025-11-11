@@ -1075,7 +1075,7 @@ body {
    STILE MENU DROPDOWN
    ========================================================================== */
 
-/*
+
 .nav-menu .menu-item-has-children {
     position: relative;
 }
@@ -1157,7 +1157,7 @@ body {
 .sub-menu li a:hover span::after {
     width: 100%;
 }
-*/
+
 
 /* ==========================================================================
    FOOTER
@@ -1170,13 +1170,6 @@ body {
     padding-top: var(--space-lg); /* MODIFICATO: Padding normale */
     padding-bottom: var(--space-lg);
 }
-
-/* --- Separatore a Onda (Rimosso) --- */
-/*
-.footer-wave-divider { ... }
-.footer-wave-divider svg { ... }
-.footer-wave-divider .shape-fill { ... }
-*/
 
 /* --- Contenuto del Footer --- */
 .footer-content {

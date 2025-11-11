@@ -186,4 +186,22 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(alignDynamicSidebar, 100);
     });
+
+
+    const mobileMenuToggles = document.querySelectorAll('.mobile-menu .submenu-toggle');
+    mobileMenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault(); // Impedisce al link genitore di scattare
+
+            // Trova il <li> genitore
+            const parentLi = toggle.closest('.menu-item-has-children');
+
+            // Attiva/disattiva la classe che il tuo CSS già usa
+            parentLi.classList.toggle('submenu-is-open');
+
+            // Aggiorna l'attributo ARIA per l'accessibilità
+            const isExpanded = parentLi.classList.contains('submenu-is-open');
+            toggle.setAttribute('aria-expanded', isExpanded);
+        });
+    });
 });
