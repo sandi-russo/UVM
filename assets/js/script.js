@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===============================================
     const body = document.body;
     const initializeOverlay = (config) => {
-        const { toggleSelector, overlaySelector, panelSelector, closeSelector, focusSelector } = config;
+        const {toggleSelector, overlaySelector, panelSelector, closeSelector, focusSelector} = config;
         const toggleButton = document.querySelector(toggleSelector);
         const overlayElement = document.querySelector(overlaySelector);
         const panelElement = document.querySelector(panelSelector);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isActive()) focusTarget.focus();
             });
         }
-        return { close: closeOverlay, isActive };
+        return {close: closeOverlay, isActive};
     };
 
     const searchManager = initializeOverlay({
@@ -70,33 +70,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 // ===============================================
-    // INIZIALIZZAZIONE HERO SLIDER (SINGOLO, EFFETTO FADE)
-    // ===============================================
+// HERO SLIDER
+// ===============================================
     const heroSlider = document.querySelector('.hero-slider');
     if (heroSlider) {
-        const swiper = new Swiper(heroSlider, {
-            effect: 'fade', // Effetto dissolvenza
-            fadeEffect: {
-                crossFade: true
-            },
-            loop: true,
-            centeredSlides: true,
-            slidesPerView: 1, // Mostra solo 1 slide alla volta
+        // NOTA: Assicurati di aver caricato la libreria Swiper
+        if (typeof Swiper !== 'undefined') {
+            const swiper = new Swiper(heroSlider, {
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                loop: true,
 
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
 
-            // Navigazione (frecce) disabilitata
-            navigation: false,
+                navigation: false,
 
-            // Paginazione (pallini)
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
+                // Paginazione (pallini)
+                pagination: false,
+            });
+        } else {
+            console.warn('Libreria Swiper non trovata. Lo slider non funzionerà.');
+        }
     }
 
     // ===============================================
@@ -112,23 +111,79 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+// ===============================================
+    // ALLINEAMENTO DINAMICO SIDEBAR
     // ===============================================
-    // SOTTOMENU ACCORDION PER MENU MOBILE
-    // ===============================================
-    const mobileMenu = document.querySelector('.mobile-menu');
-    if (mobileMenu) {
-        const submenuToggles = mobileMenu.querySelectorAll('.submenu-toggle');
-        submenuToggles.forEach(toggle => {
-            toggle.addEventListener('click', (event) => {
-                event.preventDefault(); // Impedisce al pulsante di fare altro
-                const parentItem = toggle.closest('.menu-item-has-children');
-                if (parentItem) {
-                    parentItem.classList.toggle('submenu-is-open');
-                    const isOpen = parentItem.classList.contains('submenu-is-open');
-                    toggle.setAttribute('aria-expanded', isOpen);
-                }
-            });
-        });
+
+    // 1. Definiamo la funzione di allineamento
+    function alignDynamicSidebar() {
+        const sidebar = document.querySelector('.layout-with-sidebar > .sidebar');
+        const playerCard = document.querySelector('.sidebar .spotify-player-card');
+
+        // Resetta tutti gli stili dinamici prima di qualsiasi calcolo
+        if (sidebar) {
+            sidebar.style.marginTop = '';
+        }
+        if (playerCard) {
+            playerCard.style.marginTop = '';
+            playerCard.style.paddingTop = ''; // Resetta il padding-top dinamico
+        }
+
+        // Esegui solo su desktop (come da tuo CSS @media min-width: 1025px)
+        if (window.innerWidth < 1025 || !sidebar) {
+            return; // Esce se siamo su mobile/tablet
+        }
+
+        // Selettori comuni per desktop
+        const mainContent = document.querySelector('.layout-with-sidebar > .main-content');
+
+        if (document.body.classList.contains('home')) {
+            // *** CASO HOME ***
+            // Allinea l'INTERA sidebar alla prima card
+            const targetElement = document.querySelector('.posts-section:first-of-type .card-post--hero');
+
+            if (targetElement && mainContent) {
+                const mainContentRect = mainContent.getBoundingClientRect();
+                const targetRect = targetElement.getBoundingClientRect();
+                const offset = Math.max(0, targetRect.top - mainContentRect.top);
+
+                // Sposta l'intera sidebar
+                sidebar.style.marginTop = offset + 'px';
+            }
+
+        } else if (document.body.classList.contains('single-post')) {
+            // *** CASO ARTICOLO (LA TUA RICHIESTA) ***
+            // Goal 1: Sidebar si allinea con main-content (già fatto resettando il margin)
+            // Goal 2: Il *contenuto* del player si allinea con l'immagine.
+
+            const heroImage = document.querySelector('.single-post-hero');
+
+            if (playerCard && heroImage) {
+                // Posizione Y (verticale) dell'inizio della sidebar (dove la card è attaccata)
+                const sidebarRect = sidebar.getBoundingClientRect();
+                // Posizione Y (verticale) dell'inizio dell'immagine nell'articolo
+                const heroRect = heroImage.getBoundingClientRect();
+
+                // Calcola la differenza
+                // Questo è lo spazio vuoto che dobbiamo aggiungere *dentro* la card
+                const offset = Math.max(0, heroRect.top - sidebarRect.top);
+
+                // Applica questo spazio come PADDING-TOP alla card
+                // Questo spinge in giù .spotify-player__header e .spotify-player__controls
+                playerCard.style.paddingTop = offset + 'px';
+            }
+        }
+        // Nelle altre pagine (es. archivi), non facciamo nulla,
+        // la sidebar e la card restano allineate in alto.
     }
 
+    // 2. Esegui la funzione una volta al caricamento del DOM
+    alignDynamicSidebar();
+
+    // 3. Esegui di nuovo se la finestra viene ridimensionata (con debounce)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(alignDynamicSidebar, 100);
+    });
 });

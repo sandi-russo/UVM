@@ -27,6 +27,8 @@
             <h3 class="footer-title">Link Utili</h3>
             <ul class="footer-links">
                 <li><a href="<?php echo esc_url(home_url('/chi-siamo')); ?>">Chi Siamo</a></li>
+                <li><a href="<?php echo esc_url(home_url('/cookie-policy-ue')); ?>">Cookie Policy (UE)</a></li>
+                <li><a href="<?php echo esc_url(home_url('/terms-and-conditions')); ?>">Terms & Conditions</a></li>
                 <?php // Aggiungi qui altri link se necessario ?>
             </ul>
         </div>

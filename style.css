@@ -596,7 +596,7 @@ body {
     font-size: var(--text-xxl); /* Dinamico */
     font-weight: 700;
     line-height: 1.2;
-    max-width: 80%;
+    max-width: 90%;
     color: var(--white); /* Bianco per contrastare con lo sfondo scuro */
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     margin: 0;
@@ -1341,8 +1341,8 @@ body {
 }
 
 .spotify-player__image {
-    width: 5rem; /* Dinamico */
-    height: 5rem; /* Dinamico */
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: var(--radius);
     flex-shrink: 0;
@@ -1426,8 +1426,8 @@ body {
     background: var(--primary);
     color: var(--white);
     border: none;
-    width: 2.25rem; /* Dinamico */
-    height: 2.25rem; /* Dinamico */
+    width: 2.5rem; /* Dinamico */
+    height: 2.5rem; /* Dinamico */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1441,8 +1441,8 @@ body {
     transform: translateY(-0.15rem); /* Dinamico */
 }
 .spotify-player__play .play-icon {
-    width: 1.25rem; /* Dinamico */
-    height: 1.25rem; /* Dinamico */
+    width: 1.2rem; /* Dinamico */
+    height: 1.2rem; /* Dinamico */
 }
 
 .spotify-player__progress-bar {
@@ -1606,6 +1606,18 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .single-post-hero .slide-title {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+        max-width: 90%;
+    }
+
+    .single-post-hero .slide-category {
+        font-size: clamp(0.7rem, 2.5vw, 0.85rem); /* <-- CORRETTO */
+        padding: 0.15rem 0.5rem; /* <-- CORRETTO */
+        margin-bottom: var(--space-md); /* <-- CORRETTO (come lo slider) */
+    }
+
     .search-toggle .search-toggle-text {
         display: none;
     }
@@ -1697,6 +1709,68 @@ body {
         height: calc(100vh - 100px);
         overflow-y: auto;
     }
+
+
+    .sidebar .sidebar-content {
+        /* 1. Stile "card" (sfondo, bordi, ombra) */
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+
+        /* 2. Padding SOLO verticale, NIENTE laterale */
+        padding: var(--space-lg) 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sidebar .sidebar-content:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* 3. Allineamento per la HOME PAGE (gestito da JS) */
+    .front-page .sidebar .sidebar-content {
+        /* Il JS imposterà il margin-top corretto */
+    }
+
+    /* 4. Allineamento per la PAGINA ARTICOLO (gestito da JS) */
+    .single-post .sidebar .sidebar-content {
+        /* Il JS imposterà il margin-top corretto */
+    }
+
+    /* 5. Padding Interno per i WIDGET */
+    .sidebar-content > * {
+        padding-left: var(--space-lg);
+        padding-right: var(--space-lg);
+    }
+
+    .sidebar .spotify-player-card {
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0; /* Il padding è già gestito dal genitore */
+    }
+
+    /* Spazio tra i widget (se ne aggiungi altri) */
+    .sidebar-content > * + * {
+        margin-top: var(--space-lg);
+        padding-top: var(--space-lg);
+        border-top: 1px solid var(--secondary);
+        padding-left: var(--space-lg);
+        padding-right: var(--space-lg);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     .article-grid {
         grid-template-columns: repeat(3, 1fr);

@@ -33,15 +33,36 @@ add_action( 'after_setup_theme', 'uvm_setup' );
  * Caricamento script e style
  */
 function uvm_scripts() {
-	wp_enqueue_style( 'uvm-style', get_stylesheet_uri(), [], UVM_VERSION );
-	wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@' . SWIPER_VERSION . '/swiper-bundle.min.css', [], SWIPER_VERSION );
+    // Carica gli stili
+    wp_enqueue_style( 'uvm-style', get_stylesheet_uri(), [], UVM_VERSION );
+    wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@' . SWIPER_VERSION . '/swiper-bundle.min.css', [], SWIPER_VERSION );
 
-	wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@' . SWIPER_VERSION . '/swiper-bundle.min.js', [], SWIPER_VERSION, true );
-	wp_enqueue_script( 'uvm-script', get_template_directory_uri() . '/assets/js/script.js', [ 'swiper-js' ], UVM_VERSION, true );
+    // Carica la libreria Swiper
+    wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@' . SWIPER_VERSION . '/swiper-bundle.min.js', [], SWIPER_VERSION, true );
 
-	wp_dequeue_style( 'wp-block-library' );
-	wp_dequeue_style( 'wp-block-library-theme' );
+    // Carica lo script principale (dipende da Swiper)
+    wp_enqueue_script(
+            'uvm-main-script', // NOME UNICO 1
+            get_template_directory_uri() . '/assets/js/script.js',
+            [ 'swiper-js' ], // Dipendenza corretta
+            UVM_VERSION,
+            true
+    );
+
+    // Carica lo script del player Spotify (nessuna dipendenza)
+    wp_enqueue_script(
+            'uvm-spotify-player', // NOME UNICO 2
+            get_template_directory_uri() . '/assets/js/spotify-player.js',
+            [], // Nessuna dipendenza (o ['uvm-main-script'] se deve caricare dopo)
+            UVM_VERSION,
+            true
+    );
+
+    // Rimuovi stili non necessari
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
 }
+add_action( 'wp_enqueue_scripts', 'uvm_scripts' );
 
 add_action( 'wp_enqueue_scripts', 'uvm_scripts' );
 
@@ -222,59 +243,58 @@ function uvm_register_spotify_route() {
 		'permission_callback' => '__return_true'
 	] );
 }
-
 /**
  * La funzione callback che contatta l'API di Spotify dal server.
  */
 function uvm_get_spotify_data() {
-	$clientId     = 'badf08cb27534405ae65a9c5feffb686';
-	$clientSecret = 'dd0dfa1d8be64b6983b5e8edbde5581b';
-	$showId       = '5J3Ai6sP7r89LG6d8HaAOe';
+    $clientId = 'badf08cb27534405ae65a9c5feffb686';
+    $clientSecret = 'dd0dfa1d8be64b6983b5e8edbde5581b';
+    $showId = '5J3Ai6sP7r89LG6d8HaAOe';
 
-	$token = get_transient( 'spotify_access_token' );
+    $token = get_transient('spotify_access_token');
 
-	if ( false === $token ) {
-		$response = wp_remote_post( 'https://accounts.spotify.com/api/token', [
-			'method'  => 'POST',
-			'headers' => [
-				'Content-Type'  => 'application/x-www-form-urlencoded',
-				'Authorization' => 'Basic ' . base64_encode( $clientId . ':' . $clientSecret )
-			],
-			'body'    => 'grant_type=client_credentials'
-		] );
+    if ( false === $token ) {
+        $response = wp_remote_post('https://accounts.spotify.com/api/token', [
+                'method' => 'POST',
+                'headers' => [
+                        'Content-Type' => 'application/x-www-form-urlencoded',
+                        'Authorization' => 'Basic ' . base64_encode($clientId . ':' . $clientSecret)
+                ],
+                'body' => 'grant_type=client_credentials'
+        ]);
 
-		if ( is_wp_error( $response ) ) {
-			return new WP_Error( 'token_error', 'Impossibile contattare Spotify per il token.', [ 'status' => 500 ] );
-		}
+        if ( is_wp_error($response) ) {
+            return new WP_Error('token_error', 'Impossibile contattare Spotify per il token.', ['status' => 500]);
+        }
 
-		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+        $body = json_decode(wp_remote_retrieve_body($response), true);
 
-		if ( empty( $body['access_token'] ) ) {
-			return new WP_Error( 'token_invalid', 'Token di accesso non valido.', [ 'status' => 500 ] );
-		}
+        if ( empty($body['access_token']) ) {
+            return new WP_Error('token_invalid', 'Token di accesso non valido.', ['status' => 500]);
+        }
 
-		$token = $body['access_token'];
-		set_transient( 'spotify_access_token', $token, 50 * 60 );
-	}
+        $token = $body['access_token'];
+        set_transient('spotify_access_token', $token, 50 * 60);
+    }
 
-	$episode_response = wp_remote_get( "https://api.spotify.com/v1/shows/{$showId}/episodes?limit=1&market=IT", [
-		'method'  => 'GET',
-		'headers' => [
-			'Authorization' => 'Bearer ' . $token
-		]
-	] );
+    $episode_response = wp_remote_get("https://api.spotify.com/v1/shows/{$showId}/episodes?limit=1&market=IT", [
+            'method' => 'GET',
+            'headers' => [
+                    'Authorization' => 'Bearer ' . $token
+            ]
+    ]);
 
-	if ( is_wp_error( $episode_response ) ) {
-		return new WP_Error( 'episode_error', 'Impossibile ottenere l\'episodio.', [ 'status' => 500 ] );
-	}
+    if ( is_wp_error($episode_response) ) {
+        return new WP_Error('episode_error', 'Impossibile ottenere l\'episodio.', ['status' => 500]);
+    }
 
-	$episode_data = json_decode( wp_remote_retrieve_body( $episode_response ), true );
+    $episode_data = json_decode(wp_remote_retrieve_body($episode_response), true);
 
-	if ( empty( $episode_data['items'] ) ) {
-		return new WP_Error( 'no_episodes', 'Nessun episodio trovato.', [ 'status' => 404 ] );
-	}
+    if ( empty($episode_data['items']) ) {
+        return new WP_Error('no_episodes', 'Nessun episodio trovato.', ['status' => 404]);
+    }
 
-	return new WP_REST_Response( $episode_data['items'][0], 200 );
+    return new WP_REST_Response($episode_data['items'][0], 200);
 }
 
 ?>
