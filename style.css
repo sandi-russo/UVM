@@ -13,12 +13,12 @@ Version: 3.9 (Single Post Layout & Mobile Type Refinement)
     --bg: #FAFAFA;
 
     /* --- SCALA TIPOGRAFICA MOBILE-FIRST PIÙ BILANCIATA --- */
-    --text-xs: clamp(0.75rem, 0.5vw + 0.6rem, 0.8rem); /* ~12px -> 12.8px (Per meta info) */
-    --text-sm: clamp(0.8125rem, 0.5vw + 0.7rem, 0.9rem); /* ~13px -> 14.4px (Per menu, excerpt mobile) */
-    --text-base: clamp(0.875rem, 0.5vw + 0.8rem, 1rem); /* ~14px -> 16px (Testo principale) */
-    --text-lg: clamp(1rem, 1vw + 0.8rem, 1.25rem); /* ~16px -> 20px (Titoli card) */
-    --text-xl: clamp(1.125rem, 1.5vw + 0.9rem, 1.5rem); /* ~18px -> 24px (Titoli sezione) */
-    --text-xxl: clamp(1.25rem, 2.5vw + 0.8rem, 2.25rem);   /* ~20px -> 36px (Titoli Hero) */
+    --text-xs: clamp(0.75rem, 0.1vw + 0.7rem, 0.8125rem);      /* ~12px -> 13px (Meta) */
+    --text-sm: clamp(0.8125rem, 0.1vw + 0.75rem, 0.875rem);   /* ~13px -> 14px (Menu, Excerpt Mobile) */
+    --text-base: clamp(0.875rem, 0.1vw + 0.85rem, 1rem);      /* ~14px -> 16px (Testo Articolo) */
+    --text-lg: clamp(0.9375rem, 0.5vw + 0.75rem, 1.125rem);    /* ~15px -> 18px (Titoli Card) */
+    --text-xl: clamp(1.0625rem, 0.75vw + 0.8rem, 1.375rem);   /* ~17px -> 22px (Titoli Sezione) */
+    --text-xxl: clamp(1.125rem, 1vw + 0.8rem, 2rem);         /* ~18px -> 32px (Titoli Hero) */
 
     --space-sm: clamp(0.75rem, 1.5vw, 1rem);
     --space-md: clamp(1rem, 2vw, 1.5rem);
@@ -647,7 +647,7 @@ body {
     font-size: var(--text-xxl);
     font-weight: 700;
     line-height: 1.2;
-    max-width: 90%;
+    max-width: 95%;
     color: var(--white);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     margin: 0;
@@ -850,7 +850,7 @@ body {
     font-style: italic;
     color: var(--text);
     opacity: 0.9;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
 }
 
 
