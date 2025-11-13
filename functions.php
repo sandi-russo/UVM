@@ -328,4 +328,22 @@ function uvm_modify_primary_nav_items( $title, $item, $args, $depth ) {
 // Assicurati che il filtro usi il nome corretto della funzione
 add_filter( 'nav_menu_item_title', 'uvm_modify_primary_nav_items', 10, 4 );
 
+
+/**
+ * Imposta il numero di articoli per pagina a 9 nelle pagine archivio autore.
+ */
+function uvm_limit_author_posts_per_page( $query ) {
+
+    // Controlla che siamo in una pagina archivio autore, che sia la query principale
+    // e che non siamo nell'area admin.
+    if ( ! is_admin() && $query->is_author() && $query->is_main_query() ) {
+
+        // Imposta il limite a 9 articoli
+        $query->set( 'posts_per_page', 9 );
+    }
+}
+add_action( 'pre_get_posts', 'uvm_limit_author_posts_per_page' );
+
+
+
 ?>

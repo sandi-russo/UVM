@@ -22,21 +22,19 @@ get_header();
                     ?>
                     <div class="single-post-hero">
 
-                        <?php if ( $featured_img_url ) : ?>
+                        <?php if ( has_post_thumbnail() ) : // Controllo più pulito ?>
                             <div class="slide-background"
-                                 style="background-image: url('<?php echo esc_url( $featured_img_url ); ?>');"></div>
-                        <?php endif; ?>
+                                 style="background-image: url('<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>');"></div>
+
+                        <?php else : // --- INIZIO MODIFICA: Placeholder --- ?>
+                            <div class="slide-background-placeholder">
+                                <span class="slide-placeholder-text">Nessuna immagine disponibile</span>
+                            </div>
+                        <?php endif; // --- FINE MODIFICA --- ?>
 
                         <div class="slide-overlay"></div>
 
                         <div class="slide-content">
-                            <?php
-                            /*
-                             * --- BLOCCO CATEGORIA RIMOSSO ---
-                             * È stato spostato sotto, nel blocco .meta-tags
-                             */
-                            ?>
-
                             <h1 class="slide-title"><?php the_title(); ?></h1>
                         </div>
                     </div>
@@ -49,8 +47,10 @@ get_header();
                                 <?php echo get_avatar( get_the_author_meta( 'ID' ), 80 ); ?>
 
                                 <div class="author-info">
-                                    <span class="author-name"><?php echo get_the_author_meta( 'display_name' ); ?></span>
-
+                                    <a class="author-name-link"
+                                       href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
+                                        <span class="author-name"><?php echo get_the_author_meta( 'display_name' ); ?></span>
+                                    </a>
                                     <div class="author-socials">
                                         <?php
                                         $author_id          = get_the_author_meta( 'ID' );

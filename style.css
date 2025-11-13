@@ -678,6 +678,17 @@ body {
     background-color: var(--secondary);
 }
 
+.author-name-link {
+    text-decoration: none;
+    color: inherit; /* Eredita il colore (var(--text)) */
+    transition: color 0.3s ease;
+}
+
+/* Applica l'hover solo al testo, non all'icona */
+.author-name-link:hover .author-name {
+    color: var(--primary);
+}
+
 .meta-top-row {
     display: flex;
     justify-content: space-between;
@@ -1442,6 +1453,299 @@ body {
     border: 0;
 }
 
+/* ==========================================================================
+   PAGINA 404 (Errore) - Versione Minimalista come richiesto
+   ========================================================================== */
+.error-404-content {
+    text-align: center;
+    /* Il padding-block è rimosso, usiamo quello del genitore .main-content-area */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-404-number {
+    font-size: clamp(4rem, 10vw, 6rem); /* Un po' meno enorme */
+    font-weight: 800;
+    color: var(--text); /* Colore del testo per coerenza con lo screenshot */
+    line-height: 1;
+    margin-bottom: var(--space-sm); /* Meno spazio sotto il 404 */
+    opacity: 0.8; /* Leggermente meno "in your face" */
+}
+
+.error-404-title {
+    font-size: var(--text-xl); /* Titolo grande ma non esagerato */
+    margin-top: 0; /* Rimuovi spazio sopra */
+    margin-bottom: var(--space-sm); /* Meno spazio sotto il titolo */
+}
+
+.error-404-description {
+    font-size: var(--text-base); /* Testo descrittivo normale */
+    max-width: 50ch; /* Limita la larghezza del testo per leggibilità */
+    margin-inline: auto;
+    margin-bottom: var(--space-md); /* Meno spazio prima del bottone */
+    opacity: 0.7;
+}
+
+/* Stile per il bottone "Torna alla Home" */
+.error-404-content .btn {
+    font-size: var(--text-sm); /* Più piccolo, come nello screenshot */
+    padding: 0.6em 1.5em; /* Padding più compatto */
+    border-radius: var(--radius); /* Raggio del bottone */
+    margin-bottom: var(--space-md); /* Spazio prima di "oppure" */
+}
+
+.error-404-or {
+    display: block;
+    margin: var(--space-sm) 0; /* Più compatto */
+    font-size: var(--text-xs); /* Più piccolo */
+    opacity: 0.5;
+}
+
+.error-404-search-label {
+    font-size: var(--text-sm); /* Più piccolo */
+    font-weight: 500;
+    margin-top: var(--space-md); /* Spazio tra "oppure" e "cerca" */
+    margin-bottom: var(--space-sm);
+}
+
+/* Contenitore per il form di ricerca */
+.error-404-search {
+    width: 100%;
+    max-width: 400px; /* Limita la larghezza del form ulteriormente */
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   PAGINA AUTORE (author.php)
+   ========================================================================== */
+.author-box-archive {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--secondary);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column; /* Default per mobile */
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+}
+
+.author-box-archive__avatar img {
+    border-radius: 50%;
+    width: 100px; /* Dimensione fissa per coerenza */
+    height: 100px;
+}
+
+.author-box-archive__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.author-box-archive__label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.author-box-archive__name {
+    font-size: var(--text-xxl);
+    margin: 0.1em 0 0.25em 0;
+}
+
+.author-box-archive__bio {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    max-width: 60ch; /* Limita larghezza bio */
+    opacity: 0.8;
+    margin-bottom: var(--space-md);
+}
+
+/* Riusiamo gli stili dei social dall'articolo, sono già perfetti */
+.author-box-archive__info .author-socials {
+    justify-content: center; /* Centra le icone social */
+}
+
+/* Stile Desktop per la scheda autore */
+@media (min-width: 769px) {
+    .author-box-archive {
+        flex-direction: row; /* Avatar a sinistra, info a destra */
+        text-align: left;
+        gap: var(--space-lg);
+    }
+
+    .author-box-archive__avatar img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .author-box-archive__info {
+        align-items: flex-start;
+    }
+
+    .author-box-archive__info .author-socials {
+        justify-content: flex-start; /* Allinea a sinistra */
+    }
+}
+
+/* ==========================================================================
+   PAGINAZIONE NUMERATA (es. 1, 2, 3...)
+   ========================================================================== */
+.navigation.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: calc(var(--space-sm) / 2);
+    margin-top: var(--space-lg); /* Spazio dalla griglia di articoli */
+}
+
+.page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em; /* Padding relativo al font */
+    min-width: 2.5em; /* Larghezza minima per coerenza */
+    height: 2.5em; /* Altezza fissa */
+    border-radius: var(--radius);
+    background: var(--secondary); /* Sfondo grigio chiaro */
+    color: var(--text);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Stile per "..." */
+.page-numbers.dots {
+    background: none;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+/* Stile per la pagina corrente */
+.page-numbers.current {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+/* Stile per hover (su tutti tranne la corrente e i puntini) */
+.page-numbers:not(.current):not(.dots):hover {
+    background: var(--text);
+    color: var(--white);
+    opacity: 0.8;
+}
+
+
+/* ==========================================================================
+   CARD POST (Placeholder Immagine)
+   ========================================================================== */
+
+/*
+ * Applica lo stile al contenitore placeholder.
+ * Eredita già le dimensioni da .card-post__image-wrapper
+ */
+.card-post__image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white); /* Sfondo bianco pulito */
+    border: 1px dashed rgba(0, 0, 0, 0.15); /* Bordino tratteggiato */
+    padding: var(--space-sm);
+}
+
+/* Stile per il testo placeholder */
+.card-post__placeholder-text {
+    font-size: var(--text-xs); /* Usa il font più piccolo */
+    font-weight: 500;
+    color: var(--text);
+    opacity: 0.5;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   SINGLE POST (Placeholder Hero)
+   ========================================================================== */
+.slide-background-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary); /* Sfondo grigio */
+    padding: var(--space-lg);
+    text-align: center;
+    z-index: 0; /* Dietro l'overlay e il titolo */
+}
+
+.slide-placeholder-text {
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--text);
+    opacity: 0.5;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   RESPONSIVE & CENTERED EMBEDS (v2 - Corazzato)
+   ========================================================================== */
+
+/*
+ * 1. CATTURA-TUTTO (per vecchi post o iframe incollati)
+ * Forza qualsiasi iframe nel contenuto a essere responsivo,
+ * centrato e con aspect-ratio 16:9, come le immagini.
+ */
+.single-post-content iframe {
+    max-width: 100% !important; /* Forza il rispetto del contenitore */
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    height: auto; /* Lascia che l'aspect-ratio comandi */
+    aspect-ratio: 16 / 9; /* FORZA il 16:9 */
+    display: block;
+    margin: var(--space-md) auto; /* Centra e dà spazio (come le figure) */
+    border-radius: var(--radius-lg); /* Applica il radius (come le figure) */
+    background: #000; /* Sfondo nero durante il caricamento */
+    border: none; /* Rimuovi bordi di default */
+}
+
+/*
+ * 2. Stile per i BLOCCHI MODERNI (Gutenberg, wp-block-embed)
+ * Questo sovrascrive il CATTURA-TUTTO con il metodo "padding" (migliore).
+ */
+.single-post-content figure.wp-block-embed {
+    border-radius: 0;
+    max-width: 100%;
+    height: auto;
+    margin: var(--space-md) auto; /* Stesso spazio del CATTURA-TUTTO */
+}
+
+/* Il wrapper ha il radius e l'aspect-ratio */
+.single-post-content .wp-block-embed__wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: var(--radius-lg);
+}
+
+/* L'iframe dentro il wrapper si adatta (sovrascrive il CATTURA-TUTTO) */
+.single-post-content .wp-block-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0; /* Resetta i margini del CATTURA-TUTTO */
+    aspect-ratio: auto; /* Resetta l'aspect-ratio del CATTURA-TUTTO */
+    border-radius: 0; /* Il radius è già sul wrapper */
+}
 
 /* ==========================================================================
    RESPONSIVE
