@@ -658,24 +658,30 @@ body {
  * ======================================================
 */
 
-.single-post-meta {
-    display: block;
-    padding-bottom: var(--space-md);
-    border-bottom: none;
-    position: relative;
-    margin-bottom: var(--space-md);
-    margin-top: var(--space-md); /* Spazio dall'hero */
+/* La nuova "Card" che contiene tutto */
+.author-box-article {
+    background: var(--white);
+    border: 1px solid var(--secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-md);
+    margin: var(--space-lg) 0; /* Spazio sopra e sotto la card */
+
+    /* Manteniamo la logica flessibile che avevamo in author.php */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra i blocchi */
 }
 
+/* Il vecchio contenitore, ora resettato */
+.single-post-meta {
+    display: block;
+    width: 100%; /* Occupa tutta la larghezza della card */
+}
+
+/* Rimuoviamo la vecchia linea, ora c'è la card */
 .single-post-meta::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 2px;
-    background-color: var(--secondary);
+    display: none;
 }
 
 .author-name-link {
@@ -693,13 +699,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 .meta-author {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     margin-bottom: 0;
 }
 
@@ -734,20 +740,28 @@ body {
 .author-socials {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* Spazio tra le icone */
     margin-top: 0;
 }
 
 .author-socials a {
-    display: inline-flex;
-    color: var(--text);
-    opacity: 0.7;
-    transition: color 0.3s ease, opacity 0.3s ease;
+    display: flex; /* Centra l'SVG all'interno */
+    align-items: center;
+    justify-content: center;
+    width: 36px;  /* Dimensione fissa per un cerchio perfetto */
+    height: 36px;
+    background: var(--secondary); /* Sfondo grigio per staccare */
+    border-radius: 50%;
+    color: var(--text); /* Icona scura */
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
 .author-socials a:hover {
-    color: var(--primary);
+    background: var(--primary); /* Sfondo arancione */
+    color: var(--white); /* Icona bianca */
     opacity: 1;
+    transform: scale(1.1); /* Effetto "pop" al passaggio del mouse */
 }
 
 .author-socials svg {
@@ -761,7 +775,7 @@ body {
     justify-content: center; /* <-- Ecco il centraggio */
     align-items: center; /* Allinea verticalmente le bolle */
     gap: calc(var(--space-sm) / 2); /* Spazio tra le bolle */
-    margin-top: var(--space-md); /* Spazio dall'autore */
+    margin-top: var(--space-sm); /* Spazio dall'autore */
 }
 
 .meta-tag-item {
@@ -1287,9 +1301,8 @@ body {
 .spotify-player-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--secondary);
-    box-shadow: var(--shadow-md);
-    padding: var(--space-sm);
+    box-shadow: var(--shadow-sm); /* <-- Ombra allineata */
+    padding: var(--space-lg); /* <-- Padding allineato */
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
@@ -1571,6 +1584,11 @@ body {
 
 /* Stile Desktop per la scheda autore */
 @media (min-width: 769px) {
+
+    .author-box-article {
+        align-items: stretch; /* Non centrare, allunga i figli */
+    }
+
     .author-box-archive {
         flex-direction: row; /* Avatar a sinistra, info a destra */
         text-align: left;
@@ -1903,7 +1921,6 @@ body {
     margin: 0; /* Rimosso spazio sotto per far posto al ruolo */
 }
 
-/* NUOVO: Stile per il Ruolo (sostituisce la bio) */
 .team-member-role {
     font-size: var(--text-sm);
     font-weight: 600;
@@ -1911,16 +1928,61 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: var(--space-sm); /* Spazio dal nome */
-
-    /* Questa è la magia: fa sì che il ruolo si allunghi
-       per far finire le card tutte alla stessa altezza */
-    flex-grow: 1;
+    margin-bottom: var(--space-md); /* Spazio prima dei social */
 }
 
 /* VECCHI: Nascosti come da richiesta */
 .team-member-bio,
 .team-member-card .author-socials {
-    display: none;
+    justify-content: center; /* Centra le icone */
+    flex-grow: 1; /* Spinge questo blocco in fondo alla card */
+    align-items: flex-end; /* Allinea le icone alla fine dello spazio flessibile */
+}
+
+
+/* ==========================================================================
+   PLACEHOLDER AVATAR E LINK CARD CHI SIAMO
+   ========================================================================== */
+
+/* 1. Stile per il nuovo placeholder SVG */
+.avatar-placeholder {
+    background: var(--secondary); /* Sfondo grigio */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatar-placeholder svg {
+    width: 60%; /* Dimensione icona interna */
+    height: 60%;
+    color: var(--text);
+    opacity: 0.3; /* Icona "leggera" */
+}
+
+/* 2. Stili per i nuovi link nella card "Chi Siamo" */
+
+/* Rimuove la sottolineatura dal link del nome */
+.team-member-name a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Aggiunge l'hover al nome */
+.team-member-name a:hover {
+    color: var(--primary);
+}
+
+/* Aggiunge l'hover all'avatar (sia immagine che placeholder) */
+.team-member-avatar-link:hover .team-member-avatar img,
+.team-member-avatar-link:hover .team-member-avatar .avatar-placeholder {
+    transform: scale(1.05);
+}
+.team-member-avatar img,
+.team-member-avatar .avatar-placeholder {
+    transition: transform 0.3s ease;
 }
 
 /* ==========================================================================
@@ -2124,7 +2186,8 @@ body {
         background: var(--white);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-sm);
-        padding: var(--space-lg) 0;
+        padding: var(--space-lg);
+        border: 1px solid var(--secondary); /* <-- ECCO IL BORDO */
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -2150,6 +2213,7 @@ body {
         background: none;
         border: none;
         box-shadow: none;
+        padding: 0; /* <-- AGGIUNTO per resettare il padding globale */
     }
 
     .sidebar-content > * + * {

@@ -550,4 +550,15 @@ function uvm_format_role_name( $role_key ) {
     }
 }
 
+/**
+ * For_author_name_to_UPPERCASE_everywhere.
+ * This filter intercepts the author's display name right before it's shown.
+ */
+function uvm_uppercase_author_name( $display_name ) {
+    // Use mb_strtoupper for multi-byte character safety (like accented letters)
+    return mb_strtoupper( $display_name );
+}
+add_filter( 'get_the_author_display_name', 'uvm_uppercase_author_name' );
+
+
 ?>
