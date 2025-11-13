@@ -136,9 +136,7 @@ function uvm_get_svg_icon( $icon_name ) {
 }
 
 /**
- * Walker personalizzato per il menu mobile (Opzionale se si usa wp_nav_menu)
- * NOTA: Questo non è attualmente utilizzato dal navigation.php fornito,
- * ma è pronto se si decide di passare a wp_nav_menu per il mobile.
+ * Walker personalizzato per il menu mobile
  */
 class UVM_Mobile_Nav_Walker extends Walker_Nav_Menu {
     function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
@@ -165,71 +163,235 @@ class UVM_Mobile_Nav_Walker extends Walker_Nav_Menu {
         $output .= '</li>';
     }
 }
-// --- CAMPI PROFILO AUTORE ---
+
+
+// --- CAMPI PROFILO AUTORE (BLOCCO UNICO E CORRETTO) ---
 /**
- * Aggiunge i nuovi campi social al profilo utente nell'area admin.
+ * Aggiunge i nuovi campi social, Unità e Ruolo al profilo utente.
  */
 function uvm_add_custom_user_profile_fields( $user ) {
     ?>
     <h3><?php _e( 'Profili Social (Opzionali)', 'universome' ); ?></h3>
-
     <table class="form-table">
         <tr>
-            <th><label for="linkedin_url">Profilo LinkedIn</label></th>
+            <th><label for="linkedin">Profilo LinkedIn</label></th>
             <td>
-                <input type="url" id="linkedin_url" name="linkedin_url"
-                       value="<?php echo esc_attr( get_user_meta( $user->ID, 'linkedin_url', true ) ); ?>"
+                <?php // CORREZIONE: usa 'linkedin' ?>
+                <input type="url" id="linkedin" name="linkedin"
+                       value="<?php echo esc_attr( get_user_meta( $user->ID, 'linkedin', true ) ); ?>"
                        class="regular-text"/>
                 <p class="description">Inserisci l'URL completo del tuo profilo LinkedIn.</p>
             </td>
         </tr>
         <tr>
-            <th><label for="instagram_username">Username Instagram</label></th>
+            <th><label for="instagram">Username Instagram</label></th>
             <td>
-                <input type="text" id="instagram_username" name="instagram_username"
-                       value="<?php echo esc_attr( get_user_meta( $user->ID, 'instagram_username', true ) ); ?>"
+                <?php // CORREZIONE: usa 'instagram' ?>
+                <input type="text" id="instagram" name="instagram"
+                       value="<?php echo esc_attr( get_user_meta( $user->ID, 'instagram', true ) ); ?>"
                        class="regular-text"/>
                 <p class="description">Inserisci solo lo username (es. <strong>nomeutente</strong>, senza @).</p>
             </td>
         </tr>
         <tr>
-            <th><label for="threads_username">Username Threads</label></th>
+            <th><label for="threads">Username Threads</label></th>
             <td>
-                <input type="text" id="threads_username" name="threads_username"
-                       value="<?php echo esc_attr( get_user_meta( $user->ID, 'threads_username', true ) ); ?>"
+                <?php // CORREZIONE: usa 'threads' ?>
+                <input type="text" id="threads" name="threads"
+                       value="<?php echo esc_attr( get_user_meta( $user->ID, 'threads', true ) ); ?>"
                        class="regular-text"/>
                 <p class="description">Inserisci solo lo username (es. <strong>nomeutente</strong>, senza @).</p>
             </td>
         </tr>
     </table>
+
+    <hr>
+
+    <h3><?php _e( 'Informazioni Redazione (Obbligatorie)', 'universome' ); ?></h3>
+    <table class="form-table">
+        <?php // Questi erano già corretti ?>
+        <tr>
+            <th><label for="unit"><?php _e("Unità di appartenenza", "universome"); ?></label></th>
+            <td>
+                <?php $unit = esc_attr(get_the_author_meta('unit', $user->ID)); ?>
+                <select name="unit" id="unit">
+                    <option value="">Seleziona un'unità</option>
+                    <option value="giornale" <?php selected($unit, 'giornale'); ?>>Giornale</option>
+                    <option value="radio" <?php selected($unit, 'radio'); ?>>Radio</option>
+                    <option value="creativa_grafica" <?php selected($unit, 'creativa_grafica'); ?>>Creativa / Grafica</option>
+                    <option value="social" <?php selected($unit, 'social'); ?>>Social</option>
+                    <option value="informatica" <?php selected($unit, 'informatica'); ?>>Informatica</option>
+                </select>
+                <br />
+                <span class="description"><?php _e("Seleziona l'unità di appartenenza."); ?></span>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="ruolo_uvm"><?php _e("Ruolo UVM", "universome"); ?></label></th>
+            <td>
+                <?php $ruolo_uvm = esc_attr(get_the_author_meta('ruolo_uvm', $user->ID)); ?>
+                <select name="ruolo_uvm" id="ruolo_uvm">
+                    <option value="">Seleziona un ruolo</option>
+                    <option value="membro" <?php selected($ruolo_uvm, 'membro'); ?>>Membro</option>
+                    <option value="caposervizio" <?php selected($ruolo_uvm, 'caposervizio'); ?>>Caposervizio</option>
+                    <option value="redattore" <?php selected($ruolo_uvm, 'redattore'); ?>>Redattore</option>
+                    <option value="responsabile_unit" <?php selected($ruolo_uvm, 'responsabile_unit'); ?>>Responsabile UNIT</option>
+                    <option value="coordinatrice_uvm" <?php selected($ruolo_uvm, 'coordinatrice_uvm'); ?>>Coordinatrice UVM</option>
+                </select>
+                <br />
+                <span class="description"><?php _e("Seleziona il tuo ruolo UVM."); ?></span>
+            </td>
+        </tr>
+    </table>
     <?php
 }
-
 add_action( 'show_user_profile', 'uvm_add_custom_user_profile_fields' );
 add_action( 'edit_user_profile', 'uvm_add_custom_user_profile_fields' );
 
 /**
- * Salva i dati dei campi social personalizzati quando il profilo viene aggiornato.
+ * Salva i dati dei campi personalizzati.
  */
 function uvm_save_custom_user_profile_fields( $user_id ) {
     if ( ! current_user_can( 'edit_user', $user_id ) ) {
         return false;
     }
 
-    if ( isset( $_POST['linkedin_url'] ) ) {
-        update_user_meta( $user_id, 'linkedin_url', esc_url_raw( $_POST['linkedin_url'] ) );
+    // Campi Social (CORRETTI CON I VECCHI ID)
+    if ( isset( $_POST['linkedin'] ) ) {
+        update_user_meta( $user_id, 'linkedin', esc_url_raw( $_POST['linkedin'] ) );
     }
-    if ( isset( $_POST['instagram_username'] ) ) {
-        update_user_meta( $user_id, 'instagram_username', sanitize_text_field( $_POST['instagram_username'] ) );
+    if ( isset( $_POST['instagram'] ) ) {
+        update_user_meta( $user_id, 'instagram', sanitize_text_field( $_POST['instagram'] ) );
     }
-    if ( isset( $_POST['threads_username'] ) ) {
-        update_user_meta( $user_id, 'threads_username', sanitize_text_field( $_POST['threads_username'] ) );
+    if ( isset( $_POST['threads'] ) ) {
+        update_user_meta( $user_id, 'threads', sanitize_text_field( $_POST['threads'] ) );
+    }
+
+    // Campi Unità e Ruolo (Questi erano già corretti)
+    if ( isset( $_POST['unit'] ) ) {
+        update_user_meta( $user_id, 'unit', sanitize_text_field( $_POST['unit'] ) );
+    }
+    if ( isset( $_POST['ruolo_uvm'] ) ) {
+        update_user_meta( $user_id, 'ruolo_uvm', sanitize_text_field( $_POST['ruolo_uvm'] ) );
     }
 }
-
 add_action( 'personal_options_update', 'uvm_save_custom_user_profile_fields' );
 add_action( 'edit_user_profile_update', 'uvm_save_custom_user_profile_fields' );
 
+
+// --- SISTEMA DI AVATAR PERSONALIZZATO ---
+
+/**
+ * Nasconde la sezione Avatar predefinita di WordPress per evitare confusione.
+ */
+function uvm_hide_default_avatar_section() {
+    echo '<style>
+        .user-profile-picture,
+        .user-profile-picture + .form-table {
+            display: none !important;
+        }
+    </style>';
+}
+add_action('admin_head-profile.php', 'uvm_hide_default_avatar_section');
+add_action('admin_head-user-edit.php', 'uvm_hide_default_avatar_section');
+
+/**
+ * Aggiunge il campo di upload per l'avatar personalizzato.
+ */
+function uvm_add_custom_avatar_field($user) {
+    ?>
+    <h2><?php _e('Avatar personalizzato', 'universome'); ?></h2>
+    <table class="form-table">
+        <tr>
+            <th><label for="custom_avatar"><?php _e('Il tuo avatar', 'universome'); ?></label></th>
+            <td>
+                <?php
+                $custom_avatar = get_user_meta($user->ID, 'custom_avatar', true);
+                if ($custom_avatar) {
+                    echo '<img src="' . esc_url($custom_avatar) . '" style="max-width: 150px; height: auto; border-radius: 50%;" /><br /><br />';
+                }
+                ?>
+                <input type="file" name="custom_avatar" id="custom_avatar" accept="image/*" />
+                <p class="description">
+                    <?php _e('Carica un\'immagine per usarla come avatar personalizzato. L\'immagine ideale dovrebbe essere quadrata (es. 300x300 pixel). Premi "Aggiorna profilo" per salvare.', 'universome'); ?>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+add_action('show_user_profile', 'uvm_add_custom_avatar_field');
+add_action('edit_user_profile', 'uvm_add_custom_avatar_field');
+
+/**
+ * Permette l'upload di file nel form del profilo (necessario per l'avatar).
+ */
+function uvm_add_enctype_to_profile_form() {
+    echo ' enctype="multipart/form-data"';
+}
+add_action('user_edit_form_tag', 'uvm_add_enctype_to_profile_form');
+
+/**
+ * Salva l'avatar personalizzato quando il profilo viene aggiornato.
+ */
+function uvm_save_custom_avatar($user_id) {
+    if (!current_user_can('edit_user', $user_id)) {
+        return false;
+    }
+
+    if (isset($_FILES['custom_avatar']) && $_FILES['custom_avatar']['size'] > 0) {
+        // Carica i file necessari per media_handle_upload
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+
+        // Carica l'immagine
+        $attachment_id = media_handle_upload('custom_avatar', 0);
+
+        if (is_wp_error($attachment_id)) {
+            // Gestione errore (opzionale: potresti aggiungere un admin_notice)
+            return;
+        }
+
+        // Ottieni l'URL dell'immagine caricata
+        $attachment_url = wp_get_attachment_url($attachment_id);
+
+        // Salva l'URL nel meta utente
+        update_user_meta($user_id, 'custom_avatar', $attachment_url);
+    }
+}
+add_action('personal_options_update', 'uvm_save_custom_avatar');
+add_action('edit_user_profile_update', 'uvm_save_custom_avatar');
+
+/**
+ * Filtra get_avatar() per usare il nostro avatar personalizzato se esiste.
+ */
+function uvm_use_custom_avatar($avatar, $id_or_email, $size, $default, $alt) {
+    $user = false;
+
+    if (is_numeric($id_or_email)) {
+        $id = (int) $id_or_email;
+        $user = get_user_by('id', $id);
+    } elseif (is_object($id_or_email)) {
+        if (!empty($id_or_email->user_id)) {
+            $id = (int) $id_or_email->user_id;
+            $user = get_user_by('id', $id);
+        }
+    } else {
+        $user = get_user_by('email', $id_or_email);
+    }
+
+    if ($user && is_object($user)) {
+        $custom_avatar = get_user_meta($user->ID, 'custom_avatar', true);
+        if ($custom_avatar) {
+            // Se esiste un avatar personalizzato, sovrascrivi l'HTML di default
+            $avatar = "<img alt='{$alt}' src='{$custom_avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' style='border-radius: 50%; object-fit: cover;' />";
+        }
+    }
+
+    return $avatar;
+}
+add_filter('get_avatar', 'uvm_use_custom_avatar', 10, 5);
 
 // --- ENDPOINT API SPOTIFY ---
 /**
@@ -300,8 +462,7 @@ function uvm_get_spotify_data() {
 }
 
 /**
- * Aggiunge una freccia (SVG) alle voci di menu 'primary' che hanno sottomenu.
- * Questo permette al CSS (::hover) di animare la freccia.
+ * Modifica l'output del titolo delle voci di menu 'primary'.
  */
 function uvm_modify_primary_nav_items( $title, $item, $args, $depth ) {
 
@@ -325,25 +486,68 @@ function uvm_modify_primary_nav_items( $title, $item, $args, $depth ) {
     }
     return $title;
 }
-// Assicurati che il filtro usi il nome corretto della funzione
 add_filter( 'nav_menu_item_title', 'uvm_modify_primary_nav_items', 10, 4 );
 
 
 /**
- * Imposta il numero di articoli per pagina a 9 nelle pagine archivio autore.
+ * Imposta il numero di articoli per pagina a 9 negli archivi e nella ricerca.
  */
-function uvm_limit_author_posts_per_page( $query ) {
+function uvm_limit_archive_posts_per_page( $query ) {
 
-    // Controlla che siamo in una pagina archivio autore, che sia la query principale
-    // e che non siamo nell'area admin.
-    if ( ! is_admin() && $query->is_author() && $query->is_main_query() ) {
+    // Controlla che sia la query principale, non in admin,
+    // E che sia o una pagina Archivio (qualsiasi) O una pagina Ricerca.
+    if ( ! is_admin() && $query->is_main_query() && ( $query->is_archive() || $query->is_search() ) ) {
 
         // Imposta il limite a 9 articoli
         $query->set( 'posts_per_page', 9 );
     }
 }
-add_action( 'pre_get_posts', 'uvm_limit_author_posts_per_page' );
+add_action( 'pre_get_posts', 'uvm_limit_archive_posts_per_page' );
 
+/**
+ * Pulisce i titoli degli archivi rimuovendo i prefissi (es. "Categoria:", "Tag:").
+ */
+function uvm_custom_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
 
+    return $title;
+}
+add_filter( 'get_the_archive_title', 'uvm_custom_archive_title' );
+
+/**
+ * Converte la chiave 'ruolo_uvm' (es. 'responsabile_unit') in un nome leggibile.
+ */
+function uvm_format_role_name( $role_key ) {
+    $roles = [
+            'membro'            => 'Membro',
+            'caposervizio'      => 'Caposervizio',
+            'redattore'         => 'Redattore',
+            'responsabile_unit' => 'Responsabile UNIT',
+            'coordinatrice_uvm' => 'Coordinatrice UVM'
+    ];
+
+    // Se la chiave esiste, ritorna il nome leggibile
+    if ( isset( $roles[$role_key] ) ) {
+        return $roles[$role_key];
+    }
+    // Altrimenti, crea un fallback pulito
+    else if ( !empty($role_key) ) {
+        return ucfirst( str_replace( '_', ' ', $role_key ) );
+    }
+    // Se il campo è vuoto, ritorna 'Membro' come default
+    else {
+        return 'Membro';
+    }
+}
 
 ?>

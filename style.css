@@ -1748,6 +1748,182 @@ body {
 }
 
 /* ==========================================================================
+   PAGINE STATICHE (Terms, Privacy, Chi Siamo)
+   ========================================================================== */
+.static-page-container .page-header {
+    margin-bottom: var(--space-lg);
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: var(--space-md);
+}
+
+.static-page-container .page-title {
+    font-size: var(--text-xxl);
+    line-height: 1.2;
+}
+
+/* Stile per "Ultimo aggiornamento..." */
+.entry-content em {
+    font-size: var(--text-sm);
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: var(--space-lg);
+    display: block; /* Per dargli un margine sotto */
+}
+
+/* Stili per le liste (CORREZIONE) */
+.entry-content ul,
+.entry-content ol {
+    list-style-position: outside; /* Posiziona il pallino FUORI */
+    margin: var(--space-md) 0 var(--space-lg) var(--space-md); /* Margine standard + rientro a sinistra */
+    padding-left: var(--space-sm); /* Spazio tra pallino e testo */
+}
+
+.entry-content li {
+    font-size: var(--text-base); /* Stessa dimensione del paragrafo */
+    line-height: 1.6;
+    margin-bottom: var(--space-sm); /* Spazio tra gli elementi */
+    padding-left: 0; /* Resetta il padding (gestito da ul/ol) */
+}
+
+/* Stili specifici per i puntini */
+.entry-content ul li::marker {
+    color: var(--primary); /* Colore dei puntini */
+}
+
+/* ==========================================================================
+   PAGINA RICERCA (search.php - Nessun Risultato)
+   ========================================================================== */
+.no-results-content {
+    text-align: center;
+    padding: var(--space-lg) 0;
+    margin-top: var(--space-lg);
+}
+
+.no-results-content .page-header {
+    border-bottom: none; /* Rimuovi la linea del titolo se non ci sono risultati */
+}
+
+.no-results-content p {
+    font-size: var(--text-lg);
+    max-width: 50ch;
+    margin-inline: auto;
+    margin-bottom: var(--space-lg);
+    opacity: 0.7;
+}
+
+.no-results-search {
+    width: 100%;
+    max-width: 500px; /* Stessa larghezza del 404 */
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   PAGINA RICERCA (Stile Titolo)
+   ========================================================================== */
+
+/* 1. Centra l'intero header della pagina (solo su pagina ricerca) */
+.search-results .page-header {
+    text-align: center;
+    border-bottom: none; /* Rimuoviamo la linea, sta meglio centrato */
+}
+
+/* 2. Colora di arancione la parola cercata (il <span>) */
+.page-title span {
+    color: var(--primary);
+    font-weight: 700; /* Lo rendiamo un po' bold */
+}
+
+/* ==========================================================================
+   PAGINA ARCHIVIO (Tag, Categoria)
+   ========================================================================== */
+
+/* Centra l'header della pagina archivio */
+.archive .page-header {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: var(--space-md); /* Spazio prima della griglia */
+}
+
+/* ==========================================================================
+   PAGINA CHI SIAMO (Team Section) - v2 GRUPPATA
+   ========================================================================== */
+.team-section {
+    margin-top: var(--space-lg);
+}
+
+/* NUOVO: Titolo per la sottosezione (es. "Giornale", "Radio") */
+.team-section-subtitle {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-top: var(--space-lg); /* Spazio sopra ogni gruppo */
+    margin-bottom: var(--space-md);
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: var(--space-sm);
+    text-align: center;
+}
+
+/* Il primo titolo della pagina non ha bisogno di spazio sopra */
+.team-section > h2:first-of-type {
+    margin-top: 0;
+}
+
+.team-grid {
+    display: grid;
+    /* Crea colonne responsive: si adattano tra 280px e 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+}
+
+.team-member-card {
+    background: var(--white);
+    border: 1px solid var(--secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-lg);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Per allineare le card con altezze diverse */
+    display: flex;
+    flex-direction: column;
+}
+
+.team-member-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow-md);
+}
+
+.team-member-avatar img {
+    border-radius: 50%;
+    margin-bottom: var(--space-md);
+}
+
+.team-member-name {
+    font-size: var(--text-xl);
+    margin: 0; /* Rimosso spazio sotto per far posto al ruolo */
+}
+
+/* NUOVO: Stile per il Ruolo (sostituisce la bio) */
+.team-member-role {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--primary); /* Colore primario per evidenza */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: var(--space-sm); /* Spazio dal nome */
+
+    /* Questa è la magia: fa sì che il ruolo si allunghi
+       per far finire le card tutte alla stessa altezza */
+    flex-grow: 1;
+}
+
+/* VECCHI: Nascosti come da richiesta */
+.team-member-bio,
+.team-member-card .author-socials {
+    display: none;
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 1024px) {
