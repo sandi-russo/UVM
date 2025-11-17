@@ -61,5 +61,13 @@
             </div>
 
         </div>
+
+        <?php // --- INIZIO BLOCCO AGGIUNTO --- ?>
+        <a href="<?php echo esc_url( home_url( '/radio' ) ); // Link alla tua futura pagina radio ?>" class="radio-cta-button">
+            <?php echo uvm_get_svg_icon( 'radio-waves' ); ?>
+            <span>Vai alla diretta Radio</span>
+        </a>
+        <?php // --- FINE BLOCCO AGGIUNTO --- ?>
+
     </div>
 </aside>

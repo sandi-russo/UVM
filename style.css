@@ -257,7 +257,6 @@ body {
 
 .mobile-menu .sub-menu {
     list-style: none;
-    margin: 0;
     padding: 0;
     background-color: transparent;
     max-height: 0;
@@ -269,7 +268,7 @@ body {
     transform: none;
     min-width: 100%;
     box-shadow: none;
-    margin-top: 0;
+    margin: 0;
 }
 
 .mobile-menu .sub-menu li a {
@@ -1985,6 +1984,134 @@ body {
     transition: transform 0.3s ease;
 }
 
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   RADIO SLIDER (Pagina Radio) - v2 Verticale
+   ========================================================================== */
+.radio-slider-section {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+/* Titolo aggiunto sopra lo slider */
+.radio-slider-section .section-title {
+    text-align: center;
+    border-bottom: none;
+}
+
+.radio-program-slider {
+    width: 100%;
+    /* --- MODIFICA: Nuovo Aspect Ratio 2:3 --- */
+    aspect-ratio: 2 / 3;
+    background-color: var(--secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+
+    /* Mantiene lo slider più stretto su desktop, come un telefono */
+    max-width: 400px;
+    margin-inline: auto; /* Centra lo slider stretto */
+}
+
+/* Stile per lo speaker (invariato) */
+.radio-slide-speaker {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--white);
+    opacity: 0.8;
+    margin-top: calc(var(--space-sm) / 2);
+}
+
+/* Stile per frecce e pallini (invariato) */
+.radio-program-slider .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+}
+
+.radio-program-slider .swiper-pagination-bullet-active {
+    background: var(--primary);
+}
+
+.radio-program-slider .swiper-button-prev,
+.radio-program-slider .swiper-button-next {
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+.radio-program-slider .swiper-button-prev:hover,
+.radio-program-slider .swiper-button-next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.radio-program-slider .swiper-button-prev::after,
+.radio-program-slider .swiper-button-next::after {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   SIDEBAR (Pulsante CTA Radio) - v2 Piccolo
+   ========================================================================== */
+
+/* Stile Mobile (Sotto i 1024px) */
+.radio-cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    background: var(--primary);
+    color: var(--white);
+    padding: var(--space-sm); /* <-- MODIFICATO (da md a sm) */
+    margin-top: var(--space-md);
+    border-radius: var(--radius); /* <-- MODIFICATO (da lg a normale) */
+    font-size: var(--text-sm); /* <-- MODIFICATO (da base a sm) */
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.radio-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.radio-cta-button svg {
+    width: 18px; /* Ridotto per allinearsi al font sm */
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
@@ -2095,6 +2222,17 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .radio-program-slider .swiper-button-prev,
+    .radio-program-slider .swiper-button-next {
+        display: none;
+    }
+
+    /* Su mobile, usiamo un formato 4:5, leggermente meno "stretto" */
+    .radio-program-slider {
+        aspect-ratio: 4 / 5;
+        max-width: 100%; /* Occupa tutta la larghezza */
+    }
 
     .slide-content {
         padding: var(--space-sm);
@@ -2293,4 +2431,11 @@ body {
     .single-post .layout-with-sidebar > .sidebar .spotify-player-card {
         margin-bottom: var(--space-md);
     }
+
+    .radio-cta-button {
+        /* margin-top: 0; <-- RIMOSSO per ereditare lo spazio */
+        /* Sovrascriviamo il padding-top di default con uno più piccolo */
+        padding: var(--space-sm) 0;
+    }
+
 }

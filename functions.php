@@ -104,6 +104,7 @@ add_filter( 'get_custom_logo', 'uvm_remove_logo_attributes' );
 add_image_size( 'uvm_hero', 1200, 600, true );
 add_image_size( 'uvm_card', 400, 250, true );
 add_image_size( 'uvm_thumb', 150, 150, true );
+add_image_size( 'uvm_radio_slider', 600, 900, true );
 
 /**
  * Personalizza la lunghezza dell'estratto (excerpt).
@@ -559,6 +560,56 @@ function uvm_uppercase_author_name( $display_name ) {
     return mb_strtoupper( $display_name );
 }
 add_filter( 'get_the_author_display_name', 'uvm_uppercase_author_name' );
+
+
+
+
+
+
+
+
+
+
+/**
+ * Registra il Custom Post Type "Programma Radio".
+ * (v2 - Aggiunte istruzioni per immagine verticale e disabilitato Gutenberg)
+ */
+function uvm_register_programma_radio_cpt() {
+    $labels = array(
+            'name'                  => _x( 'Programmi Radio', 'Post Type General Name', 'universome' ),
+            'singular_name'         => _x( 'Programma Radio', 'Post Type Singular Name', 'universome' ),
+            'menu_name'             => __( 'Programmi Radio', 'universome' ),
+            'all_items'             => __( 'Tutti i Programmi', 'universome' ),
+            'add_new_item'          => __( 'Aggiungi Nuovo Programma', 'universome' ),
+            'add_new'               => __( 'Aggiungi Nuovo', 'universome' ),
+            'edit_item'             => __( 'Modifica Programma', 'universome' ),
+        // --- MODIFICHE PER ISTRUZIONI IMMAGINE ---
+            'featured_image'        => __( 'Copertina Verticale (per Slider)', 'universome' ),
+            'set_featured_image'    => __( 'Imposta copertina (Verticale 2:3)', 'universome' ),
+            'remove_featured_image' => __( 'Rimuovi copertina', 'universome' ),
+            'use_featured_image'    => __( 'Usa come copertina (Formato 2:3, es. 600x900px)', 'universome' ),
+        // --- FINE MODIFICHE ---
+    );
+    $args = array(
+            'label'                 => __( 'Programma Radio', 'universome' ),
+            'labels'                => $labels,
+            'supports'              => array( 'title', 'editor', 'thumbnail' ), // Titolo, Descrizione, Immagine Evidenza
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_position'         => 5,
+            'menu_icon'             => 'dashicons-microphone',
+            'has_archive'           => false,
+            'exclude_from_search'   => true,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'post',
+            'show_in_rest'          => false, // Mantiene l'editor classico
+    );
+    register_post_type( 'programma_radio', $args );
+}
+add_action( 'init', 'uvm_register_programma_radio_cpt', 0 );
+
 
 
 ?>

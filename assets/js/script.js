@@ -210,4 +210,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+// ===============================================
+    // RADIO PROGRAM SLIDER
+    // ===============================================
+    const radioSlider = document.querySelector('.radio-program-slider');
+    if (radioSlider) {
+        if (typeof Swiper !== 'undefined') {
+            const radioSwiper = new Swiper(radioSlider, {
+                effect: 'slide',
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        } else {
+            console.warn('Libreria Swiper non trovata. Lo slider radio non funzionerà.');
+        }
+    }
+
 });
